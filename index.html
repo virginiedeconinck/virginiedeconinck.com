@@ -733,8 +733,12 @@
       section[style*="80px 80px"] { padding: 48px 24px !important; }
       div[style*="repeat(3,1fr)"] { grid-template-columns: 1fr 1fr !important; }
     }
+    @media (max-width: 768px) {
+      a[style*="padding:32px 28px"] { padding: 16px 20px !important; }
+    }
     @media (max-width: 540px) {
       div[style*="repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+      a[style*="padding:32px 28px"] { padding: 14px 16px !important; }
     }
   </style>
 
