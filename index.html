@@ -675,7 +675,7 @@
       letter-spacing: 0.05em;
     }
 
-    .footer-links { display: flex; gap: 36px; }
+    .footer-links { display: flex; gap: 20px 32px; flex-wrap: wrap; justify-content: center; }
 
     .footer-links a {
       font-size: 10px;
@@ -735,6 +735,9 @@
     }
     @media (max-width: 768px) {
       a[style*="padding:32px 28px"] { padding: 16px 20px !important; }
+      .sujet-card { padding: 10px 14px !important; }
+      .sujet-card h3 { margin-bottom: 4px !important; }
+      .sujet-card p:first-child { margin-bottom: 4px !important; }
     }
     @media (max-width: 540px) {
       div[style*="repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
@@ -824,85 +827,85 @@
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--ink);text-align:center;margin-bottom:56px;line-height:1.1;">Explorer <em style="font-style:italic;color:var(--accent);">les sujets</em></h2>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);">
 
-        <a href="https://virginiedeconinck.com/perimenopause" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/perimenopause" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">01</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Périménopause</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Comprendre les mécanismes hormonaux réels de la transition</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/resistance-insuline" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/resistance-insuline" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">02</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Résistance à l'insuline</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Le lien entre glycémie et vieillissement féminin</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/collagene-peau" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/collagene-peau" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">03</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Collagène &amp; peau</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Pourquoi la peau change et ce que la biologie dit vraiment</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/biohacking-feminin" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/biohacking-feminin" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">04</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Biohacking féminin</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">L'approche biologique du vieillissement adaptée à la femme</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/muscle-longevite-feminine" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/muscle-longevite-feminine" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">05</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Muscle &amp; longévité</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Le muscle comme premier levier de la longévité</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/histamine-perimenopause" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/histamine-perimenopause" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">06</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Histamine &amp; périménopause</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Quand l'histamine se cache derrière les symptômes hormonaux</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/peptides-longevite-feminine" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/peptides-longevite-feminine" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">07</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Peptides &amp; longévité</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Les outils avancés du biohacking féminin</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/nad-vieillissement-feminin" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/nad-vieillissement-feminin" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">08</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">NAD+ &amp; vieillissement</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">La molécule sérieuse, le marketing moins</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/cellules-senescentes-vieillissement" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/cellules-senescentes-vieillissement" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">09</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Cellules sénescentes</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Le mécanisme silencieux du vieillissement cellulaire</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/graisse-abdominale-apres-40-ans" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/graisse-abdominale-apres-40-ans" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">10</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Graisse abdominale après 40 ans</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Ce n'est pas un problème de calories</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/inflammaging" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/inflammaging" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">11</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Inflammaging</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">L'inflammation chronique qui accélère tout</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/glp1-femmes-perimenopause" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/glp1-femmes-perimenopause" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">12</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">GLP-1 &amp; femmes</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Ce qu'on ne vous dit pas sur Ozempic et Monjaro</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/age-biologique-age-chronologique" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/age-biologique-age-chronologique" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">13</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">Âge biologique</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Mesurer et inverser votre vieillissement réel</p>
         </a>
 
-        <a href="https://virginiedeconinck.com/a-propos" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
+        <a href="https://virginiedeconinck.com/a-propos" class="sujet-card" style="background:var(--white);padding:18px 20px;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='#fdfcfb'" onmouseout="this.style.background='var(--white)'">
           <p style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">14</p>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2;">À propos</h3>
           <p style="font-size:13px;line-height:1.7;color:var(--ink-light);margin:0;">Qui est Virginie Deconinck et pourquoi cette méthode</p>
@@ -1125,50 +1128,6 @@
   </section>
 
 
-  <!-- PAGES THEMATIQUES -->
-  <section style="background:var(--white);padding:100px 80px;border-top:1px solid var(--rule);">
-    <div style="max-width:1100px;margin:0 auto;">
-      <p style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;" class="reveal">Approfondir</p>
-      <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:var(--ink);margin-bottom:56px;line-height:1.1;" class="reveal">Les mécanismes biologiques<br><em style="font-style:italic;color:var(--accent);">expliqués en détail</em></h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="reveal">
-        <a href="https://virginiedeconinck.com/perimenopause" style="display:block;background:var(--off-white);padding:40px 36px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background=&#39;#f0ebe3&#39;;this.style.transform=&#39;translateY(-2px)&#39;" onmouseout="this.style.background=&#39;var(--off-white)&#39;;this.style.transform=&#39;translateY(0)&#39;">
-          <p style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Biologie hormonale</p>
-          <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;font-weight:500;color:var(--ink);margin-bottom:10px;line-height:1.2;">Périménopause</p>
-          <p style="font-size:13px;line-height:1.7;color:var(--ink-mid);">Comprendre les mécanismes hormonaux réels de la transition féminine.</p>
-          <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#c4a882;margin-top:16px;">Lire →</p>
-        </a>
-        <a href="https://virginiedeconinck.com/resistance-insuline" style="display:block;background:var(--off-white);padding:40px 36px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background=&#39;#f0ebe3&#39;;this.style.transform=&#39;translateY(-2px)&#39;" onmouseout="this.style.background=&#39;var(--off-white)&#39;;this.style.transform=&#39;translateY(0)&#39;">
-          <p style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Métabolisme</p>
-          <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;font-weight:500;color:var(--ink);margin-bottom:10px;line-height:1.2;">Résistance à l'insuline</p>
-          <p style="font-size:13px;line-height:1.7;color:var(--ink-mid);">Le mécanisme silencieux derrière la prise de poids et le vieillissement cutané.</p>
-          <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#c4a882;margin-top:16px;">Lire →</p>
-        </a>
-        <a href="https://virginiedeconinck.com/collagene-peau" style="display:block;background:var(--off-white);padding:40px 36px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background=&#39;#f0ebe3&#39;;this.style.transform=&#39;translateY(-2px)&#39;" onmouseout="this.style.background=&#39;var(--off-white)&#39;;this.style.transform=&#39;translateY(0)&#39;">
-          <p style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Longévité esthétique</p>
-          <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;font-weight:500;color:var(--ink);margin-bottom:10px;line-height:1.2;">Collagène &amp; Peau</p>
-          <p style="font-size:13px;line-height:1.7;color:var(--ink-mid);">Pourquoi la peau vieillit vite et ce que la biologie dit vraiment.</p>
-          <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#c4a882;margin-top:16px;">Lire →</p>
-        </a>
-        <a href="https://virginiedeconinck.com/biohacking-feminin" style="display:block;background:var(--off-white);padding:40px 36px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background=&#39;#f0ebe3&#39;;this.style.transform=&#39;translateY(-2px)&#39;" onmouseout="this.style.background=&#39;var(--off-white)&#39;;this.style.transform=&#39;translateY(0)&#39;">
-          <p style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Optimisation</p>
-          <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;font-weight:500;color:var(--ink);margin-bottom:10px;line-height:1.2;">Biohacking Féminin</p>
-          <p style="font-size:13px;line-height:1.7;color:var(--ink-mid);">Optimiser sa biologie au féminin, adapté à la réalité hormonale des femmes.</p>
-          <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#c4a882;margin-top:16px;">Lire →</p>
-        </a>
-        <a href="https://virginiedeconinck.com/muscle-longevite-feminine" style="display:block;background:var(--off-white);padding:40px 36px;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background=&#39;#f0ebe3&#39;;this.style.transform=&#39;translateY(-2px)&#39;" onmouseout="this.style.background=&#39;var(--off-white)&#39;;this.style.transform=&#39;translateY(0)&#39;">
-          <p style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Biomécanique</p>
-          <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;font-weight:500;color:var(--ink);margin-bottom:10px;line-height:1.2;">Muscle &amp; Longévité</p>
-          <p style="font-size:13px;line-height:1.7;color:var(--ink-mid);">Le muscle comme organe endocrinien et premier levier de longévité féminine.</p>
-          <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#c4a882;margin-top:16px;">Lire →</p>
-        </a>
-        <div style="background:#f9f7f5;padding:40px 36px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;">
-          <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.5;margin-bottom:20px;">"Comprendre sa biologie, c'est la première étape pour agir dessus."</p>
-          <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);">Virginie Deconinck</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="cta" id="candidature">
     <p class="cta-eyebrow reveal">Travailler ensemble</p>
@@ -1183,8 +1142,20 @@
     <p class="footer-name">Virginie Deconinck</p>
     <nav class="footer-links">
       <a href="https://www.instagram.com/virginiedck" target="_blank" rel="noopener">@virginiedck</a>
-      
-      
+      <a href="https://virginiedeconinck.com/perimenopause">Périménopause</a>
+      <a href="https://virginiedeconinck.com/resistance-insuline">Résistance à l'insuline</a>
+      <a href="https://virginiedeconinck.com/collagene-peau">Collagène &amp; peau</a>
+      <a href="https://virginiedeconinck.com/biohacking-feminin">Biohacking féminin</a>
+      <a href="https://virginiedeconinck.com/muscle-longevite-feminine">Muscle &amp; longévité</a>
+      <a href="https://virginiedeconinck.com/histamine-perimenopause">Histamine</a>
+      <a href="https://virginiedeconinck.com/peptides-longevite-feminine">Peptides</a>
+      <a href="https://virginiedeconinck.com/nad-vieillissement-feminin">NAD+</a>
+      <a href="https://virginiedeconinck.com/cellules-senescentes-vieillissement">Cellules sénescentes</a>
+      <a href="https://virginiedeconinck.com/graisse-abdominale-apres-40-ans">Graisse abdominale</a>
+      <a href="https://virginiedeconinck.com/inflammaging">Inflammaging</a>
+      <a href="https://virginiedeconinck.com/glp1-femmes-perimenopause">GLP-1</a>
+      <a href="https://virginiedeconinck.com/age-biologique-age-chronologique">Âge biologique</a>
+      <a href="https://virginiedeconinck.com/a-propos">À propos</a>
     </nav>
   </footer>
 
