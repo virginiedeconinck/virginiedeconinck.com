@@ -740,7 +740,9 @@
       div[style*="repeat(3,1fr)"] { grid-template-columns: 1fr 1fr !important; }
     }
     @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
+      nav { padding: 16px 20px; position: relative; }
+      .footer-links { flex-direction: column; gap: 0; }
+      .footer-links a { padding: 12px 0; border-bottom: 1px solid #e0dbd4; }
       a[style*="padding:32px 28px"] { padding: 16px 20px !important; }
       .sujet-card { padding: 10px 14px !important; }
       .sujet-card h3 { margin-bottom: 4px !important; }
