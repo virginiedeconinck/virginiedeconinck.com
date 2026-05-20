@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://virginiedckk.netlify.app/sitemap.xml
+Sitemap: https://virginiedeconinck.com/sitemap.xml
