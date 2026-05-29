@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable | Virginie Deconinck</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-91D9DLP5HP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-91D9DLP5HP');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Didact+Gothic&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --ink: #0e0e0e;
+      --ink-mid: #222222;
+      --ink-light: #666;
+      --accent: #c4a882;
+      --rule: #e0dbd4;
+      --off-white: #fdfcfb;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Didact Gothic', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 400;
+      letter-spacing: 0.08em; color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 22px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-mid); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 40px 80px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .error-code {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .error-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .error-text {
+      font-size: 15px;
+      color: var(--ink-light);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+    .error-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 48px;
+    }
+    .btn-home {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink);
+      padding: 16px 36px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-home:hover { background: var(--accent); }
+    .btn-secondary {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      padding: 16px 24px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--accent); }
+    .btn-group { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+    footer {
+      padding: 32px 60px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--ink-light);
+      letter-spacing: 0.08em;
+    }
+    footer a { color: var(--ink-light); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .error-code { font-size: 80px; }
+      .error-title { font-size: 24px; }
+      footer { flex-direction: column; gap: 12px; padding: 24px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://virginiedeconinck.com/" class="nav-name">Virginie Deconinck</a>
+    <ul class="nav-links">
+      <li><a href="https://virginiedeconinck.com/a-propos">À propos</a></li>
+      <li><a href="https://le-systeme-dck.netlify.app/" target="_blank" rel="noopener">Le Système</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <p class="error-code">404</p>
+    <div class="error-rule"></div>
+    <h1 class="error-title">Cette page n'existe pas</h1>
+    <p class="error-text">L'URL que vous avez suivie ne correspond à aucune page de ce site.<br>Elle a peut-être été déplacée ou supprimée.</p>
+    <div class="btn-group">
+      <a href="https://virginiedeconinck.com/" class="btn-home">Retour à l'accueil</a>
+      <a href="https://virginiedeconinck.com/a-propos" class="btn-secondary">À propos</a>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Virginie Deconinck</span>
+    <a href="https://virginiedeconinck.com/a-propos">À propos</a>
+  </footer>
+
+</body>
+</html>
