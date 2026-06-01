@@ -106,4 +106,18 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://virginiedeconinck.com/blog</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://virginiedeconinck.com/blog/les-4-leviers-biologiques</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

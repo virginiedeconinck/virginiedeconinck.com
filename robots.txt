@@ -1,13 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /leviers-biologiques.pdf
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /leviers-biologiques.pdf
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /leviers-biologiques.pdf
 
 User-agent: LinkedInBot
 Allow: /
+Disallow: /leviers-biologiques.pdf
 
 Sitemap: https://virginiedeconinck.com/sitemap.xml
