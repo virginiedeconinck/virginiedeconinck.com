@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virginie Deconinck | Biohacking Féminin &amp; Longévité</title>
-  <meta name="description" content="Virginie Deconinck, experte en biohacking féminin et rajeunissement cellulaire pour les femmes de plus de 35 ans. Méthode en 4 leviers biologiques : biomécanique, biologie régénérative, neuro-comportement et longévité esthétique.">
+  <meta name="description" content="Virginie Deconinck, experte en biohacking féminin et rajeunissement cellulaire pour les femmes de plus de 35 ans. Méthode en 4 leviers biologiques : biomécanique, biologie régénérative, neuro-comportement et esthétique fonctionnelle.">
   <meta name="keywords" content="Rajeunissement Cellulaire Féminin, longévité féminine, biohacking féminin, coach périménopause, résistance à l&#39;insuline femme, inflammation de bas grade, santé hormonale femme, muscle et hormones, collagène peau femme, Virginie Deconinck, virginiedck">
   <meta name="author" content="Virginie Deconinck">
   <meta property="og:title" content="Virginie Deconinck | Longévité Féminine &amp; Rajeunissement Cellulaire">
@@ -36,12 +36,12 @@
     "name": "Virginie Deconinck",
     "alternateName": ["virginiedck", "Virginie Deconinck"],
     "jobTitle": "Experte en Longévité Féminine et Rajeunissement Cellulaire",
-    "description": "Experte en biohacking féminin, régulation hormonale naturelle, biomécanique du corps féminin et longévité esthétique pour les femmes 35 ans et plus. Méthode en 4 piliers basée sur la biologie régénérative féminine.",
+    "description": "Experte en biohacking féminin, régulation hormonale naturelle, biomécanique du corps féminin et esthétique fonctionnelle pour les femmes 35 ans et plus. Méthode en 4 piliers basée sur la biologie régénérative féminine.",
     "url": "https://virginiedeconinck.com",
     "brand": {
       "@type": "Brand",
       "name": "Rajeunissement Cellulaire Féminin",
-      "description": "Méthode propriétaire en 4 piliers biologiques pour inverser les mécanismes du vieillissement féminin : biomécanique musculaire, biologie régénérative, neuro-comportement et longévité esthétique."
+      "description": "Méthode propriétaire en 4 piliers biologiques pour inverser les mécanismes du vieillissement féminin : biomécanique musculaire, biologie régénérative, neuro-comportement et esthétique fonctionnelle."
     },
     "sameAs": ["https://www.instagram.com/virginiedck"],
     "subjectOf": [
@@ -55,7 +55,7 @@
       "Longévité féminine","Rajeunissement cellulaire","Biohacking féminin",
       "Périménopause","Résistance à l'insuline","Inflammaging",
       "Santé mitochondriale","Santé hormonale féminine","Biomécanique féminine",
-      "Longévité esthétique","Collagène et peau","Myokines","Estrobolome",
+      "Esthétique fonctionnelle","Collagène et peau","Myokines","Estrobolome",
       "Muscle et métabolisme féminin",
       "Rajeunissement Cellulaire Féminin"
     ],
@@ -388,7 +388,7 @@
     /* SCIENCE */
     .science {
       background: var(--white);
-      padding: 140px 80px;
+      padding: 140px 80px 64px;
     }
 
     .science-header {
@@ -396,8 +396,8 @@
       grid-template-columns: 220px 1fr;
       gap: 80px;
       align-items: end;
-      margin-bottom: 80px;
-      padding-bottom: 48px;
+      margin-bottom: 44px;
+      padding-bottom: 32px;
       border-bottom: 1px solid var(--rule);
     }
 
@@ -425,7 +425,7 @@
     }
 
     .science-item {
-      padding: 48px 40px 48px 0;
+      padding: 24px 40px 24px 0;
       border-bottom: 1px solid var(--rule);
     }
 
@@ -437,7 +437,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 13px;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       letter-spacing: 0.1em;
     }
 
@@ -459,7 +459,7 @@
     /* PROOF */
     .proof {
       background: #ffffff;
-      padding: 140px 80px;
+      padding: 72px 80px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 100px;
@@ -735,8 +735,24 @@
       .science { padding: 80px 24px; }
       .science-header { grid-template-columns: 1fr; gap: 20px; }
       .science-grid { grid-template-columns: 1fr; }
-      .science-item { padding: 36px 0; border-bottom: 1px solid var(--rule) !important; }
+      .science-item { padding: 24px 0; border-bottom: 1px solid var(--rule) !important; }
       .science-item:last-child { border-bottom: none !important; }
+      .testimonials-grid {
+        display: flex !important;
+        grid-template-columns: none !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 12px;
+        scrollbar-width: none;
+      }
+      .testimonials-grid::-webkit-scrollbar { display: none; }
+      .testimonials-grid > div {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        padding: 36px 28px !important;
+      }
       .proof { grid-template-columns: 1fr; padding: 80px 24px; gap: 56px; }
       .about { padding: 80px 24px; }
       .about-columns { grid-template-columns: 1fr; gap: 48px; }
@@ -788,7 +804,7 @@
         "name": "Qu'est-ce que la longévité féminine ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "La longévité féminine est une approche systémique qui vise à préserver et optimiser la santé biologique, hormonale et esthétique des femmes dans la durée. Elle repose sur quatre piliers : la biomécanique musculaire, la biologie régénérative, le neuro-comportement féminin et la longévité esthétique. L'objectif n'est pas de corriger les symptômes visibles du vieillissement, mais d'agir sur ses causes biologiques profondes."
+          "text": "La longévité féminine est une approche systémique qui vise à préserver et optimiser la santé biologique, hormonale et esthétique des femmes dans la durée. Elle repose sur quatre piliers : la biomécanique musculaire, la biologie régénérative, le neuro-comportement féminin et l'esthétique fonctionnelle. L'objectif n'est pas de corriger les symptômes visibles du vieillissement, mais d'agir sur ses causes biologiques profondes."
         }
       }
     ]
@@ -898,36 +914,34 @@
   <section class="pillars" id="methode">
     <div class="pillars-header">
       <p class="pillars-eyebrow reveal visible">La méthode</p>
-      <h2 class="pillars-title reveal visible">Rajeunissement Cellulaire Féminin™<br><em>4 piliers biologiques.</em></h2>
+      <h2 class="pillars-title reveal visible">Rajeunissement Cellulaire Féminin™<br><em>— 4 piliers</em></h2>
     </div>
+
+    <p class="reveal visible" style="margin-bottom: 56px; color: var(--ink-mid); line-height: 1.8; max-width: 720px; font-size: 16px;">Avec l'âge, les mécanismes de régénération ralentissent pendant que les mécanismes d'usure s'installent. Résultat : le corps se répare moins vite qu'il ne se dégrade, et c'est exactement ça, vieillir. Ces quatre piliers agissent sur les deux fronts, depuis l'intérieur du corps jusqu'à la peau.</p>
 
     <div class="pillars-grid">
       <article class="pillar reveal visible">
         <div class="pillar-num">01</div>
-        <p class="pillar-tag">Biomécanique &amp; Muscle</p>
-        <h3 class="pillar-title">Le muscle comme organe endocrinien</h3>
-        <p class="pillar-body">Le muscle squelettique n'est pas qu'un tissu contractile. C'est un organe métabolique et endocrinien à part entière, capable de sécréter des myokines, des molécules de signalisation qui régulent la sensibilité à l'insuline, l'inflammation systémique, la composition corporelle et le vieillissement cellulaire. Chez la femme de 35 ans et plus, préserver et développer la masse musculaire est le levier le plus puissant contre l'accélération du vieillissement biologique.</p>
+        <p class="pillar-tag">Muscle &amp; Biomécanique</p>
+        <p class="pillar-body">Le muscle n'est pas un tissu de silhouette, c'est un organe endocrinien de longévité. Il capte le glucose, module l'inflammation et envoie à l'organisme le signal de se reconstruire plutôt que de se dégrader. C'est la fondation : sans elle, les autres leviers ne tiennent pas.</p>
       </article>
 
       <article class="pillar reveal visible">
         <div class="pillar-num">02</div>
         <p class="pillar-tag">Biologie Régénérative Féminine</p>
-        <h3 class="pillar-title">Glycémie, mitochondries &amp; hormones</h3>
-        <p class="pillar-body">La résistance à l'insuline, l'inflammation chronique de bas grade et le dysfonctionnement mitochondrial sont les trois accélérateurs silencieux du vieillissement féminin. Associés aux fluctuations de progestérone, d'œstrogènes, de SHBG et d'IGF-1 pendant la périménopause, ils créent un terrain biologique qui dégrade la peau, la silhouette, l'énergie et le sommeil de façon simultanée et progressive.</p>
+        <p class="pillar-body">Régulation glycémique, équilibre hormonal, énergie mitochondriale, sommeil, inflammation de bas grade. C'est le terrain interne qui détermine la vitesse réelle du vieillissement. On y relance la régénération et on y éteint les accélérateurs silencieux de l'usure.</p>
       </article>
 
       <article class="pillar reveal visible">
         <div class="pillar-num">03</div>
         <p class="pillar-tag">Neuro-Comportement Féminin</p>
-        <h3 class="pillar-title">Cerveau, dopamine &amp; rapport au corps</h3>
-        <p class="pillar-body">La baisse des œstrogènes modifie le fonctionnement cérébral de façon documentée. La signalisation dopaminergique, la régulation émotionnelle, le comportement alimentaire et l'image corporelle en sont directement affectés. Comprendre ces mécanismes neurobiologiques permet de ne plus subir ces changements comme des défaillances personnelles, mais de les traverser avec une stratégie adaptée à la physiologie féminine réelle.</p>
+        <p class="pillar-body">Le système nerveux gouverne tout le reste. Cortisol, tonus du nerf vague, régulation du comportement : ce pilier décide si les trois autres se maintiennent dans la durée, ou si le stress chronique vient en saboter les effets.</p>
       </article>
 
       <article class="pillar reveal visible">
         <div class="pillar-num">04</div>
-        <p class="pillar-tag">Longévité Esthétique</p>
-        <h3 class="pillar-title">Collagène, fascias &amp; cohérence intérieur-extérieur</h3>
-        <p class="pillar-body">La densité dermique, la production de collagène et la tonicité des fascias sont des biomarqueurs directs de la santé intérieure. La longévité esthétique ne se construit pas par les soins topiques seuls. Elle reflète l'équilibre glycémique, le niveau d'inflammation systémique, la santé hormonale et la nutrition cellulaire. L'extérieur révèle l'intérieur avec une précision biologique.</p>
+        <p class="pillar-tag">Esthétique Fonctionnelle</p>
+        <p class="pillar-body">Synthèse du collagène, glycation des tissus, fascias, barrière cutanée. La peau ne fait que traduire l'état du terrain intérieur. Un soin n'amplifie rien sur un terrain négligé ; sur une biologie régulée par les trois premiers piliers, il révèle et amplifie un résultat enfin visible et durable.</p>
       </article>
     </div>
   </section>
@@ -1051,7 +1065,7 @@
     <div style="max-width:1100px;margin:0 auto;">
       <p style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:40px;" class="reveal">Résultats réels</p>
       <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:clamp(36px,4vw,52px);font-weight:300;color:var(--white);margin-bottom:80px;line-height:1.1;" class="reveal">Ce que vivent les femmes<br><em style="font-style:italic;color:var(--accent);">qui appliquent la méthode</em></h2>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
+      <div class="testimonials-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
 
         <div style="background:#1a1a1a;padding:48px;" class="reveal">
           <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:28px;">«&nbsp;Ma peau est moins réactive, moins gonflée au réveil. Après trois semaines seulement, je voyais déjà une différence que je n'arrivais pas à expliquer avant de comprendre les mécanismes.&nbsp;»</p>
@@ -1088,7 +1102,7 @@
   </section>
 
   <!-- FOOTER -->
-  <p style="text-align:center;font-size:11px;color:#999;padding:24px 0 8px;letter-spacing:0.05em;">Mis à jour — mai 2026</p>
+  <p style="text-align:center;font-size:11px;color:#999;padding:24px 0 8px;letter-spacing:0.05em;">Mis à jour — juin 2026</p>
 
   <footer>
     <p class="footer-name">Virginie Deconinck</p>
