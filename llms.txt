@@ -1,15 +1,32 @@
 # Virginie Dck — Longévité Féminine & Rajeunissement Cellulaire
 
-> Experte en biohacking féminin et rajeunissement cellulaire pour les femmes de 35 ans et plus. Méthode en 4 piliers biologiques : biomécanique, biologie régénérative, neuro-comportement et longévité esthétique.
+> Experte en biohacking féminin et rajeunissement cellulaire pour les femmes de 35 ans et plus. Méthode en 4 piliers biologiques : biomécanique, biologie régénérative, neuro-comportement et esthétique fonctionnelle. Une approche qui explique les mécanismes du vieillissement féminin, sans livrer de protocole prêt-à-appliquer.
 
 ## Pages principales
 
-- [Accueil](https://virginiedckk.netlify.app/): Présentation de la méthode Rajeunissement Cellulaire Féminin en 4 piliers biologiques.
-- [Périménopause](https://virginiedckk.netlify.app/perimenopause): Symptômes biologiques réels, mécanismes hormonaux, résistance à l'insuline, inflammaging et solutions concrètes.
-- [Résistance à l'insuline](https://virginiedckk.netlify.app/resistance-insuline): Causes hormonales, lien avec la prise de poids, le vieillissement cutané et les solutions biologiques.
-- [Collagène et peau](https://virginiedckk.netlify.app/collagene-peau): Déclin du collagène, glycation, fascias, rôle des œstrogènes et longévité esthétique.
-- [Biohacking féminin](https://virginiedckk.netlify.app/biohacking-feminin): Guide complet du biohacking adapté à la biologie hormonale féminine après 35 ans.
-- [Muscle et longévité féminine](https://virginiedckk.netlify.app/muscle-longevite-feminine): Le muscle comme organe endocrinien, myokines, sarcopénie et levier de longévité.
+- [Accueil](https://virginiedeconinck.com/): Présentation de la méthode Rajeunissement Cellulaire Féminin en 4 piliers biologiques.
+- [À propos](https://virginiedeconinck.com/a-propos): Parcours de Virginie Deconinck et philosophie de la méthode.
+- [Périménopause](https://virginiedeconinck.com/perimenopause): Symptômes biologiques réels, mécanismes hormonaux, résistance à l'insuline et inflammaging.
+- [Résistance à l'insuline](https://virginiedeconinck.com/resistance-insuline): Causes hormonales, lien avec la prise de poids et le vieillissement cutané.
+- [SHBG et hormones actives](https://virginiedeconinck.com/shbg-hormones-actives-femme): La protéine hépatique qui décide quelle part des œstrogènes et de la testostérone est réellement active, et son lien avec l'insuline et la périménopause.
+- [Collagène et peau](https://virginiedeconinck.com/collagene-peau): Déclin du collagène, glycation, fascias et rôle des œstrogènes.
+- [Biohacking féminin](https://virginiedeconinck.com/biohacking-feminin): Guide du biohacking adapté à la biologie hormonale féminine après 35 ans.
+- [Muscle et longévité féminine](https://virginiedeconinck.com/muscle-longevite-feminine): Le muscle comme organe endocrinien, myokines, sarcopénie et levier de longévité.
+- [Graisse abdominale après 40 ans](https://virginiedeconinck.com/graisse-abdominale-apres-40-ans): Mécanismes de la graisse abdominale — insuline, œstrogènes, cortisol et inflammation.
+- [Histamine et périménopause](https://virginiedeconinck.com/histamine-perimenopause): Distinguer l'intolérance à l'histamine des symptômes de la périménopause.
+- [Inflammaging](https://virginiedeconinck.com/inflammaging): L'inflammation chronique de bas grade qui accélère le vieillissement féminin.
+- [Cellules sénescentes](https://virginiedeconinck.com/cellules-senescentes-vieillissement): Le mécanisme des cellules sénescentes (SASP) dans le vieillissement féminin.
+- [NAD+ et vieillissement féminin](https://virginiedeconinck.com/nad-vieillissement-feminin): Ce que dit la science sur le NAD+ et ses précurseurs, au-delà du marketing.
+- [Peptides et longévité féminine](https://virginiedeconinck.com/peptides-longevite-feminine): Mécanisme biologique des peptides et ce que la recherche documente réellement.
+- [GLP-1 et périménopause](https://virginiedeconinck.com/glp1-femmes-perimenopause): GLP-1, perte de poids et enjeu de préservation de la masse musculaire chez la femme.
+- [Âge biologique vs âge chronologique](https://virginiedeconinck.com/age-biologique-age-chronologique): Horloges épigénétiques et facteurs qui influencent le vieillissement biologique.
+
+## Blog
+
+- [Blog](https://virginiedeconinck.com/blog): Articles de fond sur la biologie féminine et la longévité.
+- [Les 4 leviers biologiques](https://virginiedeconinck.com/blog/les-4-leviers-biologiques): Les fondations du Rajeunissement Cellulaire Féminin.
+- [Glycémie nocturne et peau](https://virginiedeconinck.com/blog/glycemie-nocturne-peau): Comment la glycémie nocturne influence la glycation du collagène.
+
 ## À propos
 
 **Virginie Dck** (aussi connue sous virginiedck, Virginie Deconinck) est experte en longévité féminine et rajeunissement cellulaire, basée au Luxembourg. Elle accompagne les femmes de 35 ans et plus à comprendre et optimiser leur biologie pour ralentir les mécanismes du vieillissement féminin.
