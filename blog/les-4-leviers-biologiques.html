@@ -45,12 +45,13 @@
   <style>
     :root {
       --white: #ffffff;
-      --off-white: #f6f5f3;
-      --ink: #0e0e0e;
-      --ink-mid: #2a2a2a;
-      --ink-light: #888;
-      --accent: #c4a882;
-      --rule: #e2ddd8;
+      --off-white: #f4f6fb;
+      --ink: #11182a;
+      --ink-mid: #2a2f3c;
+      --ink-light: #8a90a0;
+      --accent: #c8a02e;
+      --navy: #15243f;
+      --rule: #dde3ee;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -303,8 +304,8 @@
     .cta-block {
       margin-top: 72px;
       padding: 44px 40px;
-      background: var(--off-white);
-      border: 1px solid var(--rule);
+      background: var(--navy);
+      border: 1px solid var(--navy);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -335,7 +336,7 @@
       font-weight: 300;
       font-size: 23px;
       line-height: 1.45;
-      color: var(--ink);
+      color: #ffffff;
       margin-bottom: 6px;
     }
 
@@ -343,22 +344,23 @@
       display: inline-block;
       align-self: flex-start;
       background: var(--accent);
-      color: #ffffff;
+      color: var(--navy);
       text-decoration: none;
+      font-weight: 600;
       font-size: 12px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       padding: 18px 46px;
       transition: background 0.2s;
     }
-    .cta-primary:hover { background: #b3966b; }
+    .cta-primary:hover { background: #dcb43f; }
 
     .cta-secondary {
       font-size: 13px;
       letter-spacing: 0.02em;
-      color: var(--ink-light);
+      color: #c4cee0;
       text-decoration: none;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: 1px solid #3a4a6a;
       padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
     }
@@ -385,7 +387,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 400;
       font-size: 23px;
-      color: var(--ink);
+      color: var(--navy);
       margin-bottom: 7px;
       letter-spacing: 0.01em;
     }
