@@ -301,12 +301,14 @@
 
     /* ── CTA BLOCK ── */
     .cta-block {
-      margin-top: 80px;
-      padding-top: 40px;
-      border-top: 1px solid var(--rule);
+      margin-top: 72px;
+      padding: 44px 40px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      align-items: flex-start;
+      gap: 22px;
     }
 
     .cta-link {
@@ -350,6 +352,44 @@
       transition: background 0.2s;
     }
     .cta-primary:hover { background: #b3966b; }
+
+    .cta-secondary {
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      color: var(--ink-light);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cta-secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── LEVER CARDS ── */
+    .levers { margin: 16px 0 1.6em; }
+    .lever-card {
+      display: flex;
+      gap: 22px;
+      padding: 26px 2px;
+      border-top: 1px solid var(--rule);
+    }
+    .lever-card:last-child { border-bottom: 1px solid var(--rule); }
+    .lever-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      line-height: 1;
+      color: var(--accent);
+      flex-shrink: 0;
+      min-width: 46px;
+    }
+    .lever-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 23px;
+      color: var(--ink);
+      margin-bottom: 7px;
+      letter-spacing: 0.01em;
+    }
+    .lever-body p { font-size: 16px; line-height: 1.7; color: var(--ink-mid); margin: 0; }
 
     /* ── FOOTER ── */
     footer {
@@ -492,13 +532,36 @@
 
       <p class="reveal">Le Rajeunissement Cellulaire Féminin™ agit sur ces quatre leviers biologiques fondamentaux. Pris isolément, chacun explique une partie de ton vieillissement. Assemblés dans le bon ordre, ils l'inversent.</p>
 
-      <p class="reveal"><strong>Biomécanique et Muscle.</strong> Le muscle est un organe endocrinien qui gouverne le métabolisme, la sensibilité à l'insuline et l'équilibre hormonal.</p>
-
-      <p class="reveal"><strong>Biologie Régénérative.</strong> La résistance à l'insuline, l'inflammaging et le déclin mitochondrial sont les trois mécanismes cellulaires qui accélèrent le vieillissement féminin.</p>
-
-      <p class="reveal"><strong>Neuro-Comportement.</strong> La chute des œstrogènes affecte directement le cerveau, le sommeil, la dopamine et la réponse au stress.</p>
-
-      <p class="reveal"><strong>Esthétique Fonctionnelle.</strong> La peau, les fascias, la lymphe et le microbiome cutané reflètent et amplifient ce qui se passe à l'intérieur.</p>
+      <div class="levers reveal">
+        <div class="lever-card">
+          <span class="lever-num">01</span>
+          <div class="lever-body">
+            <h3>Biomécanique et Muscle</h3>
+            <p>Le muscle est un organe endocrinien qui gouverne le métabolisme, la sensibilité à l'insuline et l'équilibre hormonal.</p>
+          </div>
+        </div>
+        <div class="lever-card">
+          <span class="lever-num">02</span>
+          <div class="lever-body">
+            <h3>Biologie Régénérative</h3>
+            <p>La résistance à l'insuline, l'inflammaging et le déclin mitochondrial sont les trois mécanismes cellulaires qui accélèrent le vieillissement féminin.</p>
+          </div>
+        </div>
+        <div class="lever-card">
+          <span class="lever-num">03</span>
+          <div class="lever-body">
+            <h3>Neuro-Comportement</h3>
+            <p>La chute des œstrogènes affecte directement le cerveau, le sommeil, la dopamine et la réponse au stress.</p>
+          </div>
+        </div>
+        <div class="lever-card">
+          <span class="lever-num">04</span>
+          <div class="lever-body">
+            <h3>Esthétique Fonctionnelle</h3>
+            <p>La peau, les fascias, la lymphe et le microbiome cutané reflètent et amplifient ce qui se passe à l'intérieur.</p>
+          </div>
+        </div>
+      </div>
 
       <p class="reveal">Connaître ces quatre leviers ne suffit pas. Tout est déjà sur Internet, et une intelligence artificielle t'en donnera mille pages de plus. Le problème n'a jamais été le manque d'information, mais de savoir quoi activer, dans quel ordre et à quelle dose pour ton corps de femme en transition. Empiler une information de plus ne change rien : c'est l'assemblage qui transforme.</p>
 
@@ -515,7 +578,7 @@
     <div class="cta-block reveal">
       <p class="cta-intro">Le Système, ce sont ces quatre leviers déjà assemblés en 25 audios, dans le bon ordre, pour une femme de 35 à 55 ans qui veut agir sur son corps de l'intérieur.</p>
       <a href="https://le-systeme-dck.netlify.app" class="cta-primary">Accéder au Système — 27 €</a>
-      <a href="https://tally.so/r/XxeEzV" class="cta-link">Tu veux un accompagnement sur-mesure ? Dépose ta candidature <span class="arrow">→</span></a>
+      <a href="https://tally.so/r/XxeEzV" class="cta-secondary">Tu préfères un accompagnement sur-mesure ? Dépose ta candidature</a>
     </div>
 
   </div>
