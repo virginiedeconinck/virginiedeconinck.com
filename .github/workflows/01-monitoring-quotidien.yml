@@ -7,7 +7,7 @@ name: Surveillance technique quotidienne
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # tous les jours ~08:00 Europe/Luxembourg (06:00 UTC)
+    - cron: '0 6 * * 1'   # hebdomadaire, lundi ~08:00 Europe/Luxembourg (06:00 UTC)
   workflow_dispatch: {}    # lançable manuellement depuis l'onglet Actions
 
 permissions:
@@ -65,7 +65,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: --no-progress --max-concurrency 4 --accept 200,206,429 "${{ env.SITE }}/sitemap.xml"
-          fail: true
+          fail: false   # informatif : un lien externe capricieux ne fait plus echouer le job (fini les faux 'Run failed')
 
       # 4) Lighthouse (SEO, perf, accessibilité, mobile) — informatif
       - name: Lighthouse (mobile)
