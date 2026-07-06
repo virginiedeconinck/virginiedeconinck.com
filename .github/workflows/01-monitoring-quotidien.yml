@@ -59,13 +59,16 @@ jobs:
           done
           exit $FAIL
 
-      # 3) Liens cassés (interne + sortants) sur le site publié
+      # 3) Liens cassés (interne + sortants) sur les pages publiées
+      # On pointe lychee sur de VRAIES pages HTML (pas le sitemap.xml, qu'il ne sait pas lire :
+      # il renvoyait "No links were found" -> erreur de config -> faux echec du run).
       - name: Verification liens (lychee)
         if: always()
+        continue-on-error: true   # purement informatif : ne fait jamais echouer la surveillance
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --no-progress --max-concurrency 4 --accept 200,206,429 "${{ env.SITE }}/sitemap.xml"
-          fail: false   # informatif : un lien externe capricieux ne fait plus echouer le job (fini les faux 'Run failed')
+          args: --no-progress --max-concurrency 4 --accept 200,206,429 "${{ env.SITE }}/" "${{ env.SITE }}/blog"
+          fail: false   # un lien externe capricieux ne declenche aucune alerte
 
       # 4) Lighthouse (SEO, perf, accessibilité, mobile) — informatif
       - name: Lighthouse (mobile)
