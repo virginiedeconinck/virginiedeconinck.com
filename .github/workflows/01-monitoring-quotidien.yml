@@ -11,7 +11,7 @@ on:
   workflow_dispatch: {}    # lançable manuellement depuis l'onglet Actions
 
 permissions:
-  contents: read
+  contents: write   # nécessaire au "battement de coeur" ci-dessous (étape 6)
   issues: write
 
 env:
@@ -89,6 +89,37 @@ jobs:
         run: |
           curl -sI "$SITE/" | grep -iE 'x-nf-request-id|server|age' || true
           echo "Le détail des déploiements reste consultable sur app.netlify.com/projects/virginiedck."
+
+      # 6) Battement de coeur hebdomadaire (ajouté le 20/07/2026).
+      # GitHub DESACTIVE tout seul un workflow planifié après 60 jours SANS COMMIT sur le
+      # dépôt (pas sans exécution : ce monitoring peut tourner chaque semaine pendant des mois,
+      # s'il ne pousse rien la surveillance s'éteint quand même). Sans ce commit, le dernier
+      # push datait du 06/07/2026 -> extinction estimée le 04/09/2026, en plein pendant les
+      # vacances de Virginie (depart 07/08). Ce commit hebdomadaire reinitialise le compteur
+      # en permanence. [skip netlify] : n'importe où dans le message evite de gaspiller un
+      # build/deploiement Netlify pour un simple horodatage qui ne change rien au site
+      # (verifie dans la doc Netlify le 20/07/2026 : marche aussi sur un push direct, pas
+      # seulement un titre de PR).
+      - name: Battement de coeur (empeche l'auto-desactivation GitHub a 60j d'inactivite)
+        if: always()
+        run: |
+          mkdir -p automation
+          echo "$(date -u +'%Y-%m-%dT%H:%M:%SZ') surveillance passee (run ${{ github.run_id }})" > automation/heartbeat.txt
+          git config user.name "vdck-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add automation/heartbeat.txt
+          if git diff --cached --quiet; then
+            echo "aucun changement (deja passe cette semaine)"
+          else
+            git commit -m "chore(surveillance): battement de coeur hebdomadaire $(date -u +'%Y-%m-%d') [skip netlify]"
+            n=0
+            until git push origin HEAD:main; do
+              n=$((n+1))
+              if [ "$n" -ge 5 ]; then echo "::error::push impossible apres 5 tentatives"; exit 1; fi
+              git pull --rebase origin main
+              sleep $((RANDOM % 5 + 2))
+            done
+          fi
 
   alerte:
     needs: checks
