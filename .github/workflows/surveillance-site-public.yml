@@ -1,0 +1,127 @@
+name: Surveillance site public (technique + SEO + GEO)
+
+# REMPLACE l'ancien 01-monitoring-quotidien.yml (supprime dans le meme lot).
+# Pourquoi il a ete refait le 29/07/2026 : l'ancien s'appelait "quotidien" mais
+# tournait le lundi seulement, et ses deux controles interessants (liens casses,
+# Lighthouse) etaient en continue-on-error + fail:false. Ils ne pouvaient donc
+# JAMAIS declencher d'alerte. En pratique il ne surveillait qu'une chose : que le
+# site repondait. Aucun controle de title, description, canonical (4 pages sur 19),
+# donnees structurees, llms.txt ni acces des crawlers IA.
+#
+# Principe : on ne fait confiance a aucun rapport, aucun cache, aucun document.
+# Chaque passage REFAIT les requetes reelles sur le site en ligne, aujourd'hui.
+#
+# Lecture seule sur le site. Ne publie rien, ne modifie aucun contenu.
+# Aucune cle API, aucun jeton Netlify : uniquement le GITHUB_TOKEN.
+
+on:
+  schedule:
+    - cron: '0 5 * * *'    # tous les jours, 07h00 Europe/Luxembourg en heure d'ete
+  workflow_dispatch: {}     # lancable a la main depuis l'onglet Actions
+
+permissions:
+  contents: write   # battement de coeur (etape 3)
+  issues: write     # ouverture de l'alerte
+
+jobs:
+  surveillance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      # 1) LE CONTROLE. Un seul script, sans dependance externe, versionne et
+      #    executable en local a l'identique :  python3 automation/monitoring.py
+      #    Sort en 1 des qu'une ERREUR est trouvee -> le job echoue -> Issue ouverte.
+      #    Couvre : disponibilite des 19 pages, certificat TLS, gestionnaire 404,
+      #    chaque lien et chaque image un par un, title/description/canonical/H1/
+      #    viewport/lang sur toutes les pages, doublons (cannibalisation),
+      #    noindex accidentel (balise ET en-tete HTTP), validite des donnees
+      #    structurees JSON-LD et contradictions entre blocs, integrite de
+      #    llms.txt, et acces reel des crawlers IA teste avec leur User-Agent.
+      - name: Controle technique + SEO + GEO
+        id: controle
+        run: python3 automation/monitoring.py --markdown
+
+      # 2) Le rapport reste consultable meme quand tout va bien.
+      - name: Archiver le rapport
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: rapport-surveillance
+          path: rapport-surveillance.md
+          retention-days: 90
+
+      # 3) Battement de coeur. GitHub DESACTIVE tout workflow planifie apres 60
+      #    jours SANS COMMIT sur le depot (pas sans execution : la surveillance
+      #    peut tourner des mois et s'eteindre quand meme). Ce commit hebdomadaire
+      #    reinitialise le compteur en permanence. Hebdomadaire et non quotidien
+      #    pour ne pas noyer l'historique. [skip netlify] evite de consommer un
+      #    build Netlify pour un horodatage qui ne change rien au site.
+      - name: Battement de coeur (anti-desactivation 60 jours)
+        if: always() && github.event_name == 'schedule'
+        run: |
+          if [ "$(date -u +%u)" != "1" ]; then echo "pas lundi, rien a faire"; exit 0; fi
+          mkdir -p automation
+          echo "$(date -u +'%Y-%m-%dT%H:%M:%SZ') surveillance passee (run ${{ github.run_id }})" > automation/heartbeat.txt
+          git config user.name "vdck-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add automation/heartbeat.txt
+          if git diff --cached --quiet; then
+            echo "aucun changement"
+          else
+            git commit -m "chore(surveillance): battement de coeur $(date -u +'%Y-%m-%d') [skip netlify]"
+            n=0
+            until git push origin HEAD:main; do
+              n=$((n+1))
+              if [ "$n" -ge 5 ]; then echo "::error::push impossible apres 5 tentatives"; exit 1; fi
+              git pull --rebase origin main
+              sleep $((RANDOM % 5 + 2))
+            done
+          fi
+
+  alerte:
+    needs: surveillance
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      # L'Issue porte le detail des erreurs, pas seulement un lien vers le run :
+      # une alerte qu'il faut aller decrypter ailleurs est une alerte qu'on ne lit pas.
+      - uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          name: rapport-surveillance
+      - uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            let detail = '';
+            try {
+              const txt = fs.readFileSync('rapport-surveillance.md', 'utf8');
+              const i = txt.indexOf('## Erreurs');
+              detail = i >= 0 ? txt.slice(i, txt.indexOf('\n## ', i + 5) > 0
+                                          ? txt.indexOf('\n## ', i + 5) : undefined) : txt;
+            } catch (e) { detail = '_(rapport indisponible, voir le run)_'; }
+            const jour = new Date().toISOString().slice(0, 10);
+            const titre = "Surveillance site public : anomalie detectee";
+            const corps = `La surveillance du ${jour} a trouve au moins une erreur sur `
+              + `virginiedeconinck.com.\n\n${detail}\n\nDetail complet du run : ${run}\n\n`
+              + `_(Issue automatique, lecture seule : rien n'a ete modifie ni publie.)_`;
+            const ouvertes = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: "open", labels: "surveillance" });
+            if (ouvertes.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: ouvertes.data[0].number, body: corps });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: `${titre} (${jour})`, body: corps, labels: ["surveillance"] });
+            }
