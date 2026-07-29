@@ -130,6 +130,7 @@ def collecte_pages():
             "canon": attr(r'<link[^>]*rel\s*=\s*["\']canonical["\'][^>]*>', 'href', corps),
             "ogimg": attr(r'<meta[^>]*property\s*=\s*["\']og:image["\'][^>]*>', 'content', corps),
             "ogtit": attr(r'<meta[^>]*property\s*=\s*["\']og:title["\'][^>]*>', 'content', corps),
+            "twtit": attr(r'<meta[^>]*name\s*=\s*["\']twitter:title["\'][^>]*>', 'content', corps),
             "robots": attr(r'<meta[^>]*name\s*=\s*["\']robots["\'][^>]*>', 'content', corps),
             "xrobots": ent.get("X-Robots-Tag", ""),
             "h1": re.findall(r'(?s)<h1[^>]*>(.*?)</h1>', corps),
@@ -196,8 +197,19 @@ def controle_seo(pages):
             ALERTE("seo", f"{chemin} : {p['mots']} mots seulement (<{MOTS_MIN})")
 
         # --- partage social
+        # Le titre de la carte de partage doit dire la MEME chose que la page.
+        # Un ecart se cree en silence des qu'on retouche un title sans penser aux
+        # deux balises jumelles : la carte annonce alors autre chose que le contenu.
         if not p["ogimg"]: ALERTE("social", f"{chemin} : og:image absente")
-        if not p["ogtit"]: ALERTE("social", f"{chemin} : og:title absente")
+        if not p["ogtit"]:
+            ALERTE("social", f"{chemin} : og:title absente")
+        elif p["ogtit"][0] != p["title"]:
+            ERREUR("social", f"{chemin} : og:title differe du title de la page "
+                             f"(« {p['ogtit'][0][:50]} » au lieu de « {p['title'][:50]} »)")
+        if not p["twtit"]:
+            ALERTE("social", f"{chemin} : twitter:title absente")
+        elif p["twtit"][0] != p["title"]:
+            ERREUR("social", f"{chemin} : twitter:title differe du title de la page")
 
     # --- cannibalisation : deux pages sur la meme requete se penalisent
     for t, l in vues_title.items():
@@ -353,6 +365,11 @@ def controle_geo(pages, urls_sitemap):
                               f"(contenu concordant, mais un seul suffit)")
         if not ({"Article", "BlogPosting", "WebPage", "Person", "Organization"} & set(types)):
             ALERTE("geo", f"{chemin} : JSON-LD sans type principal (Article/Person attendu)")
+        # Le fil d'Ariane structure : Google l'affiche dans ses resultats a la
+        # place de l'URL nue, et il donne aux moteurs la place de la page dans
+        # l'arborescence. L'accueil n'en a pas besoin, il EST la racine.
+        if chemin != "/" and "BreadcrumbList" not in types:
+            ALERTE("geo", f"{chemin} : pas de BreadcrumbList (fil d'Ariane structure)")
 
     # e) cohesion sitemap <-> pages reellement servies
     for u in urls_sitemap:
