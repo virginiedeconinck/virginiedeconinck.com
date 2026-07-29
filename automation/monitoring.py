@@ -250,6 +250,13 @@ def controle_liens(pages):
         if code in (0, 403, 405, 501):            # certains serveurs refusent HEAD
             code, _, _, _ = http(cible, "GET")
         if code == 200: continue
+        # 429 (trop de requetes) et 999 (LinkedIn) ne disent rien de la sante du
+        # lien : ce sont des protections anti-robot. Instagram repond 200 a une
+        # vraie visiteuse et 429 a un runner GitHub. Signaler ca chaque jour
+        # apprendrait a ignorer le rapport, ce qui est exactement le defaut
+        # qu'on vient de corriger.
+        if not interne and code in (429, 999):
+            continue
         ou = ", ".join(sorted(sources)[:4])
         if interne:
             ERREUR("liens", f"lien interne casse (HTTP {code}) : {cible.replace(SITE,'')} "
