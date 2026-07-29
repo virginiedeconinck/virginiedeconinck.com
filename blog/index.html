@@ -290,6 +290,122 @@
 .nav-dropdown-menu a:hover{color:#c4a882;}
 </style>
 
+<style>
+  /* Ligne editoriale, guide d'entree et FAQ : memes variables que le reste
+     de la page, aucune couleur nouvelle introduite. */
+  .blog-intro {
+    padding: 64px 80px 8px;
+    max-width: 860px;
+  }
+  .blog-intro .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .blog-intro p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin-bottom: 18px;
+  }
+
+  .blog-guide, .blog-faq {
+    padding: 72px 80px;
+    border-top: 1px solid var(--rule);
+  }
+  .blog-faq { background: var(--off-white); }
+
+  .blog-guide h2, .blog-faq h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .blog-guide p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin-bottom: 18px;
+    max-width: 860px;
+  }
+  .blog-guide a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    transition: color 0.2s;
+  }
+  .blog-guide a:hover { color: var(--accent); }
+
+  .faq-item { margin-bottom: 30px; max-width: 860px; }
+  .faq-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(19px, 2vw, 23px);
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .faq-item p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-mid);
+  }
+
+  @media (max-width: 900px) {
+    .blog-intro { padding: 48px 40px 4px; }
+    .blog-guide, .blog-faq { padding: 56px 40px; }
+  }
+  @media (max-width: 768px) {
+    .blog-intro { padding: 40px 24px 4px; }
+    .blog-guide, .blog-faq { padding: 48px 24px; }
+  }
+</style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "À quelle fréquence paraissent les articles ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Un article de fond par mois environ. Le rythme est volontairement lent : chaque sujet demande de vérifier l'état réel de la recherche, de distinguer ce qui est établi chez la femme de ce qui a été observé chez l'homme ou l'animal, et de ne rien affirmer qui ne tienne."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ces articles remplacent-ils un avis médical ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non, jamais. Ils expliquent des mécanismes biologiques pour que vous compreniez ce qui se passe dans votre corps et que vous puissiez poser de meilleures questions à votre médecin. Toute décision thérapeutique, tout traitement hormonal et tout arrêt de traitement relèvent d'un professionnel de santé qui vous suit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "À qui s'adressent ces contenus ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aux femmes à partir de 35 ans, qu'elles soient en périménopause, en ménopause précoce ou déjà ménopausées, et à celles qui veulent comprendre leur biologie plutôt que subir une liste de recommandations générales conçues sans tenir compte de leurs hormones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Pourquoi ne pas donner directement les protocoles ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parce qu'un protocole sans le mécanisme qui le justifie ne se transpose pas. Deux femmes du même âge, avec les mêmes symptômes, n'ont pas forcément la même cause en amont. Ces articles vous donnent la compréhension du mécanisme ; l'application détaillée et personnalisée relève de l'accompagnement."
+        }
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -348,6 +464,13 @@
     <p class="page-header-sub">Biologie, longévité, rajeunissement cellulaire féminin</p>
   </header>
 
+  <section class="blog-intro">
+    <p class="lead">Ce blog explique ce qui se passe réellement dans un corps de femme après 35 ans.</p>
+    <p>La fatigue qui ne cède pas au repos, le ventre qui s'installe alors que rien n'a changé dans votre assiette, la peau dont la texture se modifie, le sommeil qui se fragmente. On a appris à ranger tout cela sous un seul mot, l'âge. Ce sont des mécanismes biologiques, et ils sont documentés.</p>
+    <p>Vous ne trouverez pas ici de protocole prêt à appliquer. Vous trouverez les mécanismes eux-mêmes : ce que la recherche établit aujourd'hui, ce qu'elle ne tranche pas encore, et pourquoi tant de conseils construits sur des physiologies masculines ne donnent rien sur la vôtre.</p>
+    <p>Chaque article part d'un mécanisme précis et le suit jusqu'au bout, sources à l'appui.</p>
+  </section>
+
   <section class="blog-grid">
 
     <a href="/blog/glycemie-nocturne-peau" class="card">
@@ -370,6 +493,36 @@
       <span class="card-link">Lire l'article</span>
     </a>
 
+  </section>
+
+  <section class="blog-guide">
+    <h2>Par où commencer</h2>
+    <p>Si vos cycles se dérèglent, si le sommeil se fragmente ou si les bouffées de chaleur apparaissent, commencez par la <a href="/perimenopause">périménopause</a> : c'est la transition qui reconfigure tout le reste.</p>
+    <p>Si le ventre s'installe alors que votre alimentation n'a pas bougé, regardez du côté de la <a href="/resistance-insuline">résistance à l'insuline</a>, puis de la <a href="/graisse-abdominale-apres-40-ans">graisse abdominale après 40 ans</a>. L'insuline gouverne bien plus que votre glycémie.</p>
+    <p>Si vos bilans hormonaux reviennent « normaux » alors que vous ne vous sentez pas normale, la <a href="/shbg-hormones-actives-femme">SHBG</a> explique souvent ce décalage : c'est elle qui décide quelle part de vos hormones est réellement disponible pour vos tissus.</p>
+    <p>Si vous réagissez mal à des aliments que vous digériez sans problème auparavant, l'<a href="/histamine-perimenopause">histamine et la périménopause</a> se confondent souvent, et se distinguent.</p>
+    <p>Si vous vous interrogez sur les <a href="/glp1-femmes-perimenopause">GLP-1</a>, ce qu'ils font à la <a href="/muscle-longevite-feminine">masse musculaire</a> mérite d'être lu avant toute décision.</p>
+    <p>Et si vous préférez la vue d'ensemble, le <a href="/biohacking-feminin">biohacking féminin</a> rassemble la logique complète, dont <a href="/blog/les-4-leviers-biologiques">les 4 leviers biologiques</a> donnent la structure.</p>
+  </section>
+
+  <section class="blog-faq">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-item">
+      <h3>À quelle fréquence paraissent les articles ?</h3>
+      <p>Un article de fond par mois environ. Le rythme est volontairement lent : chaque sujet demande de vérifier l'état réel de la recherche, de distinguer ce qui est établi chez la femme de ce qui a été observé chez l'homme ou l'animal, et de ne rien affirmer qui ne tienne.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Ces articles remplacent-ils un avis médical ?</h3>
+      <p>Non, jamais. Ils expliquent des mécanismes biologiques pour que vous compreniez ce qui se passe dans votre corps et que vous puissiez poser de meilleures questions à votre médecin. Toute décision thérapeutique, tout traitement hormonal et tout arrêt de traitement relèvent d'un professionnel de santé qui vous suit.</p>
+    </div>
+    <div class="faq-item">
+      <h3>À qui s'adressent ces contenus ?</h3>
+      <p>Aux femmes à partir de 35 ans, qu'elles soient en périménopause, en ménopause précoce ou déjà ménopausées, et à celles qui veulent comprendre leur biologie plutôt que subir une liste de recommandations générales conçues sans tenir compte de leurs hormones.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Pourquoi ne pas donner directement les protocoles ?</h3>
+      <p>Parce qu'un protocole sans le mécanisme qui le justifie ne se transpose pas. Deux femmes du même âge, avec les mêmes symptômes, n'ont pas forcément la même cause en amont. Ces articles vous donnent la compréhension du mécanisme ; l'application détaillée et personnalisée relève de l'accompagnement.</p>
+    </div>
   </section>
 
   <footer>

@@ -255,6 +255,28 @@
 
     .prose h2 em { font-style: italic; }
 
+    /* LIENS DE CONTENU ET FAQ (ajoutes le 29/07/2026)
+       La page n'avait aucun style de lien dans le corps de texte : tout lien
+       ajoute serait tombe en bleu navigateur, hors charte. */
+    .prose a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: color 0.2s;
+    }
+    .prose a:hover { color: var(--accent); }
+
+    .faq-bloc { margin-bottom: 1.9em; }
+    .faq-bloc h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 0.5em;
+    }
+    .faq-bloc p { line-height: 1.8; color: var(--ink-mid); margin: 0; }
+
     /* NUMBERED LIST */
     .prose-list {
       list-style: none;
@@ -420,6 +442,47 @@
       ]
     }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Faut-il un capteur de glycémie pour agir sur ce mécanisme ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Un capteur donne une lecture précise et personnelle, ce qui aide, mais il n'est pas un préalable. Les leviers qui influencent la glycémie nocturne sont d'abord des leviers de sensibilité à l'insuline et de masse musculaire, et ceux-là se travaillent sans matériel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La glycation est-elle réversible ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il faut distinguer deux choses. Les liaisons avancées déjà formées sur le collagène sont très stables et se défont mal. En revanche, la vitesse à laquelle de nouvelles se forment dépend directement de votre exposition glycémique, et cela se modifie. L'enjeu porte donc sur le rythme de formation, pas sur l'effacement de ce qui est déjà là."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Les crèmes au collagène compensent-elles ce phénomène ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La molécule de collagène est trop grande pour franchir la barrière cutanée et rejoindre le derme depuis l'extérieur. Un soin topique agit sur l'hydratation et l'aspect de surface, ce qui a sa valeur, mais il n'intervient pas sur la glycation du collagène déjà en place. Le sujet est développé sur la page collagène et peau."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ce mécanisme concerne-t-il aussi les femmes non diabétiques ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. La glycation est un processus continu, pas un seuil que l'on franchit. Elle se produit à toute glycémie et s'accélère simplement quand celle-ci monte et se maintient. Une femme dont les analyses sont parfaitement normales peut avoir des variations nocturnes qui pèsent sur son collagène, en particulier si la transition hormonale a commencé."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -543,6 +606,28 @@
       <p class="reveal">C'est pourquoi le vieillissement cutané féminin s'accélère notablement entre 45 et 55 ans, et pourquoi les approches purement topiques (crèmes, sérums, soins) ne suffisent pas. La biologie cutanée féminine après 40 ans est une biologie métabolique. Elle se joue à l'intérieur.</p>
 
       <p class="reveal">Comprendre le lien entre glycémie nocturne, glycation du collagène et inflammaging peau, c'est comprendre que l'anti-âge métabolique n'est pas une tendance. C'est la biologie.</p>
+
+      <h2 class="reveal">Questions <em>fréquentes</em></h2>
+
+      <div class="faq-bloc reveal">
+        <h3>Faut-il un capteur de glycémie pour agir sur ce mécanisme ?</h3>
+        <p>Non. Un capteur donne une lecture précise et personnelle, ce qui aide, mais il n'est pas un préalable. Les leviers qui influencent la glycémie nocturne sont d'abord des leviers de <a href="/resistance-insuline">sensibilité à l'insuline</a> et de <a href="/muscle-longevite-feminine">masse musculaire</a>, et ceux-là se travaillent sans matériel.</p>
+      </div>
+
+      <div class="faq-bloc reveal">
+        <h3>La glycation est-elle réversible ?</h3>
+        <p>Il faut distinguer deux choses. Les liaisons avancées déjà formées sur le collagène sont très stables et se défont mal. En revanche, la vitesse à laquelle de nouvelles se forment dépend directement de votre exposition glycémique, et cela se modifie. L'enjeu porte donc sur le rythme de formation, pas sur l'effacement de ce qui est déjà là.</p>
+      </div>
+
+      <div class="faq-bloc reveal">
+        <h3>Les crèmes au collagène compensent-elles ce phénomène ?</h3>
+        <p>La molécule de collagène est trop grande pour franchir la barrière cutanée et rejoindre le derme depuis l'extérieur. Un soin topique agit sur l'hydratation et l'aspect de surface, ce qui a sa valeur, mais il n'intervient pas sur la glycation du collagène déjà en place. Le sujet est développé sur la page <a href="/collagene-peau">collagène et peau</a>.</p>
+      </div>
+
+      <div class="faq-bloc reveal">
+        <h3>Ce mécanisme concerne-t-il aussi les femmes non diabétiques ?</h3>
+        <p>Oui. La glycation est un processus continu, pas un seuil que l'on franchit. Elle se produit à toute glycémie et s'accélère simplement quand celle-ci monte et se maintient. Une femme dont les analyses sont parfaitement normales peut avoir des variations nocturnes qui pèsent sur son collagène, en particulier si la <a href="/perimenopause">transition hormonale</a> a commencé.</p>
+      </div>
 
     </div>
 

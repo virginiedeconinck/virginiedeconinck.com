@@ -55,6 +55,47 @@
     }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Peut-on vraiment faire baisser son âge biologique ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les horloges épigénétiques mesurent la méthylation de l'ADN, et cette méthylation évolue avec le mode de vie. Des baisses sont documentées dans la littérature, y compris dans des essais contrôlés, mais les résultats varient fortement d'une personne à l'autre et les tests eux-mêmes gardent une marge d'erreur. Mon propre résultat de 39,7 ans est une mesure, pas une promesse transposable. Le sujet est détaillé sur la page âge biologique et âge chronologique."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Faut-il travailler les quatre leviers en même temps ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non, et c'est précisément là que la plupart des démarches échouent. Les quatre leviers s'influencent : agir sur le muscle sans avoir traité la sensibilité à l'insuline donne peu de résultats, et travailler la peau pendant qu'un terrain inflammatoire persiste revient à écoper. C'est l'ordre qui fait la différence, et cet ordre dépend de votre situation de départ."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "À partir de quel âge est-ce pertinent ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La périménopause peut débuter dès 35 ans, souvent des années avant que les bilans hormonaux ne montrent quoi que ce soit. Plus la démarche commence tôt, plus elle agit sur des mécanismes encore souples. Cela dit, aucun de ces leviers ne cesse d'être actif après la ménopause : la masse musculaire, notamment, reste modifiable à tout âge."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce que cela remplace un traitement hormonal ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Ces leviers agissent sur le terrain métabolique, musculaire, inflammatoire et cutané. Ils ne se substituent ni à un traitement hormonal de la ménopause, ni à un suivi médical, ni à un diagnostic. Un traitement se décide avec le médecin qui vous suit, et ces deux approches ne s'opposent pas."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Didact+Gothic&display=swap" rel="stylesheet">
@@ -247,6 +288,49 @@
       color: var(--ink);
       letter-spacing: 0.01em;
     }
+
+    /* ── TITRES DE SECTION ET LIENS DE CONTENU ──
+       Ajoutes le 29/07/2026 : l'article n'avait aucun H2 (structure de lecture
+       absente sur 587 mots), et aucun style de lien dans le corps de texte, donc
+       tout lien ajoute serait tombe en bleu navigateur, hors charte marine/dore. */
+    .prose h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(28px, 3.4vw, 38px);
+      line-height: 1.15;
+      color: var(--navy);
+      margin: 2.2em 0 0.7em;
+      letter-spacing: -0.005em;
+    }
+    .prose h2:first-child { margin-top: 0; }
+
+    .prose a {
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .prose a:hover { color: var(--accent); }
+
+    .lever-body a {
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: color 0.2s;
+    }
+    .lever-body a:hover { color: var(--accent); }
+
+    /* ── FAQ ── */
+    .faq-bloc { margin-bottom: 1.9em; }
+    .faq-bloc h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.25;
+      color: var(--navy);
+      margin-bottom: 0.5em;
+    }
+    .faq-bloc p { font-size: 17px; line-height: 1.8; color: var(--ink-mid); margin: 0; }
 
     /* ── NUMBERED LIST ── */
     .prose-list {
@@ -563,7 +647,9 @@
 
       <p class="reveal">Il y a des symptômes que beaucoup de femmes reconnaissent après 35 ans, sans toujours les relier entre eux : les kilos qui s'installent, la fatigue profonde, le brouillard mental, les premières rides, le sommeil qui se fragmente, la peau qui perd sa densité, le relâchement des contours, la cellulite résistante, l'anxiété cyclique.</p>
 
-      <p class="reveal">Ce que la médecine conventionnelle ne dit pas clairement, c'est qu'ils partagent presque tous les mêmes causes biologiques. Tu ne vieillis pas par morceaux, tu vieillis par mécanismes.</p>
+      <p class="reveal">Ce que la médecine conventionnelle ne dit pas clairement, c'est qu'ils partagent presque tous les mêmes causes biologiques. Vous ne vieillissez pas par morceaux, vous vieillissez par mécanismes.</p>
+
+      <h2 class="reveal">Réparation et détérioration : la balance qui bascule</h2>
 
       <p class="reveal">Le corps est conçu pour se réparer et se régénérer. Mais avec l'âge, la transition hormonale et le mode de vie, deux choses se produisent en même temps :</p>
 
@@ -574,48 +660,76 @@
 
       <p class="reveal">Le corps se détériore plus vite qu'il ne se répare. C'est ça, le vieillissement. Et la plupart des femmes le subissent sans jamais le mesurer.</p>
 
+      <h2 class="reveal">Ce vieillissement se mesure</h2>
+
       <p class="reveal">Pourtant, il se mesure. À presque 50 ans, l'âge biologique de mes cellules a été mesuré à <strong>39,7 ans</strong>, directement sur mon ADN, par un test de méthylation développé avec des chercheurs de Harvard. Dix ans de moins que mon passeport, et ce n'est pas de la chance : c'est le résultat d'un travail précis sur quatre leviers.</p>
 
-      <p class="reveal">Le Rajeunissement Cellulaire Féminin™ agit sur ces quatre leviers biologiques fondamentaux. Pris isolément, chacun explique une partie de ton vieillissement. Assemblés dans le bon ordre, ils l'inversent.</p>
+      <h2 class="reveal">Les quatre leviers biologiques</h2>
+
+      <p class="reveal">Le Rajeunissement Cellulaire Féminin™ agit sur ces quatre leviers biologiques fondamentaux. Pris isolément, chacun explique une partie de votre vieillissement. Assemblés dans le bon ordre, ils l'inversent.</p>
 
       <div class="levers reveal">
         <div class="lever-card">
           <span class="lever-num">01</span>
           <div class="lever-body">
             <h3>Biomécanique et Muscle</h3>
-            <p>Le muscle est un organe endocrinien qui gouverne le métabolisme, la sensibilité à l'insuline et l'équilibre hormonal.</p>
+            <p>Le <a href="/muscle-longevite-feminine">muscle est un organe endocrinien</a> qui gouverne le métabolisme, la sensibilité à l'insuline et l'équilibre hormonal.</p>
           </div>
         </div>
         <div class="lever-card">
           <span class="lever-num">02</span>
           <div class="lever-body">
             <h3>Biologie Régénérative</h3>
-            <p>La résistance à l'insuline, l'inflammaging et le déclin mitochondrial sont les trois mécanismes cellulaires qui accélèrent le vieillissement féminin.</p>
+            <p>La <a href="/resistance-insuline">résistance à l'insuline</a>, l'<a href="/inflammaging">inflammaging</a> et le déclin mitochondrial sont les trois mécanismes cellulaires qui accélèrent le vieillissement féminin.</p>
           </div>
         </div>
         <div class="lever-card">
           <span class="lever-num">03</span>
           <div class="lever-body">
             <h3>Neuro-Comportement</h3>
-            <p>La chute des œstrogènes affecte directement le cerveau, le sommeil, la dopamine et la réponse au stress.</p>
+            <p>La chute des œstrogènes en <a href="/perimenopause">périménopause</a> affecte directement le cerveau, le sommeil, la dopamine et la réponse au stress.</p>
           </div>
         </div>
         <div class="lever-card">
           <span class="lever-num">04</span>
           <div class="lever-body">
             <h3>Esthétique Fonctionnelle</h3>
-            <p>La peau, les fascias, la lymphe et le microbiome cutané reflètent et amplifient ce qui se passe à l'intérieur.</p>
+            <p>La <a href="/collagene-peau">peau et le collagène</a>, les fascias, la lymphe et le microbiome cutané reflètent et amplifient ce qui se passe à l'intérieur.</p>
           </div>
         </div>
       </div>
 
-      <p class="reveal">Connaître ces quatre leviers ne suffit pas. Tout est déjà sur Internet, et une intelligence artificielle t'en donnera mille pages de plus. Le problème n'a jamais été le manque d'information, mais de savoir quoi activer, dans quel ordre et à quelle dose pour ton corps de femme en transition. Empiler une information de plus ne change rien : c'est l'assemblage qui transforme.</p>
+      <h2 class="reveal">Pourquoi l'information seule ne suffit pas</h2>
 
-      <p class="reveal">C'est exactement ce que j'ai assemblé, et ce que mes cellules prouvent aujourd'hui. Tu peux attendre que ça se voie pour t'en occuper, ou commencer maintenant, de l'intérieur, pendant que c'est encore tôt.</p>
+      <p class="reveal">Connaître ces quatre leviers ne suffit pas. Tout est déjà sur Internet, et une intelligence artificielle vous en donnera mille pages de plus. Le problème n'a jamais été le manque d'information, mais de savoir quoi activer, dans quel ordre et à quelle dose pour un corps de femme en transition. Empiler une information de plus ne change rien : c'est l'assemblage qui transforme.</p>
+
+      <p class="reveal">C'est exactement ce que j'ai assemblé, et ce que mes cellules prouvent aujourd'hui. Vous pouvez attendre que cela se voie pour vous en occuper, ou commencer maintenant, de l'intérieur, pendant que c'est encore tôt.</p>
+
+      <h2 class="reveal">Questions fréquentes</h2>
+
+      <div class="faq-bloc reveal">
+        <h3>Peut-on vraiment faire baisser son âge biologique ?</h3>
+        <p>Les horloges épigénétiques mesurent la méthylation de l'ADN, et cette méthylation évolue avec le mode de vie. Des baisses sont documentées dans la littérature, y compris dans des essais contrôlés, mais les résultats varient fortement d'une personne à l'autre et les tests eux-mêmes gardent une marge d'erreur. Mon propre résultat de 39,7 ans est une mesure, pas une promesse transposable. Le sujet est détaillé sur la page <a href="/age-biologique-age-chronologique">âge biologique et âge chronologique</a>.</p>
+      </div>
+
+      <div class="faq-bloc reveal">
+        <h3>Faut-il travailler les quatre leviers en même temps ?</h3>
+        <p>Non, et c'est précisément là que la plupart des démarches échouent. Les quatre leviers s'influencent : agir sur le muscle sans avoir traité la <a href="/resistance-insuline">sensibilité à l'insuline</a> donne peu de résultats, et travailler la peau pendant qu'un <a href="/inflammaging">terrain inflammatoire</a> persiste revient à écoper. C'est l'ordre qui fait la différence, et cet ordre dépend de votre situation de départ.</p>
+      </div>
+
+      <div class="faq-bloc reveal">
+        <h3>À partir de quel âge est-ce pertinent ?</h3>
+        <p>La <a href="/perimenopause">périménopause</a> peut débuter dès 35 ans, souvent des années avant que les bilans hormonaux ne montrent quoi que ce soit. Plus la démarche commence tôt, plus elle agit sur des mécanismes encore souples. Cela dit, aucun de ces leviers ne cesse d'être actif après la ménopause : la <a href="/muscle-longevite-feminine">masse musculaire</a>, notamment, reste modifiable à tout âge.</p>
+      </div>
+
+      <div class="faq-bloc reveal">
+        <h3>Est-ce que cela remplace un traitement hormonal ?</h3>
+        <p>Non. Ces leviers agissent sur le terrain métabolique, musculaire, inflammatoire et cutané. Ils ne se substituent ni à un traitement hormonal de la ménopause, ni à un suivi médical, ni à un diagnostic. Un traitement se décide avec le médecin qui vous suit, et ces deux approches ne s'opposent pas.</p>
+      </div>
 
       <div class="pdf-block reveal">
         <p class="pdf-label">Le point de départ</p>
-        <p class="pdf-title">La carte des 4 leviers : comprendre par où ton corps vieillit, avant d'agir.</p>
+        <p class="pdf-title">La carte des 4 leviers : comprendre par où votre corps vieillit, avant d'agir.</p>
         <a href="/leviers-biologiques.pdf" class="pdf-btn" download>Recevoir la carte des 4 leviers</a>
       </div>
 
@@ -623,8 +737,8 @@
 
     <div class="cta-block reveal">
       <p class="cta-intro">Le Système, ce sont ces quatre leviers déjà assemblés en 25 audios, dans le bon ordre, pour une femme de 35 à 55 ans qui veut agir sur son corps de l'intérieur.</p>
-      <a href="https://le-systeme-dck.netlify.app" class="cta-primary">Accéder au Système — 27 €</a>
-      <a href="https://tally.so/r/XxeEzV" class="cta-secondary">Tu préfères un accompagnement sur-mesure ? Dépose ta candidature</a>
+      <a href="https://le-systeme-dck.netlify.app" class="cta-primary">Accéder au Système, 27 €</a>
+      <a href="https://tally.so/r/XxeEzV" class="cta-secondary">Vous préférez un accompagnement sur-mesure ? Déposez votre candidature</a>
     </div>
 
   </div>

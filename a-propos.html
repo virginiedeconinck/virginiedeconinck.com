@@ -128,6 +128,11 @@
     .article h3{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;color:var(--ink);margin:40px 0 14px;}
     .article p{font-size:15px;line-height:1.95;color:var(--ink-mid);margin-bottom:20px;}
     .article p strong{color:var(--ink);font-weight:normal;border-bottom:1px solid var(--accent-light);}
+    .article a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);transition:color 0.2s;}
+    .article a:hover{color:var(--accent);}
+    .faq-bloc{margin-bottom:26px;}
+    .faq-bloc h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--ink);margin:0 0 10px;}
+    .faq-bloc p{font-size:15px;line-height:1.95;color:var(--ink-mid);margin:0;}
     .article-divider{width:40px;height:1px;background:var(--accent);margin:48px 0;}
     .highlight{background:var(--off-white);border-left:3px solid var(--accent);padding:32px 36px;margin:40px 0;}
     .highlight p{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;font-style:italic;line-height:1.6;color:var(--ink);margin:0;}
@@ -192,6 +197,47 @@
         }
       ]
     }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Êtes-vous médecin ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non, et je ne me présente jamais comme telle. Je suis certifiée NASM et spécialisée en longévité féminine. Mon travail porte sur les mécanismes biologiques et leur application concrète, pas sur le diagnostic ni la prescription. Un traitement, un bilan ou l'interprétation d'analyses relèvent du médecin qui vous suit, et je travaille en complément de ce suivi, jamais à sa place."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment votre âge biologique a-t-il été mesuré ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Par un test de méthylation de l'ADN, sur prélèvement, avec la méthode TruDiagnostic développée avec des chercheurs de Harvard. Le résultat est de 39,7 ans pour une femme proche de la cinquantaine. C'est une mesure individuelle, à un instant donné, avec la marge d'incertitude propre à ces tests. Ce que cela signifie et ce que cela ne signifie pas est expliqué sur la page âge biologique et âge chronologique."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "À qui s'adresse votre travail ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aux femmes à partir de 35 ans, en périménopause, en ménopause précoce ou déjà ménopausées, qui constatent que les recommandations habituelles ne produisent plus les mêmes effets sur leur corps. La physiologie féminine en transition hormonale ne répond pas comme celle sur laquelle la plupart des protocoles ont été construits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Faut-il un accompagnement pour appliquer votre méthode ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Les mécanismes sont expliqués librement sur ce site, page par page, et le blog les approfondit. L'accompagnement répond à un autre besoin : savoir dans quel ordre agir sur les quatre leviers compte tenu de votre situation de départ, ce qu'aucun contenu général ne peut déterminer à votre place."
+        }
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -306,6 +352,28 @@
             <h3>Esthétique Fonctionnelle</h3>
             <p>Le collagène, la densité dermique et l'élasticité ne sont pas un objectif cosmétique, mais un marqueur visible de ce qui se passe à l'intérieur.</p>
           </div>
+        </div>
+
+        <h2>Questions <em>fréquentes</em></h2>
+
+        <div class="faq-bloc">
+          <h3>Êtes-vous médecin ?</h3>
+          <p>Non, et je ne me présente jamais comme telle. Je suis certifiée NASM et spécialisée en longévité féminine. Mon travail porte sur les mécanismes biologiques et leur application concrète, pas sur le diagnostic ni la prescription. Un traitement, un bilan ou l'interprétation d'analyses relèvent du médecin qui vous suit, et je travaille en complément de ce suivi, jamais à sa place.</p>
+        </div>
+
+        <div class="faq-bloc">
+          <h3>Comment votre âge biologique a-t-il été mesuré ?</h3>
+          <p>Par un test de méthylation de l'ADN, sur prélèvement, avec la méthode TruDiagnostic développée avec des chercheurs de Harvard. Le résultat est de 39,7 ans pour une femme proche de la cinquantaine. C'est une mesure individuelle, à un instant donné, avec la marge d'incertitude propre à ces tests. Ce que cela signifie et ce que cela ne signifie pas est expliqué sur la page <a href="/age-biologique-age-chronologique">âge biologique et âge chronologique</a>.</p>
+        </div>
+
+        <div class="faq-bloc">
+          <h3>À qui s'adresse votre travail ?</h3>
+          <p>Aux femmes à partir de 35 ans, en <a href="/perimenopause">périménopause</a>, en ménopause précoce ou déjà ménopausées, qui constatent que les recommandations habituelles ne produisent plus les mêmes effets sur leur corps. La physiologie féminine en transition hormonale ne répond pas comme celle sur laquelle la plupart des protocoles ont été construits.</p>
+        </div>
+
+        <div class="faq-bloc">
+          <h3>Faut-il un accompagnement pour appliquer votre méthode ?</h3>
+          <p>Non. Les mécanismes sont expliqués librement sur ce site, page par page, et le <a href="/blog">blog</a> les approfondit. L'accompagnement répond à un autre besoin : savoir dans quel ordre agir sur <a href="/blog/les-4-leviers-biologiques">les quatre leviers</a> compte tenu de votre situation de départ, ce qu'aucun contenu général ne peut déterminer à votre place.</p>
         </div>
 
       </article>

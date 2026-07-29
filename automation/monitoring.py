@@ -363,8 +363,13 @@ def controle_geo(pages, urls_sitemap):
             else:
                 ALERTE("geo", f"{chemin} : {len(articles)} blocs JSON-LD Article redondants "
                               f"(contenu concordant, mais un seul suffit)")
-        if not ({"Article", "BlogPosting", "WebPage", "Person", "Organization"} & set(types)):
-            ALERTE("geo", f"{chemin} : JSON-LD sans type principal (Article/Person attendu)")
+        # Types principaux acceptes : tout ce qui identifie la NATURE de la page.
+        # CollectionPage, Blog et ProfilePage sont des types parfaitement valides,
+        # la liste precedente etait trop etroite et generait une fausse alerte.
+        PRINCIPAUX = {"Article", "BlogPosting", "NewsArticle", "WebPage", "CollectionPage",
+                      "Blog", "ProfilePage", "AboutPage", "Person", "Organization"}
+        if not (PRINCIPAUX & set(types)):
+            ALERTE("geo", f"{chemin} : JSON-LD sans type principal identifiant la page")
         # Le fil d'Ariane structure : Google l'affiche dans ses resultats a la
         # place de l'URL nue, et il donne aux moteurs la place de la page dans
         # l'arborescence. L'accueil n'en a pas besoin, il EST la racine.
