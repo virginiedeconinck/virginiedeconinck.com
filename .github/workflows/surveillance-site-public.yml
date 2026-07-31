@@ -16,8 +16,19 @@ name: Surveillance site public (technique + SEO + GEO)
 
 on:
   schedule:
-    - cron: '0 5 * * *'    # tous les jours, 07h00 Europe/Luxembourg en heure d'ete
-  workflow_dispatch: {}     # lancable a la main depuis l'onglet Actions
+    # ATTENTION, mesure du 31/07/2026 : GitHub n'honore PAS ce cron a l'heure dite
+    # sur les depots gratuits. Le passage planifie du 30/07 demande a 05h00 UTC est
+    # reellement parti a 07h37 UTC, soit 09h37 Europe/Luxembourg. Le retard observe
+    # va de 30 min a 2h30. Ne jamais promettre "controle a 07h" : la seule promesse
+    # tenable est "une fois par jour". La routine du matin cote Mac verifie que le
+    # dernier passage reussi date de moins de 26h et prend le relais sinon.
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+    inputs:
+      test_alerte:
+        description: "Exercer la chaine d'alerte (echec volontaire, envoie une vraie Issue + un vrai email). Ne touche pas au site."
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # battement de coeur (etape 3)
@@ -45,6 +56,18 @@ jobs:
       - name: Controle technique + SEO + GEO
         id: controle
         run: python3 automation/monitoring.py --markdown
+
+      # 1bis) EXERCICE DE LA CHAINE D'ALERTE. Ajoute le 31/07/2026 : jusqu'ici le
+      #    mecanisme d'alerte n'avait JAMAIS ete exerce en conditions reelles, donc
+      #    personne ne pouvait affirmer qu'il fonctionnait. Un dispositif d'alerte
+      #    jamais declenche est une hypothese, pas une securite. Ce forcage se lance
+      #    a la main (Actions > Run workflow > cocher test_alerte) et provoque un
+      #    vrai echec : vraie Issue, vrai email. Il ne touche ni au site ni au contenu.
+      - name: Forcage de test de l'alerte (aucun effet sur le site)
+        if: inputs.test_alerte
+        run: |
+          echo "::error::TEST VOLONTAIRE de la chaine d'alerte, demande a la main. Le site n'est pas en cause."
+          exit 1
 
       # 2) Le rapport reste consultable meme quand tout va bien.
       - name: Archiver le rapport
@@ -83,6 +106,19 @@ jobs:
             done
           fi
 
+  # ALERTE. Refait le 31/07/2026 apres une mesure : l'Issue #3, ouverte le
+  # 06/07/2026, etait restee OUVERTE ET NON LUE PENDANT 25 JOURS. Deux defauts de
+  # conception en cause, corriges ici :
+  #
+  #   1) L'ancienne version cherchait une Issue ouverte portant le label
+  #      "surveillance" et se contentait d'y AJOUTER UN COMMENTAIRE. Une vraie
+  #      panne serait donc allee s'enterrer sous une alerte deja ignoree, sans
+  #      jamais rien faire remonter. Desormais : une Issue NEUVE par incident.
+  #   2) L'alerte n'atteignait Virginie nulle part. Elle ne consulte pas GitHub.
+  #      Desormais deux canaux independants : l'Issue lui est ASSIGNEE (email
+  #      natif GitHub) ET un email Brevo part vers sa boite reelle.
+  #
+  # Un dispositif d'alerte que personne ne recoit n'est pas une securite.
   alerte:
     needs: surveillance
     if: failure()
@@ -96,32 +132,97 @@ jobs:
         continue-on-error: true
         with:
           name: rapport-surveillance
+
+      - name: Extraire le detail des erreurs
+        id: detail
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os, re
+          try:
+              txt = open('rapport-surveillance.md', encoding='utf-8').read()
+          except Exception:
+              txt = ''
+          bloc = ''
+          if txt:
+              m = re.search(r'^##+ *Erreur', txt, re.M | re.I)
+              if m:
+                  suite = re.search(r'^##+ ', txt[m.end():], re.M)
+                  bloc = txt[m.start(): m.end() + suite.start()] if suite else txt[m.start():]
+              else:
+                  bloc = txt
+          bloc = (bloc.strip() or
+                  "(rapport indisponible : le controle s'est interrompu avant de l'ecrire. "
+                  "Voir le journal du run.)")[:4000]
+          print('corps<<FIN_DU_BLOC')
+          print(bloc)
+          print('FIN_DU_BLOC')
+          PY
+
+      # Canal 1 : Issue NEUVE, assignee -> declenche l'email natif de GitHub.
       - uses: actions/github-script@v9
         with:
           script: |
-            const fs = require('fs');
             const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            let detail = '';
-            try {
-              const txt = fs.readFileSync('rapport-surveillance.md', 'utf8');
-              const i = txt.indexOf('## Erreurs');
-              detail = i >= 0 ? txt.slice(i, txt.indexOf('\n## ', i + 5) > 0
-                                          ? txt.indexOf('\n## ', i + 5) : undefined) : txt;
-            } catch (e) { detail = '_(rapport indisponible, voir le run)_'; }
             const jour = new Date().toISOString().slice(0, 10);
-            const titre = "Surveillance site public : anomalie detectee";
+            // toJSON produit un litteral de chaine JS valide : indispensable, le rapport
+            // peut contenir un backtick ou un ${ qui casserait un gabarit de chaine.
+            const detail = ${{ toJSON(steps.detail.outputs.corps) }};
             const corps = `La surveillance du ${jour} a trouve au moins une erreur sur `
-              + `virginiedeconinck.com.\n\n${detail}\n\nDetail complet du run : ${run}\n\n`
-              + `_(Issue automatique, lecture seule : rien n'a ete modifie ni publie.)_`;
-            const ouvertes = await github.rest.issues.listForRepo({
+              + `virginiedeconinck.com.\n\n${detail}\n\n`
+              + `Detail complet du run : ${run}\n\n`
+              + `_(Issue automatique, lecture seule : rien n'a ete modifie ni publie. `
+              + `Une Issue neuve est ouverte a chaque incident, jamais un commentaire `
+              + `sur une ancienne : une alerte empilee est une alerte perdue.)_`;
+            await github.rest.issues.create({
               owner: context.repo.owner, repo: context.repo.repo,
-              state: "open", labels: "surveillance" });
-            if (ouvertes.data.length) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner, repo: context.repo.repo,
-                issue_number: ouvertes.data[0].number, body: corps });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner, repo: context.repo.repo,
-                title: `${titre} (${jour})`, body: corps, labels: ["surveillance"] });
-            }
+              title: `Surveillance site public : anomalie detectee (${jour}, run ${context.runId})`,
+              body: corps, labels: ["surveillance"], assignees: ["virginiedeconinck"] });
+
+      # Canal 2 : email reel dans sa boite. Expediteur alertes@virginiedeconinck.com
+      # (deja valide dans Brevo, reutilise tel quel). Si le secret manque, on le crie
+      # dans le journal mais on ne masque pas l'alerte principale : l'Issue est partie.
+      - name: Email d'alerte (Brevo)
+        if: always()
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          DETAIL: ${{ steps.detail.outputs.corps }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os, json, urllib.request, datetime
+          cle = os.environ.get('BREVO_API_KEY', '').strip()
+          if not cle:
+              print("::error::Secret BREVO_API_KEY absent du depot : "
+                    "l'email d'alerte n'a PAS pu partir. Seule l'Issue GitHub a ete ouverte.")
+              raise SystemExit(0)
+          jour = datetime.date.today().strftime('%d/%m/%Y')
+          detail = os.environ.get('DETAIL', '(detail indisponible)')
+          html = (
+              "<div style=\"font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;"
+              "font-size:16px;line-height:1.6;color:#1a1a2e\">"
+              f"<p><strong>Virginie, une anomalie a ete detectee sur virginiedeconinck.com "
+              f"le {jour}.</strong></p>"
+              "<p>Voici ce que le controle automatique a trouve :</p>"
+              "<pre style=\"background:#f4f4f8;padding:14px;border-radius:8px;"
+              "white-space:pre-wrap;font-size:14px\">" +
+              detail.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') +
+              "</pre>"
+              f"<p>Journal complet : <a href=\"{os.environ['RUN_URL']}\">voir le run</a></p>"
+              "<p style=\"color:#666;font-size:14px\">Message automatique, en lecture seule : "
+              "rien n'a ete modifie ni publie sur le site.</p></div>")
+          req = urllib.request.Request(
+              'https://api.brevo.com/v3/smtp/email',
+              data=json.dumps({
+                  "sender": {"name": "ALERTE site public",
+                             "email": "alertes@virginiedeconinck.com"},
+                  "to": [{"email": "virginiedeconinck@gmail.com", "name": "Virginie"}],
+                  "subject": f"ALERTE site virginiedeconinck.com : anomalie detectee ({jour})",
+                  "htmlContent": html}).encode(),
+              headers={'api-key': cle, 'content-type': 'application/json'}, method='POST')
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  print("Email d'alerte accepte par Brevo, code", r.status, r.read().decode()[:200])
+          except Exception as e:
+              corps = getattr(e, 'read', lambda: b'')().decode()[:300]
+              print(f"::error::Envoi de l'email d'alerte REFUSE par Brevo : {e} {corps}")
+          PY
