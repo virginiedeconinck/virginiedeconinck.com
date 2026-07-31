@@ -56,9 +56,35 @@ def sitemap():
     return sortie
 
 
+def cle_en_ligne(k):
+    """La cle doit etre accessible a la racine du SITE, pas seulement dans le depot.
+
+    Corrige le 31/07/2026 apres un vrai rate : un premier envoi est parti alors que
+    le fichier de cle n'etait pas encore deploye (404). L'envoi a ete accepte cote
+    reseau, l'etat a ete enregistre, et le script s'est alors cru a jour : plus aucun
+    envoi n'aurait eu lieu, pour un signalement que Bing allait rejeter a la
+    validation. Un "accepte" n'est pas une preuve : on verifie la condition d'abord.
+    """
+    url = f'https://{HOTE}/{k}.txt'
+    try:
+        with urllib.request.urlopen(url, timeout=25) as r:
+            contenu = r.read().decode('utf-8', 'ignore').strip()
+        if r.status == 200 and contenu == k:
+            return True, f"cle verifiee en ligne : {url}"
+        return False, f"le fichier existe mais son contenu ne correspond pas a la cle ({url})"
+    except Exception as e:
+        return False, f"cle INTROUVABLE en ligne ({url}) : {e}"
+
+
 def main():
     tout = '--tout' in sys.argv
     k = cle()
+    ok, message = cle_en_ligne(k)
+    print(message)
+    if not ok:
+        print("Aucun envoi effectue : deployez d'abord le fichier de cle a la racine du site.")
+        print("Tant qu'il n'est pas en ligne, tout signalement serait rejete a la validation.")
+        return 1
     pages = sitemap()
     if not pages:
         print("ECHEC : sitemap vide ou illisible."); return 1
