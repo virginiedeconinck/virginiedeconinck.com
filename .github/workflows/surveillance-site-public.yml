@@ -166,16 +166,28 @@ jobs:
             const jour = new Date().toISOString().slice(0, 10);
             // toJSON produit un litteral de chaine JS valide : indispensable, le rapport
             // peut contenir un backtick ou un ${ qui casserait un gabarit de chaine.
+            // Idem pour estTest : sur un passage planifie inputs vaut null, et un
+            // ${{ inputs.test_alerte }} nu rendrait une chaine VIDE, donc du JS invalide.
             const detail = ${{ toJSON(steps.detail.outputs.corps) }};
-            const corps = `La surveillance du ${jour} a trouve au moins une erreur sur `
-              + `virginiedeconinck.com.\n\n${detail}\n\n`
+            const estTest = ${{ toJSON(inputs.test_alerte == true) }};
+            const entete = estTest
+              ? `**CECI EST UN TEST, declenche a la main. Le site n'a AUCUN probleme.**\n\n`
+                + `Ce passage sert a verifier que la chaine d'alerte fonctionne vraiment : `
+                + `Issue ouverte, email recu. L'echec est volontaire. Le rapport ci-dessous `
+                + `est le vrai rapport du jour, et il est sain.\n\n`
+              : `La surveillance du ${jour} a trouve au moins une erreur sur `
+                + `virginiedeconinck.com.\n\n`;
+            const corps = entete + `${detail}\n\n`
               + `Detail complet du run : ${run}\n\n`
               + `_(Issue automatique, lecture seule : rien n'a ete modifie ni publie. `
               + `Une Issue neuve est ouverte a chaque incident, jamais un commentaire `
               + `sur une ancienne : une alerte empilee est une alerte perdue.)_`;
+            const titre = estTest
+              ? `[TEST] Chaine d'alerte exercee, aucune anomalie reelle (${jour})`
+              : `Surveillance site public : anomalie detectee (${jour}, run ${context.runId})`;
             await github.rest.issues.create({
               owner: context.repo.owner, repo: context.repo.repo,
-              title: `Surveillance site public : anomalie detectee (${jour}, run ${context.runId})`,
+              title: titre,
               body: corps, labels: ["surveillance"], assignees: ["virginiedeconinck"] });
 
       # Canal 2 : email reel dans sa boite. Expediteur alertes@virginiedeconinck.com
@@ -186,6 +198,7 @@ jobs:
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           DETAIL: ${{ steps.detail.outputs.corps }}
+          EST_TEST: ${{ inputs.test_alerte == true }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           python3 - <<'PY'
@@ -197,17 +210,41 @@ jobs:
               raise SystemExit(0)
           jour = datetime.date.today().strftime('%d/%m/%Y')
           detail = os.environ.get('DETAIL', '(detail indisponible)')
+          est_test = os.environ.get('EST_TEST', '') == 'true'
+
+          # Un email de test DOIT se dire test. Constat du 31/07/2026 : le premier
+          # essai reel est arrive chez Virginie avec l'objet "ALERTE : anomalie
+          # detectee" et, dans le corps, "0 erreur, le site est sain". Message
+          # contradictoire et inquietant pour rien. Pire, l'habitude de recevoir de
+          # fausses alertes est le meilleur moyen d'ignorer la vraie.
+          if est_test:
+              sujet = f"[TEST] Alerte du site : essai reussi, aucun probleme ({jour})"
+              tete = ("<p style=\"background:#eaf5ec;border-left:4px solid #2e7d4f;"
+                      "padding:12px 14px;border-radius:6px\"><strong>Virginie, ceci est un "
+                      "TEST declenche a la main. Votre site n'a aucun probleme.</strong><br>"
+                      "Cet essai sert a verifier que l'alerte vous parvient vraiment. "
+                      "Vous le recevez : elle fonctionne.</p>"
+                      "<p>Le rapport ci-dessous est le vrai rapport du jour, et il est sain.</p>")
+          else:
+              sujet = f"ALERTE site virginiedeconinck.com : anomalie detectee ({jour})"
+              tete = (f"<p><strong>Virginie, une anomalie a ete detectee sur "
+                      f"virginiedeconinck.com le {jour}.</strong></p>"
+                      "<p>Voici ce que le controle automatique a trouve :</p>")
+
+          # L'adresse du journal est laissee en TEXTE BRUT, sans balise de lien.
+          # Verifie a la source le 31/07/2026 : Brevo ne permet pas de desactiver le
+          # suivi des clics sur les emails transactionnels. Tout lien HTML est donc
+          # reecrit en une longue adresse sendibt2.com, illisible et qui a tout l'air
+          # d'un hameconnage dans un message d'alerte. En texte brut, rien n'est reecrit.
           html = (
               "<div style=\"font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;"
-              "font-size:16px;line-height:1.6;color:#1a1a2e\">"
-              f"<p><strong>Virginie, une anomalie a ete detectee sur virginiedeconinck.com "
-              f"le {jour}.</strong></p>"
-              "<p>Voici ce que le controle automatique a trouve :</p>"
+              "font-size:16px;line-height:1.6;color:#1a1a2e\">" + tete +
               "<pre style=\"background:#f4f4f8;padding:14px;border-radius:8px;"
               "white-space:pre-wrap;font-size:14px\">" +
               detail.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') +
               "</pre>"
-              f"<p>Journal complet : <a href=\"{os.environ['RUN_URL']}\">voir le run</a></p>"
+              "<p style=\"font-size:14px\">Journal complet, adresse a copier dans le "
+              "navigateur :<br><span style=\"color:#555\">" + os.environ['RUN_URL'] + "</span></p>"
               "<p style=\"color:#666;font-size:14px\">Message automatique, en lecture seule : "
               "rien n'a ete modifie ni publie sur le site.</p></div>")
           req = urllib.request.Request(
@@ -216,7 +253,7 @@ jobs:
                   "sender": {"name": "ALERTE site public",
                              "email": "alertes@virginiedeconinck.com"},
                   "to": [{"email": "virginiedeconinck@gmail.com", "name": "Virginie"}],
-                  "subject": f"ALERTE site virginiedeconinck.com : anomalie detectee ({jour})",
+                  "subject": sujet,
                   "htmlContent": html}).encode(),
               headers={'api-key': cle, 'content-type': 'application/json'}, method='POST')
           try:
