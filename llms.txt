@@ -23,8 +23,7 @@
 
 ## Blog
 
-- [Blog](https://virginiedeconinck.com/blog): Articles de fond sur la biologie féminine et la longévité.
-- [Les 4 leviers biologiques](https://virginiedeconinck.com/blog/les-4-leviers-biologiques): Les fondations du Rajeunissement Cellulaire Féminin.
+- [Blog](https://virginiedeconinck.com/blog/): Articles de fond sur la biologie féminine et la longévité.
 - [Glycémie nocturne et peau](https://virginiedeconinck.com/blog/glycemie-nocturne-peau): Comment la glycémie nocturne influence la glycation du collagène.
 ## À propos
 
