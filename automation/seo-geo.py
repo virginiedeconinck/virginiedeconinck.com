@@ -247,6 +247,78 @@ def analyse(jours):
         "sur la periode. Elles ne repondent a aucune demande, ou Google ne les a pas retenues.",
         ""] + [f"  {p}" for p in muettes] or ["  aucune"]))
 
+    # ---------- 6bis. TERRAIN NON COUVERT (veille, source gratuite) ----------
+    # Search Console ne montre QUE ce sur quoi le site apparait deja. Elle est aveugle
+    # a tout ce qui se cherche ailleurs. Cette section comble ce trou avec la source
+    # de suggestions de Google : ce que de vrais gens tapent, mis a jour en permanence,
+    # sans compte, sans cle, sans abonnement. On confronte ensuite ces demandes reelles
+    # aux sujets deja couverts par le site pour faire ressortir les trous.
+    themes = sorted({m for u in declarees for m in re.findall(r'[a-z]{5,}', u)
+                     if m not in ('index', 'blog', 'https', 'about')})[:0] or []
+    graines = [
+        'périménopause', 'ménopause', 'âge biologique', 'collagène peau femme',
+        'résistance à l\'insuline femme', 'inflammation chronique femme',
+        'masse musculaire femme 40 ans', 'hormones femme 45 ans', 'peptides longévité',
+        'NAD+ vieillissement', 'cellules sénescentes', 'histamine hormones',
+        'GLP-1 femme', 'biohacking féminin', 'SHBG', 'glycémie peau',
+        'graisse abdominale femme', 'rajeunissement cellulaire', 'longévité femme',
+    ]
+    prefixes = ['', 'comment ', 'pourquoi ', 'quel ', 'est-ce que ']
+    # Les adresses des pages sont sans accents ("/perimenopause"), les recherches en
+    # ont ("périménopause"). Sans cette normalisation, le rapport se remplissait de
+    # faux positifs : des sujets DEJA couverts declares comme des trous.
+    import unicodedata
+    def sansaccent(x):
+        return ''.join(c for c in unicodedata.normalize('NFD', x.lower())
+                       if unicodedata.category(c) != 'Mn')
+    couvert = sansaccent(' '.join(declarees))
+    trouvees, a_reformuler, vues_sug = [], [], set()
+    for g in graines:
+        for pre in prefixes:
+            try:
+                rq = requests.get('https://suggestqueries.google.com/complete/search',
+                                  params={'client': 'firefox', 'hl': 'fr', 'gl': 'fr',
+                                          'q': pre + g}, timeout=15)
+                sugg = rq.json()[1] if rq.status_code == 200 else []
+            except Exception:
+                sugg = []
+            for s in sugg:
+                s = s.strip().lower()
+                if s in vues_sug or len(s) < 8:
+                    continue
+                vues_sug.add(s)
+                mots = [m for m in re.findall(r'[a-z]{5,}', sansaccent(s))]
+                # "non couvert" = aucun mot signifiant de la suggestion n'apparait
+                # dans les adresses des pages publiees
+                if mots and not any(m[:7] in couvert for m in mots):
+                    trouvees.append(s)          # sujet absent du site
+                elif any(s.startswith(m) for m in ('comment','pourquoi','quel','est-ce','qu')):
+                    # Question precise sur un theme DEJA couvert. Ce n'est pas un trou de
+                    # contenu, c'est un trou de FORMULATION : la page existe mais ne repond
+                    # pas a la question telle qu'elle est posee. C'est exactement ce qui
+                    # decide qu'un moteur de reponse cite la page, ou ne la cite pas.
+                    a_reformuler.append(s)
+            time.sleep(0.15)   # rester poli avec le service de suggestions
+
+    questions_neuves = [s for s in trouvees
+                        if any(s.startswith(m) for m in ('comment', 'pourquoi', 'quel', 'est-ce'))]
+    autres = [s for s in trouvees if s not in questions_neuves]
+    ajoute((f"TERRAIN NON COUVERT ({len(trouvees)} demandes reelles sans page dediee)", [
+        f"Source : suggestions de recherche Google, interrogees a l'instant sur "
+        f"{len(graines)} themes ({len(vues_sug)} formulations relevees).",
+        "Ce sont des recherches que de vraies personnes formulent MAINTENANT et sur",
+        "lesquelles le site n'a aucune page. C'est la matiere pour les prochains contenus.",
+        "",
+        "-- formulees comme des QUESTIONS (matiere GEO prioritaire : c'est ainsi qu'on",
+        "   interroge ChatGPT, Claude, Perplexity et Gemini) --"]
+        + [f"   {s}" for s in questions_neuves[:25]]
+        + ["", "-- autres demandes non couvertes --"]
+        + [f"   {s}" for s in autres[:25]]
+        + ["", f"-- QUESTIONS sur des sujets DEJA couverts ({len(a_reformuler)}) : la page",
+           "   existe mais ne repond pas a la question telle qu'elle est posee.",
+           "   A transformer en intertitres H2 et en blocs FAQ, mot pour mot. --"]
+        + [f"   {s}" for s in a_reformuler[:30]]))
+
     # ---------- 7. CE QUI MONTE, CE QUI DECROCHE ----------
     monte, descend = [], []
     for r in req:
