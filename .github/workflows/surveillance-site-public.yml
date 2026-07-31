@@ -263,3 +263,58 @@ jobs:
               corps = getattr(e, 'read', lambda: b'')().decode()[:300]
               print(f"::error::Envoi de l'email d'alerte REFUSE par Brevo : {e} {corps}")
           PY
+
+  # RAPPORT SEO + GEO, le lundi. Volontairement INDEPENDANT du job de surveillance :
+  # un site techniquement irreprochable peut n'interesser personne, et un site mal
+  # reference peut n'avoir aucune erreur technique. Les deux mesures ne se remplacent
+  # pas. Ce job ne fait donc jamais echouer la surveillance, et inversement.
+  #
+  # Pourquoi un email et pas un tableau de bord : lecon de l'Issue #3, restee ouverte
+  # et non lue pendant 25 jours. Un rapport que personne ne va chercher n'existe pas.
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Dependances
+        run: pip install --quiet requests cryptography
+
+      - name: Rapport SEO + GEO
+        id: seo
+        env:
+          GOOGLE_SC_KEY: ${{ secrets.GOOGLE_SC_KEY }}
+        run: |
+          # Sur passage planifie, on ne travaille que le lundi. Lance a la main,
+          # on travaille toujours : c'est le seul moyen de le tester un mercredi.
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%u)" != "1" ]; then
+            echo "pas lundi, rien a faire"; echo "fait=non" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ -z "$GOOGLE_SC_KEY" ]; then
+            echo "::error::Secret GOOGLE_SC_KEY absent du depot : aucun rapport SEO/GEO possible."
+            echo "fait=non" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          # 28 jours : assez pour lisser le bruit, assez court pour voir bouger ce
+          # qu'on a change la semaine d'avant. Le moteur compare automatiquement
+          # avec les 28 jours precedents.
+          python3 automation/seo-geo.py --jours 28 --markdown
+          echo "fait=oui" >> "$GITHUB_OUTPUT"
+
+      - name: Archiver le rapport
+        if: steps.seo.outputs.fait == 'oui'
+        uses: actions/upload-artifact@v7
+        with:
+          name: rapport-seo-geo
+          path: rapport-seo-geo.md
+          retention-days: 90
+
+      - name: Envoyer le rapport a Virginie
+        if: steps.seo.outputs.fait == 'oui'
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          python3 automation/envoyer-email.py rapport-seo-geo.md \
+            "SEO + GEO du site : le point de la semaine"

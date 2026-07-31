@@ -50,13 +50,25 @@ MOTS_QUESTION = ('comment', 'pourquoi', 'quel', 'quelle', 'quels', 'quelles', 'e
 
 
 def cle_service():
+    """Cle du compte de service, depuis l'environnement (cloud) ou le disque (Mac).
+
+    En execution automatique (GitHub Actions), la cle arrive par la variable
+    GOOGLE_SC_KEY : elle n'est JAMAIS ecrite dans le depot, qui est public, et
+    Google desactive de toute facon automatiquement toute cle trouvee dans un
+    depot public. En execution manuelle depuis le Mac de Virginie, on lit le
+    fichier telecharge depuis Google Cloud.
+    """
     import os
+    brut = os.environ.get('GOOGLE_SC_KEY', '').strip()
+    if brut:
+        return json.loads(brut)
     for c in CLES:
         if os.path.exists(c):
             return json.load(open(c))
-    print("ECHEC : aucune cle de compte de service trouvee. Cherchee ici :")
+    print("ECHEC : aucune cle de compte de service trouvee.")
+    print("  ni dans la variable d'environnement GOOGLE_SC_KEY,")
     for c in CLES:
-        print("  -", c)
+        print("  ni dans", c)
     sys.exit(1)
 
 
