@@ -1,4 +1,4 @@
-# Virginie Dck — Longévité Féminine & Rajeunissement Cellulaire
+# Virginie Dck : Longévité Féminine & Rajeunissement Cellulaire
 
 > Experte en biohacking féminin et rajeunissement cellulaire pour les femmes de 35 ans et plus. Méthode en 4 piliers biologiques : biomécanique, biologie régénérative, neuro-comportement et esthétique fonctionnelle. Une approche qui explique les mécanismes du vieillissement féminin, sans livrer de protocole prêt-à-appliquer.
 
@@ -12,7 +12,7 @@
 - [Collagène et peau](https://virginiedeconinck.com/collagene-peau): Déclin du collagène, glycation, fascias et rôle des œstrogènes.
 - [Biohacking féminin](https://virginiedeconinck.com/biohacking-feminin): Guide du biohacking adapté à la biologie hormonale féminine après 35 ans.
 - [Muscle et longévité féminine](https://virginiedeconinck.com/muscle-longevite-feminine): Le muscle comme organe endocrinien, myokines, sarcopénie et levier de longévité.
-- [Graisse abdominale après 40 ans](https://virginiedeconinck.com/graisse-abdominale-apres-40-ans): Mécanismes de la graisse abdominale — insuline, œstrogènes, cortisol et inflammation.
+- [Graisse abdominale après 40 ans](https://virginiedeconinck.com/graisse-abdominale-apres-40-ans): Mécanismes de la graisse abdominale : insuline, œstrogènes, cortisol et inflammation.
 - [Histamine et périménopause](https://virginiedeconinck.com/histamine-perimenopause): Distinguer l'intolérance à l'histamine des symptômes de la périménopause.
 - [Inflammaging](https://virginiedeconinck.com/inflammaging): L'inflammation chronique de bas grade qui accélère le vieillissement féminin.
 - [Cellules sénescentes](https://virginiedeconinck.com/cellules-senescentes-vieillissement): Le mécanisme des cellules sénescentes (SASP) dans le vieillissement féminin.
@@ -25,6 +25,7 @@
 ## Blog
 
 - [Blog](https://virginiedeconinck.com/blog/): Articles de fond sur la biologie féminine et la longévité.
+- [Estrobolome et microbiote](https://virginiedeconinck.com/blog/estrobolome-microbiote-femme): L'ensemble de bactéries intestinales qui régule la recirculation des œstrogènes (bêta-glucuronidase, recirculation entéro-hépatique) et son lien avec la périménopause, l'insuline et l'inflammaging.
 - [Glycémie nocturne et peau](https://virginiedeconinck.com/blog/glycemie-nocturne-peau): Comment la glycémie nocturne influence la glycation du collagène.
 ## À propos
 
