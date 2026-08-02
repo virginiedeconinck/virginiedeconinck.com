@@ -179,7 +179,15 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:0 24px 60px;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
-  </style>
+  
+    /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
+       repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
+       mesure a l'ecran (couleur calculee rgb(0,0,238)). Le defaut etait
+       anterieur, il ne venait pas des liens ajoutes ce jour-la. */
+    p a[href^="/"]:not([class]){color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light,rgba(196,168,130,0.5));transition:color 0.2s,border-color 0.2s;}
+    p a[href^="/"]:not([class]):hover{color:var(--ink);border-bottom-color:var(--ink);}
+    nav p a[href^="/"]:not([class]),footer p a[href^="/"]:not([class]),p.breadcrumb a{border-bottom:none;}
+</style>
   
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
