@@ -65,6 +65,7 @@ TUTOIEMENT = [r"\btu\s", r"\btoi\b", r"\bton\s+(corps|âge|peau|sommeil|organism
               r"\btes\s+(cellules|hormones|muscles|résultats)", r"\bvas-y\b", r"\btu\b\s*[,.]"]
 
 erreurs, alertes, revues, infos = [], [], [], []
+_sauts = []   # hierarchie de titres : suivie, sans action (voir audit_forme)
 def ERREUR(cat, m): erreurs.append((cat, m))
 def ALERTE(cat, m): alertes.append((cat, m))
 def REVUE(cat, m):  revues.append((cat, m))      # a lire par un humain, pas un defaut
@@ -218,7 +219,7 @@ def audit_json_ld(pages):
                                 ERREUR("json-ld", f"{c} : la REPONSE a « {nom[:45]} » est servie aux "
                                                   f"moteurs mais ne figure PAS sur la page visible "
                                                   f"(concordance {score:.0%})")
-                            elif score < 0.92:
+                            elif score < 0.95:
                                 ALERTE("json-ld", f"{c} : la reponse a « {nom[:45]} » differe entre le "
                                                   f"JSON-LD et le texte affiche (concordance {score:.0%}) "
                                                   f"— verifier le vouvoiement et les chiffres")
@@ -352,13 +353,21 @@ def audit_forme(pages):
                 ALERTE("forme", f"{c} : {n} fois « {signe} » sans espace avant "
                                 f"(typographie francaise)")
 
-        # Hierarchie des titres : un saut H2 -> H4 casse la lecture et la structure
+        # Hierarchie des titres : signale, mais en INFO seulement.
+        # Verifie a la source le 02/08/2026 dans la documentation Google : l'ordre
+        # des titres n'est PAS un facteur de classement, Google ecrit qu'il n'a
+        # aucune importance qu'ils soient dans le desordre. Le seul enjeu reel est
+        # l'accessibilite aux lecteurs d'ecran. Or sur ce site le CSS cible la
+        # BALISE h4 et non une classe : renommer les h4 en h3 sur les 12 pages
+        # concernees casserait leur rendu. Le faire couterait donc un risque
+        # visuel reel pour un gain nul en referencement. On le sait, on ne le
+        # traite pas, et surtout on n'encombre pas le rapport hebdomadaire avec
+        # 12 lignes qui n'appellent aucune action.
         niveaux = [int(x) for x in re.findall(r"(?i)<h([1-6])[^>]*>", p["brut"])]
         prec = 0
         for n in niveaux:
             if prec and n > prec + 1:
-                ALERTE("forme", f"{c} : saut de titre H{prec} vers H{n} "
-                                f"(niveau intermediaire absent)")
+                _sauts.append(f"{c} (H{prec}->H{n})")
                 break
             prec = n
 
@@ -391,6 +400,13 @@ def audit_forme(pages):
                 ALERTE("images", f"{c} : image sans alt utile ({src})")
             elif len(m.group(2).split()) < 2:
                 ALERTE("images", f"{c} : alt trop court « {m.group(2)} » ({src})")
+
+
+def bilan_titres():
+    if _sauts:
+        INFO(f"hierarchie des titres : {len(_sauts)} page(s) sautent un niveau. Sans effet "
+             f"sur le referencement (documentation Google, verifiee le 02/08/2026) ; conserve "
+             f"tel quel car le CSS cible la balise h4 et renommer casserait le rendu.")
 
 
 # ================================= 5. FRONTIERE GRATUIT / PAYANT (visible)
@@ -486,6 +502,7 @@ def main():
     audit_references(pages, reseau=not args.sans_reseau)
     audit_chiffres(pages)
     audit_forme(pages)
+    bilan_titres()
     audit_frontiere(pages)
     audit_liens_structure(pages)
 
