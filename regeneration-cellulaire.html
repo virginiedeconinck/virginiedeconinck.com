@@ -191,8 +191,9 @@
        repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
        mesure a l'ecran (couleur calculee rgb(0,0,238)). Le defaut etait
        anterieur, il ne venait pas des liens ajoutes ce jour-la. */
-    p a[href^="/"]:not([class]){color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light,rgba(196,168,130,0.5));transition:color 0.2s,border-color 0.2s;}
-    p a[href^="/"]:not([class]):hover{color:var(--ink);border-bottom-color:var(--ink);}
+    p a[href^="/"]:not([class]){color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-light,rgba(196,168,130,0.5));transition:border-color 0.2s;}
+    p a[href^="/"]:not([class]) strong,p a[href^="/"]:not([class]) em{color:inherit;}
+    p a[href^="/"]:not([class]):hover{border-bottom-color:var(--accent);}
     nav p a[href^="/"]:not([class]),footer p a[href^="/"]:not([class]),p.breadcrumb a{border-bottom:none;}
 </style>
 
