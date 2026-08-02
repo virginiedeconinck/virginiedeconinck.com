@@ -753,8 +753,25 @@
 
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* FAQ : gabarit repris tel quel des pages piliers (perimenopause, shbg…) */
+    .faq { max-width: 1100px; margin: 0 auto; padding: 80px 80px 100px; }
+    .faq-eyebrow { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+    .faq-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; color: var(--ink); margin-bottom: 56px; line-height: 1.1; }
+    .faq-title em { font-style: italic; color: var(--accent); }
+    .faq-item { border-top: 1px solid var(--rule); padding: 32px 0; }
+    .faq-item:last-child { border-bottom: 1px solid var(--rule); }
+    .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 500; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+    .faq-a { font-size: 15px; line-height: 1.9; color: var(--ink-mid); }
+    /* Sans cette regle, tout lien pose dans une reponse tombe en BLEU navigateur
+       souligne : mesure faite le 02/08/2026 sur cette page, rgb(0,0,238). Le meme
+       piege avait deja ete corrige le 29/07 sur trois pages piliers. Valeurs
+       reprises du gabarit maison (encre + filet accent clair). */
+    .faq-a a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-light); transition: border-color 0.2s; }
+    .faq-a a:hover { border-bottom-color: var(--accent); }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
+      .faq { padding: 60px 24px 80px; }
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--rule); padding: 16px 20px; gap: 16px; z-index: 200; }
@@ -825,7 +842,7 @@
         "name": "Qu'est-ce que le biohacking féminin ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Le biohacking féminin désigne l'ensemble des approches scientifiquement fondées visant à optimiser la biologie féminine : régulation glycémique, santé mitochondriale, équilibre hormonal, inflammation de bas grade et longévité cellulaire. Il s'adapte spécifiquement aux cycles et transitions hormonales de la femme, notamment la périménopause et la ménopause."
+          "text": "Le biohacking féminin regroupe les approches scientifiquement fondées qui agissent sur votre biologie plutôt que sur vos symptômes : régulation de la glycémie, santé des mitochondries, équilibre hormonal, inflammation de bas grade et longévité cellulaire. Il se distingue du biohacking généraliste parce qu'il tient compte de vos cycles et de vos transitions hormonales, en particulier la périménopause et la ménopause."
         }
       },
       {
@@ -833,7 +850,7 @@
         "name": "Comment ralentir le vieillissement cutané après 40 ans ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Le vieillissement cutané après 40 ans est principalement accéléré par la résistance à l'insuline, l'inflammaging et la chute des œstrogènes qui réduit la production de collagène. Agir sur la régulation glycémique, la santé mitochondriale et l'équilibre hormonal produit des résultats visibles sur la densité dermique, la tonicité des fascias et la qualité globale de la peau, bien au-delà de ce que les soins topiques seuls peuvent produire."
+          "text": "Après 40 ans, votre peau vieillit surtout sous l'effet de trois mécanismes internes : la résistance à l'insuline, l'inflammation de bas grade et la chute des œstrogènes, qui réduit la production de collagène. Agir sur la glycémie, les mitochondries et l'équilibre hormonal change la densité du derme, la tonicité des fascias et la qualité de la peau, bien au-delà de ce qu'un soin appliqué en surface peut obtenir."
         }
       },
       {
@@ -841,7 +858,7 @@
         "name": "Qu'est-ce que la longévité féminine ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "La longévité féminine est une approche systémique qui vise à préserver et optimiser la santé biologique, hormonale et esthétique des femmes dans la durée. Elle repose sur quatre piliers : la biomécanique musculaire, la biologie régénérative, le neuro-comportement féminin et l'esthétique fonctionnelle. L'objectif n'est pas de corriger les symptômes visibles du vieillissement, mais d'agir sur ses causes biologiques profondes."
+          "text": "La longévité féminine est une approche systémique : préserver votre santé biologique, hormonale et esthétique dans la durée, au lieu de corriger les signes du vieillissement un par un. Elle repose sur quatre piliers, la biomécanique musculaire, la biologie régénérative, le neuro-comportement féminin et l'esthétique fonctionnelle."
         }
       }
     ]
@@ -1150,6 +1167,27 @@
     </div>
   </section>
 
+
+  <!-- FAQ -->
+  <section class="faq">
+    <p class="faq-eyebrow reveal">Questions fréquentes</p>
+    <h2 class="faq-title reveal">Les questions<br><em>qu'on me pose</em></h2>
+
+    <div class="faq-item reveal">
+      <p class="faq-q">Qu'est-ce que le biohacking féminin ?</p>
+      <p class="faq-a">Le biohacking féminin regroupe les approches scientifiquement fondées qui agissent sur votre biologie plutôt que sur vos symptômes : régulation de la glycémie, santé des mitochondries, équilibre hormonal, inflammation de bas grade et longévité cellulaire. Il se distingue du biohacking généraliste parce qu'il tient compte de vos cycles et de vos transitions hormonales, en particulier la <a href="/perimenopause">périménopause</a> et la ménopause.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-q">Comment ralentir le vieillissement cutané après 40 ans ?</p>
+      <p class="faq-a">Après 40 ans, votre peau vieillit surtout sous l'effet de trois mécanismes internes : la <a href="/resistance-insuline">résistance à l'insuline</a>, l'<a href="/inflammaging">inflammation de bas grade</a> et la chute des œstrogènes, qui réduit la production de <a href="/collagene-peau">collagène</a>. Agir sur la glycémie, les mitochondries et l'équilibre hormonal change la densité du derme, la tonicité des fascias et la qualité de la peau, bien au-delà de ce qu'un soin appliqué en surface peut obtenir.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-q">Qu'est-ce que la longévité féminine ?</p>
+      <p class="faq-a">La longévité féminine est une approche systémique : préserver votre santé biologique, hormonale et esthétique dans la durée, au lieu de corriger les signes du vieillissement un par un. Elle repose sur quatre piliers, la biomécanique <a href="/muscle-longevite-feminine">musculaire</a>, la biologie <a href="/regeneration-cellulaire">régénérative</a>, le neuro-comportement féminin et l'esthétique fonctionnelle.</p>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="cta" id="candidature">

@@ -299,10 +299,22 @@ def analyse(jours):
                 if s in vues_sug or len(s) < 8:
                     continue
                 vues_sug.add(s)
-                mots = [m for m in re.findall(r'[a-z]{5,}', sansaccent(s))]
+                # Seuil a 4 caracteres et non 5. Bug mesure le 02/08/2026 : avec
+                # {5,}, le mot "shbg" n'etait JAMAIS teste, et les 8 recherches
+                # "shbg prise de sang", "shbg elevee", "shbg comment augmenter"...
+                # etaient annoncees comme des sujets SANS PAGE DEDIEE, alors que
+                # /shbg-hormones-actives-femme existe et venait d'etre enrichie
+                # exactement sur ces questions. Meme piege pour NAD et GLP-1.
+                # Les mots outils sont retires a la main : sans cela "sang" ou
+                # "prise" suffiraient a declarer une suggestion couverte.
+                mots = [m for m in re.findall(r'[a-z0-9]{4,}', sansaccent(s))
+                        if m not in ('dans', 'avec', 'pour', 'quoi', 'este', 'cest',
+                                     'plus', 'sans', 'faire', 'quand', 'tout', 'toute')]
                 # "non couvert" = aucun mot signifiant de la suggestion n'apparait
-                # dans les adresses des pages publiees
-                if mots and not any(m[:7] in couvert for m in mots):
+                # dans les adresses des pages publiees. On compare sur le mot entier
+                # quand il est court, sur son prefixe quand il est long (pour que
+                # "collagene" reconnaisse "collagenes").
+                if mots and not any((m if len(m) <= 5 else m[:7]) in couvert for m in mots):
                     trouvees.append(s)          # sujet absent du site
                 elif any(s.startswith(m) for m in ('comment','pourquoi','quel','est-ce','qu')):
                     # Question precise sur un theme DEJA couvert. Ce n'est pas un trou de
