@@ -283,16 +283,22 @@ jobs:
       - name: Dependances
         run: pip install --quiet requests cryptography
 
+      # Le MAILLAGE tourne TOUS LES JOURS, y compris quand le Mac de Virginie est
+      # eteint. Il ne depend d'aucune cle : il mesure le site en ligne. C'est la
+      # partie "optimisation" qui reste autonome pendant ses absences.
+      - name: Maillage interne
+        id: maillage
+        env:
+          GOOGLE_SC_KEY: ${{ secrets.GOOGLE_SC_KEY }}
+        run: |
+          python3 automation/maillage.py --jours 28 --markdown
+          echo "fait=oui" >> "$GITHUB_OUTPUT"
+
       - name: Rapport SEO + GEO
         id: seo
         env:
           GOOGLE_SC_KEY: ${{ secrets.GOOGLE_SC_KEY }}
         run: |
-          # Sur passage planifie, on ne travaille que le lundi. Lance a la main,
-          # on travaille toujours : c'est le seul moyen de le tester un mercredi.
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%u)" != "1" ]; then
-            echo "pas lundi, rien a faire"; echo "fait=non" >> "$GITHUB_OUTPUT"; exit 0
-          fi
           if [ -z "$GOOGLE_SC_KEY" ]; then
             echo "::error::Secret GOOGLE_SC_KEY absent du depot : aucun rapport SEO/GEO possible."
             echo "fait=non" >> "$GITHUB_OUTPUT"; exit 0
@@ -303,18 +309,57 @@ jobs:
           python3 automation/seo-geo.py --jours 28 --markdown
           echo "fait=oui" >> "$GITHUB_OUTPUT"
 
-      - name: Archiver le rapport
-        if: steps.seo.outputs.fait == 'oui'
+      # L'AUDIT INTEGRAL, le lundi. Demande de Virginie le 02/08/2026 : un passage
+      # hebdomadaire doit TOUT couvrir, pas constater trois erreurs techniques.
+      # Il travaille sur le fond et la forme (fidelite JSON-LD/visible, existence
+      # reelle des DOI chez Crossref, coherence des chiffres, typographie, style,
+      # tutoiement, frontiere gratuit/payant), la ou monitoring.py ne regarde que
+      # la panne. Il ne fait jamais echouer le job : ses constats sont editoriaux,
+      # ils se lisent, ils ne reveillent personne la nuit.
+      - name: Audit editorial integral (lundi)
+        id: audit
+        continue-on-error: true
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%u)" != "1" ]; then
+            echo "pas lundi, pas d'audit integral"; exit 0
+          fi
+          python3 automation/audit-hebdo.py --markdown || true
+
+      - name: Archiver les rapports
+        if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: rapport-seo-geo
-          path: rapport-seo-geo.md
+          name: rapport-seo-geo-maillage
+          path: |
+            rapport-seo-geo.md
+            rapport-maillage.md
+            rapport-audit-hebdo.md
           retention-days: 90
+          if-no-files-found: warn
 
-      - name: Envoyer le rapport a Virginie
-        if: steps.seo.outputs.fait == 'oui'
+      # Le CALCUL est quotidien, l'EMAIL reste hebdomadaire, et ce n'est pas une
+      # incoherence. Search Console publie avec 3 jours de retard et le rapport
+      # porte sur 28 jours glissants : d'un matin a l'autre, les chiffres ne
+      # bougent quasiment pas. Un pave identique tous les jours serait la maniere
+      # la plus sure de ne plus etre lu, exactement le defaut de l'Issue #3 restee
+      # 25 jours sans lecteur. Le travail quotidien reel (differentiel + UNE action
+      # preparee) est produit par la routine du matin sur le Mac, qui compare le
+      # rapport du jour a celui de la veille. Ce courrier hebdomadaire est le filet
+      # qui garantit qu'il reste une trace meme Mac eteint.
+      - name: Envoyer le rapport a Virginie (lundi)
+        if: steps.seo.outputs.fait == 'oui' && (github.event_name != 'schedule' || success())
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: |
-          python3 automation/envoyer-email.py rapport-seo-geo.md \
-            "SEO + GEO du site : le point de la semaine"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%u)" != "1" ]; then
+            echo "pas lundi : rapports calcules et archives, pas d'email"; exit 0
+          fi
+          # Un seul courrier, dans l'ordre de lecture : ce qui est FAUX ou incoherent
+          # d'abord (l'audit), la structure interne ensuite, la demande chez Google
+          # en dernier. Recevoir trois emails le meme matin, c'est n'en lire aucun.
+          : > semaine.md
+          for f in rapport-audit-hebdo.md rapport-maillage.md rapport-seo-geo.md; do
+            [ -f "$f" ] && cat "$f" >> semaine.md && printf '\n\n---\n\n' >> semaine.md
+          done
+          python3 automation/envoyer-email.py semaine.md \
+            "Site public : audit intégral, maillage, SEO et GEO de la semaine"
