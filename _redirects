@@ -14,4 +14,12 @@
 /muscle-longevite-feminine /muscle-longevite-feminine.html 200
 /politique-de-confidentialite /politique-de-confidentialite.html 200
 
+# Anciennes URLs de l'ancien site, toujours servies par Google alors qu'elles
+# renvoient 404 (mesure Search Console du 03/08/2026, 90 jours : 39 impressions,
+# positions 2,5 a 7,0). Chaque redirection pointe vers la page vivante la plus
+# proche du sujet, pour ne pas envoyer une visiteuse sur une page morte.
+/politique-de-confidentialite-2/ /politique-de-confidentialite 301
+/product/women-at-gym/ /muscle-longevite-feminine 301
+/boutique/ / 301
+
 /* /404.html 404
