@@ -69,6 +69,47 @@ jobs:
           echo "::error::TEST VOLONTAIRE de la chaine d'alerte, demande a la main. Le site n'est pas en cause."
           exit 1
 
+      # 1ter) INDEXNOW. Branche ici le 03/08/2026 apres une mesure : le script
+      #    existait depuis le 31/07 mais n'etait cable dans AUCUN workflow. Il ne
+      #    partait donc qu'a la main, et personne ne l'avait relance. Consequence
+      #    mesuree le 03/08 : dernier envoi le 31/07, les lots du 01/08 et du 02/08
+      #    jamais annonces, et 2 pages (/regeneration-cellulaire et l'article
+      #    Estrobolome) JAMAIS soumises depuis leur creation, alors que ce sont
+      #    2 des 5 pages muettes chez Google. Bing servait encore les titres
+      #    d'avant le 29/07. Un outil qu'aucun automatisme ne declenche n'existe pas.
+      #
+      #    Place APRES le controle et sans "if: always()" : si le site est casse,
+      #    on n'annonce rien. On ne fait pas indexer une panne.
+      #    Le script verifie lui-meme que la cle est servie en ligne avant d'envoyer,
+      #    et ne signale que les pages dont le lastmod a change depuis le dernier envoi.
+      - name: Annoncer les pages modifiees (IndexNow -> Bing, Yandex, Seznam, Naver)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python3 automation/indexnow.py
+
+      #    L'etat DOIT etre reecrit dans le depot, sinon chaque passage repart d'un
+      #    checkout neuf, se croit au premier envoi et resignale les 20 pages tous
+      #    les jours. Le protocole IndexNow demande explicitement de ne signaler que
+      #    ce qui a change. [skip netlify] : cet horodatage ne modifie pas le site,
+      #    inutile de consommer un build.
+      - name: Memoriser ce qui a ete annonce
+        if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: |
+          git config user.name "vdck-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add automation/indexnow-etat.json
+          if git diff --cached --quiet; then
+            echo "aucune page nouvellement annoncee, rien a memoriser"
+          else
+            git commit -m "chore(indexnow): pages annoncees le $(date -u +'%Y-%m-%d') [skip netlify]"
+            n=0
+            until git push origin HEAD:main; do
+              n=$((n+1))
+              if [ "$n" -ge 5 ]; then echo "::error::push impossible apres 5 tentatives"; exit 1; fi
+              git pull --rebase origin main
+              sleep $((RANDOM % 5 + 2))
+            done
+          fi
+
       # 2) Le rapport reste consultable meme quand tout va bien.
       - name: Archiver le rapport
         if: always()
