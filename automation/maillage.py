@@ -32,7 +32,7 @@ Lecture seule. Ne modifie ni le site, ni aucun contenu.
 Usage :  python3 automation/maillage.py [--markdown] [--jours 28]
 """
 
-import re, sys, json, html, argparse, collections, datetime
+import re, sys, json, html, argparse, collections, datetime, time
 import urllib.request, urllib.error, urllib.parse
 import os.path
 
@@ -96,18 +96,47 @@ PAGES_INDEX = {"/", "/blog"}
 
 # ------------------------------------------------------------------ RESEAU
 _cache = {}
+
+# Une panne PASSAGERE ne doit pas faire tomber tout le rapport de la semaine.
+# Mesure du 03/08/2026 : le job SEO a echoue sur un sitemap.xml en HTTP 500,
+# servi pendant la propagation d'un deploiement Netlify. Rechargee 40 secondes
+# plus tard, la meme adresse repondait 200 avec ses 20 URLs. Sans relance, un
+# hoquet d'une seconde prive Virginie de tout le rapport hebdomadaire.
+#
+# On ne relance QUE les coupures reseau et les erreurs SERVEUR (5xx). Un 404 ou
+# un 410 n'est jamais rejoue : une page vraiment absente doit rester absente,
+# c'est precisement le defaut que ce script cherche a trouver. Masquer un 404
+# derriere une relance reviendrait a rendre le controle aveugle.
+TENTATIVES = 3
+ATTENTES = (2, 5)   # secondes avant la 2e puis la 3e tentative
+
+
+def passagere(code):
+    return code == 0 or 500 <= code < 600
+
+
 def http(url):
     if url in _cache:
         return _cache[url]
     req = urllib.request.Request(url, headers={
         "User-Agent": UA, "Accept-Language": "fr-FR,fr;q=0.9"})
-    try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            res = (r.status, r.read().decode("utf-8", "replace"))
-    except urllib.error.HTTPError as e:
-        res = (e.code, "")
-    except Exception:
-        res = (0, "")
+    res = (0, "")
+    for essai in range(TENTATIVES):
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                res = (r.status, r.read().decode("utf-8", "replace"))
+        except urllib.error.HTTPError as e:
+            res = (e.code, "")
+        except Exception:
+            res = (0, "")
+        if not passagere(res[0]):
+            break
+        if essai < TENTATIVES - 1:
+            print(f"  {url} : HTTP {res[0]}, nouvelle tentative dans {ATTENTES[essai]} s "
+                  f"({essai + 2}/{TENTATIVES})", file=sys.stderr)
+            time.sleep(ATTENTES[essai])
+    # L'echec definitif est mis en cache lui aussi : inutile de re-tenter trois
+    # fois la meme adresse a chaque appel suivant dans le meme passage.
     _cache[url] = res
     return res
 
@@ -147,7 +176,7 @@ LIEN = re.compile(r'(?is)<a\b[^>]*?href\s*=\s*(["\'])(.*?)\1[^>]*>(.*?)</a\s*>')
 def collecte():
     code, sm = http(f"{SITE}/sitemap.xml")
     if code != 200 or not sm:
-        print(f"ECHEC : sitemap.xml inaccessible (HTTP {code}).")
+        print(f"ECHEC : sitemap.xml inaccessible (HTTP {code}) apres {TENTATIVES} tentatives.")
         sys.exit(1)
     urls = re.findall(r"<loc>([^<]+)</loc>", sm)
     pages = {}
