@@ -26,7 +26,11 @@ on:
   workflow_dispatch:
     inputs:
       test_alerte:
-        description: "Exercer la chaine d'alerte (echec volontaire, envoie une vraie Issue + un vrai email). Ne touche pas au site."
+        description: "Exercer la chaine d'alerte TECHNIQUE (echec volontaire, envoie une vraie Issue + un vrai email). Ne touche pas au site."
+        type: boolean
+        default: false
+      test_alerte_seo:
+        description: "Exercer la chaine d'alerte du RAPPORT HEBDOMADAIRE (echec volontaire du job seo). Ne touche pas au site."
         type: boolean
         default: false
 
@@ -324,6 +328,15 @@ jobs:
       - name: Dependances
         run: pip install --quiet requests cryptography
 
+      # Meme logique que le forcage du job de surveillance : une alerte jamais
+      # declenchee est une hypothese, pas une securite. Celle-ci exerce le canal
+      # du rapport hebdomadaire, qui n'en avait aucun jusqu'au 05/08/2026.
+      - name: Forcage de test de l'alerte SEO (aucun effet sur le site)
+        if: inputs.test_alerte_seo
+        run: |
+          echo "::error::TEST VOLONTAIRE de la chaine d'alerte du rapport hebdomadaire, demande a la main. Le site n'est pas en cause."
+          exit 1
+
       # Le MAILLAGE tourne TOUS LES JOURS, y compris quand le Mac de Virginie est
       # eteint. Il ne depend d'aucune cle : il mesure le site en ligne. C'est la
       # partie "optimisation" qui reste autonome pendant ses absences.
@@ -404,3 +417,138 @@ jobs:
           done
           python3 automation/envoyer-email.py semaine.md \
             "Site public : audit intégral, maillage, SEO et GEO de la semaine"
+
+  # ALERTE DU RAPPORT HEBDOMADAIRE. Ajoutee le 05/08/2026, apres mesure.
+  #
+  # Pourquoi elle manquait : le job "alerte" ci-dessus porte "needs: surveillance"
+  # seulement. Son "if: failure()" ne regarde donc QUE la surveillance technique et
+  # ne voit rien de ce qui arrive au job "seo". Preuve reelle, run 30834343640 du
+  # 03/08/2026 : seo = failure, surveillance = success, alerte = SKIPPED. Le rapport
+  # n'est pas parti et rien ne l'a dit.
+  #
+  # Ce qui etait en jeu : le lundi, ce job produit l'audit integral et l'UNIQUE
+  # courrier hebdomadaire. S'il tombe, Virginie ne recoit rien, et l'absence d'email
+  # ressemble a un lundi calme. C'est exactement le defaut de l'Issue #3, restee
+  # ouverte 25 jours sans lecteur : un canal qui echoue en silence.
+  #
+  # Pourquoi un job SEPARE plutot que "needs: [surveillance, seo]" : le job alerte
+  # construit son message a partir de l'artefact rapport-surveillance, qui est
+  # produit par l'autre job. En cas d'echec du seul job seo, cet artefact existe et
+  # il est SAIN : l'alerte serait partie avec un bloc d'erreurs vide, en annoncant
+  # une anomalie du site qui n'existe pas. Une alerte qui se trompe de sujet abime
+  # la confiance dans toutes les suivantes.
+  alerte_seo:
+    needs: seo
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      # L'alerte nomme l'etape qui a lache. Une alerte qu'il faut aller decrypter
+      # ailleurs est une alerte qu'on ne lit pas : meme principe que le job alerte.
+      - name: Retrouver l'etape qui a lache
+        id: cause
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const r = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner, repo: context.repo.repo,
+              run_id: context.runId, per_page: 100 });
+            const job = r.data.jobs.find(j => j.name === 'seo');
+            const rates = (job ? job.steps : []).filter(s => s.conclusion === 'failure');
+            const texte = rates.length
+              ? rates.map(s => '- etape « ' + s.name +' »').join('\n')
+              : "- le job s'est arrete sans qu'aucune etape ne soit marquee en echec "
+                + "(interruption, quota, ou panne de l'executeur GitHub)";
+            core.setOutput('etapes', texte);
+            core.setOutput('brut', rates.map(s => s.name).join(', ') || 'inconnue');
+
+      - uses: actions/github-script@v9
+        with:
+          script: |
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const jour = new Date().toISOString().slice(0, 10);
+            const etapes = ${{ toJSON(steps.cause.outputs.etapes) }};
+            const estTest = ${{ toJSON(inputs.test_alerte_seo == true) }};
+            const entete = estTest
+              ? `**CECI EST UN TEST, declenche a la main. Le site n'a AUCUN probleme `
+                + `et le rapport n'est pas reellement perdu.**\n\n`
+              : `Le rapport hebdomadaire du site public n'a PAS pu etre produit le ${jour}.\n\n`
+                + `Le site lui-meme n'est pas forcement en cause : la surveillance technique `
+                + `est un job separe, et son resultat est visible dans le meme run.\n\n`;
+            const corps = entete + `Ce qui a lache :\n${etapes}\n\n`
+              + `Consequence : si nous sommes lundi, l'audit integral, le maillage et le `
+              + `rapport SEO/GEO ne sont pas arrives dans votre boite.\n\n`
+              + `Detail complet du run : ${run}\n\n`
+              + `_(Issue automatique, lecture seule : rien n'a ete modifie ni publie.)_`;
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: estTest
+                ? `[TEST] Chaine d'alerte du rapport hebdomadaire exercee (${jour})`
+                : `Rapport hebdomadaire NON produit (${jour}, run ${context.runId})`,
+              body: corps, labels: ["surveillance"], assignees: ["virginiedeconinck"] });
+
+      - name: Email d'alerte (Brevo)
+        if: always()
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          ETAPES: ${{ steps.cause.outputs.brut }}
+          EST_TEST: ${{ inputs.test_alerte_seo == true }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os, json, urllib.request, datetime
+          cle = os.environ.get('BREVO_API_KEY', '').strip()
+          if not cle:
+              print("::error::Secret BREVO_API_KEY absent : l'email n'a PAS pu partir. "
+                    "Seule l'Issue GitHub a ete ouverte.")
+              raise SystemExit(0)
+          jour = datetime.date.today().strftime('%d/%m/%Y')
+          etapes = os.environ.get('ETAPES', 'inconnue')
+          est_test = os.environ.get('EST_TEST', '') == 'true'
+
+          # Un email de test DOIT se dire test, sinon l'habitude des fausses alertes
+          # devient le meilleur moyen d'ignorer la vraie (lecon du 31/07/2026).
+          if est_test:
+              sujet = f"[TEST] Alerte du rapport hebdomadaire : essai reussi ({jour})"
+              tete = ("<p style=\"background:#eaf5ec;border-left:4px solid #2e7d4f;"
+                      "padding:12px 14px;border-radius:6px\"><strong>Virginie, ceci est un "
+                      "TEST declenche a la main. Votre site n'a aucun probleme et aucun "
+                      "rapport n'est perdu.</strong><br>Cet essai verifie qu'un echec du "
+                      "rapport hebdomadaire vous parvient vraiment. Vous le recevez : "
+                      "il fonctionne.</p>")
+          else:
+              sujet = f"Le rapport hebdomadaire du site n'a pas pu etre produit ({jour})"
+              tete = (f"<p><strong>Virginie, le rapport du site public n'a pas pu etre "
+                      f"produit le {jour}.</strong></p>"
+                      "<p>Le site lui-meme n'est pas forcement en cause : la surveillance "
+                      "technique est un controle separe. Si nous sommes lundi, l'audit "
+                      "integral, le maillage et le rapport SEO/GEO ne sont pas arrives.</p>")
+
+          # Adresse du journal en TEXTE BRUT : Brevo reecrit tout lien HTML en une
+          # adresse sendibt2.com qui a l'air d'un hameconnage (verifie le 31/07/2026).
+          html = ("<div style=\"font-family:-apple-system,Segoe UI,Helvetica,Arial,"
+                  "sans-serif;font-size:16px;line-height:1.6;color:#1a1a2e\">" + tete +
+                  "<p>Etape en echec : <strong>" +
+                  etapes.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') +
+                  "</strong></p>"
+                  "<p style=\"font-size:14px\">Journal complet, adresse a copier dans le "
+                  "navigateur :<br><span style=\"color:#555\">" + os.environ['RUN_URL'] +
+                  "</span></p><p style=\"color:#666;font-size:14px\">Message automatique, "
+                  "en lecture seule : rien n'a ete modifie ni publie sur le site.</p></div>")
+          req = urllib.request.Request(
+              'https://api.brevo.com/v3/smtp/email',
+              data=json.dumps({
+                  "sender": {"name": "ALERTE site public",
+                             "email": "alertes@virginiedeconinck.com"},
+                  "to": [{"email": "virginiedeconinck@gmail.com", "name": "Virginie"}],
+                  "subject": sujet,
+                  "htmlContent": html}).encode(),
+              headers={'api-key': cle, 'content-type': 'application/json'}, method='POST')
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  print("Email accepte par Brevo, code", r.status, r.read().decode()[:200])
+          except Exception as e:
+              corps = getattr(e, 'read', lambda: b'')().decode()[:300]
+              print(f"::error::Envoi REFUSE par Brevo : {e} {corps}")
+          PY
