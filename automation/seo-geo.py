@@ -113,6 +113,49 @@ def chemin(url):
         'http://virginiedeconinck.com', '[NON SECURISE]') or '/'
 
 
+def etat_indexation(tok, chemins):
+    """Etat REEL de chaque page dans l'index Google (API urlInspection).
+
+    Pourquoi cette mesure existe, ajoutee le 17/08/2026 : les 5 pages dites
+    "muettes" depuis trois semaines n'etaient ni mal ecrites ni mal maillees.
+    Google ne les avait JAMAIS explorees (aucun lastCrawlTime), alors qu'elles
+    figuraient au sitemap, relu par Google le 12/08, et recevaient jusqu'a 33
+    liens internes. Sans cette mesure, le rapport poussait a retoucher des pages
+    sans defaut, et a ajouter des liens vers des pages que Google ignore.
+
+    Lire coverageState ET lastCrawlTime : une page jamais exploree ne souffre
+    pas de son contenu, et aucune reecriture ne la sortira de la.
+
+    ATTENTION, mesure du 17/08/2026 : coverageState est INSTABLE. Les memes 5
+    URLs interrogees a 17h20 puis a 18h05 le meme jour ont bascule dans les DEUX
+    sens entre "Detectee, actuellement non indexee" et "Google ne reconnait pas
+    cette URL". Ne jamais annoncer une progression ou une regression sur la foi
+    d'un ecart de coverageState entre deux passages : ce serait une fausse alerte
+    hebdomadaire. Le signal FIABLE est lastCrawlTime, qui lui n'a pas bouge.
+
+    Quota Search Console : 2000 inspections par jour. On n'interroge que les
+    pages sans impression, soit une poignee. Toute panne est avalee et rendue
+    comme "non mesure" : cette section ne doit JAMAIS faire tomber le rapport
+    hebdomadaire, qui est le seul email de la semaine.
+    """
+    out = []
+    for c in chemins:
+        try:
+            r = requests.post(
+                'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect',
+                headers={'Authorization': 'Bearer ' + tok},
+                json={'inspectionUrl': 'https://virginiedeconinck.com' + c,
+                      'siteUrl': SITE, 'languageCode': 'fr'}, timeout=60)
+            if r.status_code != 200:
+                out.append((c, f"non mesure (API {r.status_code})", None))
+                continue
+            i = r.json().get('inspectionResult', {}).get('indexStatusResult', {})
+            out.append((c, i.get('coverageState', 'inconnu'), i.get('lastCrawlTime')))
+        except Exception as e:
+            out.append((c, f"non mesure ({type(e).__name__})", None))
+    return out
+
+
 def analyse(jours):
     tok = jeton()
     fin = datetime.date.today() - datetime.timedelta(days=LATENCE)
@@ -258,6 +301,43 @@ def analyse(jours):
         "Pages publiees et declarees a Google, mais qui n'ont declenche AUCUNE impression",
         "sur la periode. Elles ne repondent a aucune demande, ou Google ne les a pas retenues.",
         ""] + [f"  {p}" for p in muettes] or ["  aucune"]))
+
+    # ---------- 6 (suite). POURQUOI ELLES SONT MUETTES : L'ETAT DANS L'INDEX ----------
+    # Une page muette a deux causes possibles, opposees, qui appellent des actions
+    # contraires : soit Google la connait et personne ne la cherche (probleme de
+    # contenu ou de demande), soit Google ne l'a jamais ouverte (probleme d'index,
+    # et alors toute reecriture est du travail perdu). Sans cette distinction, on
+    # traite le mauvais probleme. Mesure du 17/08/2026 : les 5 muettes relevaient
+    # TOUTES du second cas.
+    if muettes:
+        etats = etat_indexation(tok, muettes)
+        jamais = [c for c, _, crawl in etats if crawl is None]
+        lignes = []
+        for c, cov, crawl in etats:
+            quand = f"exploree le {crawl[:10]}" if crawl else "JAMAIS EXPLOREE"
+            lignes.append(f"  {c:<40} {cov}  [{quand}]")
+        verdict = ([
+            "",
+            f"  {len(jamais)} de ces pages n'ont JAMAIS ete explorees par Google.",
+            "  Leur contenu n'est donc pas en cause, et les retoucher ne changerait rien.",
+            "  Un lien interne de plus non plus : verifier d'abord qu'elles en manquent",
+            "  vraiment. Le seul levier officiel est la demande manuelle d'indexation",
+            "  dans Search Console (quota limite, delai de quelques jours a quelques",
+            "  semaines, jamais garantie), et l'autorite apportee par des liens EXTERNES.",
+        ] if jamais else [
+            "",
+            "  Toutes ont ete explorees : leur silence vient bien de la demande ou du",
+            "  contenu, pas de l'index. Ces pages-la peuvent etre retravaillees.",
+        ])
+        ajoute(("ETAT REEL DE CES PAGES DANS L'INDEX GOOGLE", [
+            "Mesure directe (API d'inspection d'URL), et non une deduction tiree des",
+            "impressions. C'est la seule facon de savoir si une page est ignoree parce",
+            "qu'on ne la cherche pas, ou parce que Google ne l'a jamais ouverte.",
+            "Le libelle de gauche bouge d'un passage a l'autre sans que rien ne change",
+            "sur le site (verifie le 17/08/2026, deux mesures a 45 minutes d'ecart) :",
+            "ne le lisez pas comme un progres ni comme un recul. Ce qui compte est la",
+            "date d'exploration entre crochets.",
+            ""] + lignes + verdict))
 
     # ---------- 6bis. TERRAIN NON COUVERT (veille, source gratuite) ----------
     # Search Console ne montre QUE ce sur quoi le site apparait deja. Elle est aveugle
