@@ -1,0 +1,16 @@
+# Le PDF des 4 leviers est la piece envoyee par ManyChat (mot-cle LEVIER).
+# Il ne doit jamais apparaitre dans Google : c'est un contenu donne en echange
+# d'un contact sur Instagram, pas une page publique.
+#
+# Pourquoi un en-tete et pas seulement robots.txt : un Disallow empeche Google
+# de LIRE le fichier, pas de l'INDEXER. Une URL bloquee par robots.txt peut
+# rester dans les resultats, titre nu, si un lien pointe vers elle. Le seul
+# moyen de porter un noindex sur un PDF est l'en-tete X-Robots-Tag, et Google
+# ne peut le lire que s'il a le droit de recuperer le fichier. Le Disallow du
+# PDF est donc retire de robots.txt dans le meme lot : les deux ensemble
+# s'annulaient. Verifie sur developers.google.com le 25/08/2026, phrase
+# litterale : "If the page is blocked by a robots.txt file [...] the crawler
+# will never see the noindex rule, and the page can still appear in search
+# results".
+/leviers-biologiques.pdf
+  X-Robots-Tag: noindex, nofollow

@@ -1,3 +1,18 @@
+# ---------------------------------------------------------------------------
+# SITE JUMEAU. virginiedck.netlify.app est le sous-domaine par defaut du MEME
+# site Netlify que virginiedeconinck.com (site "virginiedck", verifie par
+# l'API Netlify le 25/08/2026). Il servait donc le site entier en HTTP 200,
+# indexable. Mesure du 25/08 dans Search Console : Google a decouvert
+# /regeneration-cellulaire, /blog/glycemie-nocturne-peau et
+# /blog/estrobolome-microbiote-femme PAR CE SOUS-DOMAINE et non par le vrai
+# domaine ("Page d'origine : https://virginiedck.netlify.app/...").
+# Une 301 plutot qu'un noindex : elle transmet l'autorite au vrai domaine ET
+# garde vivants les anciens liens ManyChat qui pointaient encore sur
+# virginiedck.netlify.app (un noindex les laisserait sur une page fantome).
+# Syntaxe des redirections de domaine verifiee sur docs.netlify.com le 25/08.
+https://virginiedck.netlify.app/*  https://virginiedeconinck.com/:splat  301!
+http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
+
 /a-propos /a-propos.html 200
 /histamine-perimenopause /histamine-perimenopause.html 200
 /peptides-longevite-feminine /peptides-longevite-feminine.html 200
