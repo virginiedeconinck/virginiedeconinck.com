@@ -43,6 +43,8 @@ SEUIL_TITLE = 60        # au-dela, Google tronque dans les resultats
 DESC_MIN, DESC_MAX = 100, 160
 MOTS_MIN = 300
 TLS_JOURS_MIN = 21
+DOMAINE_JOURS_MIN = 45   # large : un renouvellement de domaine se regle a la main,
+                         # chez le registrar, et peut demander plusieurs jours
 
 erreurs, alertes, infos = [], [], []
 def ERREUR(cat, msg): erreurs.append((cat, msg))
@@ -103,6 +105,37 @@ def controle_socle():
         if jours < TLS_JOURS_MIN: ERREUR("socle", f"certificat TLS expire dans {jours} jours")
     except Exception as e:
         ERREUR("socle", f"controle TLS impossible : {e}")
+
+    # Nom de domaine. Le certificat TLS se renouvelle tout seul chez Netlify ;
+    # le DOMAINE, lui, depend d'un paiement chez OVH. S'il expire, il n'y a plus
+    # de site, plus de liens de pub, plus rien, et aucun autre controle de ce
+    # moteur ne l'aurait vu venir. Constate le 25/08/2026 : l'expiration tombait
+    # dans 30 jours et rien ne la surveillait. Source = RDAP, le registre
+    # officiel de Verisign pour les .com, pas une note ni un rappel d'agenda.
+    try:
+        code, corps, _, _ = http(f"https://rdap.verisign.com/com/v1/domain/{HOST}")
+        d = json.loads(corps)
+        exp = next(e["eventDate"] for e in d["events"] if e["eventAction"] == "expiration")
+        fin = datetime.datetime.strptime(exp[:10], "%Y-%m-%d")
+        jours = (fin - datetime.datetime.utcnow()).days
+        reg = next((v[3] for e in d.get("entities", []) if "registrar" in e.get("roles", [])
+                    for v in e.get("vcardArray", [[], []])[1] if v[0] == "fn"), "?")
+        INFO(f"nom de domaine valide encore {jours} jours "
+             f"(expire le {fin:%d/%m/%Y}, registrar {reg})")
+        # Deux niveaux volontairement, pour ne pas crier au loup pendant un mois.
+        # Le renouvellement automatique OVH se declenche dans les jours qui
+        # precedent l'echeance : tant qu'on est loin, une simple ligne dans le
+        # rapport suffit. Une Issue ne s'ouvre que sous 14 jours, la ou un
+        # renouvellement qui n'a PAS eu lieu devient un vrai danger.
+        if jours < 14:
+            ERREUR("socle", f"le NOM DE DOMAINE expire dans {jours} jours "
+                            f"(le {fin:%d/%m/%Y}, chez {reg}) : le renouvellement "
+                            f"automatique n'a pas eu lieu, le site entier va tomber")
+        elif jours < DOMAINE_JOURS_MIN:
+            ALERTE("socle", f"nom de domaine a renouveler dans {jours} jours "
+                            f"(le {fin:%d/%m/%Y}, chez {reg})")
+    except Exception as e:
+        ALERTE("socle", f"controle du nom de domaine impossible : {e}")
 
 
 # ------------------------------------------------- 2. PAGES : HTTP + SEO + GEO
