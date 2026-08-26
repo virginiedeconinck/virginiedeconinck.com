@@ -269,6 +269,27 @@ def collecte_pages():
     return pages, urls
 
 
+def hors_index(p):
+    """La page est-elle volontairement tenue hors de l'index Google ?
+
+    Pose le 26/08/2026 apres une fausse alerte reelle. Des que le moteur s'est mis
+    a crawler le site, il a decouvert /politique-de-confidentialite et l'a jugee
+    avec les criteres d'une page de contenu : JSON-LD manquant en ERREUR, og:image,
+    og:title et twitter:title en alertes. Les six signalements etaient faux. On ne
+    veut PAS qu'une IA cite une politique de confidentialite, et une page legale
+    n'est jamais partagee sur les reseaux.
+
+    La regle qui en decoule, volontairement asymetrique :
+      - ce qui est ABSENT sur une page noindex ne se signale pas ;
+      - ce qui est PRESENT continue d'etre verifie, et une incoherence reste une
+        erreur. C'est ce qui protege blog/les-4-leviers-biologiques, elle aussi en
+        noindex : sa carte de partage compte vraiment, puisqu'elle circule en DM
+        et en publicite.
+    """
+    return (any("noindex" in r.lower() for r in p.get("robots", []))
+            or "noindex" in (p.get("xrobots") or "").lower())
+
+
 def controle_seo(pages):
     vues_title, vues_desc = collections.defaultdict(list), collections.defaultdict(list)
     for u, p in pages.items():
@@ -302,7 +323,7 @@ def controle_seo(pages):
                 ERREUR("seo", f"{chemin} : {len(p['desc'])} balises description (1 attendue)")
             d = p["desc"][0]
             vues_desc[d].append(chemin)
-            if not (DESC_MIN <= len(d) <= DESC_MAX):
+            if not (DESC_MIN <= len(d) <= DESC_MAX) and not hors_index(p):
                 ALERTE("seo", f"{chemin} : description de {len(d)} car. "
                               f"(cible {DESC_MIN}-{DESC_MAX})")
 
@@ -321,21 +342,22 @@ def controle_seo(pages):
             ERREUR("seo", f"{chemin} : meta viewport absente, rendu mobile casse")
         if not p["lang"]:
             ERREUR("seo", f"{chemin} : attribut lang absent sur <html>")
-        if p["mots"] < MOTS_MIN:
+        if p["mots"] < MOTS_MIN and not hors_index(p):
             ALERTE("seo", f"{chemin} : {p['mots']} mots seulement (<{MOTS_MIN})")
 
         # --- partage social
         # Le titre de la carte de partage doit dire la MEME chose que la page.
         # Un ecart se cree en silence des qu'on retouche un title sans penser aux
         # deux balises jumelles : la carte annonce alors autre chose que le contenu.
-        if not p["ogimg"]: ALERTE("social", f"{chemin} : og:image absente")
+        exige = not hors_index(p)   # une page noindex n'a rien a exiger, voir hors_index()
+        if not p["ogimg"] and exige: ALERTE("social", f"{chemin} : og:image absente")
         if not p["ogtit"]:
-            ALERTE("social", f"{chemin} : og:title absente")
+            if exige: ALERTE("social", f"{chemin} : og:title absente")
         elif p["ogtit"][0] != p["title"]:
             ERREUR("social", f"{chemin} : og:title differe du title de la page "
                              f"(« {p['ogtit'][0][:50]} » au lieu de « {p['title'][:50]} »)")
         if not p["twtit"]:
-            ALERTE("social", f"{chemin} : twitter:title absente")
+            if exige: ALERTE("social", f"{chemin} : twitter:title absente")
         elif p["twtit"][0] != p["title"]:
             ERREUR("social", f"{chemin} : twitter:title differe du title de la page")
 
@@ -461,8 +483,11 @@ def controle_geo(pages, urls_sitemap):
         chemin = u.replace(SITE, "") or "/"
         blocs = re.findall(r'(?s)<script[^>]*application/ld\+json[^>]*>(.*?)</script>', p["html"])
         if not blocs:
-            ERREUR("geo", f"{chemin} : aucune donnee structuree JSON-LD "
-                          f"(page difficilement citable par une IA)")
+            # Une page en noindex n'a pas a etre citable par une IA : c'est
+            # exactement ce qu'on lui demande de ne pas etre.
+            if not hors_index(p):
+                ERREUR("geo", f"{chemin} : aucune donnee structuree JSON-LD "
+                              f"(page difficilement citable par une IA)")
             continue
         types, articles = [], []
         for b in blocs:
@@ -508,7 +533,7 @@ def controle_geo(pages, urls_sitemap):
         # Le fil d'Ariane structure : Google l'affiche dans ses resultats a la
         # place de l'URL nue, et il donne aux moteurs la place de la page dans
         # l'arborescence. L'accueil n'en a pas besoin, il EST la racine.
-        if chemin != "/" and "BreadcrumbList" not in types:
+        if chemin != "/" and "BreadcrumbList" not in types and not hors_index(p):
             ALERTE("geo", f"{chemin} : pas de BreadcrumbList (fil d'Ariane structure)")
 
     # e) cohesion sitemap <-> pages reellement servies
