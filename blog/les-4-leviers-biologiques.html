@@ -143,6 +143,14 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--rule);
     }
+    /* La regle nav ci-dessus vise TOUTES les balises <nav>, y compris celle du
+       pied de page : mesure du 26/08/2026, le nav du footer etait epinglé en
+       haut de l'ecran et RECOUVRAIT le vrai menu sur le site en ligne. Ses
+       liens (@virginiedck, Programme, Accueil) n'ont jamais ete dans le pied.
+       On rend au nav du footer un comportement normal, sans toucher au menu. */
+    footer nav { position: static; top: auto; left: auto; right: auto;
+                 z-index: auto; padding: 0; background: none;
+                 backdrop-filter: none; border-bottom: none; }
 
     .nav-name {
       font-family: 'Cormorant Garamond', serif;
@@ -767,6 +775,7 @@
       <a href="/blog/">Blog</a>
       <a href="/#candidature">Programme</a>
       <a href="/">Accueil</a>
+      <a href="/politique-de-confidentialite">Confidentialité</a>
     </nav>
   </footer>
 

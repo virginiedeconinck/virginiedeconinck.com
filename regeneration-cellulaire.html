@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-91D9DLP5HP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-91D9DLP5HP');
-  </script><meta charset="UTF-8">
+<html lang="fr"><head><meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Régénération cellulaire : ce que la science en dit vraiment</title>
@@ -113,6 +105,14 @@
     html{scroll-behavior:smooth;}
     body{font-family:'Didact Gothic',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:15px;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+    /* La regle nav ci-dessus vise TOUTES les balises <nav>, y compris celle du
+       pied de page : mesure du 26/08/2026, le nav du footer etait epinglé en
+       haut de l'ecran et RECOUVRAIT le vrai menu sur le site en ligne. Ses
+       liens (@virginiedck, Programme, Accueil) n'ont jamais ete dans le pied.
+       On rend au nav du footer un comportement normal, sans toucher au menu. */
+    footer nav { position: static; top: auto; left: auto; right: auto;
+                 z-index: auto; padding: 0; background: none;
+                 backdrop-filter: none; border-bottom: none; }
     .nav-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.08em;color:var(--ink);text-decoration:none;}
         .nav-links{display:flex;gap:22px;list-style:none;flex-wrap:nowrap;align-items:center;}
     .nav-dropdown{position:relative;}
@@ -418,6 +418,7 @@
       <a href="/a-propos">À propos</a>
       <a href="/#candidature">Programme</a>
       <a href="/">Accueil</a>
+      <a href="/politique-de-confidentialite">Confidentialité</a>
     </nav>
   </footer>
 

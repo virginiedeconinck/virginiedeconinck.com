@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-91D9DLP5HP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-91D9DLP5HP');
-  </script><meta charset="UTF-8">
+<html lang="fr"><head><meta charset="UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rajeunissement Cellulaire Féminin | Virginie Deconinck</title>
@@ -144,6 +136,14 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--rule);
     }
+    /* La regle nav ci-dessus vise TOUTES les balises <nav>, y compris celle du
+       pied de page : mesure du 26/08/2026, le nav du footer etait epinglé en
+       haut de l'ecran et RECOUVRAIT le vrai menu sur le site en ligne. Ses
+       liens (@virginiedck, Programme, Accueil) n'ont jamais ete dans le pied.
+       On rend au nav du footer un comportement normal, sans toucher au menu. */
+    footer nav { position: static; top: auto; left: auto; right: auto;
+                 z-index: auto; padding: 0; background: none;
+                 backdrop-filter: none; border-bottom: none; }
 
     @media (max-width: 768px) {
       nav .nav-links {
@@ -1213,6 +1213,7 @@
   <footer>
     <p style="font-size:11px;line-height:1.5;color:#999;max-width:640px;margin:16px auto 0;text-align:center;">Les contenus de ce site sont fournis à titre informatif et éducatif uniquement. Ils ne constituent pas un avis médical et ne remplacent pas une consultation avec un professionnel de santé.</p>
     <p class="footer-name">Virginie Deconinck</p>
+    <p style="font-size:11px;line-height:1.5;color:#999;margin:14px auto 0;text-align:center;"><a href="/politique-de-confidentialite" style="color:#999;">Politique de confidentialité</a></p>
   </footer>
 
   <script>
