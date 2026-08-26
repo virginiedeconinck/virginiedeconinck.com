@@ -33,6 +33,10 @@ on:
         description: "Exercer la chaine d'alerte du RAPPORT HEBDOMADAIRE (echec volontaire du job seo). Ne touche pas au site."
         type: boolean
         default: false
+      envoyer_email:
+        description: "Envoyer le rapport hebdomadaire par email. DECOCHE par defaut : une mise en route manuelle sert le plus souvent a verifier un correctif, pas a ecrire a Virginie."
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # battement de coeur (etape 3)
@@ -405,8 +409,19 @@ jobs:
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%u)" != "1" ]; then
-            echo "pas lundi : rapports calcules et archives, pas d'email"; exit 0
+          # Deux portes, et il faut passer l'une des deux.
+          # Mesure du 26/08/2026 : deux mises en route manuelles faites dans la
+          # matinee pour VERIFIER UN CORRECTIF ont envoye deux fois le rapport
+          # hebdomadaire complet a Virginie, un mercredi. Un email qu'elle n'a pas
+          # demande est du bruit, et le bruit est ce qui fait qu'on cesse de lire
+          # les vrais. Une mise en route manuelle ne lui ecrit donc plus, sauf si
+          # on coche explicitement la case prevue pour ca.
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "$(date -u +%u)" != "1" ]; then
+              echo "pas lundi : rapports calcules et archives, pas d'email"; exit 0
+            fi
+          elif [ "${{ inputs.envoyer_email }}" != "true" ]; then
+            echo "mise en route manuelle sans demande d'email : rapports archives, pas d'email"; exit 0
           fi
           # Un seul courrier, dans l'ordre de lecture : ce qui est FAUX ou incoherent
           # d'abord (l'audit), la structure interne ensuite, la demande chez Google
