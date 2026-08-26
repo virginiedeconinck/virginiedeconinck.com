@@ -16,7 +16,7 @@ Usage :
 Code de sortie : 1 si au moins une ERREUR, sinon 0.
 """
 
-import re, sys, json, ssl, socket, html, collections, datetime
+import re, sys, json, ssl, socket, html, collections, datetime, difflib
 import urllib.request, urllib.error, urllib.parse
 
 SITE = "https://virginiedeconinck.com"
@@ -42,6 +42,9 @@ CRAWLERS_IA = {
 SEUIL_TITLE = 60        # au-dela, Google tronque dans les resultats
 DESC_MIN, DESC_MAX = 100, 160
 MOTS_MIN = 300
+RATIO_TEXTE_MIN = 10      # % de texte dans le HTML. Sous 10, Google lit une page de code
+SIMILARITE_MAX = 0.70     # au-dela, deux pages se cannibalisent sur la meme requete
+POIDS_PAGE_MAX = 900      # Ko transferes pour une page entiere, ressources comprises
 TLS_JOURS_MIN = 21
 DOMAINE_JOURS_MIN = 45   # large : un renouvellement de domaine se regle a la main,
                          # chez le registrar, et peut demander plusieurs jours
@@ -68,6 +71,39 @@ def http(url, method="GET", ua=UA):
         res = (0, "", {}, f"{type(e).__name__}: {e}")
     _cache[cle] = res
     return res
+
+def http_sans_suivre(url):
+    """Comme http(), mais NE SUIT PAS la redirection : c'est le code 301/302
+    lui-meme qu'on veut lire, pas la page d'arrivee."""
+    cle = ("NOFOLLOW", url)
+    if cle in _cache: return _cache[cle]
+    class SansRedirection(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, *a, **k): return None
+    op = urllib.request.build_opener(SansRedirection)
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    try:
+        with op.open(req, timeout=TIMEOUT) as r:
+            res = (r.status, "", dict(r.headers), r.url)
+    except urllib.error.HTTPError as e:
+        res = (e.code, "", dict(e.headers or {}), url)
+    except Exception as e:
+        res = (0, "", {}, f"{type(e).__name__}")
+    _cache[cle] = res
+    return res
+
+
+def poids(url):
+    """Octets REELLEMENT transferes pour une ressource, compression comprise."""
+    cle = ("POIDS", url)
+    if cle in _cache: return _cache[cle]
+    req = urllib.request.Request(url, headers={"User-Agent": UA,
+                                               "Accept-Encoding": "gzip, deflate, br"})
+    try:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r: n = len(r.read())
+    except Exception: n = 0
+    _cache[cle] = n
+    return n
+
 
 def attr(balise_re, nom, s):
     """Extrait un attribut proprement : le delimiteur fermant doit etre le MEME
@@ -139,6 +175,60 @@ def controle_socle():
 
 
 # ------------------------------------------------- 2. PAGES : HTTP + SEO + GEO
+def lire_page(u, corps, ent, code):
+    """Extrait de la page tout ce que les controles utilisent ensuite."""
+    return {
+        "code": code, "html": corps,
+        "title": (re.search(r'(?s)<title[^>]*>(.*?)</title>', corps).group(1).strip()
+                  if re.search(r'(?s)<title[^>]*>(.*?)</title>', corps) else ""),
+        "desc":  attr(r'<meta[^>]*name\s*=\s*["\']description["\'][^>]*>', 'content', corps),
+        "canon": attr(r'<link[^>]*rel\s*=\s*["\']canonical["\'][^>]*>', 'href', corps),
+        "ogimg": attr(r'<meta[^>]*property\s*=\s*["\']og:image["\'][^>]*>', 'content', corps),
+        "ogtit": attr(r'<meta[^>]*property\s*=\s*["\']og:title["\'][^>]*>', 'content', corps),
+        "twtit": attr(r'<meta[^>]*name\s*=\s*["\']twitter:title["\'][^>]*>', 'content', corps),
+        "robots": attr(r'<meta[^>]*name\s*=\s*["\']robots["\'][^>]*>', 'content', corps),
+        "xrobots": ent.get("X-Robots-Tag", ""),
+        "h1": re.findall(r'(?s)<h1[^>]*>(.*?)</h1>', corps),
+        "h2": re.findall(r'(?s)<h2[^>]*>(.*?)</h2>', corps),
+        "lang": (re.search(r'<html[^>]*lang\s*=\s*["\']([^"\']+)', corps).group(1)
+                 if re.search(r'<html[^>]*lang\s*=\s*["\']', corps) else ""),
+        "viewport": bool(re.search(r'name\s*=\s*["\']viewport["\']', corps, re.I)),
+        "mots": len(texte(corps).split()),
+        "hors_sitemap": False,
+    }
+
+
+def crawl_depuis_accueil(deja):
+    """Decouvre les pages en SUIVANT LES LIENS depuis l'accueil, comme un vrai robot.
+
+    Pourquoi c'est indispensable, mesure du 26/08/2026 : jusqu'ici ce moteur
+    partait du sitemap et de lui seul. Toute page absente du sitemap lui etait
+    donc TOTALEMENT invisible : ni ses liens, ni ses images, ni ses donnees
+    structurees n'etaient jamais controles. Or /blog/les-4-leviers-biologiques,
+    la page d'atterrissage des parcours ManyChat depuis Instagram et depuis les
+    publicites, est volontairement hors sitemap (decision du 31/07/2026). La page
+    qui recoit le trafic paye etait la seule que rien ne surveillait.
+    Un sitemap est une declaration d'intention ; le crawl, lui, voit le site tel
+    que Google le parcourt.
+    """
+    trouvees, vues, file = {}, set(), [f"{SITE}/"]
+    while file:
+        u = file.pop(0).split("#")[0].split("?")[0].rstrip("/") or SITE
+        if u in vues or len(vues) > 200: continue
+        vues.add(u)
+        code, corps, ent, _ = http(u if u != SITE else f"{SITE}/")
+        if code != 200 or "text/html" not in ent.get("Content-Type", ""): continue
+        if u not in deja and u + "/" not in deja:
+            trouvees[u] = (corps, ent)
+        for m in re.finditer(r'<a[^>]*href\s*=\s*(["\'])(.*?)\1', corps, re.I | re.S):
+            h = html.unescape(m.group(2)).strip()
+            if not h or h.startswith(("mailto:", "tel:", "javascript:", "#")): continue
+            lien = urllib.parse.urljoin(u + "/", h)
+            if lien.startswith(SITE) and not re.search(r'\.(pdf|jpe?g|png|webp|xml|txt|ico|svg|gif)$', lien, re.I):
+                file.append(lien)
+    return trouvees
+
+
 def collecte_pages():
     code, sm, _, _ = http(f"{SITE}/sitemap.xml")
     urls = re.findall(r'<loc>([^<]+)</loc>', sm)
@@ -155,26 +245,27 @@ def collecte_pages():
         if final.rstrip("/") != u.rstrip("/"):
             ALERTE("disponibilite", f"{u} redirige vers {final} (le sitemap devrait citer l'URL finale)")
 
-        p = {
-            "code": code, "html": corps,
-            "title": (re.search(r'(?s)<title[^>]*>(.*?)</title>', corps).group(1).strip()
-                      if re.search(r'(?s)<title[^>]*>(.*?)</title>', corps) else ""),
-            "desc":  attr(r'<meta[^>]*name\s*=\s*["\']description["\'][^>]*>', 'content', corps),
-            "canon": attr(r'<link[^>]*rel\s*=\s*["\']canonical["\'][^>]*>', 'href', corps),
-            "ogimg": attr(r'<meta[^>]*property\s*=\s*["\']og:image["\'][^>]*>', 'content', corps),
-            "ogtit": attr(r'<meta[^>]*property\s*=\s*["\']og:title["\'][^>]*>', 'content', corps),
-            "twtit": attr(r'<meta[^>]*name\s*=\s*["\']twitter:title["\'][^>]*>', 'content', corps),
-            "robots": attr(r'<meta[^>]*name\s*=\s*["\']robots["\'][^>]*>', 'content', corps),
-            "xrobots": ent.get("X-Robots-Tag", ""),
-            "h1": re.findall(r'(?s)<h1[^>]*>(.*?)</h1>', corps),
-            "h2": re.findall(r'(?s)<h2[^>]*>(.*?)</h2>', corps),
-            "lang": (re.search(r'<html[^>]*lang\s*=\s*["\']([^"\']+)', corps).group(1)
-                     if re.search(r'<html[^>]*lang\s*=\s*["\']', corps) else ""),
-            "viewport": bool(re.search(r'name\s*=\s*["\']viewport["\']', corps, re.I)),
-            "mots": len(texte(corps).split()),
-        }
+        p = lire_page(u, corps, ent, code)
         p["title"] = html.unescape(p["title"])
         pages[u] = p
+
+    # Deuxieme source, independante du sitemap : le site tel qu'on le parcourt.
+    for u, (corps, ent) in crawl_depuis_accueil(set(pages)).items():
+        p = lire_page(u, corps, ent, 200)
+        p["title"] = html.unescape(p["title"])
+        p["hors_sitemap"] = True
+        pages[u] = p
+        chemin = u.replace(SITE, "") or "/"
+        noindex = (any("noindex" in r.lower() for r in p["robots"])
+                   or "noindex" in (p["xrobots"] or "").lower())
+        if noindex:
+            INFO(f"{chemin} : page hors sitemap et en noindex (exclusion volontaire), "
+                 f"desormais controlee quand meme")
+        else:
+            # Une page indexable atteignable par lien mais absente du sitemap est
+            # une omission : Google la trouvera tard, ou pas du tout.
+            ERREUR("indexation", f"{chemin} est indexable et atteignable depuis l'accueil, "
+                                 f"mais ABSENTE du sitemap")
     return pages, urls
 
 
@@ -185,10 +276,14 @@ def controle_seo(pages):
         chemin = u.replace(SITE, "") or "/"
 
         # --- indexabilite : une page desindexee par erreur est invisible, point.
-        if any("noindex" in r.lower() for r in p["robots"]):
-            ERREUR("indexation", f"{chemin} porte une balise meta robots noindex")
-        if "noindex" in (p["xrobots"] or "").lower():
-            ERREUR("indexation", f"{chemin} porte un en-tete HTTP X-Robots-Tag noindex")
+        # Exception : une page volontairement tenue hors du sitemap (page
+        # d'atterrissage ManyChat, mentions legales) PORTE un noindex par
+        # construction. Le signaler chaque jour apprendrait a ignorer le rapport.
+        if not p.get("hors_sitemap"):
+            if any("noindex" in r.lower() for r in p["robots"]):
+                ERREUR("indexation", f"{chemin} porte une balise meta robots noindex")
+            if "noindex" in (p["xrobots"] or "").lower():
+                ERREUR("indexation", f"{chemin} porte un en-tete HTTP X-Robots-Tag noindex")
 
         # --- title
         if not p["title"]:
@@ -423,6 +518,145 @@ def controle_geo(pages, urls_sitemap):
     INFO(f"{len(urls_sitemap)} pages du sitemap controlees")
 
 
+
+# ------------------------------------------- 5. POIDS, DUPLICATION, REDIRECTIONS
+def controle_qualite_technique(pages):
+    """Quatre mesures que ce moteur ne faisait pas, ajoutees le 26/08/2026.
+
+    Elles viennent d'un audit type Semrush qu'un autre site a recu : ratio
+    texte/code, contenu duplique entre pages, redirections temporaires, poids
+    reel des ressources. Les quatre sont ressorties PROPRES sur ce site au
+    premier passage. C'est justement pour ca qu'elles entrent au moteur : une
+    mesure ne vaut que si elle tourne tous les jours, pas le jour ou on y pense.
+    """
+    vivantes = {u: p for u, p in pages.items() if p.get("code") == 200}
+
+    # a) RATIO TEXTE / CODE. Une page ou le texte pese moins de 10 % du HTML est
+    #    lue par Google comme une coquille : beaucoup de gabarit, peu de fond.
+    for u, p in sorted(vivantes.items()):
+        chemin = u.replace(SITE, "") or "/"
+        ratio = len(texte(p["html"])) / max(1, len(p["html"])) * 100
+        if ratio < RATIO_TEXTE_MIN:
+            ALERTE("contenu", f"{chemin} : {ratio:.1f} % de texte dans le HTML "
+                              f"(<{RATIO_TEXTE_MIN} %), page pauvre en contenu utile")
+
+    # b) CONTENU DUPLIQUE. Deux pages qui disent la meme chose se disputent la
+    #    meme requete et se penalisent. On compare le corps SEUL : menu, pied de
+    #    page et scripts sont identiques partout et feraient monter tous les
+    #    scores artificiellement.
+    corps = {}
+    for u, p in vivantes.items():
+        b = re.sub(r'(?s)<(nav|footer|header|head|script|style)[^>]*>.*?</\1>', ' ', p["html"])
+        t = texte(b)
+        if len(t) > 200: corps[u] = t[:6000]
+    cles = sorted(corps)
+    for i in range(len(cles)):
+        for j in range(i + 1, len(cles)):
+            r = difflib.SequenceMatcher(None, corps[cles[i]], corps[cles[j]]).ratio()
+            if r > SIMILARITE_MAX:
+                ERREUR("contenu", f"contenu identique a {r*100:.0f} % entre "
+                                  f"{cles[i].replace(SITE,'') or '/'} et "
+                                  f"{cles[j].replace(SITE,'') or '/'} : elles se cannibalisent")
+
+    # c) REDIRECTIONS INTERNES. Une 302 dit a Google « ne memorise pas » : il ne
+    #    transfere pas l'autorite. Et meme en 301, un lien interne qui rebondit
+    #    gaspille un passage du robot, qui ne vient que 3 fois par jour ici.
+    aplat = collections.Counter()
+    for u, p in vivantes.items():
+        for m in re.finditer(r'<a[^>]*href\s*=\s*(["\'])(.*?)\1', p["html"], re.I | re.S):
+            h = html.unescape(m.group(2)).strip()
+            if not h or h.startswith(("mailto:", "tel:", "javascript:", "#")): continue
+            cible = urllib.parse.urljoin(u + "/", h).split("#")[0]
+            if not cible.startswith(SITE): continue
+            code, _, ent, _ = http_sans_suivre(cible)
+            if code in (301, 302, 303, 307, 308):
+                aplat[(code, cible.replace(SITE, ""), ent.get("Location", "?"))] += 1
+    for (code, ou, vers), n in aplat.most_common():
+        if code in (302, 307):
+            ERREUR("liens", f"redirection TEMPORAIRE {code} sur un lien interne : {ou} -> {vers} "
+                            f"(cite {n} fois) : Google ne transmet pas l'autorite a l'arrivee")
+        else:
+            ALERTE("liens", f"lien interne qui rebondit ({code}) : {ou} -> {vers} "
+                            f"(cite {n} fois) : pointer directement vers l'arrivee")
+
+    # d) POIDS REEL. Pas une estimation : chaque ressource de chaque page est
+    #    telechargee compressee, comme le ferait un iPhone en 4G.
+    for u, p in sorted(vivantes.items()):
+        chemin = u.replace(SITE, "") or "/"
+        total, lourdes = len(p["html"]), []
+        ress = set()
+        for m in re.finditer(r'<link[^>]*rel\s*=\s*["\']stylesheet["\'][^>]*>', p["html"], re.I):
+            h = re.search(r'href\s*=\s*(["\'])(.*?)\1', m.group(0), re.I)
+            if h: ress.add(urllib.parse.urljoin(u + "/", html.unescape(h.group(2))))
+        for m in re.finditer(r'<script[^>]*src\s*=\s*(["\'])(.*?)\1', p["html"], re.I):
+            ress.add(urllib.parse.urljoin(u + "/", html.unescape(m.group(2))))
+        for m in re.finditer(r'<img[^>]*src\s*=\s*(["\'])(.*?)\1', p["html"], re.I):
+            ress.add(urllib.parse.urljoin(u + "/", html.unescape(m.group(2))))
+        for r in ress:
+            n = poids(r)
+            total += n
+            if n > 250 * 1024: lourdes.append(f"{r.replace(SITE,'')} ({n/1024:.0f} Ko)")
+        if total / 1024 > POIDS_PAGE_MAX:
+            ALERTE("vitesse", f"{chemin} : {total/1024:.0f} Ko transferes "
+                              f"(>{POIDS_PAGE_MAX} Ko)" +
+                              (f", dont {', '.join(lourdes)}" if lourdes else ""))
+    INFO("ratio texte/code, duplication, redirections internes et poids mesures sur "
+         f"{len(vivantes)} pages")
+
+
+
+# ------------------------------------------- 6. PAGES QUE PERSONNE NE PEUT ATTEINDRE
+def controle_pages_inatteignables(pages):
+    """Compare les fichiers du DEPOT aux pages reellement atteignables.
+
+    Angle mort ferme le 26/08/2026. Ni le sitemap ni le crawl ne peuvent voir une
+    page que rien ne cite ET qui n'est pas declaree : elle est servie en 200, elle
+    existe, et pourtant elle n'existe pour personne. Seul le depot sait qu'elle a
+    ete ecrite. Mesure du jour : /politique-de-confidentialite repondait 200 alors
+    qu'AUCUN des 22 fichiers du site ne pointait vers elle, et qu'aucune autre URL
+    de mentions legales ne repondait. Une politique de confidentialite injoignable
+    est un probleme de conformite, pas de referencement : le site charge Google
+    Analytics et le compte publicitaire Meta exige qu'elle soit accessible.
+    """
+    import os, subprocess
+    try:
+        sortie = subprocess.run(["git", "ls-files", "*.html"], capture_output=True,
+                                text=True, timeout=30).stdout
+    except Exception as e:
+        ALERTE("socle", f"inventaire du depot impossible : {e}")
+        return
+    fichiers = [l for l in sortie.split() if l]
+    if not fichiers:
+        ALERTE("socle", "aucun fichier .html trouve dans le depot (inventaire vide)")
+        return
+
+    # Pages techniques : elles n'ont pas vocation a etre citees ni indexees.
+    TECHNIQUES = re.compile(r'^(404\.html|google[0-9a-f]+\.html)$', re.I)
+
+    # Qui cite quoi, sur l'ensemble des pages reellement servies.
+    cites = set()
+    for u, p in pages.items():
+        if p.get("code") != 200: continue
+        for m in re.finditer(r'<a[^>]*href\s*=\s*(["\'])(.*?)\1', p["html"], re.I | re.S):
+            h = html.unescape(m.group(2)).strip()
+            if not h or h.startswith(("mailto:", "tel:", "javascript:", "#")): continue
+            cites.add(urllib.parse.urljoin(u + "/", h).split("#")[0].split("?")[0].rstrip("/"))
+
+    for fic in sorted(fichiers):
+        if TECHNIQUES.match(os.path.basename(fic)) and "/" not in fic: continue
+        chemin = "/" + re.sub(r'(index)?\.html$', '', fic).rstrip("/")
+        url = (SITE + chemin).rstrip("/") or SITE
+        code, corps, ent, _ = http(url if url != SITE else f"{SITE}/")
+        if code != 200:
+            ERREUR("socle", f"{chemin} existe dans le depot mais renvoie HTTP {code} en ligne")
+            continue
+        if url in cites or url + "/" in cites: continue
+        ERREUR("liens", f"{chemin} est en ligne (HTTP 200) mais AUCUNE page du site "
+                        f"ne pointe vers elle : personne ne peut y arriver autrement "
+                        f"qu'en tapant l'adresse")
+    INFO(f"{len(fichiers)} fichiers du depot confrontes aux pages reellement citees")
+
+
 # ------------------------------------------------------------------ RAPPORT
 def rapport(markdown=False):
     d = datetime.datetime.now(datetime.timezone.utc)
@@ -466,6 +700,8 @@ def main():
         controle_seo(pages)
         controle_liens(pages)
         controle_geo(pages, urls)
+        controle_qualite_technique(pages)
+        controle_pages_inatteignables(pages)
 
     txt = rapport("--markdown" in sys.argv)
     print(txt)
