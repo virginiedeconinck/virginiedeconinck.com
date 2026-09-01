@@ -1,5 +1,9 @@
-LOOP-STATE.md
-automation/cycle-log.json
+# LOOP-STATE.md et automation/cycle-log.json etaient ignores ici jusqu'au 01/09/2026.
+# Ils portent la memoire de la boucle et les decisions de Virginie (sujet d'article
+# valide, report a octobre, chantiers ecartes apres mesure). Ignores, ils n'existaient
+# que sur ce Mac : un clone neuf ou un incident les perdait, et le cloud ne les voyait
+# pas. Versionnes, ils survivent et on voit qui a change quoi.
+
 rapport-surveillance.md
 rapport-seo-geo.md
 rapport-maillage.md

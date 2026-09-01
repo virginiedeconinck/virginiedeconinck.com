@@ -1,0 +1,158 @@
+{
+  "system": "Public Site Monitoring + Blog — cycle editorial scientifique mensuel",
+  "timezone": "Europe/Luxembourg",
+  "cadence": "1er de chaque mois a 09:00",
+  "lastCycleMonth": "2026-09",
+  "lastCycleStatus": "Cycle du 2026-09-01 PUBLIE en prod sur « publie » de Virginie. main = c267012.",
+  "nextPlanned": "2026-10-01",
+  "history": [
+    {
+      "date": "2026-06-28",
+      "type": "publication initiale (manuelle, sur 'publie')",
+      "contenu": "Corrections scientifiques/editoriales + vouvoiement + frontiere gratuit-payant + SEO/GEO + maillage + coherence navigation (accueil=menu, SHBG) + a-propos (age bio 39,7 True Diagnostic) + article Estrobolome publie + workflow surveillance GitHub Actions sur main",
+      "branche": "chantier-aout2026 -> main",
+      "statut": "PUBLIE et verifie en prod"
+    },
+    {
+      "date": "2026-06-29",
+      "type": "retrait (commit c414519)",
+      "contenu": "Article Estrobolome RETIRE de la prod : sorti par erreur dans le lot du 28/06. Page, image, carte blog, JSON-LD, sitemap (20->19) et llms.txt nettoyes. Les mentions du concept restent sur accueil et perimenopause. Republication = 'git revert c414519'.",
+      "statut": "RETIRE de la prod, a republier au cycle du 2026-08-01"
+    },
+    {
+      "date": "2026-07-29",
+      "type": "refonte de la surveillance (branche surveillance-integrale-2026-07, NON fusionnee)",
+      "contenu": "Ancien 01-monitoring-quotidien.yml remplace : il s'annoncait quotidien mais tournait le lundi, et ses controles liens/Lighthouse etaient non bloquants, donc incapables d'alerter. Nouveau moteur automation/monitoring.py : disponibilite, TLS, 404, chaque lien et image, title/description/canonical/H1/viewport/lang sur les 19 pages, doublons, noindex, JSON-LD (validite + contradictions), llms.txt, acces reel des crawlers IA.",
+      "statut": "FUSIONNE sur main le 2026-07-29 (commit ba86fad), workflow execute run 30426316416 : toutes etapes success"
+    },
+    {
+      "date": "2026-07-29",
+      "type": "publication SEO/GEO (feu vert Virginie)",
+      "contenu": "18 titles ramenes sous 60 car. (le plus long passait de 106 a 46) ; suffixe '| Virginie Deconinck' retire partout sauf accueil et /a-propos ; 13 pages avaient 2 blocs JSON-LD Article, dont 5 aux headline contradictoires : fusionnes en un seul bloc enrichi (url, dateModified, inLanguage, about) avec headline alignee sur le title.",
+      "branche": "surveillance-integrale-2026-07 -> main (commit 5056447)",
+      "statut": "PUBLIE et verifie en prod : surveillance relancee sur le site en ligne = 0 erreur, rendu mobile et desktop controles"
+    },
+    {
+      "date": "2026-07-29",
+      "type": "publication SEO/GEO lot 2 (feu vert Virginie, travail autonome)",
+      "contenu": "og:image dediee par page (18) dans le gabarit de marque, dont 3 photos d'article auparavant en portrait/carre donc massacrees au recadrage 1.91:1 des reseaux ; BreadcrumbList sur les 18 pages internes ; og:title et twitter:title realignes sur les titles ; /blog enrichi (178 -> 685 mots : ligne editoriale + section 'Par ou commencer' + FAQ) ; 4 H2 ajoutes a /blog/les-4-leviers-biologiques (587 -> 881 mots) ; FAQPage sur les 4 pages qui n'en avaient pas, soit 19/19 desormais ; maillage renforce (shbg, histamine, glp1 : 4 -> 6 liens entrants ; /blog : 3 -> 5).",
+      "defautsTrouvesEnChemin": "1) /blog/les-4-leviers-biologiques TUTOYAIT (10 occurrences) alors que tout le site vouvoie. 2) Tirets cadratins bannis : 1 dans l'article leviers, 9 dans la politique de confidentialite. 3) Trois pages n'avaient aucun style de lien dans le corps de texte (tout lien ajoute serait tombe en bleu navigateur). Tout corrige.",
+      "branche": "main (commits 14ccac0 puis 4095167)",
+      "statut": "PUBLIE et verifie en prod : monitoring en ligne = 0 erreur / 0 point a optimiser, run GitHub 30428356928 success, rendu mobile et desktop controles a l'ecran"
+    },
+    {
+      "date": "2026-08-01",
+      "type": "cycle editorial mensuel (automatique, branche cycle-2026-08, NON fusionnee)",
+      "contenu": "SHBG : page muette (0 impression/90j, Search Console 01/05-29/07) alors que 8 demandes reelles n'avaient pas de reponse. Ajout H2 prise de sang + H3 'SHBG elevee' / 'SHBG basse' / 'pourquoi il n'existe pas de bonne valeur' / 'comment augmenter ou diminuer' (mecanisme seul, aucun protocole). 4 FAQ + JSON-LD miroir (8 au total). Title retitre. 3 corrections scientifiques verifiees a la source ce jour : mecanisme insuline->SHBG remplace par lipogenese hepatique/HNF-4alpha (PMID 19786070) ; voie orale vs transdermique ajoutee ; double visage de la SHBG (Menopause 07/2026 DOI 10.1097/GME.0000000000002734 muscle vs Maturitas 07/2026 DOI 10.1016/j.maturitas.2026.109057 cardiometabolique). Chiffre 1-2% -> 1-3%. Bloc sources refait (3 entrees sur 4 etaient generiques, sans titre ni DOI). ESTROBOLOME : restaure et remis au standard (title 121->53 car, og dediee, BreadcrumbList, FAQPage, webp, keywords retiree, 4 liens /blog sans slash corriges). sitemap 19->20, llms.txt. Corriges en chemin : 14->15 entrees de menu sur les 4 pages blog, description regeneration-cellulaire 160->149 car, 2 tirets cadratins dans llms.txt. Ajout automation/og-image.py.",
+      "defautsTrouvesEnChemin": "1) Le plan 'git revert c414519' ecrit dans LOOP-STATE NE FONCTIONNE PAS : conflits sitemap + carte blog, et restauration de vieux lastmod. Restauration selective a la place. 2) L'article Estrobolome etait fige au 28/06 et n'avait recu aucun des deux lots suivants : le republier tel quel l'aurait mis 2 lots en retard sur les 19 autres pages. 3) Les 18 og:image du 29/07 avaient ete fabriquees sans laisser de script.",
+      "branche": "cycle-2026-08 (commits 5f36e2f, 8803dac)",
+      "statut": "PREPARE, NON PUBLIE. Attend 'publie' de Virginie.",
+      "enAttenteDeDecision": "1) og:image de /regeneration-cellulaire : il faut une photo de Virginie pour la fabriquer au gabarit (aucune photo disponible dans le depot). Seul point a optimiser du monitoring. 2) Photo de l'article Estrobolome : garder estrobolome-hero.jpg ou en changer."
+    },
+    {
+      "date": "2026-08-01",
+      "type": "cycle mensuel + PUBLICATION (sur 'publie')",
+      "contenu": "Article Estrobolome republie (200 en prod, sitemap 20 URLs). 5 corrections de fond : essai KABP052 restitue fidelement (111 femmes, 3 souches, aucune correlation oestrogenes/symptomes, verifie dans l'article original DOI 10.1089/jmf.2023.k.0320) ; rapamycine reclassee senomorphique ; perfusions NAD+ sorties de l'encadre 'ce que la science soutient' ; contradiction injection peptides levee aux 3 occurrences dont JSON-LD ; SHBG 'libre' corrige en 'fraction biodisponible'. Fraicheur aout 2026 sur les 4 pages REELLEMENT modifiees seulement. Maillage : /regeneration-cellulaire passe de 0 a 5 liens contextuels en corps de texte ; l'article Estrobolome de 3 a 5 liens sortants en prose et recoit 2 entrants. Correctif post-publication : og:title et twitter:title de SHBG realignes sur le title.",
+      "branche": "cycle-2026-08 -> main (commits 35bc1f8, 51ecb28, 445df6e)",
+      "statut": "PUBLIE et verifie en prod. Derniere surveillance 20h49 : 0 erreur, 0 point a optimiser. main = b2a4976.",
+      "resteAFaire": "Rien. Collision de taches corrigee dans les deux SKILL.md le 01/08 et simulee. Citation SHBG verifiee le 02/08. Preversion locale : cause etablie (acces macOS au dossier Downloads refuse au serveur de l'app), seul correctif = autorisation par Virginie dans les Reglages Systeme ; contournement Chrome headless documente dans LOOP-STATE.",
+      "lotDuSoir": "Aout 2026 sur TOUT le site (decision de Virginie, contre ma recommandation de ne dater que les pages touchees) : 19/20 pages affichent aout, 20/20 ont dateModified et lastmod au 2026-08-01. Dates d'etudes citees laissees intactes. og:image de /regeneration-cellulaire creee (seule page sans visuel social) avec hero.jpg, sujet recule au cadrage des 19 autres cartes. Title de /blog ramene de 61 a 50 car. et desaccouple de /biohacking-feminin. Controle qualite integral des 21 pages : 0 alerte.",
+      "verifie_02_08": "Citation SHBG confirmee EXACTE : Menopause vol 33 n7, juillet 2026, p775-788, epub 01/07/2026, PMID 41701631 (Osmancevic et al.). Le resultat de recherche qui la datait du 17/02/2026 etait faux. Dossier clos, ne pas rouvrir."
+    },
+    {
+      "date": "2026-08-02",
+      "type": "publication hors cycle (sur « publie » de Virginie)",
+      "contenu": "ACCUEIL : le bloc FAQPage servait aux moteurs et aux IA 3 questions-reponses qui n'existaient sur AUCUNE page visible (verifie a la source : 0 section FAQ dans les 8 168 caracteres affiches). Rendues visibles avant le CTA, reecrites au vouvoiement, JSON-LD realigne mot pour mot sur l'affiche. Gabarit .faq repris verbatim des pages piliers + regle .faq-a a : sans elle les 6 liens tombaient en BLEU navigateur rgb(0,0,238), meme piege que le 29/07. Contexte verifie le jour meme : le rich result FAQ de Google a ete SUPPRIME en mai 2026, ce bloc ne servait donc plus qu'aux IA. MAILLAGE : 9 liens de corps poses vers les 2 pages muettes et les pages a portee. DATES : lastmod + dateModified au 02/08 sur les 8 pages reellement modifiees seulement.",
+      "defautsTrouvesEnChemin": "1) maillage.py proposait de lier « l'entrainement en RESISTANCE » vers /resistance-insuline : contresens, il s'agit de musculation. Ecarte a la relecture. 2) Une autre proposition tombait dans un TEMOIGNAGE de cliente. Ecartee. 3) audit-hebdo.py accusait le DOI 10.2337/dc23-1630 d'etre invente : il EXISTE (Diabetes Care 2024, SWAN), l'editeur bloque juste les robots. Corrige, il interroge desormais Crossref. 4) Le meme audit annoncait des reponses FAQ « invisibles » alors qu'il s'agissait d'un ecart de vouvoiement : comparaison par similitude a la place du prefixe exact. 5) Le seuil {5,} de seo-geo.py rendait le mot « shbg » invisible, d'ou 8 fausses « demandes non couvertes ». 6) J'ai oublie les lastmod dans le lot initial, d'ou un second deploiement.",
+      "branche": "optim-2026-08-02 -> main (commits c2109e6, f1bb617, 22290bf)",
+      "statut": "PUBLIE ET VERIFIE EN PROD le 02/08 a 09h00 : FAQ presente et concordante avec le JSON-LD, 9/9 liens confirmes en ligne, liens en encre #0e0e0e (aucun bleu), rendu mesure en valeurs calculees a 1280 px ET 375 px, 8 URLs du sitemap au 02/08, monitoring 0 erreur.",
+      "nonVerifie": "La capture d'ecran du navigateur integre rend une image blanche sur cette page (animations .reveal + snapshot) : le rendu a ete prouve par les valeurs calculees, pas par une image. Restent a relire humainement les 4 etudes SHBG (l'article dit-il ce qu'on lui fait dire, sur la bonne population ?) : prevu lundi."
+    },
+    {
+      "date": "2026-08-02 (2e lot, meme jour)",
+      "type": "publication : verification scientifique + realignement integral du JSON-LD",
+      "contenu": "ETUDES : les 4 sources de la page SHBG verifiees une par une a la source (Crossref + Europe PMC, resumes lus integralement). TOUTES EXACTES : auteurs, effectifs, durees, populations et conclusions concordent avec ce que la page leur fait dire. Detail : SWAN/Hedderson 2 952 femmes sur 17 ans (confirme mot pour mot) ; Buffalo OsteoPerio/Niu 599 femmes, index androgenique = +4% risque coronarien et +5% HOMA-IR (confirme) ; Pugeat 2010, lipogenese reduisant HNF-4alpha (confirme) ; WHI/Osmancevic 1 565 femmes sur 6 ans, conclusion litterale « higher SHBG concentrations were associated with lower lean body mass » (confirme). JSON-LD : 30 reponses realignees sur le texte affiche, qui fait foi. Verifie en prod : 91 questions FAQ sur les 20 pages du sitemap, 0 ecart, 0 JSON-LD invalide.",
+      "pointResolu": "Le point 'aConfirmer' du 01/08 sur la date de l'etude Menopause est TRANCHE : Crossref et Europe PMC donnent tous deux juillet 2026 (vol 33, firstPublicationDate 2026-07-01). La page a raison. Le 17/02/2026 trouve en ligne correspondait a une mise en ligne anticipee.",
+      "decisionDeNePasFaire": "12 pages sautent de H2 a H4. NON corrige, volontairement : la documentation Google, chargee le 02/08/2026, indique que l'ordre des titres n'est pas un facteur de classement (« it doesn't matter if you're using them out of order »). Or le CSS de ces pages cible la BALISE h4, pas une classe : renommer casserait leur rendu. Risque visuel reel contre gain nul. Rétrograde en simple information dans audit-hebdo.py pour ne pas encombrer le rapport hebdomadaire de 12 lignes sans action. Seul enjeu restant : accessibilite lecteurs d'ecran.",
+      "defautsTrouvesEnChemin": "1) J'ai d'abord annonce 5 pages a FAQ entierement fantomes (a-propos, blog et 3 articles) : FAUX. Ces pages utilisent un markup different de faq-q/faq-a, mon extracteur ne le voyait pas. Verifie autrement : leurs 20 reponses sont visibles a 96-100%. 2) J'avais signale un ecart de date sur le Maturitas (juillet vs septembre) : faux positif egalement, septembre est le numero papier, juillet la publication en ligne.",
+      "branche": "main direct (commits 80a2b01, 41af613)",
+      "statut": "PUBLIE ET VERIFIE EN PROD le 02/08 : 91/91 questions concordantes, monitoring relance."
+    },
+    {
+      "date": "2026-09-01",
+      "type": "cycle editorial mensuel (automatique, branche cycle-2026-09, NON fusionnee)",
+      "decisionEditoriale": "PAS de 21e page. La cadence d'articles est suspendue depuis le 17/08 et le site est une carte de visite. Mise a jour MAJEURE a la place, sur la seule veine ou une demande reelle monte : la peau. « regeneration cellulaire peau et collagene » passe de 26 a 51 impressions en un mois, et les 3 questions GEO relevees par Search Console portent toutes les trois sur la peau.",
+      "contenu": "/collagene-peau : H2 neuf sur la barriere cutanee (ceramides, PMID 36522440 ouvert a la source ce jour) + H3 sur la proteine qui rajeunit la peau (collagene XVII, PMID 42276855) + 2 FAQ + bloc de sources a 4 DOI. /regeneration-cellulaire : H2 neuf sur le niveau de preuve des soins dits regenerants, en trois etages (cellule, animal, humain), 5 sources ouvertes une par une + 1 FAQ. /glp1 : faits perimes actualises (phase 3 retatrutide mai 2026, premier GLP-1 oral approuve aux Etats-Unis en avril 2026) + CTA. /histamine : garde-fou sur le dosage DAO (PMID 42650803) + sources + case vide de grille + CTA ; titre et structure NON touches car 3 clics sur 14 impressions, meilleur taux du site. /biohacking-feminin : title et description reecrits, alignes sur 4 surfaces.",
+      "correctionsDeFond": "1) BLOQUANT : /glp1 ecrivait « de la masse maigre, c'est-a-dire principalement du muscle » en l'attribuant a Neeland 2024. Resume ouvert (PMID 38937282), verbatim : « changes in lean mass may not always reflect changes in muscle mass as the former measure includes not only muscle but also organs, bone, fluids, and water in fat tissue ». La page durcissait sa propre source. Corrige aux 3 endroits. 2) Les 44 noeuds Person du site n'avaient AUCUN @id : ajout de l'identifiant canonique #virginie sur les 44. 3) 13 pages avaient un bloc Article sans datePublished ni image : completes, dates prises dans l'historique git. 4) /perimenopause : FAQ affichee et JSON-LD dans un ordre different (memes contenus), reordonne.",
+      "moteurCorrige": "automation/maillage.py : le rapport du 31/08 reproposait mot pour mot les 2 propositions ecartees a la main le 02/08 (lier « l'entrainement en RESISTANCE » vers /resistance-insuline, et poser une ancre dans une citation de Virginie). La correction n'avait ete faite que dans le rapport, jamais dans le code. Ajout de corps_liable() (retire div.highlight, blockquote et le bloc VOICE INTRO) et de CONTEXTES_TROMPEURS + terme_present(). Verifie sur les 5 propositions reelles : 3 ecartees, 2 conservees, prose intacte.",
+      "erreursDAgentsRattrapees": "1) Un agent affirmait que la page collagene-peau etait « en avance sur la preuve » sur le collagene oral : mesure, la page n'en parle NULLE PART (0 occurrence de complement, supplement, voie orale, cure). 2) Un agent affirmait que le mot mastocyte n'apparaissait « nulle part » dans /histamine : il y est, ligne 301. 3) Un agent citait un « TEWL augmente » absent du resume de l'etude. 4) Les deux propositions de meta pour /biohacking-feminin parlaient de « froid » et de « deficit calorique » : la page n'en dit pas un mot. 5) Un agent annoncait 4 pages a bloc Article incomplet : il y en avait 13. 6) « doubler la dose » generalisait un rapport de 2,4 en rapport de 2.",
+      "testsTechniques": "6 pages en 200 avec 1 H1, 0 lien interne casse (34 liens testes, les 7 signales sont des ancres de l'accueil verifiees presentes et le point de terminaison Netlify Images), 64 blocs JSON-LD valides, 0 tiret cadratin, 0 tutoiement, divs equilibrees, sitemap et llms.txt concordants a 20 sur 20. Rendu controle en valeurs calculees ET a l'ecran a 1280 px et 375 px : 0 debordement, 0 element hors ecran, 0 lien en bleu navigateur.",
+      "branche": "cycle-2026-09 (7ceda5e, 312d4f2, 0f62623, 3be135f, dd55985), poussee",
+      "statut": "PREPARE, NON PUBLIE, controles bloquants passes. Attend « publie » de Virginie.",
+      "enAttenteDeDecision": "1) URGENT, hors editorial : le nom de domaine virginiedeconinck.com expire le 24/09/2026 (whois interroge le 01/09 a 07h26, registrar OVH). 23 jours. Je n'ai pas acces au compte OVH, je ne peux pas verifier si le renouvellement automatique est actif. 2) Les 5 pages piliers n'ont AUCUNE image : le bloc de citation affiche un rond gris de 64 px a la place de sa photo. Il faut une photo d'elle. 3) 17 pages sur 20 n'ont toujours aucun bloc de sources ; chantier a etaler sur plusieurs cycles. 4) Dates : seules les 6 pages au contenu reellement modifie passent en septembre. Si elle veut tout le site en septembre comme au 01/08, c'est un mot.",
+      "controleQualiteBloquant": "Verdict initial du public-site-quality-controller : A CORRIGER, 68/100, 5 bloquants. Les 5 reverifies un par un a la source et TOUS reels : (B1) le bloc chiffre de /glp1 disait encore « masse maigre (principalement musculaire) », ma correction du matin etait incomplete ; (B2) /regeneration attribuait l'echographie aux 38 femmes sur 12 semaines alors que c'est un sous-groupe de 5 en split-face sur 8 semaines, et s'en servait comme etalon de la preuve humaine ; (B3) « premier GLP-1 oral approuve en avril 2026 » etait FAUX, le premier est le semaglutide oral du 22/12/2025, l'orforglipron etant le premier de la famille des petites molecules ; (B4) /regeneration n'a AUCUNE regle .article h3, mes 4 nouveaux titres seraient sortis colles au texte en police de corps ; (B5) « les oestrogenes stimulent la production d'histamine tout en reduisant la DAO » etait affirme sans reserve a 3 endroits alors que le mecanisme repose sur du cellulaire et de l'animal. Les 5 corriges et reverifies. 3 recommandations ECARTEES apres mesure : og:description (16 pages sur 17 la gardent volontairement differente), title contre H1 (les 17 pages sont ainsi), et les 4 H3 de /graisse (ils sont dans .levier-item, qui a sa regle).",
+      "correctionDeVirginie_01_09": "Virginie a conteste le cycle : « Il fallait ecrire un nouvel article pour le premier septembre, non ? Je n'ai pas eu de demande, de proposition, rien. » Mesure : dernier article publie le 01/08, soit 31 jours, cadence echue. La note qui disait « cadence suspendue » etait MA suspension en attente de SON arbitrage, et son argument (5 pages jamais explorees) etait mort depuis le 26/08. Elle a ensuite precise le process : le sujet se decide avec elle au moins une semaine avant. Corrige en 3 endroits : ETAPE 4 du SKILL du cycle, section 4 du SKILL monitoring, memoire rcf-site-public-loop. Tache 'choix-sujet-article-mensuel' creee au 24 de chaque mois.",
+      "articleSeptembre": "blog/melasma-traitement-hormonal-menopause.html. Sujet choisi par Virginie. L'article « peau et os » ecrit plus tot a ete SORTI du depot (conserve dans ~/Downloads/RCF-brouillons/) et devient le sujet propose pour octobre.",
+      "lecon_01_09": "Virginie m'a envoye un paragraphe « pour t'en inspirer » et je l'ai traite comme un texte a auditer, en lui reexpliquant sa propre regle editoriale. S'inspirer veut dire prendre la voix, l'angle et le vecu, puis ecrire. Pas passer le texte au crible de conformite."
+    },
+    {
+      "date": "2026-09-01 (soir)",
+      "type": "arbitrage editorial de Virginie",
+      "contenu": "Deux articles avaient ete ecrits pour septembre. Virginie tranche : SEPTEMBRE = melasma (blog/melasma-traitement-hormonal-menopause.html), et peau-os-collagene-menopause est REPORTE A OCTOBRE. Le melasma etait, a 20h30, non commite et raccorde nulle part (0 mention dans la carte du blog, le sitemap et llms.txt) : c'est lui qu'il faut raccorder. Peau-os, lui, est deja commite ET raccorde : il faut l'en retirer pour qu'il ne parte pas avec le lot de septembre.",
+      "statut": "PUBLIE ET VERIFIE EN PROD le 01/09/2026 a 21h45.",
+      "verificationPostPublication": "origin/main = c267012, 0 commit en attente. Article en 200, sitemap 21 URL, llms.txt 21 URL concordantes, carte du blog en premiere position sur 4. Photo servie en 115 Ko webp par le CDN, vignette de partage 98 Ko, source 199 Ko. JSON-LD : 3 blocs valides, 6 FAQ sur 6 concordantes avec leur miroir. 0 tiret cadratin, 0 virgule avant « et ». Incarnation en ligne : les 28 ans, l'absence de grossesse, le complexe, et les chiffres 30 % et 36 % tous presents. Les 3 liens d'offre en ligne (Le Systeme en prose, 27€ et candidature en bas). Lot du cycle verifie en prod : /glp1 ne dit plus « principalement du muscle » et porte la nuance de Neeland et le semaglutide oral de decembre 2025 ; identifiants Person presents sur les pages testees ; 0 virgule avant « et » sur 5 pages controlees ; liens entrants actifs depuis /collagene-peau, /shbg et /blog. Rendu mesure en ligne a 375 px et 1280 px : 0 debordement, 0 element hors ecran, 0 lien en bleu navigateur, image chargee, cadrage 50%/12%. Les 8 crawlers d'IA (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Googlebot, Bingbot, meta-externalagent) recoivent tous l'article complet en 200.",
+      "resteAFaire": "1) Deux fichiers lourds signales a Virginie le 01/09, decision lui appartenant. 2) Mesurer dans 4 semaines si l'article prend des impressions, et sur quelles requetes."
+    }
+  ],
+  "constatsSurveillance_2026-07-29": {
+    "sain": "19/19 pages en 200, 0 lien casse (24 testes), 0 image cassee, 0 image sans alt, canonicals correctes, 1 H1 par page, descriptions 136-154 car., aucun doublon title/desc, sitemap coherent, aucune page orpheline, 8 crawlers IA servis en 200, certificat TLS valide jusqu'au 10/10/2026.",
+    "erreurs": "5 pages avec 2 blocs JSON-LD Article aux titres CONTRADICTOIRES (perimenopause, resistance-insuline, collagene-peau, biohacking-feminin, muscle-longevite-feminine).",
+    "aOptimiser": "18/19 titles depassent 60 car. (tronques dans Google) ; 8 pages avec blocs Article redondants ; une seule og-image.jpg pour 16 pages ; /blog = 178 mots ; /blog/les-4-leviers-biologiques sans H2.",
+    "apresCorrections": "0 erreur, 0 point a optimiser (mesure a 06h29 UTC apres deploiement). Reste hors perimetre du monitoring : aucun acces Google Search Console, donc l'indexation reelle et les requetes ne sont pas verifiables ; le mecanisme d'ouverture d'Issue n'a jamais ete exerce en conditions reelles faute d'erreur."
+  },
+  "auditProgress": {
+    "auditInitialComplet": "2026-06-28",
+    "note": "Audit initial complet realise. Corrections publiees le 2026-06-28. Audit a poursuivre progressivement chaque cycle.",
+    "frontiere_gratuit_payant": "verifiee 2026-06-28 : 0 fuite, PRET"
+  },
+  "regles": "Rien n'est publie sur main avant le mot 'publie' de Virginie. Deploiement = git push main (Netlify auto via gh). Aucun jeton Netlify. Vouvoiement strict.",
+  "collision_2026_08_01": {
+    "quoi": "Les taches 'cycle-editorial-mensuel' et 'monitoring-site-public-vdck' (section 4, rattrapage) ont execute le MEME cycle en parallele, sur le meme depot, le meme matin.",
+    "cause": "Condition de declenchement identique (date >= nextPlanned ET lastCycleMonth != mois), et aucune des deux ne reserve le cycle avant de travailler : lastCycleMonth n'est ecrit qu'a la fin.",
+    "risque": "Se reproduira le 1er de chaque mois. Des audits ont lu des fichiers pendant qu'ils etaient reecrits, produisant deux fausses alertes (sitemap en conflit, carte blog absente) dementies 3 minutes plus tard.",
+    "correctifPropose": "1) Dans monitoring-site-public-vdck/SKILL.md section 4 : passer '>= nextPlanned' a '> nextPlanned' pour que le rattrapage ne se declenche jamais le jour J. 2) Ajouter un champ 'cycleEnCours' (tache, sessionId, debutISO, expireISO) ecrit AU DEBUT du cycle et lu par les deux taches avant toute ecriture.",
+    "statut": "APPLIQUE ET VERIFIE le 2026-08-02 a 08h17 : les deux SKILL.md portent desormais le verrou 'cycleEnCours', monitoring-site-public-vdck est passe de '>=' a '>' (le jour J appartient a cycle-editorial-mensuel, le veilleur n'est qu'un filet a partir du lendemain), et le champ cycleEnCours existe ici, a null. Verifie en relisant les deux fichiers a la source, pas de memoire. LIMITE CONNUE : ce fichier n'est PAS versionne (.gitignore), le verrou ne coordonne donc que des taches tournant sur le Mac. Si un jour le cycle passe dans GitHub Actions, le verrou ne le verra pas.",
+    "verifieLe": "2026-08-02"
+  },
+  "cycleEnCours": null,
+  "optimisationQuotidienne": {
+    "pose": "2026-08-02",
+    "pourquoi": "Constat de Virginie : la routine du matin se contentait de verifier l'absence d'erreur, ce qui est un detecteur de panne et non un travail d'optimisation. Aucun controle de maillage n'existait nulle part, et seo-geo.py ne tournait que le lundi, dans le cloud, sans que la routine du Mac ne le lance jamais.",
+    "ajoute": "automation/maillage.py (neuf) ; section 5 du SKILL.md monitoring-site-public-vdck ; maillage branche dans le job seo du workflow, calcul quotidien, email hebdo ; correctif du seuil de mots dans seo-geo.py (bug shbg). | 02/08 : audit-hebdo.py branche le lundi dans le workflow, les 3 rapports fusionnes en UN email hebdomadaire.",
+    "nonPousse": "PERIME, corrige le 03/08/2026 apres mesure : ces fichiers SONT pousses. Verifie a la source ce jour-la (git ls-files, git status, comparaison main/origin) : automation/maillage.py, audit-hebdo.py, seo-geo.py et og-image.py sont suivis et presents sur main = origin/main = 41af613, arbre de travail propre. La note decrivait un etat du 02/08 08h30 qui a ete depasse le jour meme."
+  },
+  "cadenceArticles": {
+    "regle": "1 article par mois, PUBLIE le 1er. Jamais suspendue. Correction de Virginie du 01/09/2026, ses mots : « Je n'ai jamais dit qu'on suspendait la creation d'articles. C'est un article par mois, tous les premiers du mois. Donc forcement, il faut revenir vers moi, au moins une semaine avant, pour qu'on puisse decider et elaborer l'article qui sera publie le premier du mois. Sans ca, si tu me dis le premier du mois qu'il faut publier un article, on ne va pas y arriver. »",
+    "process": "Le 24 du mois : tache 'choix-sujet-article-mensuel', 3 sujets argumentes + demande de la photo, decision ecrite dans le champ sujetArticleValide. Le 1er : 'cycle-editorial-mensuel' LIT cette decision, il n'invente plus de sujet.",
+    "poseLe": "2026-09-01"
+  },
+  "sujetArticleValide": {
+    "mois": "2026-09",
+    "sujet": "Melasma et traitement hormonal",
+    "titre": "Melasma et traitement hormonal : ce qu'on ne vous dit pas",
+    "fichier": "blog/melasma-traitement-hormonal-menopause.html",
+    "photo": "NON FOURNIE - Virginie la donne, ne jamais publier avec un placeholder",
+    "valideLe": "2026-09-01",
+    "decidePar": "Virginie directement, en conversation le 01/09/2026 au soir (pas via la tache du 24, qui n'existait pas encore)"
+  },
+  "sujetReservePourOctobre": {
+    "mois": "2026-10",
+    "sujet": "Peau et os : le collagene que vous perdez des deux cotes",
+    "fichier": "blog/peau-os-collagene-menopause.html",
+    "etat": "ECRIT (2231 mots) mais SUPPRIME de la branche cycle-2026-09 par le commit 994f586 du 01/09, qui a bascule le lot sur le melasma. Le fichier n'existe plus ni sur le disque ni dans HEAD. Il n'est PAS perdu : il vit dans l'historique git.",
+    "aFaireAvantOctobre": "1) restaurer le fichier avec la commande ci-dessus ; 2) le rebrancher dans blog/index.html, sitemap.xml et llms.txt ; 3) obtenir sa photo de couverture aupres de Virginie ; 4) reverifier que ses sources d'aout n'ont pas vieilli.",
+    "decidePar": "Virginie, 01/09/2026 : « Ce mois ci septembre, il y aura l'article sur le melasma. L'autre article, on le reporte a octobre. »",
+    "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."
+  },
+  "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite."
+}
