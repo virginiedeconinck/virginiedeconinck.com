@@ -46,8 +46,6 @@ RATIO_TEXTE_MIN = 10      # % de texte dans le HTML. Sous 10, Google lit une pag
 SIMILARITE_MAX = 0.70     # au-dela, deux pages se cannibalisent sur la meme requete
 POIDS_PAGE_MAX = 900      # Ko transferes pour une page entiere, ressources comprises
 TLS_JOURS_MIN = 21
-DOMAINE_JOURS_MIN = 45   # large : un renouvellement de domaine se regle a la main,
-                         # chez le registrar, et peut demander plusieurs jours
 
 erreurs, alertes, infos = [], [], []
 def ERREUR(cat, msg): erreurs.append((cat, msg))
@@ -158,18 +156,20 @@ def controle_socle():
                     for v in e.get("vcardArray", [[], []])[1] if v[0] == "fn"), "?")
         INFO(f"nom de domaine valide encore {jours} jours "
              f"(expire le {fin:%d/%m/%Y}, registrar {reg})")
-        # Deux niveaux volontairement, pour ne pas crier au loup pendant un mois.
-        # Le renouvellement automatique OVH se declenche dans les jours qui
-        # precedent l'echeance : tant qu'on est loin, une simple ligne dans le
-        # rapport suffit. Une Issue ne s'ouvre que sous 14 jours, la ou un
-        # renouvellement qui n'a PAS eu lieu devient un vrai danger.
-        if jours < 14:
+        # UN SEUL niveau, et c'est voulu. Regle posee par Virginie le 01/09/2026 :
+        # le domaine est en RENOUVELLEMENT AUTOMATIQUE chez OVH, il n'expire pas,
+        # et le lui rappeler chaque jour est du bruit pur. Ses mots : "GP de
+        # renouvellement, rien n'expire. Donc arretez de me le dire tous les
+        # jours, j'en ai ras-le-bol." La date reste mesuree et sort dans
+        # "Perimetre couvert", ou elle ne derange personne.
+        # Seuil a 3 jours et non 14 : OVH renouvelle dans la semaine qui precede
+        # l'echeance, un seuil a 14 jours rouvrirait exactement le meme bruit une
+        # semaine plus tard. A 3 jours, ce n'est plus une precaution, c'est un
+        # incident : le renouvellement automatique n'a pas eu lieu.
+        if jours < 3:
             ERREUR("socle", f"le NOM DE DOMAINE expire dans {jours} jours "
                             f"(le {fin:%d/%m/%Y}, chez {reg}) : le renouvellement "
                             f"automatique n'a pas eu lieu, le site entier va tomber")
-        elif jours < DOMAINE_JOURS_MIN:
-            ALERTE("socle", f"nom de domaine a renouveler dans {jours} jours "
-                            f"(le {fin:%d/%m/%Y}, chez {reg})")
     except Exception as e:
         ALERTE("socle", f"controle du nom de domaine impossible : {e}")
 
