@@ -75,6 +75,38 @@ MOTS_VIDES = {
 # page : SHBG, NAD, GLP-1 sont au contraire les termes les plus distinctifs du site.
 LONGUEUR_MIN_TERME = 5
 
+# CONTEXTES TROMPEURS. Un mot tire d'une adresse peut exister dans le francais
+# courant avec un tout autre sens : le trouver dans une phrase ne prouve donc pas
+# que la phrase parle de la page cible. Sans ce garde-fou, le rapport propose un
+# CONTRESENS, et il le repropose chaque mois tant que le moteur n'apprend rien.
+# Mesure : le 02/08/2026 le rapport proposait de lier « l'entrainement en
+# RESISTANCE » (de la musculation) vers /resistance-insuline. Ecarte a la main.
+# Le 01/09/2026, un mois plus tard, il proposait exactement la meme chose, parce
+# que la correction n'avait ete faite que dans le rapport, jamais dans le code.
+# Meme famille : « reveils NOCTURNES », dans une liste de symptomes, propose vers
+# un article sur la glycemie nocturne et la peau.
+# Regle : le terme ne compte pas s'il apparait dans l'une de ces expressions.
+CONTEXTES_TROMPEURS = {
+    "resistance": ("entrainement en resistance", "entrainement de resistance",
+                   "exercice en resistance", "exercices en resistance",
+                   "travail en resistance", "resistance musculaire",
+                   "bandes de resistance"),
+    "nocturne": ("reveils nocturnes", "reveil nocturne", "sueurs nocturnes",
+                 "insomnies nocturnes"),
+}
+
+
+def terme_present(terme, texte):
+    """Le terme apparait-il AILLEURS que dans un contexte trompeur ?
+
+    On efface d'abord les expressions qui detournent le mot, puis on cherche.
+    Effacer plutot que compter evite le faux negatif : une page qui emploie le
+    mot deux fois, une fois a tort et une fois a raison, reste eligible.
+    """
+    for expr in CONTEXTES_TROMPEURS.get(terme, ()):
+        texte = texte.replace(expr, " ")
+    return terme in texte
+
 # GARDE-FOUS DE DENSITE. Un maillage qui part dans tous les sens est pire que pas
 # de maillage : la page devient un annuaire, la lecture casse, et Google dilue le
 # poids entre trop de sorties. Mesure du site le 02/08/2026 : 29 261 mots pour 219
@@ -165,6 +197,26 @@ def corps_utile(brut):
     return re.sub(r'(?is)<(script|style|nav|footer|head)\b[^>]*>.*?</\1\s*>', " ", brut)
 
 
+def corps_liable(brut):
+    """Le corps ou l'on a le droit d'aller CHERCHER une ancre.
+
+    Plus etroit que corps_utile : on retire en plus les citations de Virginie
+    (`div.highlight`, `blockquote`) ET son bloc de voix a la premiere personne,
+    repere par le commentaire `<!-- VOICE INTRO -->` : c'est sa parole, pas de
+    la prose d'article. Y planter un lien casse la voix du texte et se voit.
+    Mesure du 02/08/2026 : le rapport proposait de poser un lien dans un
+    temoignage, ecarte a la main ; le 01/09/2026 il proposait « ma glycemie et ma
+    recuperation », tire de la citation de /muscle-longevite-feminine. Ecarte a la
+    main une deuxieme fois, faute d'avoir corrige le moteur la premiere.
+    """
+    sans_voix = re.sub(r'(?is)<!--\s*VOICE INTRO\s*-->.*?</section\s*>', " ",
+                       corps_utile(brut))
+    sans_cit = re.sub(
+        r'(?is)<div[^>]*class="[^"]*\bhighlight\b[^"]*"[^>]*>.*?</div\s*>',
+        " ", sans_voix)
+    return re.sub(r'(?is)<(blockquote)\b[^>]*>.*?</\1\s*>', " ", sans_cit)
+
+
 def texte_seul(s):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s))).strip()
 
@@ -206,6 +258,10 @@ def collecte():
             "url": u,
             "titre": texte_seul(h1[0]) if h1 else "",
             "texte": sansaccent(txt),
+            # Texte ou l'on a le droit de CHERCHER une ancre : citations retirees.
+            # Distinct de "texte", qui sert au comptage de mots et doit rester
+            # comparable d'un mois sur l'autre.
+            "texte_liable": sansaccent(texte_seul(corps_liable(brut))),
             "mots": len(txt.split()),
             "sortants": sortants,
         }
@@ -377,7 +433,8 @@ def analyse(jours):
         for source, p_src in pages.items():
             if source == cible or source in deja:
                 continue
-            trouves = [m for m in mots if m in p_src["texte"]]
+            trouves = [m for m in mots
+                       if terme_present(m, p_src["texte_liable"])]
             if trouves:
                 # Une source qui recoit deja du trafic transmet davantage qu'une
                 # page que personne ne visite : elle passe en premier.
