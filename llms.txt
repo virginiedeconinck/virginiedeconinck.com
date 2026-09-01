@@ -8,7 +8,7 @@
 - [À propos](https://virginiedeconinck.com/a-propos): Parcours de Virginie Deconinck et philosophie de la méthode.
 - [Périménopause](https://virginiedeconinck.com/perimenopause): Symptômes biologiques réels, mécanismes hormonaux, résistance à l'insuline et inflammaging.
 - [Résistance à l'insuline](https://virginiedeconinck.com/resistance-insuline): Causes hormonales, lien avec la prise de poids et le vieillissement cutané.
-- [SHBG et hormones actives](https://virginiedeconinck.com/shbg-hormones-actives-femme): La protéine hépatique qui décide quelle part des œstrogènes et de la testostérone est réellement active, et son lien avec l'insuline et la périménopause.
+- [SHBG et hormones actives](https://virginiedeconinck.com/shbg-hormones-actives-femme): La protéine hépatique qui décide quelle part des œstrogènes et de la testostérone est réellement active et son lien avec l'insuline et la périménopause.
 - [Collagène et peau](https://virginiedeconinck.com/collagene-peau): Déclin du collagène, glycation, fascias et rôle des œstrogènes. Explique aussi pourquoi la barrière cutanée devient plus réactive aux soins après 40 ans (appauvrissement en céramides lié à la chute de l'œstradiol) et quelle protéine est réellement en jeu dans le renouvellement de la peau (collagène de type I, élastine, collagène XVII).
 - [Biohacking féminin](https://virginiedeconinck.com/biohacking-feminin): Ce qui marche et ce qui dérègle quand on applique à une biologie féminine des protocoles pensés pour des hommes, après 35 ans.
 - [Muscle et longévité féminine](https://virginiedeconinck.com/muscle-longevite-feminine): Le muscle comme organe endocrinien, myokines, sarcopénie et levier de longévité.
@@ -20,12 +20,12 @@
 - [Peptides et longévité féminine](https://virginiedeconinck.com/peptides-longevite-feminine): Mécanisme biologique des peptides et ce que la recherche documente réellement.
 - [GLP-1 et périménopause](https://virginiedeconinck.com/glp1-femmes-perimenopause): GLP-1, perte de poids et enjeu de préservation de la masse musculaire chez la femme.
 - [Âge biologique vs âge chronologique](https://virginiedeconinck.com/age-biologique-age-chronologique): Horloges épigénétiques et facteurs qui influencent le vieillissement biologique.
-- [Régénération cellulaire](https://virginiedeconinck.com/regeneration-cellulaire): Les quatre mécanismes réels (autophagie, cellules sénescentes, mitochondries, renouvellement tissulaire), pourquoi ils ralentissent en transition hormonale, et le niveau de preuve réel des soins dits « régénérant cellulaire » : ce qui est démontré chez l'humain, ce qui s'arrête à l'animal, ce qui ne dépasse pas la culture cellulaire.
+- [Régénération cellulaire](https://virginiedeconinck.com/regeneration-cellulaire): Les quatre mécanismes réels (autophagie, cellules sénescentes, mitochondries, renouvellement tissulaire), pourquoi ils ralentissent en transition hormonale et le niveau de preuve réel des soins dits « régénérant cellulaire » : ce qui est démontré chez l'humain, ce qui s'arrête à l'animal, ce qui ne dépasse pas la culture cellulaire.
 
 ## Blog
 
 - [Blog](https://virginiedeconinck.com/blog/): Articles de fond sur la biologie féminine et la longévité.
-- [Mélasma et traitement hormonal](https://virginiedeconinck.com/blog/melasma-traitement-hormonal-menopause): Pourquoi un mélasma calmé depuis des années peut se réveiller au démarrage d'un traitement hormonal, ce que les œstrogènes font aux mélanocytes, et pourquoi le lien entre mélasma et traitement hormonal de la ménopause reste très peu étudié.
+- [Mélasma et traitement hormonal](https://virginiedeconinck.com/blog/melasma-traitement-hormonal-menopause): Pourquoi un mélasma calmé depuis des années peut se réveiller au démarrage d'un traitement hormonal, ce que les œstrogènes font aux mélanocytes et pourquoi le lien entre mélasma et traitement hormonal de la ménopause reste très peu étudié.
 - [Estrobolome et microbiote](https://virginiedeconinck.com/blog/estrobolome-microbiote-femme): L'ensemble de bactéries intestinales qui régule la recirculation des œstrogènes (bêta-glucuronidase, recirculation entéro-hépatique) et son lien avec la périménopause, l'insuline et l'inflammaging.
 - [Glycémie nocturne et peau](https://virginiedeconinck.com/blog/glycemie-nocturne-peau): Comment la glycémie nocturne influence la glycation du collagène.
 ## À propos
