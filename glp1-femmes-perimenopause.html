@@ -191,6 +191,12 @@
     .footer-links a:hover{color:var(--accent);}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
+    .sources{margin-top:56px;padding-top:28px;border-top:1px solid var(--rule);}
+    .sources-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+    .sources ul{list-style:none;}
+    .sources ul li{font-size:13px;line-height:1.8;color:var(--ink-light);margin-bottom:12px;padding-left:18px;position:relative;}
+    .sources li::before{content:"·";position:absolute;left:0;color:var(--accent);font-weight:bold;}
+    .sources li em{font-style:italic;}
     @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:0 24px 60px;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.stat-row{grid-template-columns:1fr;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
   
     /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
@@ -310,7 +316,7 @@
               <p class="stat-label">du poids perdu</p>
             </div>
             <div class="stat-cell stat-cell-text">
-              <p>Part du poids perdu avec les GLP-1 qui peut provenir de la masse maigre (principalement musculaire) selon les patients et les molécules. Source : <em>Diabetes, Obesity and Metabolism</em>, 2024.</p>
+              <p>Part du poids perdu avec les GLP-1 qui peut provenir de la masse maigre selon les patients et les molécules. La masse maigre inclut le muscle, mais aussi les organes, l'os et les liquides. Source : <em>Diabetes, Obesity and Metabolism</em>, 2024.</p>
             </div>
           </div>
 
@@ -365,8 +371,18 @@
           <h2>Ce que la recherche <em>développe</em></h2>
           <p>La génération suivante de molécules dans cette famille cherche à répondre à cette problématique en ciblant simultanément plusieurs récepteurs, avec l'objectif d'une perte de poids mieux préservatrice de la masse musculaire. Le rétatrutide en est le chef de file : son premier essai de phase 3, mené sur plus de deux mille participants, a livré ses résultats principaux en mai 2026, avec une perte de poids moyenne qui dépasse ce qu'on connaissait jusqu'ici. La molécule n'est pas approuvée à ce jour.</p>
           <p>Le point important pour ce qui nous occupe : ces résultats portent sur le poids total. Les données de composition corporelle, c'est-à-dire précisément ce qui a été perdu de graisse et ce qui a été perdu de masse maigre, n'ont pas encore été publiées. Il reste donc trop tôt pour conclure à un avantage musculaire établi, et c'est exactement le genre d'annonce où l'écart entre le chiffre de perte de poids et la question du muscle se creuse.</p>
-          <p>Autre évolution qui change la donne pratique : la famille n'est plus uniquement injectable. Un premier agoniste du GLP-1 par voie orale a été approuvé aux États-Unis en avril 2026 pour la prise en charge du surpoids et de l'obésité. Le changement est celui de l'accès, pas celui du mécanisme : la question de ce qu'il advient du muscle se pose dans les mêmes termes, qu'on avale la molécule ou qu'on se l'injecte.</p>
+          <p>Autre évolution qui change la donne pratique : la famille n'est plus uniquement injectable. Le sémaglutide par voie orale a été approuvé aux États-Unis en décembre 2025 pour la gestion du poids, et l'orforglipron a suivi en avril 2026, premier de la famille des petites molécules à passer par voie orale. Le changement est celui de l'accès, pas celui du mécanisme : la question de ce qu'il advient du muscle se pose dans les mêmes termes, qu'on avale la molécule ou qu'on se l'injecte.</p>
           <p>Ce domaine évolue rapidement. La direction est encourageante : reconnaître que le poids perdu n'équivaut pas à la graisse perdue, et que préserver le muscle n'est pas optionnel mais central.</p>
+        </div>
+
+        <div class="sources reveal">
+          <p class="sources-label">Sources</p>
+          <ul>
+            <li>Neeland IJ, Linge J, Birkenfeld AL, <em>Changes in lean body mass with glucagon-like peptide-1-based therapies and mitigation strategies</em>, Diabetes, Obesity and Metabolism, 2024. DOI 10.1111/dom.15728. Les auteurs écrivent que la masse maigre n'est pas la masse musculaire, puisqu'elle comprend aussi les organes, l'os, les liquides et l'eau du tissu adipeux, et que la baisse de volume musculaire observée paraît proportionnée à la perte de poids obtenue.</li>
+            <li>Résultats principaux de l'essai de phase 3 TRIUMPH-1 sur le rétatrutide, communiqués le 21 mai 2026 : 2 339 participants, perte de poids moyenne de 28,3 % à 80 semaines à la dose la plus élevée. Molécule non approuvée à ce jour, données de composition corporelle non publiées.</li>
+            <li>Approbations de la Food and Drug Administration américaine : sémaglutide par voie orale pour la gestion du poids, décembre 2025 ; orforglipron, avril 2026, premier agoniste du GLP-1 par voie orale de la famille des petites molécules.</li>
+          </ul>
+          <p style="font-size:12px;line-height:1.7;color:var(--ink-light);margin-top:16px;font-style:italic;">À ce jour, il n'existe aucune étude dédiée aux femmes en périménopause ou en ménopause sous GLP-1. Les données citées ici portent sur des populations mixtes, non stratifiées par statut hormonal. C'est une lacune de la recherche, et il faut la connaître avant de lire un chiffre.</p>
         </div>
 
       </article>
