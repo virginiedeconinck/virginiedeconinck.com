@@ -28,10 +28,11 @@
     "description": "Votre microbiote intestinal abrite l'estrobolome, un ensemble de bactéries qui module la quantité d'œstrogènes réellement disponibles dans votre corps. Comprendre ce mécanisme éclaire la périménopause, le poids et la peau après 40 ans.",
     "author": {
       "@type": "Person",
+      "@id": "https://virginiedeconinck.com/#virginie",
       "name": "Virginie Deconinck",
       "url": "https://virginiedeconinck.com"
     },
-    "publisher": {"@type": "Person", "name": "Virginie Deconinck"},
+    "publisher": {"@type": "Person", "@id": "https://virginiedeconinck.com/#virginie", "name": "Virginie Deconinck"},
     "datePublished": "2026-08-01",
     "dateModified": "2026-08-01",
     "inLanguage": "fr",
@@ -70,32 +71,44 @@
   </script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Qu'est-ce que l'estrobolome, en une phrase ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "C'est l'ensemble des gènes bactériens de l'intestin capables d'agir sur les œstrogènes. Ce n'est ni un organe ni une bactérie précise : c'est une fonction, portée par une partie du microbiote, qui décide si un œstrogène déjà envoyé à l'élimination est évacué ou remis en circulation."}
-      },
-      {
-        "@type": "Question",
-        "name": "Peut-on faire analyser son estrobolome ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Il n'existe pas aujourd'hui d'analyse de routine qui mesure l'estrobolome en tant que tel et dont le résultat serait exploitable. Les tests de microbiote vendus au grand public décrivent une composition bactérienne, ce qui n'est pas la même chose qu'une activité enzymatique, et leur interprétation clinique reste très limitée."}
-      },
-      {
-        "@type": "Question",
-        "name": "L'estrobolome explique-t-il les symptômes de la périménopause ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Il en explique une partie, jamais la totalité. La cause première de la périménopause reste ovarienne. L'estrobolome intervient sur la modulation : à production ovarienne équivalente, deux femmes dont l'équilibre intestinal diffère n'ont pas la même quantité d'œstrogènes réellement en circulation. C'est un facteur d'amplification ou d'atténuation, pas le déclencheur."}
-      },
-      {
-        "@type": "Question",
-        "name": "Un probiotique suffit-il à corriger un estrobolome déséquilibré ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Non, et c'est le raccourci le plus fréquent. Un probiotique apporte quelques souches pour un temps limité, alors que l'estrobolome est une fonction portée par tout un écosystème, façonné en continu par votre alimentation, votre transit, votre sommeil et votre niveau d'inflammation. Aucune gélule ne remplace ce terrain, et c'est sur lui que le travail se fait."}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce que l'estrobolome, en une phrase ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "C'est l'ensemble des gènes bactériens de votre intestin capables d'agir sur les œstrogènes. Ce n'est ni un organe ni une bactérie précise : c'est une fonction, portée par une partie de votre microbiote, qui décide si un œstrogène déjà envoyé à l'élimination est évacué ou remis en circulation."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on faire analyser son estrobolome ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il n'existe pas aujourd'hui d'analyse de routine qui mesure l'estrobolome en tant que tel et dont le résultat serait exploitable pour décider quoi que ce soit. Les tests de microbiote vendus au grand public décrivent une composition bactérienne, ce qui n'est pas la même chose qu'une activité enzymatique et leur interprétation clinique reste très limitée. C'est une raison de plus de travailler le terrain plutôt que de courir après un chiffre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "L'estrobolome explique-t-il les symptômes de la périménopause ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il en explique une partie, jamais la totalité. La cause première de la périménopause reste ovarienne. L'estrobolome intervient sur la modulation : à production ovarienne équivalente, deux femmes dont l'équilibre intestinal diffère ne se retrouvent pas avec la même quantité d'œstrogènes réellement en circulation. C'est un facteur d'amplification ou d'atténuation, pas le déclencheur."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un probiotique suffit-il à corriger un estrobolome déséquilibré ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non et c'est le raccourci le plus fréquent. Un probiotique apporte quelques souches pour un temps limité, alors que l'estrobolome est une fonction portée par tout un écosystème, façonné en continu par votre alimentation, votre transit, votre sommeil et votre niveau d'inflammation. Aucune gélule ne remplace ce terrain et c'est sur lui que le travail se fait."
+      }
+    }
+  ]
+}
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -525,7 +538,7 @@
 
       <p style="font-size:12px;line-height:1.6;color:#888;font-style:italic;margin-top:18px;">Cet article est fourni à titre informatif et éducatif uniquement. Il ne constitue pas un avis médical et ne remplace pas une consultation avec un professionnel de santé.</p>
 
-      <p class="reveal">On parle beaucoup de la production d'œstrogènes : les ovaires, le cycle, leur déclin en périménopause. Mais il existe une étape dont presque personne ne parle, et qui détermine en grande partie la quantité d'œstrogènes réellement disponibles dans votre corps à un instant donné. Cette étape ne se joue ni dans les ovaires, ni dans le cerveau. Elle se joue dans votre intestin.</p>
+      <p class="reveal">On parle beaucoup de la production d'œstrogènes : les ovaires, le cycle, leur déclin en périménopause. Mais il existe une étape dont presque personne ne parle et qui détermine en grande partie la quantité d'œstrogènes réellement disponibles dans votre corps à un instant donné. Cette étape ne se joue ni dans les ovaires, ni dans le cerveau. Elle se joue dans votre intestin.</p>
 
       <p class="reveal">Plus précisément, dans un ensemble de bactéries que les chercheurs ont nommé l'<strong>estrobolome</strong>.</p>
 
@@ -533,19 +546,19 @@
 
       <p class="reveal">L'estrobolome désigne la collection des gènes bactériens de votre microbiote intestinal capables de métaboliser les œstrogènes. Ce n'est pas un organe ni une bactérie unique : c'est une fonction, portée par certaines familles microbiennes, qui agit comme un régulateur de la circulation des œstrogènes dans l'organisme.</p>
 
-      <p class="reveal">Autrement dit, deux femmes qui produisent la même quantité d'œstrogènes peuvent en avoir des taux circulants très différents, selon ce que leur microbiote en fait. Cette idée change la lecture classique de la santé hormonale féminine : les hormones ne sont pas seulement produites, elles sont aussi recyclées, et ce recyclage dépend de l'intestin.</p>
+      <p class="reveal">Autrement dit, deux femmes qui produisent la même quantité d'œstrogènes peuvent en avoir des taux circulants très différents, selon ce que leur microbiote en fait. Cette idée change la lecture classique de la santé hormonale féminine : les hormones ne sont pas seulement produites, elles sont aussi recyclées et ce recyclage dépend de l'intestin.</p>
 
       <div class="pull-quote reveal">
-        <p>Vos hormones ne sont pas seulement fabriquées. Elles sont recyclées, et c'est votre intestin qui tient ce levier.</p>
+        <p>Vos hormones ne sont pas seulement fabriquées. Elles sont recyclées et c'est votre intestin qui tient ce levier.</p>
       </div>
 
       <h2 class="reveal">Le mécanisme : <em>la recirculation entéro-hépatique</em></h2>
 
       <p class="reveal">Pour comprendre l'estrobolome, il faut suivre le trajet d'un œstrogène une fois qu'il a fait son travail. Le foie le prépare à être éliminé par un procédé appelé conjugaison : il y attache une molécule qui le rend inactif et hydrosoluble, prêt à être évacué par la bile vers l'intestin.</p>
 
-      <p class="reveal">C'est là que le microbiote entre en jeu. Certaines bactéries de l'estrobolome produisent une enzyme, la <strong>bêta-glucuronidase</strong>, capable de défaire ce travail du foie : elle « déconjugue » l'œstrogène, le réactive, et le rend de nouveau absorbable. L'hormone réactivée repasse alors dans la circulation au lieu d'être éliminée. Ce va-et-vient entre foie et intestin porte un nom : la <strong>recirculation entéro-hépatique</strong>.</p>
+      <p class="reveal">C'est là que le microbiote entre en jeu. Certaines bactéries de l'estrobolome produisent une enzyme, la <strong>bêta-glucuronidase</strong>, capable de défaire ce travail du foie : elle « déconjugue » l'œstrogène, le réactive et le rend de nouveau absorbable. L'hormone réactivée repasse alors dans la circulation au lieu d'être éliminée. Ce va-et-vient entre foie et intestin porte un nom : la <strong>recirculation entéro-hépatique</strong>.</p>
 
-      <p class="reveal">L'équilibre est subtil. Une activité de bêta-glucuronidase mesurée permet de réabsorber juste ce qu'il faut d'œstrogènes. Une activité trop forte ou trop faible déplace cet équilibre dans un sens ou dans l'autre, et c'est précisément là que se nichent une partie des dérèglements hormonaux féminins.</p>
+      <p class="reveal">L'équilibre est subtil. Une activité de bêta-glucuronidase mesurée permet de réabsorber juste ce qu'il faut d'œstrogènes. Une activité trop forte ou trop faible déplace cet équilibre dans un sens ou dans l'autre et c'est précisément là que se nichent une partie des dérèglements hormonaux féminins.</p>
 
       <h2 class="reveal">Quand l'équilibre <em>se dérègle</em></h2>
 
@@ -570,13 +583,13 @@
 
       <p class="reveal">Jusqu'ici, l'essentiel de ce que l'on savait sur l'estrobolome venait d'observations et de travaux mécanistiques. Une étape a été franchie en 2024 : un essai contrôlé randomisé, publié dans le <em>Journal of Medicinal Food</em>, a testé chez 111 femmes de 45 à 55 ans, en péri et postménopause, une formule de <strong>trois souches</strong> (<em>Levilactobacillus brevis</em> KABP052, <em>Lactiplantibacillus plantarum</em> KABP051 et <em>Pediococcus acidilactici</em> KABP021), sélectionnée pour son activité sur la bêta-glucuronidase. Sur douze semaines, le groupe traité a terminé avec un estradiol plus élevé que le groupe placebo (21,4 contre 13,2 pg/mL).</p>
 
-      <p class="reveal">C'est une première donnée clinique intéressante, à prendre pour exactement ce qu'elle est. L'essai déplace bien les taux d'œstrogènes. En revanche, les symptômes se sont améliorés dans les deux groupes, sans différence entre eux, et les auteurs écrivent noir sur blanc n'avoir trouvé aucune corrélation entre les taux d'œstrogènes et les symptômes de la ménopause. Autrement dit : le microbiote peut modifier un chiffre, cela ne veut pas encore dire qu'il modifie ce que vous ressentez. C'est précisément la nuance que le marketing saute, et c'est pour cela que je la garde.</p>
+      <p class="reveal">C'est une première donnée clinique intéressante, à prendre pour exactement ce qu'elle est. L'essai déplace bien les taux d'œstrogènes. En revanche, les symptômes se sont améliorés dans les deux groupes, sans différence entre eux et les auteurs écrivent noir sur blanc n'avoir trouvé aucune corrélation entre les taux d'œstrogènes et les symptômes de la ménopause. Autrement dit : le microbiote peut modifier un chiffre, cela ne veut pas encore dire qu'il modifie ce que vous ressentez. C'est précisément la nuance que le marketing saute et c'est pour cela que je la garde.</p>
 
       <h2 class="reveal">Estrobolome, insuline et <em>inflammaging</em></h2>
 
       <p class="reveal">L'estrobolome ne fonctionne pas en vase clos. Il s'inscrit dans un réseau où le métabolisme et l'inflammation dialoguent en permanence avec les hormones.</p>
 
-      <p class="reveal">D'un côté, les œstrogènes influencent la sensibilité à l'insuline : leur déséquilibre participe aux dérèglements glycémiques fréquents après 40 ans. De l'autre, la barrière intestinale, lorsqu'elle est fragilisée par une dysbiose, laisse passer des fragments bactériens qui entretiennent une inflammation chronique de bas grade, cet <a href="/inflammaging"><strong>inflammaging</strong> qui accélère le vieillissement tissulaire</a>. Œstrogènes, glucose et inflammation forment ainsi une boucle, et l'intestin se trouve à l'un de ses points de bascule.</p>
+      <p class="reveal">D'un côté, les œstrogènes influencent la sensibilité à l'insuline : leur déséquilibre participe aux dérèglements glycémiques fréquents après 40 ans. De l'autre, la barrière intestinale, lorsqu'elle est fragilisée par une dysbiose, laisse passer des fragments bactériens qui entretiennent une inflammation chronique de bas grade, cet <a href="/inflammaging"><strong>inflammaging</strong> qui accélère le vieillissement tissulaire</a>. Œstrogènes, glucose et inflammation forment ainsi une boucle et l'intestin se trouve à l'un de ses points de bascule.</p>
 
       <div class="pull-quote reveal">
         <p>L'intestin n'est pas un spectateur de votre équilibre hormonal. Il en est l'un des chefs d'orchestre.</p>
@@ -584,13 +597,13 @@
 
       <h2 class="reveal">Ce qui module <em>l'estrobolome</em></h2>
 
-      <p class="reveal">L'estrobolome n'est pas figé. Contrairement au patrimoine génétique, le microbiote se remodèle tout au long de la vie, en réponse à un environnement biologique. Plusieurs grands facteurs orientent son équilibre, et donc la façon dont il gère vos œstrogènes.</p>
+      <p class="reveal">L'estrobolome n'est pas figé. Contrairement au patrimoine génétique, le microbiote se remodèle tout au long de la vie, en réponse à un environnement biologique. Plusieurs grands facteurs orientent son équilibre et donc la façon dont il gère vos œstrogènes.</p>
 
       <ol class="reveal prose-list">
         <li><strong>La diversité microbienne :</strong> c'est le marqueur le plus robuste d'un estrobolome fonctionnel. Plus l'écosystème intestinal est varié, plus la régulation de la recirculation des œstrogènes est stable.</li>
         <li><strong>Les fibres alimentaires :</strong> elles nourrissent les bactéries qui maintiennent l'équilibre de l'enzyme bêta-glucuronidase et soutiennent l'intégrité de la barrière intestinale.</li>
         <li><strong>Le transit :</strong> le rythme d'élimination influence directement la fenêtre pendant laquelle les œstrogènes conjugués peuvent être réactivés avant d'être évacués.</li>
-        <li><strong>Le stress chronique et le sommeil :</strong> ils modifient la composition du microbiote et la perméabilité de la barrière intestinale, et pèsent donc indirectement sur tout l'équilibre œstrogénique.</li>
+        <li><strong>Le stress chronique et le sommeil :</strong> ils modifient la composition du microbiote et la perméabilité de la barrière intestinale et pèsent donc indirectement sur tout l'équilibre œstrogénique.</li>
       </ol>
 
       <p class="reveal">Ces leviers agissent ensemble, jamais isolément. C'est l'une des raisons pour lesquelles une approche fragmentée de la santé hormonale féminine échoue souvent : on ne corrige pas un estrobolome en ciblant un seul paramètre, mais en comprenant le terrain dans son ensemble.</p>
@@ -599,7 +612,7 @@
 
       <p class="reveal">Comprendre l'estrobolome, c'est cesser de voir la périménopause comme une simple panne ovarienne. C'est réaliser qu'une partie de votre équilibre hormonal se joue chaque jour dans votre intestin, à travers un dialogue permanent entre vos bactéries, votre foie et vos hormones.</p>
 
-      <p class="reveal">Cette lecture ouvre une perspective différente sur le vieillissement féminin : celle d'une biologie en réseau, où l'intestin, le métabolisme, l'inflammation et les hormones ne sont pas des chapitres séparés, mais les facettes d'un même système. C'est exactement à cette échelle que se pense la longévité féminine, et c'est là que se trouvent les véritables leviers.</p>
+      <p class="reveal">Cette lecture ouvre une perspective différente sur le vieillissement féminin : celle d'une biologie en réseau, où l'intestin, le métabolisme, l'inflammation et les hormones ne sont pas des chapitres séparés, mais les facettes d'un même système. C'est exactement à cette échelle que se pense la longévité féminine et c'est là que se trouvent les véritables leviers.</p>
 
       <h2 class="reveal">Questions <em>fréquentes</em></h2>
 
@@ -610,7 +623,7 @@
 
       <div class="faq-bloc reveal">
         <h3>Peut-on faire analyser son estrobolome ?</h3>
-        <p>Il n'existe pas aujourd'hui d'analyse de routine qui mesure l'estrobolome en tant que tel et dont le résultat serait exploitable pour décider quoi que ce soit. Les tests de microbiote vendus au grand public décrivent une composition bactérienne, ce qui n'est pas la même chose qu'une activité enzymatique, et leur interprétation clinique reste très limitée. C'est une raison de plus de travailler le terrain plutôt que de courir après un chiffre.</p>
+        <p>Il n'existe pas aujourd'hui d'analyse de routine qui mesure l'estrobolome en tant que tel et dont le résultat serait exploitable pour décider quoi que ce soit. Les tests de microbiote vendus au grand public décrivent une composition bactérienne, ce qui n'est pas la même chose qu'une activité enzymatique et leur interprétation clinique reste très limitée. C'est une raison de plus de travailler le terrain plutôt que de courir après un chiffre.</p>
       </div>
 
       <div class="faq-bloc reveal">
@@ -620,7 +633,7 @@
 
       <div class="faq-bloc reveal">
         <h3>Un probiotique suffit-il à corriger un estrobolome déséquilibré ?</h3>
-        <p>Non, et c'est le raccourci le plus fréquent. Un probiotique apporte quelques souches pour un temps limité, alors que l'estrobolome est une fonction portée par tout un écosystème, façonné en continu par votre alimentation, votre transit, votre sommeil et votre niveau d'inflammation. Aucune gélule ne remplace ce terrain, et c'est sur lui que le travail se fait.</p>
+        <p>Non et c'est le raccourci le plus fréquent. Un probiotique apporte quelques souches pour un temps limité, alors que l'estrobolome est une fonction portée par tout un écosystème, façonné en continu par votre alimentation, votre transit, votre sommeil et votre niveau d'inflammation. Aucune gélule ne remplace ce terrain et c'est sur lui que le travail se fait.</p>
       </div>
 
     </div>
