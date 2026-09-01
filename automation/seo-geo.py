@@ -259,6 +259,25 @@ def analyse(jours):
         f"{r['impressions']:>5} impr. {r['clicks']:>3} clics  CTR {r['ctr']*100:>5.2f}%  "
         f"pos {r['position']:>5.1f}  {c}" for r, c in froides[:12]] or ["  aucune"]))
 
+    # Sur QUOI ces pages sortent-elles. Ajoute le 01/09/2026 : sans cette ventilation
+    # le rapport disait "reecrivez le titre" sans dire a quelle demande ce titre doit
+    # repondre, donc la seule facon de suivre le conseil etait de deviner. La donnee
+    # etait deja recuperee (req_page, dimensions query+page), elle n'etait pas affichee.
+    if froides:
+        detail = []
+        for r, c in froides[:6]:
+            qs = sorted([q for q in req_page if chemin(q['keys'][1]) == c],
+                        key=lambda q: -q['impressions'])[:5]
+            detail.append(f"{c} :")
+            detail += [f"     {q['impressions']:>4} impr. {q['clicks']:>3} clics  "
+                       f"pos {q['position']:>5.1f}  {q['keys'][0]}" for q in qs] or ["     (aucune requete isolee)"]
+            detail.append("")
+        ajoute(("SUR QUOI CES PAGES SORTENT (pour ecrire le bon titre)", [
+            "Le titre doit repondre a CES demandes-la, pas a une idee du sujet de la page.",
+            "Une requete de marque (le nom de Virginie) ne compte pas : sur celle-la le clic",
+            "va legitimement a l'accueil, et un CTR faible n'est pas un defaut.",
+            ""] + detail))
+
     # ---------- 4. MATIERE GEO : LES QUESTIONS ----------
     questions = [r for r in req if any(m in r['keys'][0].lower() for m in MOTS_QUESTION)]
     questions.sort(key=lambda r: -r['impressions'])
