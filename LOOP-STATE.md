@@ -2,7 +2,7 @@
 
 > ✅ **CYCLE DU 2026-09-01 PUBLIÉ.** Article « Mélasma et traitement hormonal : ce qu'on ne vous
 > dit pas » en ligne, vérifié à 21h46 (HTTP 200, sitemap à 21 URLs, `index, follow`, 0 lien cassé).
-> Virginie a demandé son indexation dans Search Console le soir même. `origin/main` = `27e7a72`.
+> Virginie a demandé son indexation dans Search Console le soir même. `origin/main` = **`04ab13c`** (mesure du 02/09/2026 07h25 ; ce fichier portait `27e7a72`, qui est le commit d'AVANT celui qui l'a versionné lui-même).
 > - **PÉRIMÉ, corrigé par Virginie le 01/09/2026 au soir : la cadence N'A JAMAIS été suspendue.**
 >   Ce fichier portait « cadence suspendue depuis le 17/08 » : c'était MA suspension en attendant
 >   SON arbitrage, jamais sa décision, et je l'ai lue comme un acquis. Ses mots : « C'est un article
