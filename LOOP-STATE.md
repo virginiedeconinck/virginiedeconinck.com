@@ -215,16 +215,34 @@ Voir la mémoire `blog-article-photo-rule`.
   (02/08) et HEAD : memes 4 DOI, memes effectifs, memes revues. La verification du 02/08 tient
   donc toujours. **Le bon controle n'est pas « le fichier a-t-il bouge » mais « le bloc de
   references a-t-il bouge »** : diff cible sur les lignes DOI, pas `git log` du fichier.
-- ⚠️ **Le nettoyage « virgule avant et » du 01/09 (`e53c41d`) a ete fait EN LOT sur 195 cas, et
-  sa regle prescrit DEUX remedes dont un seul a ete applique.** Mots de Virginie dans
-  `rcf-regles-redaction.md` : « soit on retire simplement la virgule, soit, quand la phrase
-  devient longue, on coupe avec un point. » Le lot n'a fait que retirer. Mesure du 07/09 :
-  **73 retraits sur 230** tombent la ou les deux propositions ont des sujets differents ou la ou
-  la virgule fermait une incise, dans 19 fichiers. Exemple lu sur la page en ligne :
-  « C'est une conversation, pas une liste et elle se tient avec votre dermatologue ». La regle
-  de Virginie n'est PAS en cause et ne se rediscute pas : c'est la seconde branche de SA regle,
-  le point, qui n'a jamais ete appliquee hors de l'article du jour. Repartition : shbg 12,
-  melasma 11, estrobolome 10, regeneration 8, collagene 6, le reste 1 a 4.
+- ⚠️ **CORRIGE le 07/09 a 07h30 : la note precedente sur le « nettoyage virgule avant et » etait
+  FAUSSE sur le fond ET citait une phrase inexistante.** Elle affirmait que 73 retraits etaient
+  fautifs « la ou les deux propositions ont des sujets differents ». Regle de Virginie relue a la
+  source (`rcf-regles-redaction.md`, 01/09), verbatim : « **La regle est absolue, y compris quand
+  la grammaire l'autoriserait (deux propositions a sujets differents)** ». Ces retraits sont donc
+  CORRECTS, il n'y a rien a defaire. Mesure du 07/09 : le lot `e53c41d` a touche **164 phrases**
+  sur 23 pages plus llms.txt (et non 195/230).
+  **La phrase donnee en exemple, « C'est une conversation, pas une liste et elle se tient avec
+  votre dermatologue », n'est PAS sur le site** : le mot « conversation » y apparait UNE fois, dans
+  la politique de confidentialite, sur un sujet sans rapport. Cette phrase est citee dans la
+  MEMOIRE comme un exemple que Virginie avait releve le 01/09, et elle a ete reecrite depuis. Le
+  passage precedent l'a lue dans la memoire et l'a annoncee « lue sur la page en ligne ».
+  **C'est la faute du substitut prise en flagrant delit : lire une note et l'annoncer comme une
+  page chargee.**
+- ✅ **Ce qui reste vrai, et c'est le seul reste :** la seconde branche de la regle (« quand la
+  phrase devient longue, on coupe avec un point ») n'a pas ete appliquee. Mesure du 07/09 sur les
+  pages actuelles, avec les signes que Virginie ecrit elle-meme (enumeration de plus de trois
+  elements, deux « et » dans la meme phrase, chute en « pas ceci, pas cela ») : **8 phrases** de
+  30 mots et plus portent au moins deux de ces signes. 3 sur `/perimenopause`, 2 sur `/peptides`,
+  1 sur `/biohacking-feminin`, 1 sur l'article estrobolome, 1 sur la page RGPD (enumeration
+  juridique, noindex, a laisser). Chantier reel : **7 phrases**, pas 73.
+- ⚠️ **`/peptides-longevite-feminine` dit DEUX FOIS la meme chose** (verifie sur la page en ligne
+  le 07/09). « Le geste sous-cutane se ressemble, mais l'analogie ne va pas plus loin : l'insuline
+  est un medicament approuve, dose et controle, tandis que les peptides... » et, plus loin, « Le
+  geste sous-cutane ressemble a celui que les femmes diabetiques pratiquent pour l'insuline, mais
+  l'analogie s'arrete la : une insuline est un medicament approuve, dose et controle, alors que
+  les peptides... ». Meme comparaison, memes trois enjeux (purete, sterilite, dosage), deux fois.
+  A fusionner en un seul passage. Non corrige : en attente du mot de Virginie.
 
 ## Pour le prochain run (cycle de septembre 2026)
 
