@@ -162,7 +162,12 @@
 - **Convention fraîcheur** : harmoniser la date visible « Mis à jour en <mois> <année>», le
   `dateModified` du JSON-LD et le `lastmod` du sitemap. `datePublished` = première publication, à NE
   PAS changer. **Ne jamais toucher aux années dans les citations d'études.**
-- Page RGPD (`politique-de-confidentialite`) : volontairement HORS sitemap, reste indexable.
+- Page RGPD (`politique-de-confidentialite`) : hors sitemap ET en `noindex, follow`, depuis le
+  commit `b1e4658` du 31/07/2026, « Politique de confidentialite retiree de l'index ». **Cette ligne
+  disait « reste indexable » : c'etait FAUX**, mesure sur la page en ligne le 07/09/2026. La page
+  leviers `/blog/les-4-leviers-biologiques` est dans le meme cas (commit `4abaa18`, meme jour).
+  Ce sont les deux seules pages en `noindex` du site avec la 404. C'est VOULU : quand Search Console
+  signale « exclue par balise noindex », ne pas partir en chasse.
 
 ## Règle photos blog
 
@@ -190,6 +195,36 @@ Voir la mémoire `blog-article-photo-rule`.
 - Convention couverture blog : image **portrait ~4:5** (ex. 1122×1402),
   `<a class="card"><img src="/xxx.png" loading="lazy">`. Le blog accepte des photos
   **lifestyle/street-style** (validé par Virginie le 26/06/2026) : ne PAS les juger « hors charte ».
+
+## Mesures du 07/09/2026 (lundi)
+
+- **INDEXATION : les 21 URLs du sitemap sont « Envoyee et indexee ».** Mesure API `urlInspection`
+  du 07/09 a 07h, une par une, 21 sur 21, zero exception. Explorations les plus recentes :
+  `/muscle-longevite-feminine` le 06/09, `/` le 04/09, l'article melasma le 01/09 (jour de sa
+  publication). **Donc toute ligne « non indexee » de Search Console porte sur une URL HORS
+  sitemap, et les quatre cas sont voulus** : `virginiedck.netlify.app` (301 vers le vrai site,
+  verifie page par page le 07/09), la 404, `/politique-de-confidentialite` et
+  `/blog/les-4-leviers-biologiques` (noindex assume). Ne plus traiter ces lignes comme un defaut.
+- **`virginiedck.netlify.app` : rien a faire, c'est deja regle.** Il renvoie un 301 vers
+  `virginiedeconinck.com` sur la racine ET sur une page interne. Il n'y a donc aucun contenu
+  duplique servi a Google, seulement des redirections, ce qui est exactement la categorie
+  « Page avec redirection » de son email. `virginiedeconinck.netlify.app` (l'autre orthographe)
+  n'existe pas : 404.
+- **`/shbg` A BOUGE depuis le 02/08, contrairement a ce que dit le SKILL.** 4 commits (26/08 et
+  01/09). MAIS les 4 lignes de references sont **identiques a l'octet pres** entre `41af613`
+  (02/08) et HEAD : memes 4 DOI, memes effectifs, memes revues. La verification du 02/08 tient
+  donc toujours. **Le bon controle n'est pas « le fichier a-t-il bouge » mais « le bloc de
+  references a-t-il bouge »** : diff cible sur les lignes DOI, pas `git log` du fichier.
+- ⚠️ **Le nettoyage « virgule avant et » du 01/09 (`e53c41d`) a ete fait EN LOT sur 195 cas, et
+  sa regle prescrit DEUX remedes dont un seul a ete applique.** Mots de Virginie dans
+  `rcf-regles-redaction.md` : « soit on retire simplement la virgule, soit, quand la phrase
+  devient longue, on coupe avec un point. » Le lot n'a fait que retirer. Mesure du 07/09 :
+  **73 retraits sur 230** tombent la ou les deux propositions ont des sujets differents ou la ou
+  la virgule fermait une incise, dans 19 fichiers. Exemple lu sur la page en ligne :
+  « C'est une conversation, pas une liste et elle se tient avec votre dermatologue ». La regle
+  de Virginie n'est PAS en cause et ne se rediscute pas : c'est la seconde branche de SA regle,
+  le point, qui n'a jamais ete appliquee hors de l'article du jour. Repartition : shbg 12,
+  melasma 11, estrobolome 10, regeneration 8, collagene 6, le reste 1 a 4.
 
 ## Pour le prochain run (cycle de septembre 2026)
 
