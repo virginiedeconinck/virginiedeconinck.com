@@ -244,6 +244,44 @@ Voir la mémoire `blog-article-photo-rule`.
   les peptides... ». Meme comparaison, memes trois enjeux (purete, sterilite, dosage), deux fois.
   A fusionner en un seul passage. Non corrige : en attente du mot de Virginie.
 
+## Audit du lundi 07/09/2026 (run cloud 34109421105, 10h04 UTC)
+
+- **Site : 0 erreur, 0 point a optimiser.** 21 pages, 29 liens, 6 images, 8 crawlers IA en 200.
+- **Les 6 « formules de remplissage » sont 6 FAUX POSITIFS**, chaque phrase ouverte sur la page
+  en ligne. « Le muscle squelettique est bien plus qu'un tissu contractile », « Le collagene :
+  bien plus qu'une proteine de beaute » (c'est un H2), « bien plus qu'une liste appliquee telle
+  quelle » (comparatif normal), « au coeur de tout ce que je fais » (bloc de voix). **Ce detecteur
+  n'a jamais produit un seul vrai positif en 3 passages (17/08, 07/09).** A envisager de le
+  retirer du moteur plutot que de le relire chaque semaine.
+- **Les 3 DOI « non tranches (HTTP 429) » EXISTENT tous les trois**, reinterroges le 07/09 :
+  10.1111/j.1471-0528.1987.tb02338.x (Brincat, BJOG 1987, collagene cutane et menopause),
+  10.2337/dc23-1630 (Diabetes Care 2024), 10.3390/biom16081136 (Biomolecules 2026, DAO).
+  Le 429 de Crossref est passager, il ne dit rien sur la reference. **Piege d'outil rencontre en
+  chemin : le resume Crossref contient des caracteres de controle, `json.loads` echoue en mode
+  strict et fait croire a un DOI mort. Toujours parser avec `strict=False`.**
+- **Les 4 references de l'article melasma (01/09) confrontees a leur resume Europe PMC : justes.**
+  Les chiffres « 36,4 % a 75 % » et « jusqu'a 30 % persistent, parfois dix ans plus tard » sont
+  VERBATIM dans le resume de CCID.S488663. Les deux travaux IJMS disent bien ce que la page leur
+  fait dire, sur la bonne nature de preuve (revue, puis cellules et peau). **Une seule reserve :
+  la page attribue aux auteurs de DSS.0000000000005032 « les donnees se composent essentiellement
+  de cas rapportes » ; le resume public dit « poorly researched » et ne montre pas cette phrase.
+  Le fond est juste, l'attribution precise n'est pas verifiee.**
+- ⚠️ **HYPOTHESE FAUSSE, corrigee par la mesure : /histamine-perimenopause NE decroche PAS.**
+  Le rapport montrait la requete « histamine perimenopause » passant de la position 7.4 a 10.6 et
+  j'ai cru a une regression de la page. Mesure GSC semaine par semaine sur 8 semaines : la PAGE
+  tient entre 6.1 et 7.3 sans tendance, et ses impressions montent de 34 a 70. **Une position de
+  requete sur 11 impressions est du bruit ; seule la position de la PAGE se lit.**
+- **Les -16 % de clics ne sont pas un probleme de contenu.** Ils viennent de la requete de marque
+  « virginie deconinck », 94 -> 64 impressions. Les impressions de sujet, elles, montent de 19 %.
+- **Maillage : 0 orpheline, 0 sous-maillee.** Sur les 25 « occasions manquees », 10 pointent vers
+  le seul article melasma : appliquer ce lot ferait entrer 10 liens d'un coup vers un article a
+  17 impressions, exactement le remaniement que Google lit comme du bruit. Ne pas le faire.
+- **/shbg : 76 impressions, 0 clic, position 8.2.** Formellement au-dessus du seuil, mais a cette
+  position 76 impressions donnent 1 a 2 clics attendus : **0 est dans le bruit, ce n'est pas la
+  preuve d'un mauvais titre.** Le seul manque reel et verifiable : le titre ne contient pas le mot
+  « femme », present dans 3 des 5 requetes qui l'amenent (« shbg elevee femme », « shbg femme »,
+  « shbg eleve femme »). Rien d'autre a y toucher.
+
 ## Pour le prochain run (cycle de septembre 2026)
 
 - **Sujet recommandé : une page SOMMEIL.** C'est le seul thème des domaines d'expertise RCF sans
