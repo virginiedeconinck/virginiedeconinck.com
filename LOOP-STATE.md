@@ -185,10 +185,11 @@ Voir la mémoire `blog-article-photo-rule`.
   Le jeton intégré dans `.git/config` était MORT. `gh auth setup-git` est configuré, donc
   `git push origin HEAD:main` suffit. Repli :
   `git push "https://x-access-token:$(gh auth token)@github.com/virginiedeconinck/virginiedeconinck.com.git" main`.
-- **Cinq fichiers d'état sont gitignorés** (vérifié le 02/08) : `LOOP-STATE.md`,
-  `automation/cycle-log.json`, `rapport-surveillance.md`, `rapport-seo-geo.md`, `rapport-maillage.md`.
-  Jamais déployés, donc **aucun historique git en cas de perte**. C'est ce qui a rendu irrécupérable
-  l'écrasement du 02/08 décrit plus haut.
+- **`LOOP-STATE.md` et `automation/cycle-log.json` sont VERSIONNÉS sur `main` depuis le 01/09/2026**
+  (commit `04ab13c`, mesuré par `git ls-files` le 12/09). Cette ligne disait encore « cinq fichiers
+  gitignorés » : c'était vrai jusqu'au 01/09 et c'est ce qui a rendu irrécupérable l'écrasement du
+  02/08 décrit plus haut. Restent ignorés, et c'est voulu : les quatre `rapport-*.md` (vestiges figés,
+  la vraie sortie est l'artefact du run cloud).
 - Réglage Netlify = « Deploy only the production branch » : SEULE `main` déclenche un déploiement.
   Pousser une autre branche ne publie rien, donc pas de préversion Netlify de branche : valider en
   local avant de fusionner.
