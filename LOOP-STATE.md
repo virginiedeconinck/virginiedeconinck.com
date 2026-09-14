@@ -39,10 +39,12 @@
 >   propositions de méta parlaient de « froid » et de « déficit calorique », absents de la page ;
 >   4 blocs `Article` incomplets annoncés contre 13 mesurés ; « doubler la dose » généralisait un
 >   rapport de 2,4 en rapport de 2. **Un rapport d'agent est un indice, jamais une preuve.**
-> - **Reste à décider par Virginie** : le domaine ci-dessus ; une photo pour les 5 pages piliers
->   (elles n'ont AUCUNE image, le bloc de citation affiche un rond gris de 64 px à la place de son
->   portrait) ; les 17 pages sur 20 encore sans bloc de sources ; et si elle veut la date de
->   septembre sur tout le site plutôt que sur les 6 pages réellement modifiées.
+> - **Reste à décider par Virginie** : le domaine ci-dessus ; les 17 pages sur 20 encore sans bloc
+>   de sources ; et si elle veut la date de septembre sur tout le site plutôt que sur les 6 pages
+>   réellement modifiées. **RETIRÉ le 14/09 : « un rond gris à la place de son portrait ».** Ce
+>   disque (64 px, accent à 30 %) est dans le code depuis le premier commit du 14/05, sans jamais
+>   aucune image à cet endroit : c'est un ornement de la maquette. Virginie ne l'a jamais vu comme
+>   un manque. C'était une supposition, jamais mesurée, portée ici pendant deux semaines.
 
 > ✅ **CYCLE ÉDITORIAL DU 2026-08-01 PUBLIÉ EN PROD** (sur « publie » de Virginie). `main` = **`b2a4976`**. Dernière surveillance du site en ligne, 20h49 : **0 erreur, 0 point à optimiser**, 20 pages, 24 liens et 5 images testés un par un, 8 crawlers IA en 200.
 > - **Article Estrobolome EN LIGNE** (200, sitemap 20 URLs, photo `estrobolome-hero.jpg` présente, og dédiée). Sa date visible est passée en **Août 2026** et `datePublished` au 2026-08-01 : il n'avait jamais été réellement accessible avant.
@@ -370,8 +372,7 @@ vu de ce qui suit.** Tout est préparé sur `optim-2026-09-14` (`c25ad85`), atte
   Août 2026 alors que la carte et `datePublished` disent juin.
 - **Vérifié en local avant de proposer** : 0 conflit CSS restant, 104/104 réponses FAQ identiques
   à leur miroir JSON-LD, JSON-LD valides, captures mobile et desktop relues sur 4 pages corrigées.
-- **Pas touché, à décider par Virginie** : le disque gris de 64 px à la place de son portrait
-  (16 pages + a-propos) ; les 4 pages sans bloc de sources qui citent quand même des études
+- **Pas touché, à décider par Virginie** : les 4 pages sans bloc de sources qui citent quand même des études
   (`/peptides` Leyden 2002 = résumé de congrès, `/nad`, `/cellules-senescentes`, `/muscle`,
   `/age-biologique`) ; les pieds de page différents entre l'accueil et le reste ; l'ordre des cartes
   du blog (sept, août, juin, juillet). « 20K+ » sur l'accueil : 25 982 abonnés mesurés à l'API
