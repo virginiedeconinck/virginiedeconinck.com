@@ -37,11 +37,15 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
 
 # --- Formules qui trahissent une redaction automatique. Virginie les traque
 #     depuis longtemps : elles cassent la voix incarnee qui fait sa difference.
+#     Retires le 14/09/2026 apres 4 passages sans un seul vrai positif (17/08,
+#     31/08, 07/09, 14/09) : « au cœur de » (bloc de voix de Virginie, voulu) et
+#     « bien plus qu'un » (comparatif normal, y compris dans un H2). Chaque
+#     phrase avait ete ouverte sur la page en ligne avant de conclure.
 TICS = [
     "il est important de", "il convient de", "il est essentiel de", "force est de constater",
     "dans un monde où", "plongeons", "décryptage", "n'est plus à démontrer",
-    "au cœur de", "véritable allié", "de nombreux experts", "il ne s'agit pas seulement",
-    "bien plus qu'un", "la clé réside", "sans plus attendre", "vous l'aurez compris",
+    "véritable allié", "de nombreux experts", "il ne s'agit pas seulement",
+    "la clé réside", "sans plus attendre", "vous l'aurez compris",
     "en un mot", "en résumé,", "il est crucial", "joue un rôle clé", "joue un rôle crucial",
     "révolutionnaire", "incontournable", "in fine",
 ]
@@ -378,7 +382,10 @@ def audit_forme(pages):
                 break
 
         # Tics de redaction automatique
-        trouves = [tic for tic in TICS if tic in sansaccent(t)]
+        # Les deux cotes sans accent : le texte l'etait deja, pas la liste, donc
+        # « décryptage », « en résumé, » ou « révolutionnaire » ne pouvaient
+        # JAMAIS etre trouves (mesure du 14/09/2026).
+        trouves = [tic for tic in TICS if sansaccent(tic) in sansaccent(t)]
         if trouves:
             ALERTE("style", f"{c} : formule(s) de remplissage — {', '.join(trouves[:4])}")
 
