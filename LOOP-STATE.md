@@ -347,7 +347,13 @@ par DevTools (`scratchpad/capture.mjs`, à recréer au besoin : `Emulation.setDe
 tranches de 1568 px). 280 captures relues, `innerText` des 21 pages lu de la première à la dernière
 lettre. Plus un détecteur de conflits CSS (`cssclash.mjs` : classe déclarant un font-size dont
 le calculé diffère). **Ce que le rapport du matin appelait « rendu regardé » (3 pages) n'avait rien
-vu de ce qui suit.** Tout est préparé sur `optim-2026-09-14` (`c25ad85`), attend « publie ».
+vu de ce qui suit.** **PUBLIÉ le 14/09 à 21h07 sur « correction alors. Fais-le. » de Virginie**, après lui avoir montré
+4 panneaux avant/après (`~/Downloads/audit-site-14-09/`). Fusion `ea04dcf`, déploiement Netlify
+`ready`, relu EN LIGNE : bloc de voix pleine largeur à 375 px, scores DunedinPACE à 36 px, titre
+SHBG servi, 0 conflit CSS sur les 21 pages, 0 « transition hormonales ». Run cloud post-déploiement
+34885410265 : 0 erreur, 0 point à optimiser, audit 0 point à corriger (le détecteur de tics ne crie
+plus). **Réserve dite à Virginie** : l'espace ajouté sous le bandeau noir est un jugement de mise en
+page, pas une casse ; si elle le préfère collé, on le retire.
 
 - **Le bloc de voix (bandeau noir, disque, citation) était illisible sur iPhone sur les 16 pages
   piliers.** Section inline `padding:48px 80px` + grille `80px 1fr` gap 40 : colonne de texte de
