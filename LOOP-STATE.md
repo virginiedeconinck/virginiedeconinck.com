@@ -236,14 +236,20 @@ Voir la mémoire `blog-article-photo-rule`.
   elements, deux « et » dans la meme phrase, chute en « pas ceci, pas cela ») : **8 phrases** de
   30 mots et plus portent au moins deux de ces signes. 3 sur `/perimenopause`, 2 sur `/peptides`,
   1 sur `/biohacking-feminin`, 1 sur l'article estrobolome, 1 sur la page RGPD (enumeration
-  juridique, noindex, a laisser). Chantier reel : **7 phrases**, pas 73.
+  juridique, noindex, a laisser). **REJUGE le 14/09 : ce sont des ENUMERATIONS, lisibles telles
+  quelles ; les couper au point les abimerait.** Le seul vrai defaut cree par le retrait des
+  virgules, c'est le « X et Y et Z » ou le lecteur ne sait plus ce qui va avec quoi : 3 phrases
+  (`/collagene-peau` microbiote, `/shbg` testosterone/oestradiol, `/inflammaging` CRP), reparees
+  par une parenthese ou un point sur `optim-2026-09-14`. Chantier CLOS, ne plus le rouvrir.
 - ⚠️ **`/peptides-longevite-feminine` dit DEUX FOIS la meme chose** (verifie sur la page en ligne
   le 07/09). « Le geste sous-cutane se ressemble, mais l'analogie ne va pas plus loin : l'insuline
   est un medicament approuve, dose et controle, tandis que les peptides... » et, plus loin, « Le
   geste sous-cutane ressemble a celui que les femmes diabetiques pratiquent pour l'insuline, mais
   l'analogie s'arrete la : une insuline est un medicament approuve, dose et controle, alors que
   les peptides... ». Meme comparaison, memes trois enjeux (purete, sterilite, dosage), deux fois.
-  A fusionner en un seul passage. Non corrige : en attente du mot de Virginie.
+  **REJUGE le 14/09 : ce n'est PAS un defaut.** La seconde occurrence est la REPONSE FAQ (ligne
+  371, miroir JSON-LD ligne 73). Une reponse de FAQ se lit seule, par Google comme par une
+  lectrice qui saute au bloc : elle doit redire le point. Fusionner casserait la FAQ. CLOS.
 
 ## Audit du lundi 07/09/2026 (run cloud 34109421105, 10h04 UTC)
 
@@ -260,6 +266,10 @@ Voir la mémoire `blog-article-photo-rule`.
   Le 429 de Crossref est passager, il ne dit rien sur la reference. **Piege d'outil rencontre en
   chemin : le resume Crossref contient des caracteres de controle, `json.loads` echoue en mode
   strict et fait croire a un DOI mort. Toujours parser avec `strict=False`.**
+  **Detecteur de « formules de remplissage » : corrige dans le moteur le 14/09 (`955815d`).**
+  « au cœur de » et « bien plus qu'un » retires (4 passages, 0 vrai positif), et un bug trouve
+  en chemin : la liste comparait des tics ACCENTUES a un texte DESACCENTUE, six formules ne
+  pouvaient jamais sortir. Version corrigee mesuree sur les 21 pages : 0 alerte.
 - **Les 4 references de l'article melasma (01/09) confrontees a leur resume Europe PMC : justes.**
   Les chiffres « 36,4 % a 75 % » et « jusqu'a 30 % persistent, parfois dix ans plus tard » sont
   VERBATIM dans le resume de CCID.S488663. Les deux travaux IJMS disent bien ce que la page leur
@@ -281,7 +291,51 @@ Voir la mémoire `blog-article-photo-rule`.
   position 76 impressions donnent 1 a 2 clics attendus : **0 est dans le bruit, ce n'est pas la
   preuve d'un mauvais titre.** Le seul manque reel et verifiable : le titre ne contient pas le mot
   « femme », present dans 3 des 5 requetes qui l'amenent (« shbg elevee femme », « shbg femme »,
-  « shbg eleve femme »). Rien d'autre a y toucher.
+  « shbg eleve femme »). Rien d'autre a y toucher. **Depasse le 14/09 : 131 impressions, 0 clic,
+  le titre est prepare (voir audit du 14/09).**
+
+## Audit du lundi 14/09/2026 (run cloud 34809323010, lance a la main a 05h21 UTC)
+
+- **Pourquoi un run a la main** : a 07h20 Luxembourg le passage planifie n'etait pas parti (il
+  part entre 09h et 10h30 UTC, mesure sur 6 jours). `workflow_dispatch` calcule les 4 rapports sur
+  les memes 28 jours GSC et le meme site, sans email. L'email planifie du lundi arrive ensuite
+  avec les memes chiffres. Aucun recalcul local.
+- **Site : 0 erreur, 0 point a optimiser.** 21 pages, 29 liens, 6 images, 8 crawlers IA en 200.
+  Rendu regarde a 375 px et desktop (accueil, histamine, article melasma) : aucun debordement,
+  images chargees. Les 9 a 11 px mesures sont les surtitres capitales espacees, voulus.
+- **AUCUNE page HTML n'a bouge depuis le 07/09** (`git diff --stat 7d21408..HEAD` vide).
+- **LES 19 DOI DU SITE SONT MAINTENANT TOUS VERIFIES A LA SOURCE, resume contre affirmation :**
+  4 `/shbg` (02/08, bloc DOI identique a l'octet), 4 melasma (07/09), 1 `/glp1` (01/09), et les
+  **10 restants ouverts le 14/09 sur Europe PMC** : Kendall 2022 (7+11+10 femmes, keratinocytes),
+  Pordab 2026 (38 femmes 40-61, 28 tirees au sort 12 semaines, 5 en echographie 8 semaines, plus
+  de rougeurs a 0,247 %), He & Zhuo 2026 (revue, « shortage of rigorous human studies »),
+  Brincat 1987 (69 non traitees + 37 sous hormones, collagene de la cuisse), Wang 2026 (in vitro
+  et sous-cutane, topique a demontrer), Janus 2026 (revue, modeles in vivo), Hwang 2026
+  (pharmacologie de reseau + toxicite dose unique rat), Lei 2026 (heterogeneite, petits
+  effectifs), Zybul 2026 (DAO muqueuse contre circulante, limites du dosage serique), Valerieva
+  2026 (mastocytes, permeabilite vasculaire, recommandations peri/post-menopause absentes).
+  **Chaque description de source sur les pages dit ce que le resume dit.** Une seule nuance non
+  tranchable sans le texte integral : sur `/regeneration-cellulaire`, « exploratoire » est
+  attribue au volet echographique de Pordab ; dans le resume, le mot suit les resultats du volet
+  tape-stripping (IL-1). Les deux volets font 5 femmes. Ne rien changer sur la foi d'un resume.
+- **`/shbg` : 131 impressions, 0 clic, position 7,6.** La semaine derniere 76/0/8,2, « dans le
+  bruit ». A 131 impressions en position 7,6, 3 a 4 clics etaient attendus : 0 ne l'est plus.
+  Requetes reelles : « shbg elevee femme » 15, « shbg femme » 6, « shbg eleve femme » 6, et le
+  titre ne contenait pas « femme ». **Prepare sur `optim-2026-09-14` (`9df4767`)** : « SHBG
+  elevee chez la femme : ce que dit votre prise de sang » (58 car.), title + og + twitter +
+  headline ensemble, dateModified/lastmod/date visible passes au 14/09. « ou basse » sort du
+  titre (2 impressions sur « shbg faible femme »), reste dans la description. ATTEND « publie ».
+- **Estrobolome : 103 impr., 1 clic, pos 9,1, « estrobolome definition » 48 impr.** Le titre est
+  deja une definition ; a cette position 1 a 2 clics sont attendus. Rien a toucher.
+- **Maillage : memes 25 occasions que le 07/09, 10 vers melasma.** Meme decision : non.
+- **GEO : « est-ce que les soins dits regenerant cellulaire ont des preuves scientifiques ? »
+  5 impr. en position 8,8**, c'est la seule question GEO deja a portee. `/regeneration-cellulaire`
+  y repond en corps de texte ; un H2 mot pour mot est le geste GEO classique. Pas fait ce jour :
+  un H2 de plus sur une page qui va bien est un remaniement, a decider avec Virginie.
+- **Instagram dans Search Console : aucun CSV dans `~/Downloads` le 14/09.** A lui demander.
+- **Piege local repare : `main` local avait diverge** (commit `35e6605`, doublon de `61f9f08`
+  avec d'autres mots dans les commentaires, jamais pousse). Remis sur `origin/main`, le doublon
+  garde sous la branche `stale-main-35e6605`. Toujours `git fetch` puis comparer avant d'ecrire.
 
 ## Pour le prochain run (cycle de septembre 2026)
 
