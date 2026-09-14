@@ -181,7 +181,7 @@
     .hero-photo{max-width:1100px;margin:0 auto;padding:0 80px 8px;}
     .hero-photo img{width:100%;height:70vh;min-height:480px;object-fit:cover;object-position:center 20%;display:block;border:1px solid var(--rule);}
     .hero-photo figcaption{font-size:11px;color:var(--ink-light);font-style:italic;margin-top:12px;letter-spacing:0.02em;}
-    .content{max-width:1100px;margin:0 auto;padding:0 80px 80px;}
+    .content{max-width:1100px;margin:0 auto;padding:64px 80px 80px;}
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start;}
     .article h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:400;color:var(--ink);margin:64px 0 24px;line-height:1.15;}
     .article h2:first-child{margin-top:0;}
@@ -196,18 +196,18 @@
     .disclaimer p{font-size:13px;line-height:1.8;color:var(--ink-light);margin:0;font-style:italic;}
     .mechanism-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:32px 0;}
     .mechanism-cell{background:var(--white);padding:24px 28px;}
-    .mechanism-cell-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+    .article .mechanism-cell-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
     .mechanism-cell h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--ink);margin-bottom:8px;}
     .mechanism-cell p{font-size:13px;line-height:1.8;color:var(--ink-mid);margin:0;}
     .sources{margin-top:56px;padding-top:28px;border-top:1px solid var(--rule);}
-    .sources-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+    .article .sources-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
     .sources ul{list-style:none;}
     .sources li{font-size:13px;line-height:1.8;color:var(--ink-light);margin-bottom:12px;padding-left:18px;position:relative;}
     .sources li::before{content:"·";position:absolute;left:0;color:var(--accent);font-weight:bold;}
     .sources li em{font-style:italic;}
     .sidebar{position:sticky;top:100px;}
     .sidebar-card{border:1px solid var(--rule);padding:36px;margin-bottom:24px;}
-    .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .sidebar-card .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
     .sidebar-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.2;}
     .sidebar-card p{font-size:13px;line-height:1.8;color:var(--ink-mid);margin-bottom:20px;}
     .sidebar-btn{display:block;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:14px 24px;text-decoration:none;text-align:center;transition:background 0.3s;margin-bottom:12px;}
@@ -243,7 +243,7 @@
     .footer-links a:hover{color:var(--accent);}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
-    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.hero-photo{padding:0 24px 8px;}.hero-photo img{height:56vh;min-height:340px;}.content{padding:0 24px 60px;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.mechanism-row{grid-template-columns:1fr;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
+    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.hero-photo{padding:0 24px 8px;}.hero-photo img{height:56vh;min-height:340px;}.content{padding:40px 24px 60px;}.voice{padding:40px 24px!important;}.voice-grid{grid-template-columns:1fr!important;gap:20px!important;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.mechanism-row{grid-template-columns:1fr;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
   
     /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
        repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
@@ -319,15 +319,15 @@
     <p class="breadcrumb reveal visible"><a href="/">Virginie Deconinck</a> &nbsp;/&nbsp; <a href="/perimenopause">Périménopause</a> &nbsp;/&nbsp; SHBG</p>
     <p class="hero-eyebrow reveal visible">Biologie hormonale · Endocrinologie féminine · Longévité</p>
     <h1 class="hero-title reveal visible">SHBG :<br><em>la protéine qui décide<br>quelles hormones sont actives</em></h1>
-    <p class="hero-intro reveal visible">On vous a appris à regarder vos taux d'hormones. Personne ne vous a parlé de la molécule qui décide quelle part de ces hormones atteint réellement vos tissus. Elle s'appelle la SHBG et c'est l'un des régulateurs les plus déterminants et les plus ignorés, de la biologie féminine.</p>
+    <p class="hero-intro reveal visible">On vous a appris à regarder vos taux d'hormones. Personne ne vous a parlé de la molécule qui décide quelle part de ces hormones atteint réellement vos tissus. Elle s'appelle la SHBG.</p>
   </section>
 
   <figure class="hero-photo reveal visible">
     <img src="/.netlify/images?url=%2Fshbg-hero.jpg&amp;w=1200&amp;fm=webp&amp;q=80" alt="SHBG, la protéine hépatique qui régule la part active des œstrogènes et de la testostérone chez la femme en périménopause" onerror="this.closest('figure').style.display='none'">
   </figure>
 
-  <section style="background:var(--ink);padding:48px 80px;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
+  <section class="voice" style="background:var(--ink);padding:48px 80px;">
+    <div class="voice-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
       <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);opacity:0.3;"></div>
       <div>
         <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85);">C'est l'un des régulateurs les plus déterminants de la biologie féminine. Et l'un des plus ignorés. Une fois que vous l'avez vu, vous ne pouvez plus lire un bilan hormonal de la même façon.</p>
@@ -350,7 +350,7 @@
 
         <div class="reveal">
           <h2>Le chiffre qui change <em>toute la lecture</em></h2>
-          <p>Voici un fait qui devrait être enseigné à chaque femme et qui ne l'est presque jamais. Chez la femme, la majeure partie de la testostérone et de l'œstradiol qui circulent dans le sang n'est pas immédiatement disponible : elle est liée à des protéines de transport, dont la SHBG est la plus sélective. Seul un très faible pourcentage, de l'ordre de <strong>1 à 3 %</strong> selon l'hormone considérée, circule véritablement libre. Mais il faut distinguer deux choses. La fraction strictement libre n'est pas la seule à pouvoir agir : la part liée plus lâchement à l'albumine se détache facilement et reste, elle aussi, accessible aux tissus. On parle alors de fraction biodisponible, somme du libre et de la part liée à l'albumine. C'est cette fraction biodisponible, nettement plus large que 1 à 2 %, qui reflète ce que votre corps peut réellement utiliser. À l'inverse, ce qui est solidement retenu par la SHBG reste, lui, indisponible.</p>
+          <p>Voici un fait qui devrait être enseigné à chaque femme et qui ne l'est presque jamais. Chez la femme, la majeure partie de la testostérone et de l'œstradiol qui circulent dans le sang n'est pas immédiatement disponible : elle est liée à des protéines de transport, dont la SHBG est la plus sélective. Seul un très faible pourcentage, de l'ordre de <strong>1 à 3 %</strong> selon l'hormone considérée, circule véritablement libre. Mais il faut distinguer deux choses. La fraction strictement libre n'est pas la seule à pouvoir agir : la part liée plus lâchement à l'albumine se détache facilement et reste, elle aussi, accessible aux tissus. On parle alors de fraction biodisponible, somme du libre et de la part liée à l'albumine. C'est cette fraction biodisponible, nettement plus large que 1 à 3 %, qui reflète ce que votre corps peut réellement utiliser. À l'inverse, ce qui est solidement retenu par la SHBG reste, lui, indisponible.</p>
           <p>Prenez une seconde pour mesurer ce que ça veut dire. Vous pouvez fabriquer une quantité parfaitement normale d'hormones et n'en rendre active qu'une partie. Et cette répartition, ce n'est pas seulement votre production qui la fixe. C'est la SHBG.</p>
 
           <div class="mechanism-row reveal">
@@ -421,7 +421,7 @@
         <div class="article-divider reveal"></div>
 
         <div class="reveal">
-          <h2>Et la thyroïde et le foie, <em>regardent aussi</em></h2>
+          <h2>La thyroïde et le foie <em>regardent aussi</em></h2>
           <p>La SHBG est sensible bien au-delà des seules hormones sexuelles. La fonction thyroïdienne la module : un excès d'hormones thyroïdiennes pousse le foie à en produire davantage. La santé du foie pèse directement, puisque c'est lui l'usine de fabrication. Et l'état inflammatoire général entre aussi dans l'équation.</p>
           <p>Autrement dit, la SHBG est un témoin. Quand elle dérive, haute ou basse, elle raconte rarement un problème isolé. Elle raconte l'état de votre terrain : votre sensibilité à l'insuline, votre foie, votre thyroïde, votre niveau d'inflammation, votre exposition aux œstrogènes. C'est précisément ce qui en fait un marqueur si riche et si mal exploité.</p>
         </div>
@@ -469,7 +469,7 @@
             <li>Osmancevic A et coll., <em>Endogenous sex hormones, sex hormone-binding globulin, and muscle health : insights into sarcopenia and sarcopenic obesity from the Women's Health Initiative</em>, Menopause, juillet 2026. DOI 10.1097/GME.0000000000002734. 1 565 femmes ménopausées, suivi 6 ans : SHBG élevée associée à moins de masse maigre.</li>
             <li>Niu Z et coll., <em>Androgenic profile and cardiometabolic health among post-menopausal women : the Buffalo OsteoPerio study</em>, Maturitas, juillet 2026. DOI 10.1016/j.maturitas.2026.109057. 599 femmes ménopausées : profil androgénique associé à un risque cardiométabolique accru.</li>
             <li>Hedderson MM et coll., <em>Longitudinal changes in sex hormone binding globulin (SHBG) and risk of incident diabetes : the Study of Women's Health Across the Nation (SWAN)</em>, Diabetes Care, 2024. DOI 10.2337/dc23-1630. Cohorte SWAN, 2 952 femmes suivies jusqu'à 17 ans.</li>
-            <li>Hammond GL, <em>Plasma steroid-binding proteins : primary gatekeepers of steroid hormone action</em>, données de référence sur la fraction libre et biodisponible des hormones.</li>
+            <li>Hammond GL, <em>Plasma steroid-binding proteins : primary gatekeepers of steroid hormone action</em>, Journal of Endocrinology, 2016. DOI 10.1530/JOE-16-0070. Données de référence sur la fraction libre et biodisponible des hormones.</li>
           </ul>
           <p style="font-size:12px;line-height:1.7;color:var(--ink-light);margin-top:16px;font-style:italic;">Les deux publications de juillet 2026 citées ici sont des études d'observation : elles établissent des associations, non des relations de cause à effet et portent sur des femmes ménopausées d'âge moyen supérieur à 60 ans.</p>
         </div>
