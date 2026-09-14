@@ -337,6 +337,53 @@ Voir la mémoire `blog-article-photo-rule`.
   avec d'autres mots dans les commentaires, jamais pousse). Remis sur `origin/main`, le doublon
   garde sous la branche `stale-main-35e6605`. Toujours `git fetch` puis comparer avant d'ecrire.
 
+## AUDIT RÉEL DES 21 PAGES, soir du 14/09/2026 (demandé par Virginie : « pas un audit par sondage »)
+
+**Méthode, à reproduire chaque lundi (elle est dans le SKILL depuis ce soir) :** Chrome headless piloté
+par DevTools (`scratchpad/capture.mjs`, à recréer au besoin : `Emulation.setDeviceMetricsOverride`
+375x812 DPR 2 puis 1280x800, `.reveal` forcé visible, transitions coupées, `captureScreenshot` par
+tranches de 1568 px). 280 captures relues, `innerText` des 21 pages lu de la première à la dernière
+lettre. Plus un détecteur de conflits CSS (`cssclash.mjs` : classe déclarant un font-size dont
+le calculé diffère). **Ce que le rapport du matin appelait « rendu regardé » (3 pages) n'avait rien
+vu de ce qui suit.** Tout est préparé sur `optim-2026-09-14` (`c25ad85`), attend « publie ».
+
+- **Le bloc de voix (bandeau noir, disque, citation) était illisible sur iPhone sur les 16 pages
+  piliers.** Section inline `padding:48px 80px` + grille `80px 1fr` gap 40 : colonne de texte de
+  95 px, la citation en 20 lignes de trois mots, depuis le 15/06. Personne ne l'a vu en trois mois
+  parce que personne n'a ouvert une page pilier à 375 px jusqu'en bas du bandeau.
+- **`.content` avait `padding-top:0` depuis le premier commit** : le H2 collait au bandeau noir,
+  desktop et mobile. Le bandeau a été ajouté après, personne n'a réajusté.
+- **`.article p` écrasait 14 classes** (spécificité 0,1,1 contre 0,1,0) : scores DunedinPACE
+  dessinés à 36 px rendus à 15 px, noms d'horloges à 13 px (plus petits que le texte courant),
+  étiquettes à 13-15 px au lieu de 9. Sur toutes les pages à cartes.
+- **Accueil, témoignages : carrousel de 215 px sur 375** (section inline `padding:120px 80px`).
+- **Texte, 16 corrections**, les plus lourdes : `/perimenopause` portait trois vestiges d'un
+  remplacement automatique périménopause → transition hormonale (« La transition hormonale est la
+  période de transition hormonale », « symptômes de transition hormonales » x2, FAQ + JSON-LD) ;
+  `/shbg` et `/nad` répétaient mot pour mot leur phrase d'intro dans le bloc de voix juste dessous ;
+  `/shbg` disait « 1 à 3 % » puis « 1 à 2 % » dans le même paragraphe et sa référence Hammond
+  n'avait ni revue ni DOI (J Endocrinol 2016, 10.1530/JOE-16-0070) ; `/glp1` prêtait à Neeland
+  « non toxique » là où le résumé dit « adaptive » ; la FAQ de `/cellules-senescentes` parlait
+  « d'essais cliniques publiés » pour un essai exploratoire de 13 participants ; l'accueil disait
+  « 1 à 2 % par an dès 25 ans » contre « environ 1 % dès la vingtaine » sur `/collagene-peau` ;
+  temps de lecture mélasma 8 min sur la carte, 7 sur l'article ; l'article glycémie affichait
+  Août 2026 alors que la carte et `datePublished` disent juin.
+- **Vérifié en local avant de proposer** : 0 conflit CSS restant, 104/104 réponses FAQ identiques
+  à leur miroir JSON-LD, JSON-LD valides, captures mobile et desktop relues sur 4 pages corrigées.
+- **Pas touché, à décider par Virginie** : le disque gris de 64 px à la place de son portrait
+  (16 pages + a-propos) ; les 4 pages sans bloc de sources qui citent quand même des études
+  (`/peptides` Leyden 2002 = résumé de congrès, `/nad`, `/cellules-senescentes`, `/muscle`,
+  `/age-biologique`) ; les pieds de page différents entre l'accueil et le reste ; l'ordre des cartes
+  du blog (sept, août, juin, juillet). « 20K+ » sur l'accueil : 25 982 abonnés mesurés à l'API
+  Instagram le 14/09, le chiffre reste vrai.
+- **Ce qui n'est PAS un défaut, pour ne pas le rouvrir** : les gros espaces après les points dans
+  les paragraphes (c'est la fonte Didact Gothic, espace de 6,8 px à 16 px, source à un seul
+  espace) ; les 9-11 px mesurés sur les surtitres capitales ; la réponse FAQ de `/peptides` qui
+  redit le corps (une FAQ se lit seule) ; l'image `leviers-hero` « cassée » en headless mobile
+  (charge en 1 s dans le vrai navigateur, lazy-loading).
+- **Externe revérifié le 14/09** : rétatrutide TRIUMPH-1 (2 339 participants, 28,3 % à 80 semaines,
+  21/05/2026) et orforglipron (FDA, 01/04/2026), tels que `/glp1` les cite.
+
 ## Pour le prochain run (cycle de septembre 2026)
 
 - **Sujet recommandé : une page SOMMEIL.** C'est le seul thème des domaines d'expertise RCF sans
