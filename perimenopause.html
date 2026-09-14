@@ -127,7 +127,7 @@
         "name": "Quelle est la différence entre périménopause et ménopause ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "La transition hormonale est la période de transition hormonale qui précède la ménopause, pouvant durer de 4 à 10 ans. Elle se caractérise par des fluctuations hormonales irrégulières. La ménopause est définie officiellement par l'absence de règles pendant 12 mois consécutifs. En périménopause, les bilans hormonaux peuvent paraître normaux alors que des symptômes significatifs sont déjà présents."
+          "text": "La périménopause est la période de transition hormonale qui précède la ménopause, pouvant durer de 4 à 10 ans. Elle se caractérise par des fluctuations hormonales irrégulières. La ménopause est définie officiellement par l'absence de règles pendant 12 mois consécutifs. En périménopause, les bilans hormonaux peuvent paraître normaux alors que des symptômes significatifs sont déjà présents."
         }
       }
     ]
@@ -172,7 +172,7 @@
     .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,80px);font-weight:300;line-height:1.0;color:var(--ink);margin-bottom:40px;}
     .hero-title em{font-style:italic;color:var(--accent);}
     .hero-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.1vw,24px);font-weight:400;line-height:1.65;color:var(--ink-mid);max-width:760px;border-left:2px solid var(--accent);padding-left:32px;}
-    .content{max-width:1100px;margin:0 auto;padding:0 80px 80px;}
+    .content{max-width:1100px;margin:0 auto;padding:64px 80px 80px;}
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start;}
     .article h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:400;color:var(--ink);margin:64px 0 24px;line-height:1.15;}
     .article h2:first-child{margin-top:0;}
@@ -185,7 +185,7 @@
     .highlight p{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;font-style:italic;line-height:1.6;color:var(--ink);margin:0;}
     .sidebar{position:sticky;top:100px;}
     .sidebar-card{border:1px solid var(--rule);padding:36px;margin-bottom:24px;}
-    .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .sidebar-card .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
     .sidebar-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.2;}
     .sidebar-card p{font-size:13px;line-height:1.8;color:var(--ink-mid);margin-bottom:20px;}
     .sidebar-btn{display:block;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:14px 24px;text-decoration:none;text-align:center;transition:background 0.3s;margin-bottom:12px;}
@@ -221,7 +221,7 @@
     .footer-links a:hover{color:var(--accent);}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
-    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:0 24px 60px;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
+    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:40px 24px 60px;}.voice{padding:40px 24px!important;}.voice-grid{grid-template-columns:1fr!important;gap:20px!important;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
   
     /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
        repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
@@ -297,8 +297,8 @@
 
 
   <!-- VOICE INTRO -->
-  <section style="background:var(--ink);padding:48px 80px;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
+  <section class="voice" style="background:var(--ink);padding:48px 80px;">
+    <div class="voice-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
       <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);opacity:0.3;"></div>
       <div>
         <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85);">J'ai moi-même vécu les premières fluctuations hormonales à 38 ans. Sans diagnostic, sans explication claire. Ce que je comprends aujourd'hui sur la périménopause, je l'ai d'abord cherché pour moi.</p>
@@ -383,13 +383,13 @@
           <p>Les mitochondries sont les centrales énergétiques de chaque cellule et elles sont directement sensibles aux fluctuations des hormones sexuelles féminines. En transition hormonale, leur dysfonctionnement progressif explique une grande partie de la fatigue résistante, de la récupération ralentie et de l'accélération du vieillissement tissulaire. La santé mitochondriale est un levier central de la longévité féminine et elle est directement sensible au mode de vie, ce qui en fait un terrain d'action déterminant. C'est aussi l'un des mécanismes qui font diverger <a href="/age-biologique-age-chronologique">l'âge biologique de l'âge chronologique</a> d'une femme à l'autre.</p>
 
           <h3>La régulation glycémique</h3>
-          <p><a href="/blog/glycemie-nocturne-peau" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-light);">Stabiliser la glycémie</a> est fondamental en transition hormonale. Les pics et chutes glycémiques amplifient les symptômes hormonaux, aggravent la résistance à l'insuline, déclenchent les fringales et accélèrent la glycation des fibres de collagène. Une alimentation qui maintient une glycémie stable réduit significativement l'intensité des symptômes de transition hormonales.</p>
+          <p><a href="/blog/glycemie-nocturne-peau" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-light);">Stabiliser la glycémie</a> est fondamental en transition hormonale. Les pics et chutes glycémiques amplifient les symptômes hormonaux, aggravent la résistance à l'insuline, déclenchent les fringales et accélèrent la glycation des fibres de collagène. Une alimentation qui maintient une glycémie stable réduit significativement l'intensité des symptômes de la périménopause.</p>
 
           <h3>La réduction de l'inflammation systémique</h3>
           <p>L'<a href="/inflammaging">inflammaging</a>, cette inflammation chronique de bas grade qui s'installe avec l'âge, s'intensifie avec la chute des œstrogènes qui possèdent des propriétés anti-inflammatoires naturelles. La réduire est une stratégie centrale pour traverser la périménopause avec le minimum de symptômes et de dégradation tissulaire.</p>
 
           <h3>L'estrobolome et le microbiote</h3>
-          <p>Le microbiome intestinal régule <a href="/blog/estrobolome-microbiote-femme">la recirculation des œstrogènes via l'estrobolome</a>, un ensemble de bactéries qui contrôlent le métabolisme œstrogénique par déconjugaison enzymatique. Un microbiote altéré perturbe cet équilibre indépendamment de la production ovarienne et amplifie les symptômes de transition hormonales. Prendre soin de son microbiote est donc une stratégie hormonale à part entière.</p>
+          <p>Le microbiome intestinal régule <a href="/blog/estrobolome-microbiote-femme">la recirculation des œstrogènes via l'estrobolome</a>, un ensemble de bactéries qui contrôlent le métabolisme œstrogénique par déconjugaison enzymatique. Un microbiote altéré perturbe cet équilibre indépendamment de la production ovarienne et amplifie les symptômes de la périménopause. Prendre soin de son microbiote est donc une stratégie hormonale à part entière.</p>
         </div>
 
       </article>
@@ -456,7 +456,7 @@
 
     <div class="faq-item reveal">
       <p class="faq-q">Quelle est la différence entre périménopause et ménopause ?</p>
-      <p class="faq-a">La transition hormonale est la période de transition hormonale qui précède la ménopause, pouvant durer de 4 à 10 ans. Elle se caractérise par des fluctuations hormonales irrégulières. La ménopause est définie officiellement par l'absence de règles pendant 12 mois consécutifs. En périménopause, les bilans hormonaux peuvent paraître normaux alors que des symptômes significatifs sont déjà présents.</p>
+      <p class="faq-a">La périménopause est la période de transition hormonale qui précède la ménopause, pouvant durer de 4 à 10 ans. Elle se caractérise par des fluctuations hormonales irrégulières. La ménopause est définie officiellement par l'absence de règles pendant 12 mois consécutifs. En périménopause, les bilans hormonaux peuvent paraître normaux alors que des symptômes significatifs sont déjà présents.</p>
     </div>
   </section>
 

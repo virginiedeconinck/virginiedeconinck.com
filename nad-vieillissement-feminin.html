@@ -89,7 +89,7 @@
       {
         "@type": "Question",
         "name": "Comment augmenter ses niveaux de NAD+ sans suppléments ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Plusieurs leviers du mode de vie influencent réellement les niveaux de NAD+, l'alcool, par exemple, est un inhibiteur direct de sa synthèse. Mais l'effet dépend de l'intensité, de la combinaison des leviers et de la biologie de chacune : ils comptent surtout comme fondations, en amont de toute supplémentation."}
+        "acceptedAnswer": {"@type": "Answer", "text": "Plusieurs leviers du mode de vie influencent réellement les niveaux de NAD+ : l'alcool, par exemple, est un inhibiteur direct de sa synthèse. Mais l'effet dépend de l'intensité, de la combinaison des leviers et de la biologie de chacune : ils comptent surtout comme fondations, en amont de toute supplémentation."}
       }
     ]
   }
@@ -130,7 +130,7 @@
     .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,62px);font-weight:300;line-height:1.05;color:var(--ink);margin-bottom:40px;}
     .hero-title em{font-style:italic;color:var(--accent);}
     .hero-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.1vw,24px);font-weight:400;line-height:1.65;color:var(--ink-mid);max-width:760px;border-left:2px solid var(--accent);padding-left:32px;}
-    .content{max-width:1100px;margin:0 auto;padding:0 80px 80px;}
+    .content{max-width:1100px;margin:0 auto;padding:64px 80px 80px;}
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start;}
     .article h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:400;color:var(--ink);margin:64px 0 24px;line-height:1.15;}
     .article h2:first-child{margin-top:0;}
@@ -143,17 +143,17 @@
     .disclaimer{background:var(--off-white);border:1px solid var(--rule);padding:20px 28px;margin-bottom:48px;border-radius:2px;}
     .disclaimer p{font-size:13px;line-height:1.8;color:var(--ink-light);margin:0;font-style:italic;}
     .verdict{border:1px solid var(--rule);padding:32px 36px;margin:40px 0;}
-    .verdict-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+    .article .verdict-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
     .verdict p{font-size:14px;line-height:1.9;color:var(--ink-mid);margin-bottom:12px;}
     .verdict p:last-child{margin-bottom:0;}
     .molecule-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:32px 0;}
     .molecule-cell{background:var(--white);padding:24px 28px;}
-    .molecule-cell-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+    .article .molecule-cell-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
     .molecule-cell h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--ink);margin-bottom:10px;}
     .molecule-cell p{font-size:13px;line-height:1.8;color:var(--ink-mid);margin:0;}
     .sidebar{position:sticky;top:100px;}
     .sidebar-card{border:1px solid var(--rule);padding:36px;margin-bottom:24px;}
-    .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .sidebar-card .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
     .sidebar-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.2;}
     .sidebar-card p{font-size:13px;line-height:1.8;color:var(--ink-mid);margin-bottom:20px;}
     .sidebar-btn{display:block;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:14px 24px;text-decoration:none;text-align:center;transition:background 0.3s;margin-bottom:12px;}
@@ -189,7 +189,7 @@
     .footer-links a:hover{color:var(--accent);}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
-    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:0 24px 60px;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.molecule-row{grid-template-columns:1fr;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
+    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:40px 24px 60px;}.voice{padding:40px 24px!important;}.voice-grid{grid-template-columns:1fr!important;gap:20px!important;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.molecule-row{grid-template-columns:1fr;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
   
     /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
        repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
@@ -266,11 +266,11 @@
     <p class="breadcrumb reveal visible"><a href="/">Virginie Deconinck</a> &nbsp;/&nbsp; <a href="/biohacking-feminin">Biohacking féminin</a> &nbsp;/&nbsp; NAD+</p>
     <p class="hero-eyebrow reveal visible">Biologie féminine · Biohacking avancé · Longévité cellulaire</p>
     <h1 class="hero-title reveal visible">NAD+ et vieillissement féminin :<br><em>la molécule est sérieuse,<br>le marketing l'est moins</em></h1>
-    <p class="hero-intro reveal visible">Le NAD+ est partout sur Instagram. Poudres, gélules, célébrités en couverture. La molécule est réelle et la science derrière elle est sérieuse. Le marketing qui l'entoure mérite d'être regardé de beaucoup plus près.</p>
+    <p class="hero-intro reveal visible">Le NAD+ est partout sur Instagram. Poudres, gélules, célébrités en couverture. Avant d'acheter, il vaut la peine de comprendre ce que la molécule fait vraiment, et ce que le produit vendu en fait.</p>
   </section>
 
-  <section style="background:var(--ink);padding:48px 80px;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
+  <section class="voice" style="background:var(--ink);padding:48px 80px;">
+    <div class="voice-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
       <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);opacity:0.3;"></div>
       <div>
         <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85);">Je vais vous dire ce que je pense honnêtement : la molécule est réelle et la science derrière elle est sérieuse. Le marketing qui l'entoure, lui, mérite d'être regardé de beaucoup plus près.</p>
@@ -405,7 +405,7 @@
 
     <div class="faq-item reveal">
       <p class="faq-q">Comment augmenter ses niveaux de NAD+ sans suppléments ?</p>
-      <p class="faq-a">Plusieurs leviers du mode de vie influencent réellement les niveaux de NAD+, l'alcool, par exemple, est un inhibiteur direct de sa synthèse. Mais l'effet dépend de l'intensité, de la combinaison des leviers et de la biologie de chacune : ils comptent surtout comme fondations, en amont de toute supplémentation.</p>
+      <p class="faq-a">Plusieurs leviers du mode de vie influencent réellement les niveaux de NAD+ : l'alcool, par exemple, est un inhibiteur direct de sa synthèse. Mais l'effet dépend de l'intensité, de la combinaison des leviers et de la biologie de chacune : ils comptent surtout comme fondations, en amont de toute supplémentation.</p>
     </div>
   </section>
 

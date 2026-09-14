@@ -164,7 +164,7 @@
     .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,76px);font-weight:300;line-height:1.0;color:var(--ink);margin-bottom:40px;}
     .hero-title em{font-style:italic;color:var(--accent);}
     .hero-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.1vw,24px);font-weight:400;line-height:1.65;color:var(--ink-mid);max-width:760px;border-left:2px solid var(--accent);padding-left:32px;}
-    .content{max-width:1100px;margin:0 auto;padding:0 80px 80px;}
+    .content{max-width:1100px;margin:0 auto;padding:64px 80px 80px;}
     .content-grid{display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start;}
     .article h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:400;color:var(--ink);margin:64px 0 24px;line-height:1.15;}
     .article h2:first-child{margin-top:0;}
@@ -177,7 +177,7 @@
     .highlight p{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;font-style:italic;line-height:1.6;color:var(--ink);margin:0;}
     .sidebar{position:sticky;top:100px;}
     .sidebar-card{border:1px solid var(--rule);padding:36px;margin-bottom:24px;}
-    .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .sidebar-card .sidebar-card-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
     .sidebar-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.2;}
     .sidebar-card p{font-size:13px;line-height:1.8;color:var(--ink-mid);margin-bottom:20px;}
     .sidebar-btn{display:block;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:14px 24px;text-decoration:none;text-align:center;transition:background 0.3s;margin-bottom:12px;}
@@ -214,12 +214,12 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     .sources{margin-top:56px;padding-top:28px;border-top:1px solid var(--rule);}
-    .sources-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+    .article .sources-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
     .sources ul{list-style:none;}
     .sources li{font-size:13px;line-height:1.8;color:var(--ink-light);margin-bottom:12px;padding-left:18px;position:relative;}
     .sources li::before{content:"·";position:absolute;left:0;color:var(--accent);font-weight:bold;}
     .sources li em{font-style:italic;}
-    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:0 24px 60px;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
+    @media(max-width:900px){nav{padding:20px 24px;}.nav-links{display:none;}.hero{padding:120px 24px 60px;}.content{padding:40px 24px 60px;}.voice{padding:40px 24px!important;}.voice-grid{grid-template-columns:1fr!important;gap:20px!important;}.content-grid{grid-template-columns:1fr;}.sidebar{position:static;}.faq{padding:60px 24px 80px;}.cta{padding:80px 24px;}footer{flex-direction:column;gap:20px;padding:32px 24px;text-align:center;}}
   
     /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
        repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
@@ -295,8 +295,8 @@
 
 
   <!-- VOICE INTRO -->
-  <section style="background:var(--ink);padding:48px 80px;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
+  <section class="voice" style="background:var(--ink);padding:48px 80px;">
+    <div class="voice-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:center;">
       <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);opacity:0.3;"></div>
       <div>
         <p style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85);">À un moment donné, ma peau a changé. En quelques mois. C'est en comprenant la glycation et le rôle des œstrogènes sur les fibroblastes que j'ai compris pourquoi et surtout ce que je pouvais faire.</p>
@@ -313,7 +313,7 @@
         <div class="reveal">
           <h2>Le collagène : <em>bien plus qu'une protéine de beauté</em></h2>
           <p>Le collagène est la protéine la plus abondante du corps humain. Il constitue environ 75% du poids sec de la peau et forme la structure de soutien du derme, des tendons, des os, des cartilages et des vaisseaux sanguins. Dans la peau, c'est lui qui assure la densité, la fermeté et la résistance au tassement.</p>
-          <p style="font-size:14px;line-height:1.85;color:var(--ink-mid);background:var(--off-white);border-left:2px solid var(--accent);padding:20px 24px;margin-bottom:20px;font-style:italic;">Les mécanismes du vieillissement cutané s'appliquent à toutes les étapes de la périménopause. En périménopause, en ménopause précoce ou après la ménopause, la biologie de la peau reste modulable.</p>
+          <p style="font-size:14px;line-height:1.85;color:var(--ink-mid);background:var(--off-white);border-left:2px solid var(--accent);padding:20px 24px;margin-bottom:20px;font-style:italic;">Les mécanismes du vieillissement cutané s'appliquent quelle que soit votre étape hormonale. En périménopause, en ménopause précoce ou après la ménopause, la biologie de la peau reste modulable.</p>
           <p>Il existe plusieurs types de collagène. Le type I, majoritaire dans la peau, est produit par les fibroblastes dermiques sous l'influence de nombreux facteurs biologiques, dont les œstrogènes, la vitamine C, certains acides aminés et l'état inflammatoire général de l'organisme. Sa production commence à décliner dès la vingtaine, de l'ordre de 1 % par an et s'accélère significativement lors de la périménopause.</p>
         
           <h3>Existe-t-il une protéine qui rajeunit la peau ?</h3>
@@ -392,7 +392,7 @@
 
         <div class="reveal">
           <h2>L'intérieur révèle <em>l'extérieur</em></h2>
-          <p>Ce que la biologie du vieillissement cutané enseigne de façon irréfutable, c'est que la peau est un organe de reflet. Son état visible est le résultat de processus biologiques profonds : l'équilibre hormonal, la qualité métabolique, le niveau d'inflammation systémique, la santé du <a href="/blog/estrobolome-microbiote-femme" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-light);">microbiote intestinal</a> qui régule indirectement les hormones et l'inflammation et la nutrition cellulaire.</p>
+          <p>Ce que la biologie du vieillissement cutané enseigne de façon irréfutable, c'est que la peau est un organe de reflet. Son état visible est le résultat de processus biologiques profonds : l'équilibre hormonal, la qualité métabolique, le niveau d'inflammation systémique, la santé du <a href="/blog/estrobolome-microbiote-femme" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-light);">microbiote intestinal</a> (qui régule indirectement les hormones et l'inflammation) et la nutrition cellulaire.</p>
           <p>Une approche qui n'agit que sur la surface produit des résultats limités et temporaires. Une approche qui comprend et agit sur les mécanismes biologiques sous-jacents peut produire des changements visibles et durables. C'est le fondement du Rajeunissement Cellulaire Féminin™.</p>
         </div>
 
