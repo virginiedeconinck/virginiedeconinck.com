@@ -391,6 +391,22 @@ page, pas une casse ; si elle le préfère collé, on le retire.
 - **Externe revérifié le 14/09** : rétatrutide TRIUMPH-1 (2 339 participants, 28,3 % à 80 semaines,
   21/05/2026) et orforglipron (FDA, 01/04/2026), tels que `/glp1` les cite.
 
+## Publication du 20/09/2026 (hors cycle, demande de Virginie, « publie » à 07h46)
+
+- **Perte musculaire par décennie : « 3 à 5 % » → « 3 à 8 % »**, aligné sur la formation RCF
+  (`piliers-rcf/espace-prive/protocole-1.html` et son miroir autoguidé, lus à la source : « À partir
+  de 35 ans, une femme perd en moyenne 3 à 8 % de sa masse musculaire par décennie »). 4 occurrences,
+  les seules du site (grep des 21 pages) : `/glp1` x3 (JSON-LD FAQPage, corps, FAQ visible, changées
+  ENSEMBLE) et `/muscle-longevite-feminine` x1. `dateModified` + `lastmod` au 2026-09-20 sur les deux.
+- **NON touché, sur consigne de Virginie : « jusqu'à 1 à 2 % par an après la ménopause » sur `/glp1`.**
+  Pas vérifié dans cette recherche, à contrôler séparément si besoin. Compté intact : 3 avant, 3 après.
+- **Limite dite** : la source classique du chiffre (Volpi 2004, PMID 15192443) n'a pas pu être ouverte
+  en texte intégral, son résumé Europe PMC ne porte pas le chiffre. Correction fondée sur la cohérence
+  avec la formation, pas sur une lecture de l'article.
+- Fusion `d6a8e73`, Netlify `ready`, les deux pages relues EN LIGNE (0 « 3 à 5 », FAQ 4/4 et 5/5
+  concordantes avec le JSON-LD, sitemap au 20/09). Run cloud post-déploiement 35492553743 : 0 erreur,
+  0 point à optimiser. Aucune capture d'écran : changement d'un chiffre dans une phrase, pas de mise en page.
+
 ## Pour le prochain run (cycle de septembre 2026)
 
 - **Sujet recommandé : une page SOMMEIL.** C'est le seul thème des domaines d'expertise RCF sans
