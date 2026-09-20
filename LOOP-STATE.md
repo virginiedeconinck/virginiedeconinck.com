@@ -426,6 +426,13 @@ Les deux SKILL.md ont été corrigés en conséquence le soir même.
 **Le nom de domaine : SUJET CLOS, ne plus jamais le remonter.** Il est en renouvellement automatique
 chez OVH. Le moteur criait dès 45 jours avant l'échéance, six semaines par an. `monitoring.py`
 corrigé sur `main` (`61f9f08`) : palier d'alerte supprimé, filet abaissé de 14 à 3 jours.
+**Note du 20/09/2026 (filet quotidien) :** le run du 19/09 mesure « valide encore 4 jours, expire le
+24/09 ». Le moteur ouvre une Issue à `jours < 3`, donc le 22/09 et le 23/09 SI OVH n'a pas encore
+repoussé la date (OVH renouvelle dans la semaine qui précède). Conduite à tenir ce jour-là, sans
+rouvrir le sujet : interroger RDAP (`curl -s https://rdap.org/domain/virginiedeconinck.com`) ; si
+l'expiration est passée à 2027, l'Issue est périmée, proposer sa fermeture en une ligne ; si la date
+n'a pas bougé le 23/09 au soir, c'est le SEUL cas où l'on alerte Virginie. Tout ça est dans le
+rapport de surveillance d'hier, rien n'a été recalculé ici.
 
 **Les deux titres à réécrire : ABANDONNÉ APRÈS MESURE, et c'est le bon geste.** Le rapport désignait
 `/biohacking-feminin` (51 impr, 1 clic) et `/resistance-insuline` (31 impr, 0 clic) comme des pages à
