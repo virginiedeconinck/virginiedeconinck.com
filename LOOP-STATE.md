@@ -454,6 +454,11 @@ rapport de surveillance d'hier, rien n'a été recalculé ici.
 renouvelé, statuts normaux (delete/transfer prohibited), DNS OVH intacts. Remonté à Virginie avec la seule
 preuve qui compte : l'état du renouvellement automatique dans son espace OVH. Le moteur rouvrira une Issue
 le 22 et le 23/09 tant que la date n'a pas bougé : c'est le filet voulu, pas une panne.
+**21/09, 19h55 : RENOUVELÉ CÔTÉ OVH.** Capture de l'espace client envoyée par Virginie : « Date d'expiration
+24 sept. 2027 », fréquence « tous les ans », statut Enregistré / Actif. Le registre Verisign, réinterrogé à
+17h55 UTC, affiche ENCORE 2026 : OVH pousse la commande au registre à l'échéance, pas avant. Donc les
+Issues des 22-23/09 seront des faux positifs à fermer sans un mot ; ne rouvrir que si le registre
+affiche toujours 2026 le 25/09.
 
 **Les deux titres à réécrire : ABANDONNÉ APRÈS MESURE, et c'est le bon geste.** Le rapport désignait
 `/biohacking-feminin` (51 impr, 1 clic) et `/resistance-insuline` (31 impr, 0 clic) comme des pages à
