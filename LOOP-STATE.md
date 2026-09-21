@@ -449,6 +449,11 @@ rouvrir le sujet : interroger RDAP (`curl -s https://rdap.org/domain/virginiedec
 l'expiration est passée à 2027, l'Issue est périmée, proposer sa fermeture en une ligne ; si la date
 n'a pas bougé le 23/09 au soir, c'est le SEUL cas où l'on alerte Virginie. Tout ça est dans le
 rapport de surveillance d'hier, rien n'a été recalculé ici.
+**21/09/2026, 19h41 :** l'Issue #9 s'est ouverte au run de 10h34 UTC (2,86 jours arrondis à 2). RDAP registre
+(Verisign) ET registrar (OVH) interrogés à 17h41 UTC : expiration toujours au 24/09/2026 09h21, pas encore
+renouvelé, statuts normaux (delete/transfer prohibited), DNS OVH intacts. Remonté à Virginie avec la seule
+preuve qui compte : l'état du renouvellement automatique dans son espace OVH. Le moteur rouvrira une Issue
+le 22 et le 23/09 tant que la date n'a pas bougé : c'est le filet voulu, pas une panne.
 
 **Les deux titres à réécrire : ABANDONNÉ APRÈS MESURE, et c'est le bon geste.** Le rapport désignait
 `/biohacking-feminin` (51 impr, 1 clic) et `/resistance-insuline` (31 impr, 0 clic) comme des pages à
