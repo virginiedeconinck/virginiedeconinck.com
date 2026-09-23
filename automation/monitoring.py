@@ -162,14 +162,26 @@ def controle_socle():
         # renouvellement, rien n'expire. Donc arretez de me le dire tous les
         # jours, j'en ai ras-le-bol." La date reste mesuree et sort dans
         # "Perimetre couvert", ou elle ne derange personne.
-        # Seuil a 3 jours et non 14 : OVH renouvelle dans la semaine qui precede
-        # l'echeance, un seuil a 14 jours rouvrirait exactement le meme bruit une
-        # semaine plus tard. A 3 jours, ce n'est plus une precaution, c'est un
-        # incident : le renouvellement automatique n'a pas eu lieu.
-        if jours < 3:
-            ERREUR("socle", f"le NOM DE DOMAINE expire dans {jours} jours "
-                            f"(le {fin:%d/%m/%Y}, chez {reg}) : le renouvellement "
-                            f"automatique n'a pas eu lieu, le site entier va tomber")
+        #
+        # SEUIL CORRIGE LE 23/09/2026, apres 3 jours d'alertes fausses d'affilee
+        # (Issues #9, #10, #11, les 21, 22 et 23/09). Le seuil etait a 3 jours et
+        # son message affirmait "le renouvellement automatique n'a pas eu lieu".
+        # MESURE ce jour-la, et c'est la clef : OVH ne pousse le renouvellement au
+        # REGISTRE qu'a l'echeance, jamais avant. Le 21/09 l'espace client OVH
+        # affichait deja "expiration 24 sept. 2027" (capture de Virginie) pendant
+        # que le RDAP Verisign affichait encore 2026. Le moteur ne lit que le
+        # registre : AVANT l'echeance, il ne peut structurellement pas distinguer
+        # un domaine renouvele d'un domaine abandonne. Tout seuil positif fabrique
+        # donc du bruit garanti, une fois par an, plusieurs jours de suite.
+        # Le seul fait qui prouve un vrai defaut de paiement, c'est une date
+        # d'expiration DEPASSEE et toujours pas repoussee. D'ou jours < 0.
+        # Le risque reel d'attendre est nul : un .com expire entre en periode de
+        # grace de 30 jours chez le registre avant toute suspension, et si le site
+        # tombait vraiment, les 21 controles de page de ce moteur crieraient.
+        if jours < 0:
+            ERREUR("socle", f"le NOM DE DOMAINE a EXPIRE il y a {abs(jours)} jour(s) "
+                            f"(le {fin:%d/%m/%Y}, chez {reg}) et le registre ne l'a "
+                            f"toujours pas repousse : verifier le paiement chez OVH")
     except Exception as e:
         ALERTE("socle", f"controle du nom de domaine impossible : {e}")
 
