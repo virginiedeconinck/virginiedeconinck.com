@@ -459,6 +459,17 @@ le 22 et le 23/09 tant que la date n'a pas bougé : c'est le filet voulu, pas un
 17h55 UTC, affiche ENCORE 2026 : OVH pousse la commande au registre à l'échéance, pas avant. Donc les
 Issues des 22-23/09 seront des faux positifs à fermer sans un mot ; ne rouvrir que si le registre
 affiche toujours 2026 le 25/09.
+**23/09/2026 : LE MOTEUR EST CORRIGE, sujet clos pour de bon (commit `5215059`, fusionne sur `main`
+sur « publie » de Virginie).** Les Issues #9, #10 et #11 (21, 22, 23/09) etaient TROIS fausses alertes
+d'affilee pour la meme cause, et les runs passaient en rouge avec elles : trois emails par jour pour
+un domaine qui va bien. Cause de fond : le moteur lit le REGISTRE (RDAP Verisign), or OVH ne lui pousse
+le renouvellement qu'a l'echeance. Avant l'echeance, le moteur ne peut donc PAS distinguer un domaine
+renouvele d'un domaine abandonne, et tout seuil positif fabrique du bruit garanti, plusieurs jours de
+suite, une fois par an. Seuil passe de `jours < 3` a `jours < 0` (expiration reellement depassee et non
+repoussee), message reecrit (il affirmait « le renouvellement automatique n'a pas eu lieu », ce qu'il ne
+mesurait pas). Simule sur les vraies dates : rien les 21 au 24/09, alerte le 25/09 seulement si OVH n'a
+pas paye, rien une fois la date a 2027. Run de controle 35847610678 : 0 erreur, 0 point a optimiser.
+Les 3 Issues fermees avec l'explication. **Ne jamais remettre de seuil positif sur ce controle.**
 
 **Les deux titres à réécrire : ABANDONNÉ APRÈS MESURE, et c'est le bon geste.** Le rapport désignait
 `/biohacking-feminin` (51 impr, 1 clic) et `/resistance-insuline` (31 impr, 0 clic) comme des pages à
