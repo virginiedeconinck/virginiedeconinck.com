@@ -496,3 +496,29 @@ des pages piliers est interchangeable (« À un moment donné, ma peau a changé
 (« les premières fluctuations à 38 ans »). Le 39,7 de TruDiagnostic n'est sur AUCUNE page pilier.
 Commencer par 3 pages (histamine, périménopause, collagène), jamais par les 20 : modifier tout un site
 qui va bien produit du bruit que Google traite comme tel.
+
+## Filet quotidien du 24/09/2026 (05h20 UTC) : le jour J de l'echeance du domaine
+
+Les trois controles du filet sont normaux : dernier run termine **success** (35847610678, run de
+controle du 23/09 a 10h14 UTC, il y a 19 h), **0 Issue ouverte**, accueil charge en 200 avec son
+contenu reel (title servi, 1 seul H1 « Virginie Deconinck », canonical, `index, follow`,
+« Mis a jour en septembre 2026 »). Pas de rattrapage editorial : `nextPlanned` = 2026-10-01.
+`choix-sujet-article-mensuel` est armee et part aujourd'hui a 06h39 UTC : le sujet d'octobre se
+decide avec Virginie ce matin, ce n'est pas mon travail. Rien remonte a Virginie, comme prevu.
+
+⚠️ **Prevision a verifier demain, PAS une alerte : aujourd'hui est le jour exact de l'echeance.**
+RDAP interroge a 05h21 UTC, registre Verisign ET registrar OVH : expiration **2026-09-24T07:21:11Z**,
+soit 09h21 Luxembourg, toujours en 2026, statuts normaux. Or le run planifie part entre 09h et
+10h30 UTC, donc **apres** l'heure d'expiration. Avec le seuil corrige hier (`jours < 0`), si OVH n'a
+pas encore pousse le renouvellement au registre a cette minute-la, le moteur mesurera une expiration
+depassee et ouvrira une Issue : ce serait la **4e fausse alerte** du meme mecanisme, le domaine etant
+renouve chez OVH (capture de son espace client du 21/09 : « Date d'expiration 24 sept. 2027 »,
+statut Enregistre / Actif).
+**Conduite a tenir demain, sans rouvrir le sujet avec Virginie :** reinterroger RDAP. Si le registre
+affiche 2027, l'Issue eventuelle est perime, on la ferme sans un mot. Si le registre affiche ENCORE
+2026 le 25/09, c'est le seul cas ou on alerte.
+**Correctif du moteur volontairement NON fait aujourd'hui.** La grace a ajouter serait d'attendre
+24 h apres l'expiration avant d'alerter (le temps que le registrar pousse au registre), jamais un
+seuil positif. Mais je ne corrige pas sur une hypothese : si l'Issue s'ouvre ce matin, la mesure
+existe et on propose la grace demain ; si elle ne s'ouvre pas, le moteur est bon et il n'y a rien
+a faire. Fabriquer l'optimisation avant la mesure, c'est exactement ce que la section 4 interdit.
