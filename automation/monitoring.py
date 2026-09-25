@@ -525,6 +525,17 @@ def controle_geo(pages, urls_sitemap):
                 types += tl
                 if {"Article", "BlogPosting"} & set(tl):
                     articles.append(item)
+                # ProfilePage exige une DATE ET HEURE (type DateTime), pas une date
+                # seule, contrairement a Article. Email Search Console du 24/09/2026 :
+                # « Valeur de date et heure incorrecte pour dateModified » sur
+                # /a-propos, qui portait "2026-09-14". Doc Google ProfilePage ouverte
+                # le 25/09 : exemple "2024-12-23T12:34:00-05:00".
+                if "ProfilePage" in tl:
+                    for champ in ("dateModified", "dateCreated"):
+                        v = item.get(champ)
+                        if v and not re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}", str(v)):
+                            ALERTE("geo", f"{chemin} : ProfilePage {champ} « {v} » sans heure "
+                                          f"(Google attend date ET heure, ex. 2026-09-14T21:19:42+02:00)")
 
         # Plusieurs blocs Article sur une page sont tolerés par Google TANT QUE leur
         # contenu concorde. Ce qui casse, c'est la CONTRADICTION : deux headline ou
