@@ -522,3 +522,17 @@ affiche 2027, l'Issue eventuelle est perime, on la ferme sans un mot. Si le regi
 seuil positif. Mais je ne corrige pas sur une hypothese : si l'Issue s'ouvre ce matin, la mesure
 existe et on propose la grace demain ; si elle ne s'ouvre pas, le moteur est bon et il n'y a rien
 a faire. Fabriquer l'optimisation avant la mesure, c'est exactement ce que la section 4 interdit.
+
+## Filet quotidien du 25/09/2026 (11h42 UTC) : la prevision d'hier s'est realisee
+
+- **Issue #12 (24/09, run 35983537418) = 4e fausse alerte domaine, PERIMEE.** RDAP Verisign
+  interroge a 11h42 UTC : expiration **2027-09-24**, « last changed » **2026-09-25T08:06:40Z**.
+  Le registre a donc ete mis a jour **25 h apres** l'echeance (24/09 07h21 UTC). Run du jour
+  36122054899 : success, 0 erreur, 0 point a optimiser, « valide encore 363 jours ». Accueil charge
+  a 11h42 UTC : title, H1 « Virginie Deconinck », « Mis a jour en septembre 2026 ».
+- **Correctif prepare sur `optim-2026-09-25` (`3569e45`), ATTEND « publie »** : alerte seulement
+  48 h apres l'echeance REELLE (heure comprise ; la date etait tronquee au jour, donc le moteur criait
+  des minuit le jour J). Simule sur les vraies dates : rien le 24/09 ni le 25/09 matin, alerte le 26/09
+  si le registre n'a pas bouge. Fermeture de l'Issue #12 proposee a Virginie, pas faite.
+- `automation/cycle-log.json` porte une modification NON commitee (sujet d'octobre « Sommeil »,
+  valide le 24/09 par une autre session). Pas touchee, pas commitee par moi : a la session du sujet.
