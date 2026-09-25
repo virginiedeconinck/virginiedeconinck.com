@@ -150,7 +150,7 @@ def controle_socle():
         code, corps, _, _ = http(f"https://rdap.verisign.com/com/v1/domain/{HOST}")
         d = json.loads(corps)
         exp = next(e["eventDate"] for e in d["events"] if e["eventAction"] == "expiration")
-        fin = datetime.datetime.strptime(exp[:10], "%Y-%m-%d")
+        fin = datetime.datetime.strptime(exp[:19], "%Y-%m-%dT%H:%M:%S")
         jours = (fin - datetime.datetime.utcnow()).days
         reg = next((v[3] for e in d.get("entities", []) if "registrar" in e.get("roles", [])
                     for v in e.get("vcardArray", [[], []])[1] if v[0] == "fn"), "?")
@@ -178,8 +178,18 @@ def controle_socle():
         # Le risque reel d'attendre est nul : un .com expire entre en periode de
         # grace de 30 jours chez le registre avant toute suspension, et si le site
         # tombait vraiment, les 21 controles de page de ce moteur crieraient.
-        if jours < 0:
-            ERREUR("socle", f"le NOM DE DOMAINE a EXPIRE il y a {abs(jours)} jour(s) "
+        #
+        # DELAI DE 48 H AJOUTE LE 25/09/2026, apres une 4e fausse alerte (Issue #12
+        # du 24/09). Mesure : echeance au registre le 24/09 a 07h21 UTC, run a
+        # 09h49 UTC, et Verisign n'a affiche 2027 que le 25/09 a 08h06 UTC, soit
+        # 25 h APRES l'echeance. OVH pousse donc au registre jusqu'a un jour apres.
+        # Deux autres defauts corriges avec : la date etait tronquee au jour, donc
+        # le moteur criait des minuit le jour J, avant meme l'heure d'echeance.
+        # 48 h laissent 23 h de marge sur le retard mesure ; la grace du registre
+        # reste de 30 jours au minimum, le risque d'attendre est donc nul.
+        depasse = datetime.datetime.utcnow() - fin
+        if depasse > datetime.timedelta(hours=48):
+            ERREUR("socle", f"le NOM DE DOMAINE a EXPIRE il y a {depasse.days} jour(s) "
                             f"(le {fin:%d/%m/%Y}, chez {reg}) et le registre ne l'a "
                             f"toujours pas repousse : verifier le paiement chez OVH")
     except Exception as e:
