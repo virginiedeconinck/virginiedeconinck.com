@@ -536,3 +536,10 @@ a faire. Fabriquer l'optimisation avant la mesure, c'est exactement ce que la se
   si le registre n'a pas bouge.
 - `automation/cycle-log.json` porte une modification NON commitee (sujet d'octobre « Sommeil »,
   valide le 24/09 par une autre session). Pas touchee, pas commitee par moi : a la session du sujet.
+- **25/09, alerte Search Console « Page de profil » (email du 24/09) : CORRIGEE ET PUBLIEE** (`c15d2ca`,
+  sur « publie » de Virginie). `/a-propos` : `dateModified` du ProfilePage passe de `2026-09-14` a
+  `2026-09-14T21:19:42+02:00` (heure reelle du dernier commit de la page ; doc Google ProfilePage =
+  DateTime). Date du jour ECARTEE, question de Virginie : rien du contenu ne change, et le `lastmod`
+  du sitemap reste au 14/09. Controle ajoute a `monitoring.py` (ALERTE si ProfilePage sans heure).
+  Relu en ligne a 12h37 UTC ; run cloud 36136386604 sur ce commit : 0 erreur, 0 point a optimiser.
+  Reste a Virginie : « Valider la correction » dans Search Console (non expose par l'API).
