@@ -148,12 +148,23 @@
       "A VERIFIER A LA SOURCE avant usage (proposees par l'agent, pas encore ouvertes par moi) : apnee NHANES 2025 PMID 39863851 ; progesterone Prior 2023 PMID 37277418 ; meta-analyse THS/sommeil Pan 2022 PMID 35102100 ; TCC-I Moon 2025 PMID 41531400."
     ],
     "pageSoutenue": "/perimenopause",
-    "cta": "DECIDE par Virginie le 25/09/2026 : UNIQUEMENT la page de vente 247 EUR (https://vdck-methode-chaude.netlify.app/page197/) dans l'encart de fin. PAS de candidature, PAS de 27 EUR dans cet article. Premier lien du site public vers la page 247. Le lien Tally du menu (toutes les pages) n'est pas concerne.",
+    "cta": "DECIDE par Virginie le 25/09/2026 : UNIQUEMENT la page 247 EUR dans l'encart de fin. Pas de candidature, pas de 27 EUR (exception a l'etape 5 du cycle, voulue par elle).",
     "photo": "FOURNIE par Virginie le 25/09/2026. Fichier pret : ~/Downloads/article-sommeil-octobre/sommeil-hero.jpg (1085x1302, JPEG qualite 70, 265 Ko, controle visuel au zoom sans defaut). Original conserve : photo-couverture-sommeil.jpg (404 Ko).",
     "valideLe": "2026-09-24",
     "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
     "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
-    "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)"
+    "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)",
+    "statut": "PRET_GO_PUBLICATION",
+    "goPublication": {
+      "donnePar": "Virginie, en conversation le 25/09/2026 vers 18h15, apres avoir vu l'apercu reel mobile et desktop",
+      "sesMots": "Le premier octobre, au matin. Et tu me le notifies.",
+      "quand": "2026-10-01 au matin",
+      "branche": "cycle-2026-10",
+      "commitVu": "bc40a969425d6bacc445cfb2190b3ffdb8bbd173",
+      "fichier": "blog/sommeil-menopause-reveils-nocturnes.html",
+      "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
+    },
+    "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko."
   },
   "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite.",
   "sujetEnReserve": {
