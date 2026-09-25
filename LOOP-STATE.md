@@ -530,9 +530,9 @@ a faire. Fabriquer l'optimisation avant la mesure, c'est exactement ce que la se
   Le registre a donc ete mis a jour **25 h apres** l'echeance (24/09 07h21 UTC). Run du jour
   36122054899 : success, 0 erreur, 0 point a optimiser, « valide encore 363 jours ». Accueil charge
   a 11h42 UTC : title, H1 « Virginie Deconinck », « Mis a jour en septembre 2026 ».
-- **Correctif prepare sur `optim-2026-09-25` (`3569e45`), ATTEND « publie »** : alerte seulement
+- **Correctif PUBLIE sur `main` (`d76387c`) sur « publie » de Virginie le 25/09**, run cloud de controle 36132629884 sur ce commit : success, 0 erreur, domaine a 363 jours. Issue #12 FERMEE sur sa demande. Detail du correctif : alerte seulement
   48 h apres l'echeance REELLE (heure comprise ; la date etait tronquee au jour, donc le moteur criait
   des minuit le jour J). Simule sur les vraies dates : rien le 24/09 ni le 25/09 matin, alerte le 26/09
-  si le registre n'a pas bouge. Fermeture de l'Issue #12 proposee a Virginie, pas faite.
+  si le registre n'a pas bouge.
 - `automation/cycle-log.json` porte une modification NON commitee (sujet d'octobre « Sommeil »,
   valide le 24/09 par une autre session). Pas touchee, pas commitee par moi : a la session du sujet.
