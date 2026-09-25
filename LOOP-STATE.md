@@ -542,4 +542,4 @@ a faire. Fabriquer l'optimisation avant la mesure, c'est exactement ce que la se
   DateTime). Date du jour ECARTEE, question de Virginie : rien du contenu ne change, et le `lastmod`
   du sitemap reste au 14/09. Controle ajoute a `monitoring.py` (ALERTE si ProfilePage sans heure).
   Relu en ligne a 12h37 UTC ; run cloud 36136386604 sur ce commit : 0 erreur, 0 point a optimiser.
-  Reste a Virginie : « Valider la correction » dans Search Console (non expose par l'API).
+  Validation lancee par Virginie dans Search Console le 25/09 (non lisible par l API) : guetter son email de resultat.
