@@ -137,22 +137,32 @@
     "poseLe": "2026-09-01"
   },
   "sujetArticleValide": {
-    "mois": "2026-09",
-    "sujet": "Melasma et traitement hormonal",
-    "titre": "Melasma et traitement hormonal : ce qu'on ne vous dit pas",
-    "fichier": "blog/melasma-traitement-hormonal-menopause.html",
-    "photo": "NON FOURNIE - Virginie la donne, ne jamais publier avec un placeholder",
-    "valideLe": "2026-09-01",
-    "decidePar": "Virginie directement, en conversation le 01/09/2026 au soir (pas via la tache du 24, qui n'existait pas encore)"
+    "mois": "2026-10",
+    "sujet": "Reveillee a 3 h du matin, pas forcement a cause d'une bouffee de chaleur",
+    "angle": "Les reveils nocturnes qui s'installent MEME SANS bouffee de chaleur : trajectoires SWAN (1 femme sur 6 s'aggrave, beaucoup etaient deja fragiles avant), cercle bouffees/sommeil, apnee qui augmente apres la menopause, role calmant de la progesterone. Ne PAS refaire la section de /perimenopause « Pourquoi les bouffees de chaleur vous reveillent la nuit ».",
+    "demandeReelle": "Suggestion Google « pourquoi la menopause empeche de dormir » (rapport SEO/GEO cloud du 23/09/2026). Aucune requete Search Console mesuree sur ce sujet.",
+    "sourcesRetenues": [
+      "Maki PM et coll., Menopause 2026;33(6):673-682, DOI 10.1097/GME.0000000000002725, PMID 41529146 : SWAN, 2 066 femmes, bouffees et troubles du sommeil doublent chacun le risque de l'autre. FINANCE PAR BAYER, a dire. Verifie sur PubMed le 24/09/2026.",
+      "Kravitz HM et coll., Curr Sleep Med Rep 2017;3(3):235-250, DOI 10.1007/s40675-017-0084-1, PMID 28944165 : SWAN, 1 285 femmes, 4 trajectoires de reveils (37,9 % faible, 28,4 % moderee, 15,3 % en hausse, 18,4 % elevee), globalement stables. Verifie sur PubMed le 24/09/2026.",
+      "Pinkerton JV et coll., JAMA 2024;332(16):1343-54, DOI 10.1001/jama.2024.14618, PMID 39172446 : OASIS 1 et 2, 796 femmes, elinzanetant, sommeil = critere SECONDAIRE, finance par Bayer. Verifie sur PubMed le 24/09/2026.",
+      "A VERIFIER A LA SOURCE avant usage (proposees par l'agent, pas encore ouvertes par moi) : apnee NHANES 2025 PMID 39863851 ; progesterone Prior 2023 PMID 37277418 ; meta-analyse THS/sommeil Pan 2022 PMID 35102100 ; TCC-I Moon 2025 PMID 41531400."
+    ],
+    "pageSoutenue": "/perimenopause",
+    "cta": "DECIDE par Virginie le 25/09/2026 : UNIQUEMENT la page de vente 247 EUR (https://vdck-methode-chaude.netlify.app/page197/) dans l'encart de fin. PAS de candidature, PAS de 27 EUR dans cet article. Premier lien du site public vers la page 247. Le lien Tally du menu (toutes les pages) n'est pas concerne.",
+    "photo": "FOURNIE par Virginie le 25/09/2026. Fichier pret : ~/Downloads/article-sommeil-octobre/sommeil-hero.jpg (1085x1302, JPEG qualite 70, 265 Ko, controle visuel au zoom sans defaut). Original conserve : photo-couverture-sommeil.jpg (404 Ko).",
+    "valideLe": "2026-09-24",
+    "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
+    "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
+    "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)"
   },
-  "sujetReservePourOctobre": {
+  "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite.",
+  "sujetEnReserve": {
     "mois": "2026-10",
     "sujet": "Peau et os : le collagene que vous perdez des deux cotes",
     "fichier": "blog/peau-os-collagene-menopause.html",
-    "etat": "ECRIT (2231 mots) mais SUPPRIME de la branche cycle-2026-09 par le commit 994f586 du 01/09, qui a bascule le lot sur le melasma. Le fichier n'existe plus ni sur le disque ni dans HEAD. Il n'est PAS perdu : il vit dans l'historique git.",
+    "etat": "PLUS PREVU POUR OCTOBRE : Virginie a choisi le sommeil le 24/09/2026 (c'etait l'article qui l'enthousiasmait le moins, et aucune demande Google mesuree sur l'os). Reste ecrit et en reserve dans l'historique git. Sources reverifiees le 24/09 : les 5 existent et sont fidelement citees ; a corriger si un jour il ressort : phrase SHBG trop affirmative, CTA d'offre absent, date, ajouter Aurégan 2018 (PMID 30237903).",
     "aFaireAvantOctobre": "1) restaurer le fichier avec la commande ci-dessus ; 2) le rebrancher dans blog/index.html, sitemap.xml et llms.txt ; 3) obtenir sa photo de couverture aupres de Virginie ; 4) reverifier que ses sources d'aout n'ont pas vieilli.",
     "decidePar": "Virginie, 01/09/2026 : « Ce mois ci septembre, il y aura l'article sur le melasma. L'autre article, on le reporte a octobre. »",
     "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."
-  },
-  "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite."
+  }
 }
