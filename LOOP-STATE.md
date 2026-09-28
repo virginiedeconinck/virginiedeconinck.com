@@ -534,8 +534,15 @@ a faire. Fabriquer l'optimisation avant la mesure, c'est exactement ce que la se
   48 h apres l'echeance REELLE (heure comprise ; la date etait tronquee au jour, donc le moteur criait
   des minuit le jour J). Simule sur les vraies dates : rien le 24/09 ni le 25/09 matin, alerte le 26/09
   si le registre n'a pas bouge.
-- `automation/cycle-log.json` porte une modification NON commitee (sujet d'octobre « Sommeil »,
-  valide le 24/09 par une autre session). Pas touchee, pas commitee par moi : a la session du sujet.
+- ~~cycle-log.json modifie non commite~~ PERIME, releve le 27/09 : la modification (sujet d'octobre
+  « Sommeil ») est commitee sur la branche `cycle-2026-10` (`fcf30c1` article, `5720adf` GO de
+  Virginie pour publication le 01/10 au matin). `main` ne la porte pas encore, c'est normal.
+
+## Filet quotidien du 27/09/2026 (05h16 UTC, dimanche)
+
+Normal, rien remonte : run planifie 36233773657 du 26/09 09h46 UTC en success (19 h), 0 Issue
+ouverte, accueil charge (title, 1 H1 « Virginie Deconinck », `index, follow`, « Mis a jour en
+septembre 2026 »). Pas de rattrapage : `nextPlanned` 2026-10-01, `cycleEnCours` vide.
 - **25/09, alerte Search Console « Page de profil » (email du 24/09) : CORRIGEE ET PUBLIEE** (`c15d2ca`,
   sur « publie » de Virginie). `/a-propos` : `dateModified` du ProfilePage passe de `2026-09-14` a
   `2026-09-14T21:19:42+02:00` (heure reelle du dernier commit de la page ; doc Google ProfilePage =
