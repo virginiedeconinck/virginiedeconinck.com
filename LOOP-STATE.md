@@ -550,3 +550,49 @@ septembre 2026 »). Pas de rattrapage : `nextPlanned` 2026-10-01, `cycleEnCours`
   du sitemap reste au 14/09. Controle ajoute a `monitoring.py` (ALERTE si ProfilePage sans heure).
   Relu en ligne a 12h37 UTC ; run cloud 36136386604 sur ce commit : 0 erreur, 0 point a optimiser.
   Validation lancee par Virginie dans Search Console le 25/09 (non lisible par l API) : guetter son email de resultat.
+
+## Audit du lundi 28/09/2026 (run cloud 36381213410 lance a la main a 05h16 UTC, 4 rapports sur 4)
+
+- **Site : 0 erreur, 0 point a optimiser.** Les 20 DOI « a relire » sont ceux verifies a la source
+  le 14/09 : diff cible sur les lignes de reference depuis `ea04dcf`, **aucune** n'a bouge. Clos.
+- **GSC page par page, 8 semaines (API, 28/09) :** `/histamine` MONTE (pos 6,0 -> 4,9 puis 5,4,
+  91 impr et 5 clics la derniere semaine) ; le « 14 -> 3 impr » du rapport est une requete isolee,
+  du bruit. `/shbg` : nouveau titre du 14/09 = 0 clic sur 104 impr avant, 3 sur 91 apres. Il marche.
+  Estrobolome : « estrobolome definition » 89 impr, 0 clic, pos 8,3, page en progression (10 -> 7).
+  Titre deja une definition : **on attend une semaine** ; si > 150 impr et toujours 0 clic, proposer
+  « definition » dans le titre (meme logique que SHBG le 14/09).
+- **La question GEO « soins regenerant cellulaire preuves » a DEJA son H2 mot pour mot** sur
+  `/regeneration-cellulaire` (et sa FAQ). La ligne du 14/09 « pas fait » est perimee.
+- **Maillage : memes 25 occasions, 10 vers melasma. Meme decision : non.**
+- **Lecture integrale des 21 textes + rendu 375/1280 des 21 pages (433 tranches, regardees en
+  planches de 6) : prepare sur `optim-2026-09-28` (`18e0739`), ATTEND « publie » :**
+  1. `/peptides` : « certains ont ete retires de listes restrictives, signalant une evolution du
+     regard reglementaire » etait FAUX sur le fond. Orrick 16/04/2026 : les 12 peptides sont sortis
+     de la Categorie 2 parce que les demandeurs ont RETIRE leur dossier, pas apres reevaluation ;
+     Mintz 29/07/2026 : comite consultatif pour 6 sur 7 contre l'avis des scientifiques de la FDA,
+     vote non contraignant. Reecrit.
+  2. `/cellules-senescentes` x3 (corps, FAQ, JSON-LD) : « rapamycine inaccessible meme sur
+     prescription » etait faux : Hyftor (sirolimus gel) autorise dans l'UE le 15/05/2023 (EMA),
+     pour l'angiofibrome de la sclerose tubereuse. Reformule : aucune autorisation cosmetique.
+  3. `/graisse-abdominale` : les 4 intitules de « la boucle auto-entretenue » etaient NOIR SUR NOIR
+     (contraste 1,00) depuis le 15/05 : `.article p strong` ecrasait `.loop-box strong`.
+  4. `/glp1` : « 15-60% » dessine en 48-77 px dore, rendu en 15 px gris (`.article p` ecrasait
+     `.stat-number`). Accueil : numeros I a VI dessines dores, rendus gris (`.science-item p`).
+  5. 495 espaces ordinaires avant : ; ? ! » remplaces par des insecables sur les 21 pages : le « : »
+     tombait seul a la ligne dans 6 titres sur iPhone (muscle, regeneration, graisse, glp1, shbg...).
+  Dates : `dateModified`/`lastmod` au 28/09 sur peptides et cellules-senescentes seulement (contenu).
+  Captures avant/apres dans `~/Downloads/audit-site-28-09/`, scripts dans `.../outils/`.
+  Fusion testee avec `cycle-2026-10` (Sommeil) : aucun conflit. **L'article Sommeil n'a pas les
+  insecables** : a reprendre apres sa publication, pas avant (sa branche appartient au cycle).
+- **Lecons d'outil, pour le prochain lundi.** (a) Le detecteur de conflits CSS du 14/09 ne testait
+  que les tailles en px : il ratait `clamp()` et toutes les COULEURS. Version corrigee = `clash2.mjs`
+  (classe seule, taille ET couleur, valeur declaree calculee par une sonde). (b) Un detecteur de
+  CONTRASTE (texte < 2:1 sur son fond) a trouve la boucle noire que 280 captures du 14/09 n'avaient
+  pas vue : a garder. (c) Le detecteur de « ponctuation seule a la ligne » donne de faux positifs
+  apres correction : la capture fait foi, pas lui. (d) Capturer SANS couper les animations `fadeUp`
+  des titres les laisse a opacite 0 en haut de page : forcer `animation-duration` court, pas `none`.
+- **Non touche, a proposer seulement :** `/shbg` dit elle-meme que « l'insuline freine la SHBG »
+  est imprecis (c'est la lipogenese hepatique), mais sa carte et sa FAQ (lue par les IA) le disent
+  encore tel quel. `seo-geo.py` classe « qu'est ce que s.h.b.g dans une prise de sang » en terrain
+  non couvert (les points cassent le mot) alors que la FAQ exacte existe : correctif moteur a faire.
+- **Instagram dans Search Console : aucun CSV neuf dans `~/Downloads`** (dernier : 2026-08-30.csv).
