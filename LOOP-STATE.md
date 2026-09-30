@@ -610,3 +610,12 @@ septembre 2026 »). Pas de rattrapage : `nextPlanned` 2026-10-01, `cycleEnCours`
   encore tel quel. `seo-geo.py` classe « qu'est ce que s.h.b.g dans une prise de sang » en terrain
   non couvert (les points cassent le mot) alors que la FAQ exacte existe : correctif moteur a faire.
 - **Instagram dans Search Console : aucun CSV neuf dans `~/Downloads`** (dernier : 2026-08-30.csv).
+- **30/09, 07h50 : emails d'echec RCF traites sur ordre de Virginie.** (1) Les 5 contacts orphelins
+  SUPPRIMES de Brevo (4 adresses mal tapees de juillet + son test `+testvp30`), relecture API = 404.
+  (2) `vdck-automations/monitoring_pipeline.py` (`1b705a5`) : liste 16 comptee comme protection,
+  Melodie reste hors de toute sequence pendant le test Ventre Plat. Run manuel 36674341908 :
+  C-ACHAT-NU et C-ORPHELINE ne sortent plus ; seul F-SILENCE, parce que je l'ai lance a 07h39,
+  avant le 1er passage de Candidatures (GitHub le retarde de plusieurs heures). 14 controles
+  planifies precedents : jamais de F-SILENCE. **A verifier au filet du 01/10 : le verdict du
+  controle RCF planifie du 30/09 au soir doit etre 0 FAIL** (`gh run list -R
+  virginiedeconinck/vdck-automations --workflow monitoring.yml`). Sinon, le dire a Virginie.
