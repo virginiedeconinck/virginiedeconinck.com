@@ -591,6 +591,20 @@ septembre 2026 »). Pas de rattrapage : `nextPlanned` 2026-10-01, `cycleEnCours`
   pas vue : a garder. (c) Le detecteur de « ponctuation seule a la ligne » donne de faux positifs
   apres correction : la capture fait foi, pas lui. (d) Capturer SANS couper les animations `fadeUp`
   des titres les laisse a opacite 0 en haut de page : forcer `animation-duration` court, pas `none`.
+- **DECISIONS DE VIRGINIE LE 30/09, a ne pas rouvrir :**
+  - **Rapamycine `/cellules-senescentes` : ON LAISSE « inaccessible meme sur prescription ».** Son
+    raisonnement : la seule autorisation europeenne vise une maladie si rare qu'aucun medecin ne la
+    prescrira pour un usage anti-age, donc c'est inaccessible EN PRATIQUE. Retire de la branche.
+  - **Peptides : pas convaincue par ma reecriture.** Phrase remise telle qu'en ligne. Ne pas la
+    reproposer sans element nouveau.
+  - Boucle graisse abdominale, 15-60 % glp1, numeros I-VI : GO de correction.
+  - SHBG : GO pour aligner. Fait sur la branche (`carte + FAQ + JSON-LD`, 8/8 FAQ = miroir,
+    `dateModified`/`lastmod` au 30/09).
+  - Tout attend encore son « publie » sur la version exacte.
+- **Ses emails d'echec GitHub quotidiens (verifie le 30/09) :** site public = 4 echecs du 21 au
+  24/09, tous la fausse alerte domaine, 0 depuis le 25/09. Le reste vient de `vdck-automations`,
+  workflow « Monitoring pipeline RCF » : 22 echecs sur 22 depuis le 16/09, VOLONTAIRES (2 FAIL
+  Brevo non traites), hors perimetre du site, remonte a Virginie avec proposition.
 - **Non touche, a proposer seulement :** `/shbg` dit elle-meme que « l'insuline freine la SHBG »
   est imprecis (c'est la lipogenese hepatique), mais sa carte et sa FAQ (lue par les IA) le disent
   encore tel quel. `seo-geo.py` classe « qu'est ce que s.h.b.g dans une prise de sang » en terrain
