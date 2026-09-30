@@ -619,3 +619,10 @@ septembre 2026 »). Pas de rattrapage : `nextPlanned` 2026-10-01, `cycleEnCours`
   planifies precedents : jamais de F-SILENCE. **A verifier au filet du 01/10 : le verdict du
   controle RCF planifie du 30/09 au soir doit etre 0 FAIL** (`gh run list -R
   virginiedeconinck/vdck-automations --workflow monitoring.yml`). Sinon, le dire a Virginie.
+- **PUBLIE le 30/09 a 08h08 sur « publie » de Virginie** (fusion `90467d7`). En ligne a 08h09.
+  Verifie EN LIGNE : 0 conflit de style et 0 texte illisible sur les 21 pages (375 et 1280),
+  boucle graisse blanc sur noir, 15-60 % en 48 px dore, numeros I-VI dores, SHBG carte+FAQ alignees
+  (0 ancienne formule, FAQ = miroir 8/8, dateModified 30/09), peptides et rapamycine inchanges,
+  sitemap 21 URLs. Capture `~/Downloads/audit-site-28-09/6-EN-LIGNE-30-09-iphone.png`.
+  Run cloud 36676802471 : 0 erreur ; les 2 « a corriger » = DOI melasma en HTTP 429 Crossref,
+  reinterroges a la main : les deux EXISTENT. Bruit passager, rien a faire.
