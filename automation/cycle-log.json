@@ -142,13 +142,34 @@
     "poseLe": "2026-09-01"
   },
   "sujetArticleValide": {
-    "mois": "2026-09",
-    "sujet": "Melasma et traitement hormonal",
-    "titre": "Melasma et traitement hormonal : ce qu'on ne vous dit pas",
-    "fichier": "blog/melasma-traitement-hormonal-menopause.html",
-    "photo": "NON FOURNIE - Virginie la donne, ne jamais publier avec un placeholder",
-    "valideLe": "2026-09-01",
-    "decidePar": "Virginie directement, en conversation le 01/09/2026 au soir (pas via la tache du 24, qui n'existait pas encore)"
+    "mois": "2026-10",
+    "sujet": "Reveillee a 3 h du matin, pas forcement a cause d'une bouffee de chaleur",
+    "angle": "Les reveils nocturnes qui s'installent MEME SANS bouffee de chaleur : trajectoires SWAN (1 femme sur 6 s'aggrave, beaucoup etaient deja fragiles avant), cercle bouffees/sommeil, apnee qui augmente apres la menopause, role calmant de la progesterone. Ne PAS refaire la section de /perimenopause « Pourquoi les bouffees de chaleur vous reveillent la nuit ».",
+    "demandeReelle": "Suggestion Google « pourquoi la menopause empeche de dormir » (rapport SEO/GEO cloud du 23/09/2026). Aucune requete Search Console mesuree sur ce sujet.",
+    "sourcesRetenues": [
+      "Maki PM et coll., Menopause 2026;33(6):673-682, DOI 10.1097/GME.0000000000002725, PMID 41529146 : SWAN, 2 066 femmes, bouffees et troubles du sommeil doublent chacun le risque de l'autre. FINANCE PAR BAYER, a dire. Verifie sur PubMed le 24/09/2026.",
+      "Kravitz HM et coll., Curr Sleep Med Rep 2017;3(3):235-250, DOI 10.1007/s40675-017-0084-1, PMID 28944165 : SWAN, 1 285 femmes, 4 trajectoires de reveils (37,9 % faible, 28,4 % moderee, 15,3 % en hausse, 18,4 % elevee), globalement stables. Verifie sur PubMed le 24/09/2026.",
+      "Pinkerton JV et coll., JAMA 2024;332(16):1343-54, DOI 10.1001/jama.2024.14618, PMID 39172446 : OASIS 1 et 2, 796 femmes, elinzanetant, sommeil = critere SECONDAIRE, finance par Bayer. Verifie sur PubMed le 24/09/2026.",
+      "A VERIFIER A LA SOURCE avant usage (proposees par l'agent, pas encore ouvertes par moi) : apnee NHANES 2025 PMID 39863851 ; progesterone Prior 2023 PMID 37277418 ; meta-analyse THS/sommeil Pan 2022 PMID 35102100 ; TCC-I Moon 2025 PMID 41531400."
+    ],
+    "pageSoutenue": "/perimenopause",
+    "cta": "DECIDE par Virginie le 25/09/2026 : UNIQUEMENT la page 247 EUR dans l'encart de fin. Pas de candidature, pas de 27 EUR (exception a l'etape 5 du cycle, voulue par elle).",
+    "photo": "FOURNIE par Virginie le 25/09/2026. Fichier pret : ~/Downloads/article-sommeil-octobre/sommeil-hero.jpg (1085x1302, JPEG qualite 70, 265 Ko, controle visuel au zoom sans defaut). Original conserve : photo-couverture-sommeil.jpg (404 Ko).",
+    "valideLe": "2026-09-24",
+    "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
+    "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
+    "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)",
+    "statut": "PRET_GO_PUBLICATION",
+    "goPublication": {
+      "donnePar": "Virginie, en conversation le 25/09/2026 vers 18h15, apres avoir vu l'apercu reel mobile et desktop",
+      "sesMots": "Le premier octobre, au matin. Et tu me le notifies.",
+      "quand": "2026-10-01 au matin",
+      "branche": "cycle-2026-10",
+      "commitVu": "bc40a969425d6bacc445cfb2190b3ffdb8bbd173",
+      "fichier": "blog/sommeil-menopause-reveils-nocturnes.html",
+      "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
+    },
+    "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko."
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
