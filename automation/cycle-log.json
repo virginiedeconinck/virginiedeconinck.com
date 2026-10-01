@@ -124,7 +124,12 @@
     "statut": "APPLIQUE ET VERIFIE le 2026-08-02 a 08h17 : les deux SKILL.md portent desormais le verrou 'cycleEnCours', monitoring-site-public-vdck est passe de '>=' a '>' (le jour J appartient a cycle-editorial-mensuel, le veilleur n'est qu'un filet a partir du lendemain), et le champ cycleEnCours existe ici, a null. Verifie en relisant les deux fichiers a la source, pas de memoire. LIMITE CONNUE : ce fichier n'est PAS versionne (.gitignore), le verrou ne coordonne donc que des taches tournant sur le Mac. Si un jour le cycle passe dans GitHub Actions, le verrou ne le verra pas.",
     "verifieLe": "2026-08-02"
   },
-  "cycleEnCours": null,
+  "cycleEnCours": {
+    "tache": "cycle-editorial-mensuel",
+    "sessionId": "b1228d97-b3ed-468b-9592-12aa297d5f8a",
+    "debutISO": "2026-10-01T07:34:01+02:00",
+    "expireISO": "2026-10-01T11:34:01+02:00"
+  },
   "optimisationQuotidienne": {
     "pose": "2026-08-02",
     "pourquoi": "Constat de Virginie : la routine du matin se contentait de verifier l'absence d'erreur, ce qui est un detecteur de panne et non un travail d'optimisation. Aucun controle de maillage n'existait nulle part, et seo-geo.py ne tournait que le lundi, dans le cloud, sans que la routine du Mac ne le lance jamais.",
