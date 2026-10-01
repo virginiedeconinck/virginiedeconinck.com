@@ -626,3 +626,23 @@ septembre 2026 »). Pas de rattrapage : `nextPlanned` 2026-10-01, `cycleEnCours`
   sitemap 21 URLs. Capture `~/Downloads/audit-site-28-09/6-EN-LIGNE-30-09-iphone.png`.
   Run cloud 36676802471 : 0 erreur ; les 2 « a corriger » = DOI melasma en HTTP 429 Crossref,
   reinterroges a la main : les deux EXISTENT. Bruit passager, rien a faire.
+
+## Filet quotidien du 01/10/2026 (05h16 UTC, jour du cycle d'octobre)
+
+Site normal, rien a dire sur lui : run planifie 36706031696 du 30/09 11h02 UTC en success (18 h),
+0 Issue ouverte, accueil charge a 05h17 UTC (title, 1 H1 « Virginie Deconinck », `index, follow`,
+« Mis a jour en septembre 2026 »). Pas de rattrapage : aujourd'hui EST `nextPlanned`, le cycle
+appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`).
+- **Controle RCF du 30/09 au soir : ENCORE 1 FAIL, la suppression du 30/09 ne tient pas.**
+  Runs 36717767961 (12h53 UTC) et 36776101571 (20h56 UTC) : C-ORPHELINE, 4 adresses mal tapees
+  (sonia.hous@gmail.c, armonie76@outlook.comnatfb20, ilnolo@hotmail, jesscot@hot). API Brevo lue a
+  05h20 UTC : contacts 3342-3344 etc. RECREES le 30/09 a 11h17 UTC, retouches le 01/10 a 05h06 UTC,
+  `listIds` vide. Les deux heures tombent dans le job « Emails quotidiens RCF » (runs 36707528557 et
+  36818134534). **Mecanisme lu dans `drip_engine.py`** : le drip relit les soumissions du quiz sur
+  Netlify (l.194), voit ces 4 adresses absentes de Brevo donc « nouvelles », les cree avec la liste 3
+  (l.223), l'envoi J0 prend un 400 « not valid », `echec_envoi()` les retire de la liste 3, elles
+  redeviennent orphelines. Boucle a chaque run (« 4 nouveaux », « J 0 : 4 » chaque matin).
+  Supprimer dans Brevo est donc inutile tant que la source Netlify les porte. Correctif a faire dans
+  `vdck-automations` (hors perimetre du veilleur, non touche) : le drip doit ecarter AVANT creation
+  une adresse syntaxiquement invalide, ou le monitoring ne doit pas compter un contact dont l'adresse
+  est refusee par Brevo. Remonte a Virginie le 01/10.
