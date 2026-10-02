@@ -3,7 +3,7 @@
   "timezone": "Europe/Luxembourg",
   "cadence": "1er de chaque mois a 09:00",
   "lastCycleMonth": "2026-09",
-  "lastCycleStatus": "Cycle du 2026-09-01 PUBLIE en prod sur « publie » de Virginie. main = c267012.",
+  "lastCycleStatus": "01/10/2026 : article sommeil fusionne sur main, NON EN LIGNE (Netlify n'a pas deploye). Voir sujetArticleValide.publication01_10.",
   "nextPlanned": "2026-10-01",
   "history": [
     {
@@ -159,7 +159,7 @@
     "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
     "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
     "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)",
-    "statut": "PRET_GO_PUBLICATION",
+    "statut": "FUSIONNE_SUR_MAIN_NON_DEPLOYE",
     "goPublication": {
       "donnePar": "Virginie, en conversation le 25/09/2026 vers 18h15, apres avoir vu l'apercu reel mobile et desktop",
       "sesMots": "Le premier octobre, au matin. Et tu me le notifies.",
@@ -169,7 +169,8 @@
       "fichier": "blog/sommeil-menopause-reveils-nocturnes.html",
       "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
     },
-    "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko."
+    "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko.",
+    "publication01_10": "01/10/2026 07:52 : branche cycle-2026-10 fusionnee dans main (742e374), article identique au commit vu bc40a96, sitemap et JSON-LD valides. Netlify n'a enregistre AUCUN deploiement (dernier = 90467d7 du 30/09) : ni pour 742e374, ni pour f26d7d7 (commit LOOP-STATE concurrent [skip netlify]), ni pour le commit vide f989be4. Liaison GitHub du site intacte (provider github, main, stop_builds false) : le webhook de push n'a pas declenche. Declenchement d'un build par l'API Netlify REFUSE par le garde-fou de permissions de la session : a faire par Virginie (bouton Trigger deploy) ou sur son accord explicite."
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
