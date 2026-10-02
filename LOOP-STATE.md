@@ -646,3 +646,22 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   `vdck-automations` (hors perimetre du veilleur, non touche) : le drip doit ecarter AVANT creation
   une adresse syntaxiquement invalide, ou le monitoring ne doit pas compter un contact dont l'adresse
   est refusee par Brevo. Remonte a Virginie le 01/10.
+
+## 02/10/2026, 07h05 : l'article Sommeil est EN 404 depuis sa publication, par ma faute
+
+- **Issue #13 (run 36855614790 du 01/10 11h28 UTC)** : `/blog/sommeil-menopause-reveils-nocturnes`
+  existe sur `main` (742e374, 01/10 07h52m14) mais renvoie 404. Recharge le 02/10 a 05h03 UTC : TOUJOURS
+  404, absent du sitemap en ligne. API Netlify : dernier deploiement = 90467d7 du 30/09, AUCUN depuis.
+- **Cause** : mon commit LOOP-STATE `f26d7d7` (`[skip netlify]`) est parti 4 s apres la publication et
+  a pris la tete du push : Netlify a saute. La relance `f989be4` (sans skip) a ete poussee le 02/10 a
+  07h00 avec `989bb78` (`[skip netlify]`) en tete : sautee a son tour. Regle de commit corrigee dans le
+  SKILL du veilleur (verifier le deploiement avant tout `[skip netlify]`).
+- **Contenu a deployer verifie** : article, vignette, photo, llms.txt IDENTIQUES a l'octet a `bc40a96`
+  (version du GO de Virginie du 25/09) ; lien `/perimenopause` issu de la meme branche ; le reste est
+  deja en ligne depuis le 30/09. Mon declenchement du build par l'API a ete REFUSE par la securite de
+  session (deploiement prod) : il attend Virginie. `cycleEnCours` reste pose (expire le 01/10 11h34)
+  et `lastCycleMonth` a 2026-09 : a solder par la tache du cycle une fois l'article en ligne.
+- **vdck-automations `54a49a1`, sur « corrige » de Virginie** : le drip ignore les adresses impossibles
+  (plus de recreation), C-ORPHELINE ne les compte plus. Run simulation 36967057440 : « 0 nouveaux »,
+  4 ignorees ; monitoring 36967054993 : C-ORPHELINE ne sort plus. Son seul FAIL = F-RUN, la panne
+  ci-dessus. Les 4 contacts restent dans Brevo, sans liste, inoffensifs.
