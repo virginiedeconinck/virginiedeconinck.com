@@ -3,7 +3,7 @@
   "timezone": "Europe/Luxembourg",
   "cadence": "1er de chaque mois a 09:00",
   "lastCycleMonth": "2026-10",
-  "lastCycleStatus": "Cycle d'octobre PUBLIE le 02/10/2026 (un jour de retard : le webhook GitHub vers Netlify n'a pas declenche le 01/10, deploiement lance par API sur « deploie » de Virginie).",
+  "lastCycleStatus": "Cycle d'octobre PUBLIE le 02/10/2026 (un jour de retard : deux commits de tete portant [skip netlify], dont ma relance).",
   "nextPlanned": "2026-11-01",
   "history": [
     {
@@ -164,7 +164,7 @@
       "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
     },
     "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko.",
-    "publication01_10": "01/10/2026 07:52 : branche cycle-2026-10 fusionnee dans main (742e374), article identique au commit vu bc40a96, sitemap et JSON-LD valides. Netlify n'a enregistre AUCUN deploiement (dernier = 90467d7 du 30/09) : ni pour 742e374, ni pour f26d7d7 (commit LOOP-STATE concurrent [skip netlify]), ni pour le commit vide f989be4. Liaison GitHub du site intacte (provider github, main, stop_builds false) : le webhook de push n'a pas declenche. Declenchement d'un build par l'API Netlify REFUSE par le garde-fou de permissions de la session : a faire par Virginie (bouton Trigger deploy) ou sur son accord explicite.",
+    "publication01_10": "01/10 : fusion 742e374 non deployee car le push avait en tete f26d7d7 « [skip netlify] » (autre session), puis ma relance f989be4 citait elle-meme « [skip netlify] » dans son message. Webhook GitHub sain (verifie le 02/10 en croisant pushes et deploiements). Deploye le 02/10 par build API sur « deploie » de Virginie, en double avec une autre session (05h04 et 05h09 UTC).",
     "publieLe": "2026-10-02T07:04+02:00 (deploiement Netlify 6abf3b5918ac7c4f9f353f1f, commit 989bb78, declenche par API sur « deploie » de Virginie le 02/10)",
     "controleEnLigne": "02/10/2026 : article 200, titre attendu, index follow, HTML servi identique a bc40a96 ; photo webp 121 Ko ; vignette 99 Ko ; sitemap, carte /blog/, llms.txt et lien /perimenopause presents ; captures 390 et 1280 px sans debordement (~/Downloads/article-sommeil-octobre/captures-en-ligne/)."
   },

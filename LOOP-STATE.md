@@ -652,13 +652,19 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Issue #13 (run 36855614790 du 01/10 11h28 UTC)** : `/blog/sommeil-menopause-reveils-nocturnes`
   existe sur `main` (742e374, 01/10 07h52m14) mais renvoie 404. Recharge le 02/10 a 05h03 UTC : TOUJOURS
   404, absent du sitemap en ligne. API Netlify : dernier deploiement = 90467d7 du 30/09, AUCUN depuis.
-- **Cause, mesuree (corrigee le 02/10 par la tache du cycle)** : `f26d7d7` (`[skip netlify]`) est parti 4 s
-  apres la publication et a pris la tete du push. MAIS la relance `f989be4` (commit vide SANS skip) a ete
-  poussee SEULE le 01/10 a 07h54 (`f26d7d7..f989be4`) et Netlify ne l'a pas enregistree non plus (liste
-  des deploiements lue par l'API : rien entre 90467d7 et le build manuel). Le skip n'explique donc pas
-  tout : le webhook GitHub vers Netlify n'a pas declenche ce matin-la, cause non identifiee (liaison du
-  site intacte : provider github, branche main, stop_builds false). Repli qui marche :
-  `POST /api/v1/sites/<siteId>/builds` (jeton du fichier maitre), SUR ACCORD EXPLICITE de Virginie.
+- **Cause, MESUREE le 02/10 (remplace ma premiere version, fausse)** : la liaison GitHub vers Netlify
+  FONCTIONNE. Chaque push sur `main` depuis le 30/09 a ete croise avec la liste des deploiements Netlify
+  (API) : TOUS les pushes non deployes avaient `[skip netlify]` dans le message du commit de tete
+  (0ee7ba2, 1c47e56, e29c15c, bcdcd51, 0d34a61, f26d7d7) ET ma relance `f989be4` aussi : son message
+  CITAIT le texte « [skip netlify] » pour decrire la panne, Netlify l'a lu comme une consigne. Aucun
+  push sans ce texte n'a ete ignore. Le webhook n'est pas en cause.
+- **Deux regles qui en sortent** : (1) un commit qui suit une publication dans le MEME push ne porte
+  jamais `[skip netlify]` : soit on pousse la publication seule et on attend le `ready`, soit on retire
+  le skip ; (2) ne JAMAIS ecrire la chaine `[skip netlify]` (ni `[skip ci]`, `[netlify skip]`) dans un
+  message de commit qui doit deployer, meme pour en parler. Controle avant push :
+  `git log -1 --format=%B | grep -i 'skip'` doit etre vide pour un commit de publication.
+- **Deploiement en DOUBLE le 02/10** : deux sessions ont chacune lance un build API (05h04 et 05h09 UTC,
+  meme commit 989bb78). Un credit perdu. Une seule session publie : celle du cycle si un cycle est en cours.
 - **Contenu a deployer verifie** : article, vignette, photo, llms.txt IDENTIQUES a l'octet a `bc40a96`
   (version du GO de Virginie du 25/09) ; lien `/perimenopause` issu de la meme branche ; le reste est
   deja en ligne depuis le 30/09. Build relance par l'API Netlify le 02/10 a 05h09 UTC sur autorisation explicite de
