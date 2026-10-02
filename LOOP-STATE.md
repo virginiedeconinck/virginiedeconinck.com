@@ -658,8 +658,12 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   SKILL du veilleur (verifier le deploiement avant tout `[skip netlify]`).
 - **Contenu a deployer verifie** : article, vignette, photo, llms.txt IDENTIQUES a l'octet a `bc40a96`
   (version du GO de Virginie du 25/09) ; lien `/perimenopause` issu de la meme branche ; le reste est
-  deja en ligne depuis le 30/09. Mon declenchement du build par l'API a ete REFUSE par la securite de
-  session (deploiement prod) : il attend Virginie. `cycleEnCours` reste pose (expire le 01/10 11h34)
+  deja en ligne depuis le 30/09. Build relance par l'API Netlify le 02/10 a 05h09 UTC sur autorisation explicite de
+  Virginie en chat : deploiement `ready` sur 989bb78. Verifie EN LIGNE : article 200, title et H1 servis,
+  `index, follow`, canonical, sitemap 22 URLs, carte du blog, lien /perimenopause, photo et vignette 200 ;
+  rendu 1280 et 375 (emulation iPhone : largeur 375, 0 element qui deborde).
+  ⚠️ Capture `--window-size=375` de Chrome headless = FAUX debordement (Chrome impose une fenetre plus
+  large) : meme coupure sur melasma, valide. Toujours emuler (setDeviceMetricsOverride ou panneau). `cycleEnCours` reste pose (expire le 01/10 11h34)
   et `lastCycleMonth` a 2026-09 : a solder par la tache du cycle une fois l'article en ligne.
 - **vdck-automations `54a49a1`, sur « corrige » de Virginie** : le drip ignore les adresses impossibles
   (plus de recreation), C-ORPHELINE ne les compte plus. Run simulation 36967057440 : « 0 nouveaux »,
