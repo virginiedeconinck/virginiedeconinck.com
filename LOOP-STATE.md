@@ -652,10 +652,13 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Issue #13 (run 36855614790 du 01/10 11h28 UTC)** : `/blog/sommeil-menopause-reveils-nocturnes`
   existe sur `main` (742e374, 01/10 07h52m14) mais renvoie 404. Recharge le 02/10 a 05h03 UTC : TOUJOURS
   404, absent du sitemap en ligne. API Netlify : dernier deploiement = 90467d7 du 30/09, AUCUN depuis.
-- **Cause** : mon commit LOOP-STATE `f26d7d7` (`[skip netlify]`) est parti 4 s apres la publication et
-  a pris la tete du push : Netlify a saute. La relance `f989be4` (sans skip) a ete poussee le 02/10 a
-  07h00 avec `989bb78` (`[skip netlify]`) en tete : sautee a son tour. Regle de commit corrigee dans le
-  SKILL du veilleur (verifier le deploiement avant tout `[skip netlify]`).
+- **Cause, mesuree (corrigee le 02/10 par la tache du cycle)** : `f26d7d7` (`[skip netlify]`) est parti 4 s
+  apres la publication et a pris la tete du push. MAIS la relance `f989be4` (commit vide SANS skip) a ete
+  poussee SEULE le 01/10 a 07h54 (`f26d7d7..f989be4`) et Netlify ne l'a pas enregistree non plus (liste
+  des deploiements lue par l'API : rien entre 90467d7 et le build manuel). Le skip n'explique donc pas
+  tout : le webhook GitHub vers Netlify n'a pas declenche ce matin-la, cause non identifiee (liaison du
+  site intacte : provider github, branche main, stop_builds false). Repli qui marche :
+  `POST /api/v1/sites/<siteId>/builds` (jeton du fichier maitre), SUR ACCORD EXPLICITE de Virginie.
 - **Contenu a deployer verifie** : article, vignette, photo, llms.txt IDENTIQUES a l'octet a `bc40a96`
   (version du GO de Virginie du 25/09) ; lien `/perimenopause` issu de la meme branche ; le reste est
   deja en ligne depuis le 30/09. Build relance par l'API Netlify le 02/10 a 05h09 UTC sur autorisation explicite de
@@ -669,3 +672,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   (plus de recreation), C-ORPHELINE ne les compte plus. Run simulation 36967057440 : « 0 nouveaux »,
   4 ignorees ; monitoring 36967054993 : C-ORPHELINE ne sort plus. Son seul FAIL = F-RUN, la panne
   ci-dessus. Les 4 contacts restent dans Brevo, sans liste, inoffensifs.
+- **RESOLU le 02/10 a 07h04** : sur « deploie » de Virginie, build lance par l'API Netlify (deploiement
+  `6abf3b5918ac7c4f9f353f1f`, commit `989bb78`, ready). Relu EN LIGNE : article 200, HTML identique a
+  `bc40a96`, photo webp 121 Ko, vignette 99 Ko, sitemap, /blog/, llms.txt, /perimenopause OK, captures 390
+  et 1280 px. Cycle d'octobre solde : `lastCycleMonth` 2026-10, `nextPlanned` 2026-11-01, verrou leve.

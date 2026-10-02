@@ -2,9 +2,9 @@
   "system": "Public Site Monitoring + Blog — cycle editorial scientifique mensuel",
   "timezone": "Europe/Luxembourg",
   "cadence": "1er de chaque mois a 09:00",
-  "lastCycleMonth": "2026-09",
-  "lastCycleStatus": "01/10/2026 : article sommeil fusionne sur main, NON EN LIGNE (Netlify n'a pas deploye). Voir sujetArticleValide.publication01_10.",
-  "nextPlanned": "2026-10-01",
+  "lastCycleMonth": "2026-10",
+  "lastCycleStatus": "Cycle d'octobre PUBLIE le 02/10/2026 (un jour de retard : le webhook GitHub vers Netlify n'a pas declenche le 01/10, deploiement lance par API sur « deploie » de Virginie).",
+  "nextPlanned": "2026-11-01",
   "history": [
     {
       "date": "2026-06-28",
@@ -124,12 +124,6 @@
     "statut": "APPLIQUE ET VERIFIE le 2026-08-02 a 08h17 : les deux SKILL.md portent desormais le verrou 'cycleEnCours', monitoring-site-public-vdck est passe de '>=' a '>' (le jour J appartient a cycle-editorial-mensuel, le veilleur n'est qu'un filet a partir du lendemain), et le champ cycleEnCours existe ici, a null. Verifie en relisant les deux fichiers a la source, pas de memoire. LIMITE CONNUE : ce fichier n'est PAS versionne (.gitignore), le verrou ne coordonne donc que des taches tournant sur le Mac. Si un jour le cycle passe dans GitHub Actions, le verrou ne le verra pas.",
     "verifieLe": "2026-08-02"
   },
-  "cycleEnCours": {
-    "tache": "cycle-editorial-mensuel",
-    "sessionId": "b1228d97-b3ed-468b-9592-12aa297d5f8a",
-    "debutISO": "2026-10-01T07:34:01+02:00",
-    "expireISO": "2026-10-01T11:34:01+02:00"
-  },
   "optimisationQuotidienne": {
     "pose": "2026-08-02",
     "pourquoi": "Constat de Virginie : la routine du matin se contentait de verifier l'absence d'erreur, ce qui est un detecteur de panne et non un travail d'optimisation. Aucun controle de maillage n'existait nulle part, et seo-geo.py ne tournait que le lundi, dans le cloud, sans que la routine du Mac ne le lance jamais.",
@@ -159,7 +153,7 @@
     "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
     "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
     "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)",
-    "statut": "FUSIONNE_SUR_MAIN_NON_DEPLOYE",
+    "statut": "PUBLIE",
     "goPublication": {
       "donnePar": "Virginie, en conversation le 25/09/2026 vers 18h15, apres avoir vu l'apercu reel mobile et desktop",
       "sesMots": "Le premier octobre, au matin. Et tu me le notifies.",
@@ -170,7 +164,9 @@
       "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
     },
     "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko.",
-    "publication01_10": "01/10/2026 07:52 : branche cycle-2026-10 fusionnee dans main (742e374), article identique au commit vu bc40a96, sitemap et JSON-LD valides. Netlify n'a enregistre AUCUN deploiement (dernier = 90467d7 du 30/09) : ni pour 742e374, ni pour f26d7d7 (commit LOOP-STATE concurrent [skip netlify]), ni pour le commit vide f989be4. Liaison GitHub du site intacte (provider github, main, stop_builds false) : le webhook de push n'a pas declenche. Declenchement d'un build par l'API Netlify REFUSE par le garde-fou de permissions de la session : a faire par Virginie (bouton Trigger deploy) ou sur son accord explicite."
+    "publication01_10": "01/10/2026 07:52 : branche cycle-2026-10 fusionnee dans main (742e374), article identique au commit vu bc40a96, sitemap et JSON-LD valides. Netlify n'a enregistre AUCUN deploiement (dernier = 90467d7 du 30/09) : ni pour 742e374, ni pour f26d7d7 (commit LOOP-STATE concurrent [skip netlify]), ni pour le commit vide f989be4. Liaison GitHub du site intacte (provider github, main, stop_builds false) : le webhook de push n'a pas declenche. Declenchement d'un build par l'API Netlify REFUSE par le garde-fou de permissions de la session : a faire par Virginie (bouton Trigger deploy) ou sur son accord explicite.",
+    "publieLe": "2026-10-02T07:04+02:00 (deploiement Netlify 6abf3b5918ac7c4f9f353f1f, commit 989bb78, declenche par API sur « deploie » de Virginie le 02/10)",
+    "controleEnLigne": "02/10/2026 : article 200, titre attendu, index follow, HTML servi identique a bc40a96 ; photo webp 121 Ko ; vignette 99 Ko ; sitemap, carte /blog/, llms.txt et lien /perimenopause presents ; captures 390 et 1280 px sans debordement (~/Downloads/article-sommeil-octobre/captures-en-ligne/)."
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
