@@ -259,7 +259,12 @@ def audit_references(pages, reseau=True):
     """
     dois = collections.defaultdict(set)
     for c, p in pages.items():
-        for d in re.findall(r"10\.\d{4,9}/[-._;()/:A-Za-z0-9]+", p["texte"]):
+        # Le texte visible ET les liens : mesure du 05/10/2026, l'article sommeil
+        # range ses 7 DOI dans des <a href="https://doi.org/..."> sous un intitule
+        # en clair. Lu sur le seul texte, le moteur n'en voyait aucun.
+        liens = " ".join(urllib.parse.unquote(h) for h in
+                         re.findall(r'(?i)href\s*=\s*["\']https?://(?:dx\.)?doi\.org/([^"\']+)', p["visible"]))
+        for d in set(re.findall(r"10\.\d{4,9}/[-._;()/:A-Za-z0-9]+", p["texte"] + " " + liens)):
             dois[d.rstrip(".,);]")].add(c)
         for pm in re.findall(r"PMID\s*:?\s*(\d{6,9})", p["texte"], re.I):
             dois["PMID:" + pm].add(c)
