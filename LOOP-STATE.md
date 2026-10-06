@@ -682,3 +682,43 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   `6abf3b5918ac7c4f9f353f1f`, commit `989bb78`, ready). Relu EN LIGNE : article 200, HTML identique a
   `bc40a96`, photo webp 121 Ko, vignette 99 Ko, sitemap, /blog/, llms.txt, /perimenopause OK, captures 390
   et 1280 px. Cycle d'octobre solde : `lastCycleMonth` 2026-10, `nextPlanned` 2026-11-01, verrou leve.
+
+## Audit du lundi 05/10/2026 (run cloud 37267046956 lance a la main a 05h16 UTC, 4 rapports sur 4)
+
+- **Site : 0 erreur.** 3 « a optimiser » = 3 DOI de l'article sommeil en HTTP 403 via doi.org
+  (JAMA, Menopause/LWW bloquent les robots). Les 7 references de l'article ouvertes sur Europe PMC
+  et PubMed le 05/10 : **toutes disent ce que l'article leur fait dire** (SWAN 2017 : 37,9 / 28,4 /
+  18,4 / 15,3 % ; SWAN 2026 : 2 066 femmes, odds doubles, anxiete parmi les plus forts predicteurs ;
+  NHANES : 36 % contre 53 %, 29,76 % via la graisse viscerale ; TCC-I SMD -1,01 sur 11 ECR ;
+  THM SMD -0,13, transdermique et oestrogene + progesterone meilleurs ; progesterone au coucher
+  sommeil percu P=0,005 ; elinzanetant OASIS). Clos, ne pas refaire.
+- **Angle mort du moteur trouve en chemin** : `audit-hebdo.py` ne lisait les DOI que dans le texte
+  visible ; l'article sommeil les range dans des liens, donc 0 reference controlee. Corrige (DOI lus
+  aussi dans les `href` doi.org, mesure 0 -> 7 sans doublon sur /shbg). Et le correctif « s.h.b.g »
+  de `seo-geo.py` promis le 28/09 est fait. Les deux sur `optim-2026-10-05` (`9c013e4`).
+- **Article sommeil : « Google ne reconnait pas cette URL », JAMAIS EXPLOREE** au 05/10 (publie le
+  02/10). Rien a retoucher : le seul levier est la demande d'indexation manuelle dans Search Console,
+  a demander a Virginie (comme pour melasma le 01/09).
+- **Lecture integrale des 22 textes + rendu 375/1280 des 22 pages (452 tranches, 48 planches)** :
+  0 debordement, 0 image cassee, 0 conflit CSS. Contraste < 2 sur `.pillar-num` (01-04 de l'accueil) :
+  numeros decoratifs voulus, PAS un defaut, ne pas rouvrir.
+- **Prepare sur `optim-2026-10-05` (`528e664`), ATTEND « publie »** :
+  1. `/resistance-insuline` disait encore « l'insuline fait chuter la SHBG », le raccourci que `/shbg`
+     qualifie elle-meme d'imprecis (meme logique que le GO du 30/09 sur la carte SHBG). Seule
+     occurrence du site (grep). dateModified/lastmod/date visible au 05/10, octobre 2026.
+  2. `/glp1` : depuis le correctif du 30/09 le « 15-60% » est rendu a sa vraie taille (77 px) et se
+     coupe en « 15- / 60% » en desktop (colonne 1fr trop etroite). `white-space:nowrap` + colonne
+     `auto` au-dessus de 900 px seulement : mesure 1 ligne a 1280 et 901, mobile IDENTIQUE.
+     Piege evite : sans la media query, le mobile passait en 2 colonnes. Preuve :
+     `~/Downloads/audit-site-05-10/glp1-15-60-avant-apres-desktop.png`.
+  3. Estrobolome : la regle du 28/09 (« > 150 impr. et 0 clic -> definition dans le titre ») est
+     atteinte : famille de requetes estrobolome 186 impr. sur 5 semaines (7, 23, 25, 22, 43, 73),
+     0 clic, position 7 a 8. Titre « Estrobolome : definition et role sur vos oestrogenes » (51 car.),
+     title + og + twitter + headline + headline du JSON-LD de /blog/, dateModified/lastmod 05/10.
+- **A dire, pas prepare** : TRIUMPH-1 publie dans le NEJM le 29/09/2026 (DOI 10.1056/NEJMoa2604169,
+  PMID 42814954) : -25,0 % a 12 mg en intention de traiter (le 28,3 % de la page est l'estimand
+  d'efficacite du communique de mai). `/glp1` cite encore le communique et dit « composition
+  corporelle non publiee » : le resume NEJM n'en parle pas, texte integral non lu. Decision a Virginie.
+- Ordre des cartes du blog (oct, sept, aout, JUIN, JUILLET) : toujours la, toujours a sa decision
+  (note du 14/09).
+- Instagram dans Search Console : aucun CSV neuf dans `~/Downloads` au 05/10.
