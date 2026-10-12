@@ -754,3 +754,6 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Attend toujours Virginie** : « publie » sur `optim-2026-10-05` (une semaine) et sur
   `optim-2026-10-12` ; TRIUMPH-1 dans le NEJM (`/glp1` cite encore le communique de mai) ; ordre des
   cartes du blog. Instagram dans Search Console : aucun CSV neuf au 12/10 (dernier : 30/08).
+- **12/10 au soir : indexation de l'article sommeil DEMANDEE par Virginie dans Search Console.**
+  Juste avant (18h40), l'API repondait « Google ne reconnait pas cette URL », sans `lastCrawlTime`.
+  A controler au prochain lundi : `lastCrawlTime` doit apparaitre.
