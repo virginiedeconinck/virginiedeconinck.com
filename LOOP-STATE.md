@@ -722,3 +722,35 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Ordre des cartes du blog (oct, sept, aout, JUIN, JUILLET) : toujours la, toujours a sa decision
   (note du 14/09).
 - Instagram dans Search Console : aucun CSV neuf dans `~/Downloads` au 05/10.
+
+## Audit du lundi 12/10/2026 (run cloud 38207204502 lance a la main a 05h16 UTC, 4 rapports sur 4)
+
+- **Filet : normal.** 7 runs planifies du 05 au 11/10 en success, 0 Issue ouverte, accueil charge
+  a 05h16 UTC (title, H1, `index, follow`). Aucune page HTML n'a bouge sur `main` depuis le 05/10.
+- **Site : 0 erreur.** Les 3 « a optimiser » = DOI de l'article sommeil en 403 via doi.org (deja
+  verifies le 05/10). Les 5 DOI « non tranches (429) » sont les memes qu'avant, tous existants.
+  Les 15 « a relire » : blocs de references inchanges depuis le 14/09 (aucun commit de page). Clos.
+- **Rendu 375/1280 des 22 pages (452 tranches, 48 planches regardees) + lecture integrale des 22
+  textes** : 0 debordement, 0 image cassee, 0 conflit CSS, contraste < 2 seulement sur `.pillar-num`
+  (voulu). Rien de nouveau, hors le reliquat ci-dessous. Le « 15- / 60% » coupe en desktop sur /glp1
+  est toujours en ligne : sa correction attend sur `optim-2026-10-05`.
+- **Article sommeil : toujours « Detectee, actuellement non indexee », sans `lastCrawlTime`** (API
+  interrogee a 05h20 UTC), 10 jours apres publication. Le seul levier : demande d'indexation
+  manuelle dans Search Console, par Virginie. Lui demander si elle l'a faite.
+- **Bug du moteur trouve en chemin, corrige sur `optim-2026-10-12` (`1638c6e`, local, push refuse
+  sans approbation dans la session planifiee)** : quand l'API d'inspection renvoie une erreur (500
+  ce matin), `seo-geo.py` ecrivait « [JAMAIS EXPLOREE] » et comptait la page comme jamais exploree.
+  Ce matin c'etait vrai par hasard. Desormais : 3 essais sur erreur 5xx, puis « ETAT INCONNU » et
+  une ligne « non mesuree, rien a conclure ». Logique testee sur les 4 cas.
+- **Reliquat du 28/09 fait sur la meme branche** : 22 espaces ordinaires avant : ; ? ! dans l'article
+  sommeil + 1 sur sa carte du blog, passes en `&nbsp;` (convention de `18e0739`, texte visible
+  seulement, JSON-LD et meta intacts, pas de changement de date). Rendu local 375 : meme hauteur,
+  memes mots, 0 espace ordinaire restant. Aucun orphelin n'etait visible dans les captures en ligne :
+  c'est un alignement, pas une casse. Fusion testee avec `optim-2026-10-05` : aucun conflit.
+- **GSC page par page, 8 semaines** : /histamine stable (pos 5,4-5,5, 3 a 5 clics/sem) ; estrobolome
+  monte (120 impr. la semaine du 02/10, pos 6,8-7,5, 0 a 2 clics) : renforce le titre prepare le
+  05/10 ; /regeneration-cellulaire 0 clic sur ~430 impr. mais en position 11-19 : probleme de rang,
+  pas de titre, rien a faire ; /resistance-insuline 11-25 impr./sem, bruit.
+- **Attend toujours Virginie** : « publie » sur `optim-2026-10-05` (une semaine) et sur
+  `optim-2026-10-12` ; TRIUMPH-1 dans le NEJM (`/glp1` cite encore le communique de mai) ; ordre des
+  cartes du blog. Instagram dans Search Console : aucun CSV neuf au 12/10 (dernier : 30/08).
