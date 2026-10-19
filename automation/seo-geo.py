@@ -141,11 +141,17 @@ def etat_indexation(tok, chemins):
     out = []
     for c in chemins:
         try:
-            r = requests.post(
-                'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect',
-                headers={'Authorization': 'Bearer ' + tok},
-                json={'inspectionUrl': 'https://virginiedeconinck.com' + c,
-                      'siteUrl': SITE, 'languageCode': 'fr'}, timeout=60)
+            # Le 12/10/2026 l'API a renvoye un 500 passager : on retente avant de
+            # rendre "non mesure", une erreur serveur ne dit rien de la page.
+            for essai in range(3):
+                r = requests.post(
+                    'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect',
+                    headers={'Authorization': 'Bearer ' + tok},
+                    json={'inspectionUrl': 'https://virginiedeconinck.com' + c,
+                          'siteUrl': SITE, 'languageCode': 'fr'}, timeout=60)
+                if r.status_code < 500:
+                    break
+                time.sleep(10)
             if r.status_code != 200:
                 out.append((c, f"non mesure (API {r.status_code})", None))
                 continue
@@ -330,10 +336,15 @@ def analyse(jours):
     # TOUTES du second cas.
     if muettes:
         etats = etat_indexation(tok, muettes)
-        jamais = [c for c, _, crawl in etats if crawl is None]
+        # Une page "non mesuree" (panne de l'API) n'a pas de lastCrawlTime, mais ce
+        # n'est PAS une page jamais exploree : avant le 12/10/2026 le rapport
+        # l'affirmait quand meme, sur la foi d'une erreur 500.
+        nonmes = [c for c, cov, _ in etats if cov.startswith('non mesure')]
+        jamais = [c for c, _, crawl in etats if crawl is None and c not in nonmes]
         lignes = []
         for c, cov, crawl in etats:
-            quand = f"exploree le {crawl[:10]}" if crawl else "JAMAIS EXPLOREE"
+            quand = (f"exploree le {crawl[:10]}" if crawl
+                     else "ETAT INCONNU" if c in nonmes else "JAMAIS EXPLOREE")
             lignes.append(f"  {c:<40} {cov}  [{quand}]")
         verdict = ([
             "",
@@ -343,11 +354,15 @@ def analyse(jours):
             "  vraiment. Le seul levier officiel est la demande manuelle d'indexation",
             "  dans Search Console (quota limite, delai de quelques jours a quelques",
             "  semaines, jamais garantie), et l'autorite apportee par des liens EXTERNES.",
-        ] if jamais else [
+        ] if jamais else [] if nonmes else [
             "",
             "  Toutes ont ete explorees : leur silence vient bien de la demande ou du",
             "  contenu, pas de l'index. Ces pages-la peuvent etre retravaillees.",
-        ])
+        ]) + ([
+            "",
+            f"  {len(nonmes)} page(s) NON MESUREE(S) : l'API Google a echoue, meme apres",
+            "  trois essais. Leur etat est inconnu cette semaine, rien a en conclure.",
+        ] if nonmes else [])
         ajoute(("ETAT REEL DE CES PAGES DANS L'INDEX GOOGLE", [
             "Mesure directe (API d'inspection d'URL), et non une deduction tiree des",
             "impressions. C'est la seule facon de savoir si une page est ignoree parce",
