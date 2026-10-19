@@ -786,3 +786,24 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   `optim-2026-10-19` ; TRIUMPH-1 NEJM sur /glp1 ; ordre des cartes du blog. La branche du 19/10 doit etre
   poussee depuis une session ouverte (celle du 12/10 est sur origin). Instagram dans Search Console : aucun CSV neuf
   au 19/10 (dernier : 30/08).
+
+## 19/10/2026 au soir : PUBLIE sur « publie » de Virginie (fusion `dfb7104`)
+
+- Branches `optim-2026-10-05`, `-10-12`, `-10-19` fusionnees, Netlify `ready` sur dfb7104. Relu EN LIGNE :
+  4 redirections 301 (/contact /bio -> /a-propos, /services /landing-page -> /), boutons etiquetes
+  (`utm_source=site&utm_medium=organique&utm_content=<page>`, 79 liens), titre estrobolome « definition »,
+  15-60 % sur une ligne a 1280 (capture), /resistance-insuline en octobre, 0 virgule devant « et », sitemap
+  22. Run cloud 39312273359 : 0 erreur.
+- **Tally « Candidature » : 3 champs caches `utm_source`, `utm_medium`, `utm_content` ajoutes par l'API**
+  (accord explicite de Virginie). Teste d'abord sur la copie brouillon OQ1vX7 : PATCH avec la liste complete
+  des blocs = les 51 blocs d'origine conserves a l'identique, uuid et logique compris. Les scripts de
+  `vdck-automations` lisent les reponses par identifiant de question : non affectes.
+- **Virginie veut faire du site un CANAL D'ACQUISITION (19/10).** Plan SEO/GEO pose ce jour, causes
+  mesurees : domaine de 2016 a passe coaching sportif puis WooCommerce (requetes « coach sportif
+  luxembourg » encore la) ; pages generiques (/perimenopause, /graisse-abdominale) a 0 requete en 90 j ;
+  ce qui marche = mecanisme x transition hormonale (histamine, glp1, estrobolome) ; aucune mesure de
+  conversion avant ce jour ; aucun travail hors site. Elle ne fera PAS d'interviews ni de presse.
+- **Bloque par la securite de session, a refaire avec son autorisation** : lien du pied de page de
+  page197 vers /a-propos (fichier pret, sauvegarde `~/Downloads/page197-sauvegarde-19-10/`, deploiement
+  digest d'un seul fichier) ; 4 posts Facebook hebdomadaires via Metricool (mercredi 12h). Les pages
+  27 EUR et accompagnement sont en `noindex, nofollow` voulu : un lien y est inutile, ne pas y toucher.
