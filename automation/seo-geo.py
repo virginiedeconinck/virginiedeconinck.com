@@ -406,7 +406,13 @@ def analyse(jours):
                 # exactement sur ces questions. Meme piege pour NAD et GLP-1.
                 # Les mots outils sont retires a la main : sans cela "sang" ou
                 # "prise" suffiraient a declarer une suggestion couverte.
-                mots = [m for m in re.findall(r'[a-z0-9]{4,}', sansaccent(s))
+                # Sigle ecrit avec des points ("s.h.b.g") : recolle avant decoupage.
+                # Mesure du 28/09/2026 : "qu'est ce que s.h.b.g dans une prise de
+                # sang" sortait en terrain NON couvert (les points cassaient le mot
+                # en lettres seules) alors que la FAQ exacte existe sur /shbg.
+                sig = re.sub(r'\b(?:\w\.){2,}\w\b\.?',
+                             lambda m: m.group(0).replace('.', ''), s)
+                mots = [m for m in re.findall(r'[a-z0-9]{4,}', sansaccent(sig))
                         if m not in ('dans', 'avec', 'pour', 'quoi', 'este', 'cest',
                                      'plus', 'sans', 'faire', 'quand', 'tout', 'toute')]
                 # "non couvert" = aucun mot signifiant de la suggestion n'apparait
