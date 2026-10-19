@@ -37,4 +37,13 @@ http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 /product/women-at-gym/ /muscle-longevite-feminine 301
 /boutique/ / 301
 
+# Anciennes adresses du site WordPress (archive web, mesure du 19/10/2026 : 404).
+/contact/ /a-propos 301
+/contact /a-propos 301
+/bio/ /a-propos 301
+/bio /a-propos 301
+/services/ / 301
+/services / 301
+/landing-page/ / 301
+/landing-page / 301
 /* /404.html 404
