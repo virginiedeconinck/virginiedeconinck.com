@@ -737,8 +737,8 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Article sommeil : toujours « Detectee, actuellement non indexee », sans `lastCrawlTime`** (API
   interrogee a 05h20 UTC), 10 jours apres publication. Le seul levier : demande d'indexation
   manuelle dans Search Console, par Virginie. Lui demander si elle l'a faite.
-- **Bug du moteur trouve en chemin, corrige sur `optim-2026-10-12` (`1638c6e`, local, push refuse
-  sans approbation dans la session planifiee)** : quand l'API d'inspection renvoie une erreur (500
+- **Bug du moteur trouve en chemin, corrige sur `optim-2026-10-12` (`1638c6e`, pousse depuis sur
+  origin, verifie le 19/10 par `git branch -a`)** : quand l'API d'inspection renvoie une erreur (500
   ce matin), `seo-geo.py` ecrivait « [JAMAIS EXPLOREE] » et comptait la page comme jamais exploree.
   Ce matin c'etait vrai par hasard. Desormais : 3 essais sur erreur 5xx, puis « ETAT INCONNU » et
   une ligne « non mesuree, rien a conclure ». Logique testee sur les 4 cas.
@@ -757,3 +757,32 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **12/10 au soir : indexation de l'article sommeil DEMANDEE par Virginie dans Search Console.**
   Juste avant (18h40), l'API repondait « Google ne reconnait pas cette URL », sans `lastCrawlTime`.
   A controler au prochain lundi : `lastCrawlTime` doit apparaitre.
+
+## Audit du lundi 19/10/2026 (run cloud 39203729932 lance a la main a 05h16 UTC, 4 rapports sur 4)
+
+- **Filet : normal.** 7 runs planifies du 12 au 18/10 en success, 0 Issue ouverte, accueil charge a
+  05h16 UTC (title, H1, `index, follow`). Aucune page HTML n'a bouge sur `main` depuis le 05/10.
+- **Site : 0 erreur.** Les 3 « a optimiser » = DOI sommeil en 403 (deja verifies le 05/10). Les 20
+  « a relire » : blocs de references inchanges depuis le 14/09. Clos.
+- **Article sommeil : INDEXE.** API urlInspection a 05h30 UTC : « Envoyee et indexee »,
+  `lastCrawlTime` 2026-10-12T17:01:21Z, soit juste apres la demande manuelle de Virginie. Clos.
+- **Rendu 375/1280 des 22 pages (452 tranches, 44 planches regardees) + lecture integrale des 22
+  textes (innerText, 36 257 mots)** : 0 debordement, 0 image cassee, 0 conflit CSS, contraste < 2
+  seulement sur `.pillar-num` (voulu). Le « 15- / 60% » de /glp1 est toujours en ligne (correctif sur
+  `optim-2026-10-05`).
+- **Trouve a la lecture, prepare sur `optim-2026-10-19` (`71d0efd`, LOCAL, push refuse sans
+  approbation dans la session planifiee)** : 4 virgules devant « et » encore en ligne, regle absolue
+  de Virginie (FAQ SHBG visible + JSON-LD, coupee en deux phrases ; intro NAD+ ; H1 de l'article
+  glycemie, desormais identique a sa carte et a son headline ; llms.txt). Plus un accord faux sur
+  /regeneration-cellulaire (« la traduction ... et la facon ... , depend » -> « dependent », virgule
+  sujet-verbe retiree) et une parenthese manquante sur /age-biologique. JSON-LD valides, FAQ = miroir,
+  rendu local 375/1280 identique en hauteur. Pas de changement de date (micro-corrections). Fusion
+  testee avec `optim-2026-10-05` et `optim-2026-10-12` : aucun conflit.
+- **GSC 28 j** : 52 clics (-5 %), 1 898 impr. Estrobolome monte encore (« estrobolome » 11 -> 70 impr.,
+  pos 7,8 ; « definition » 86 impr., 0 clic) : le titre prepare le 05/10 attend toujours son « publie ».
+  /regeneration-cellulaire 290 impr. 0 clic en position 14,7 : rang, pas titre, rien a faire. Le reste
+  sous le seuil.
+- **Attend toujours Virginie** : « publie » sur `optim-2026-10-05` (2 semaines), `optim-2026-10-12`,
+  `optim-2026-10-19` ; TRIUMPH-1 NEJM sur /glp1 ; ordre des cartes du blog. La branche du 19/10 doit etre
+  poussee depuis une session ouverte (celle du 12/10 est sur origin). Instagram dans Search Console : aucun CSV neuf
+  au 19/10 (dernier : 30/08).
