@@ -829,7 +829,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   mesurees : domaine de 2016 a passe coaching sportif puis WooCommerce (requetes « coach sportif
   luxembourg » encore la) ; pages generiques (/perimenopause, /graisse-abdominale) a 0 requete en 90 j ;
   ce qui marche = mecanisme x transition hormonale (histamine, glp1, estrobolome) ; aucune mesure de
-  conversion avant ce jour ; aucun travail hors site. Elle ne fera PAS d'interviews ni de presse.
+  conversion avant ce jour ; aucun travail hors site. Corrigé le 20/10 au soir : elle n'ira PAS elle-même chercher la presse, mais elle est ouverte aux interviews qui viennent à elle, sans démarchage ridicule (précisé par Virginie le 20/10 au soir).
 - **PUBLIE le 19/10 a 22h (autorisation de Virginie)** : nom du pied de page de page197 lie a /a-propos
   (deploiement digest, 1 fichier sur 14, brouillon relu a 375/1280 puis mis en ligne, sha relu). Les 4 posts
   Facebook sont tenus par le pilote Instagram (2 doublons crees par moi passes en brouillon). Ancien texte :
