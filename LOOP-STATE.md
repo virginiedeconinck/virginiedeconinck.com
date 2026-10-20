@@ -1,5 +1,23 @@
 # LOOP-STATE, monitoring site public virginiedeconinck.com
 
+## LA PILOTE SITE (décision de Virginie, 20/10/2026 au soir)
+
+Conversation « Pilote site internet », sur le modèle de « Pilote Instagram ». Ses mots : « une
+conversation qui puisse piloter tout ce qui concerne mon site internet » (SEO, GEO, Search Console,
+articles, optimisation) et qui dialogue avec Pilote Instagram « pour amener du trafic sur mes pages »,
+pour que le site ne soit plus une vitrine « mais un site qui permet de vendre ».
+- **Elle décide et elle publie** : arbitre ce qu'on change, présente la version exacte à Virginie,
+  publie sur son « publie » (verrou `cycleEnCours` et dernier déploiement lus avant, règle 9 du
+  playbook sites-web). Une seule session publie à la fois.
+- **Les routines préparent, elles ne publient pas** : `monitoring-site-public-vdck` (filet quotidien,
+  audit du lundi), `choix-sujet-article-mensuel` (24 et 8), `cycle-editorial-mensuel` (1er et 15)
+  préparent sur branche et rendent compte. La pilote relit leur travail avant de le montrer.
+- **Réseaux** : la pilote site choisit l'article à pousser, l'angle et la page d'arrivée, et le
+  transmet à Pilote Instagram, qui écrit, programme dans Metricool et publie. La pilote site ne
+  programme rien elle-même (doublons du 19/10).
+- **Verdict du canal** : candidatures Tally étiquetées `utm_source=site`, par page. Pas les positions seules.
+- Ce fichier reste le SEUL fichier d'état du site. On n'en crée pas d'autre.
+
 > ✅ **CYCLE DU 2026-09-01 PUBLIÉ.** Article « Mélasma et traitement hormonal : ce qu'on ne vous
 > dit pas » en ligne, vérifié à 21h46 (HTTP 200, sitemap à 21 URLs, `index, follow`, 0 lien cassé).
 > Virginie a demandé son indexation dans Search Console le soir même. **N'écris plus le SHA de `main` ici : c'est un piège structurel.** Ce fichier est versionné, donc tout SHA qu'il note désigne forcément le commit d'AVANT celui qui l'enregistre, et le run suivant croit trouver une divergence. Corrigé deux fois pour rien (02/09 puis 03/09, `27e7a72` → `04ab13c` → `bcd9a63`). La seule mesure valable est `git rev-parse origin/main`, à faire sur place.
