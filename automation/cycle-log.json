@@ -173,7 +173,7 @@
     "mois": "2026-10",
     "sujet": "Peau et os : le collagene que vous perdez des deux cotes",
     "fichier": "blog/peau-os-collagene-menopause.html",
-    "etat": "ECRIT (2231 mots) mais SUPPRIME de la branche cycle-2026-09 par le commit 994f586 du 01/09, qui a bascule le lot sur le melasma. Le fichier n'existe plus ni sur le disque ni dans HEAD. Il n'est PAS perdu : il vit dans l'historique git.",
+    "etat": "ECARTE par Virginie le 20/10/2026 : « je ne l'ai pas publie parce que je ne le trouvais pas genial ». Ne plus jamais le reproposer. ECRIT (2231 mots) mais SUPPRIME de la branche cycle-2026-09 par le commit 994f586 du 01/09, qui a bascule le lot sur le melasma. Le fichier n'existe plus ni sur le disque ni dans HEAD. Il n'est PAS perdu : il vit dans l'historique git.",
     "aFaireAvantOctobre": "1) restaurer le fichier avec la commande ci-dessus ; 2) le rebrancher dans blog/index.html, sitemap.xml et llms.txt ; 3) obtenir sa photo de couverture aupres de Virginie ; 4) reverifier que ses sources d'aout n'ont pas vieilli.",
     "decidePar": "Virginie, 01/09/2026 : « Ce mois ci septembre, il y aura l'article sur le melasma. L'autre article, on le reporte a octobre. »",
     "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."

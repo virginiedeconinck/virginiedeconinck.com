@@ -852,5 +852,6 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **CADENCE PASSEE A 2 ARTICLES PAR MOIS, le 1er et le 15 (« oui » de Virginie, 20/10/2026).** Taches mises a
   jour : `cycle-editorial-mensuel` cron 1 et 15, `choix-sujet-article-mensuel` cron 24 et 8. Garde-fou par
   edition : champ `lastEdition` (= `nextPlanned` traite), `lastCycleMonth` n'est plus lu. Prochaines editions :
-  01/11 (sujet le 24/10), 15/11 (sujet le 08/11). L'article « Peau et os : collagene » est ECRIT dans l'historique
-  git (`sujetReservePourOctobre`) : premier candidat a reverifier.
+  01/11 (sujet le 24/10), 15/11 (sujet le 08/11). L'article « Peau et os : collagene » est ECARTE par Virginie
+  (« je ne le trouvais pas genial », 20/10) : ne plus le reproposer. Les sujets partent d'une DEMANDE MESUREE
+  (vrai SEO), jamais de la matiere deja sous la main.
