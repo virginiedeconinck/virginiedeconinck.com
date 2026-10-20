@@ -855,3 +855,6 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   01/11 (sujet le 24/10), 15/11 (sujet le 08/11). L'article « Peau et os : collagene » est ECARTE par Virginie
   (« je ne le trouvais pas genial », 20/10) : ne plus le reproposer. Les sujets partent d'une DEMANDE MESUREE
   (vrai SEO), jamais de la matiere deja sous la main.
+- **Livraison par email (demande de Virginie, 20/10)** : les taches du 24/8 et du 1er/15 envoient leur dossier par
+  Gmail `send_message` (meme systeme que le pilote Instagram). Filet si le Mac est eteint : workflow cloud
+  `rappel-veille-sujets.yml` (Brevo, le 23 et le 7 vers 14h UTC). Essai recu dans sa boite le 20/10 a 21h12 UTC.
