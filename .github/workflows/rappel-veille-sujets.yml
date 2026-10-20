@@ -44,10 +44,10 @@ jobs:
               "<div style=\"font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;"
               "font-size:17px;line-height:1.6;color:#1a1a2e\">" + tete +
               f"<p>Virginie,</p><p>Demain matin ({j}), je t'envoie 3 sujets d'articles pour "
-              f"l'article du {parution}, avec les photos proposees.</p>"
-              "<p><strong>Laisse ton Mac allume ce soir</strong>, application Claude ouverte "
-              "et ecran non rabattu. Sinon, rien ne part.</p>"
-              "<p style=\"color:#666;font-size:14px\">Rappel automatique envoye depuis GitHub.</p></div>")
+              f"l'article du {parution}, avec les photos proposées.</p>"
+              "<p><strong>Laisse ton Mac allumé ce soir</strong>, application Claude ouverte "
+              "et écran non rabattu. Sinon, rien ne part.</p>"
+              "<p style=\"color:#666;font-size:14px\">Rappel automatique envoyé depuis GitHub.</p></div>")
           req = urllib.request.Request('https://api.brevo.com/v3/smtp/email',
               data=json.dumps({
                   "sender": {"name": "Site virginiedeconinck.com", "email": "alertes@virginiedeconinck.com"},
