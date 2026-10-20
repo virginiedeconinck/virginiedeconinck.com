@@ -834,3 +834,11 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   **Aucun site tiers ne parle de son activite actuelle : c'est la vraie cause du rang.** Desaveu inutile (doc
   Google ouverte le 20/10 : seulement si liens massifs ET risque d'action manuelle). Question posee a Virginie :
   la fiche Google Business « Virginie Coaching & Fitness » existe-t-elle encore ?
+- **Export « Introuvable (404) » (20/10)** : 2 adresses seulement, stable a 2 depuis le 24/07.
+  `/product/women-at-gym/` redirige deja (301 depuis le 03/08). **`/home/` etait encore en 404** : redirection
+  `/home/` et `/home` vers l'accueil preparee sur `optim-2026-10-20` (`290528b`, poussee sur origin). Netlify ne
+  fait PAS d'apercu de branche sur ce site : non testable avant publication, attend « publie ».
+- **Fiche Google Business ouverte sur Maps le 20/10** : deja renommee « Virginie Deconinck » par Virginie,
+  categorie « Centre de coaching », 4,8 (22 avis), lien vers le site. La fiche plumebulle « Virginie Coaching &
+  Fitness » est une copie perimee de l'ancienne version. Virginie refuse horaires et photo de vitrine (pas de
+  lieu d'accueil) : ne plus le proposer. Les avis restent ceux du coaching sportif, rien a y faire.
