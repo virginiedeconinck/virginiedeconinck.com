@@ -1,7 +1,7 @@
 {
   "system": "Public Site Monitoring + Blog — cycle editorial scientifique mensuel",
   "timezone": "Europe/Luxembourg",
-  "cadence": "1er de chaque mois a 09:00",
+  "cadence": "1er et 15 de chaque mois (2 articles par mois depuis le 20/10/2026)",
   "lastCycleMonth": "2026-10",
   "lastCycleStatus": "Cycle d'octobre PUBLIE le 02/10/2026 (un jour de retard : deux commits de tete portant [skip netlify], dont ma relance).",
   "nextPlanned": "2026-11-01",
@@ -131,9 +131,10 @@
     "nonPousse": "PERIME, corrige le 03/08/2026 apres mesure : ces fichiers SONT pousses. Verifie a la source ce jour-la (git ls-files, git status, comparaison main/origin) : automation/maillage.py, audit-hebdo.py, seo-geo.py et og-image.py sont suivis et presents sur main = origin/main = 41af613, arbre de travail propre. La note decrivait un etat du 02/08 08h30 qui a ete depasse le jour meme."
   },
   "cadenceArticles": {
-    "regle": "1 article par mois, PUBLIE le 1er. Jamais suspendue. Correction de Virginie du 01/09/2026, ses mots : « Je n'ai jamais dit qu'on suspendait la creation d'articles. C'est un article par mois, tous les premiers du mois. Donc forcement, il faut revenir vers moi, au moins une semaine avant, pour qu'on puisse decider et elaborer l'article qui sera publie le premier du mois. Sans ca, si tu me dis le premier du mois qu'il faut publier un article, on ne va pas y arriver. »",
-    "process": "Le 24 du mois : tache 'choix-sujet-article-mensuel', 3 sujets argumentes + demande de la photo, decision ecrite dans le champ sujetArticleValide. Le 1er : 'cycle-editorial-mensuel' LIT cette decision, il n'invente plus de sujet.",
-    "poseLe": "2026-09-01"
+    "regle": "2 articles par mois, PUBLIES le 1er et le 15 (decision de Virginie le 20/10/2026). Avant : 1 article par mois, PUBLIE le 1er. Jamais suspendue. Correction de Virginie du 01/09/2026, ses mots : « Je n'ai jamais dit qu'on suspendait la creation d'articles. C'est un article par mois, tous les premiers du mois. Donc forcement, il faut revenir vers moi, au moins une semaine avant, pour qu'on puisse decider et elaborer l'article qui sera publie le premier du mois. Sans ca, si tu me dis le premier du mois qu'il faut publier un article, on ne va pas y arriver. »",
+    "process": "Edition du 1er : sujet decide le 24 du mois precedent. Edition du 15 : sujet decide le 8. Tache 'choix-sujet-article-mensuel' (cron 24 et 8) : 3 sujets argumentes + photo, decision dans sujetArticleValide (champ 'edition'). 'cycle-editorial-mensuel' (cron 1 et 15) LIT cette decision. Garde-fou : lastEdition != nextPlanned.",
+    "poseLe": "2026-09-01",
+    "modifieLe": "2026-10-20"
   },
   "sujetArticleValide": {
     "mois": "2026-10",
@@ -177,5 +178,6 @@
     "decidePar": "Virginie, 01/09/2026 : « Ce mois ci septembre, il y aura l'article sur le melasma. L'autre article, on le reporte a octobre. »",
     "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."
   },
-  "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite."
+  "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite.",
+  "lastEdition": "2026-10-01"
 }
