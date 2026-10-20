@@ -17,6 +17,7 @@ pour que le site ne soit plus une vitrine « mais un site qui permet de vendre �
   programme rien elle-même (doublons du 19/10).
 - **Verdict du canal** : candidatures Tally étiquetées `utm_source=site`, par page. Pas les positions seules.
 - Ce fichier reste le SEUL fichier d'état du site. On n'en crée pas d'autre.
+- **Visibilité hors site (autorité)** : les opportunités vérifiées et leur suivi sont dans `~/Downloads/RCF-visibilite/OPPORTUNITES-VISIBILITE.md` (recherche du 20/10). On le met à jour, on ne le recrée pas.
 - **Accord de Pilote Instagram (20/10, réponse par message)** : sa routine du samedi me demandera chaque
   semaine l'article, l'angle et la page du post Facebook du mercredi 12 h, à partir du post du 18/11.
   **Premier choix à lui donner au plus tard le samedi 14/11.** Les 4 posts déjà programmés testent
