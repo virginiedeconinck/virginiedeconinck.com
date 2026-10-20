@@ -810,3 +810,20 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   page197 vers /a-propos (fichier pret, sauvegarde `~/Downloads/page197-sauvegarde-19-10/`, deploiement
   digest d'un seul fichier) ; 4 posts Facebook hebdomadaires via Metricool (mercredi 12h). Les pages
   27 EUR et accompagnement sont en `noindex, nofollow` voulu : un lien y est inutile, ne pas y toucher.
+
+## 20/10/2026, 22h30 : inventaire de ce que Google connait du domaine (demande de Virginie)
+
+- **Fait, ne pas refaire** : API Search Console interrogee sur 16 mois (donnees disponibles a partir du
+  12/05/2026 seulement, rien avant) + urlInspection sur 26 adresses. Google n'a montre que **26 adresses** :
+  les 22 du sitemap + 4 anciennes (`http://` accueil, `/product/women-at-gym/`, `/boutique/`,
+  `/politique-de-confidentialite-2/`). Les 4 renvoient une 301 testee en direct le 20/10 (en place depuis le 03/08).
+  `/politique-de-confidentialite` est en `noindex` VOULU.
+- **22 pages sur 22 « Envoyee et indexee »**, canonique Google = canonique declare sur les 22. L'indexation
+  n'est PAS ce qui penalise le site.
+- **Requetes coaching/fitness de l'ancien site : en extinction**, 107 impr. sur 193 en mai (55 %) contre 17 sur
+  195 en octobre (9 %, mois partiel). Elles tombent sur l'accueil. Rien a faire, ne pas rouvrir.
+- robots.txt ouvert, llms.txt 200, GPTBot / ClaudeBot / PerplexityBot / Google-Extended en 200.
+- **Ce qui penalise reellement = rang, pas technique** : /regeneration-cellulaire 501 impr. 0 clic pos 15 ;
+  /collagene-peau pos 43 ; « regeneration cellulaire peau et collagene » pos 73. Probleme d'autorite.
+- **Non mesurable par l'API** : rapport « Pages » (liste complete des 404 connues de Google) et rapport
+  « Liens » (sites qui pointent vers elle). Demande a Virginie de les exporter.
