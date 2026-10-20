@@ -46,4 +46,7 @@ http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 /services / 301
 /landing-page/ / 301
 /landing-page / 301
+# Export Search Console « Introuvable (404) » de Virginie, 20/10/2026 : ancienne page d'accueil WordPress.
+/home/ / 301
+/home / 301
 /* /404.html 404
