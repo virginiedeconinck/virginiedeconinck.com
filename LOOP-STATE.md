@@ -827,3 +827,10 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   /collagene-peau pos 43 ; « regeneration cellulaire peau et collagene » pos 73. Probleme d'autorite.
 - **Non mesurable par l'API** : rapport « Pages » (liste complete des 404 connues de Google) et rapport
   « Liens » (sites qui pointent vers elle). Demande a Virginie de les exporter.
+- **Export « Liens plus récents » de Virginie (20/10, 9 liens), chaque page ouverte** : 3 pages de spam
+  `marketing-updatee.store` (le site ne repond plus, SSL refuse) ; 1 flux plumebulle en 404 ; 1 fiche plumebulle
+  « Virginie Coaching & Fitness, Differdange, 22 avis 5/5 » recopiee de sa fiche Google Business ; Paperjam (x2,
+  « Veni VD Vici ») et un post LinkedIn de 2018 pointant vers l'ancienne adresse www ; son propre Podia.
+  **Aucun site tiers ne parle de son activite actuelle : c'est la vraie cause du rang.** Desaveu inutile (doc
+  Google ouverte le 20/10 : seulement si liens massifs ET risque d'action manuelle). Question posee a Virginie :
+  la fiche Google Business « Virginie Coaching & Fitness » existe-t-elle encore ?
