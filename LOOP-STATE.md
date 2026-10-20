@@ -17,6 +17,15 @@ pour que le site ne soit plus une vitrine « mais un site qui permet de vendre �
   programme rien elle-même (doublons du 19/10).
 - **Verdict du canal** : candidatures Tally étiquetées `utm_source=site`, par page. Pas les positions seules.
 - Ce fichier reste le SEUL fichier d'état du site. On n'en crée pas d'autre.
+- **Accord de Pilote Instagram (20/10, réponse par message)** : sa routine du samedi me demandera chaque
+  semaine l'article, l'angle et la page du post Facebook du mercredi 12 h, à partir du post du 18/11.
+  **Premier choix à lui donner au plus tard le samedi 14/11.** Les 4 posts déjà programmés testent
+  l'emplacement du lien : histamine 21/10 (texte), glp1 28/10 (commentaire), estrobolome 04/11 (texte),
+  sommeil 11/11 (commentaire). Elle peut aussi mettre un lien d'article en sticker de story quand le
+  sujet colle au reel du jour : lui signaler les articles qui s'y prêtent.
+- **Trou de mesure ouvert le 20/10** : aucun clic venu des réseaux n'est mesurable. Le site n'a aucun
+  outil de mesure (retiré le 26/08, voulu) et ses boutons imposent `utm_source=site`, donc une lectrice
+  arrivée de Facebook qui candidate est comptée « site ». Piste proposée à Virginie, pas encore validée.
 
 > ✅ **CYCLE DU 2026-09-01 PUBLIÉ.** Article « Mélasma et traitement hormonal : ce qu'on ne vous
 > dit pas » en ligne, vérifié à 21h46 (HTTP 200, sitemap à 21 URLs, `index, follow`, 0 lien cassé).
