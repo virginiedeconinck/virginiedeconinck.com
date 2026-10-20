@@ -23,6 +23,10 @@ pour que le site ne soit plus une vitrine « mais un site qui permet de vendre �
   l'emplacement du lien : histamine 21/10 (texte), glp1 28/10 (commentaire), estrobolome 04/11 (texte),
   sommeil 11/11 (commentaire). Elle peut aussi mettre un lien d'article en sticker de story quand le
   sujet colle au reel du jour : lui signaler les articles qui s'y prêtent.
+- **Rythme avec Pilote Instagram (accord du 20/10, voulu par Virginie « sans usine à gaz ») : DEUX
+  échanges par semaine, pas un de plus.** Samedi : sa routine me demande l'article, l'angle et la page ;
+  j'y glisse aussi les articles à mettre en sticker de story. Jeudi : son contrôle m'envoie les chiffres
+  du post Facebook. La rubrique « À pousser » du veilleur du lundi arrive chez moi. Le reste, chacune chez soi.
 - **Trou de mesure ouvert le 20/10** : aucun clic venu des réseaux n'est mesurable. Le site n'a aucun
   outil de mesure (retiré le 26/08, voulu) et ses boutons imposent `utm_source=site`, donc une lectrice
   arrivée de Facebook qui candidate est comptée « site ». Piste proposée à Virginie, pas encore validée.
