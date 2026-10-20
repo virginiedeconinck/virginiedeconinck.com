@@ -803,7 +803,10 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   luxembourg » encore la) ; pages generiques (/perimenopause, /graisse-abdominale) a 0 requete en 90 j ;
   ce qui marche = mecanisme x transition hormonale (histamine, glp1, estrobolome) ; aucune mesure de
   conversion avant ce jour ; aucun travail hors site. Elle ne fera PAS d'interviews ni de presse.
-- **Bloque par la securite de session, a refaire avec son autorisation** : lien du pied de page de
+- **PUBLIE le 19/10 a 22h (autorisation de Virginie)** : nom du pied de page de page197 lie a /a-propos
+  (deploiement digest, 1 fichier sur 14, brouillon relu a 375/1280 puis mis en ligne, sha relu). Les 4 posts
+  Facebook sont tenus par le pilote Instagram (2 doublons crees par moi passes en brouillon). Ancien texte :
+  lien du pied de page de
   page197 vers /a-propos (fichier pret, sauvegarde `~/Downloads/page197-sauvegarde-19-10/`, deploiement
   digest d'un seul fichier) ; 4 posts Facebook hebdomadaires via Metricool (mercredi 12h). Les pages
   27 EUR et accompagnement sont en `noindex, nofollow` voulu : un lien y est inutile, ne pas y toucher.
