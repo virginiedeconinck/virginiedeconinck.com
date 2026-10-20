@@ -436,4 +436,26 @@
 
 
 
+<script>
+/* Origine de la visite transmise aux boutons (Tally, page 27 EUR), sans cookie ni stockage.
+   utm_source=site et utm_content=<page> restent ; utm_medium passe de "organique" a l'origine reelle :
+   l'etiquette du lien d'arrivee (?utm_source=facebook) sinon le site d'ou elle vient (referrer). */
+(function(){
+  var q=new URLSearchParams(location.search), o=(q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,30);
+  if(!o||o==='site'){
+    var r=document.referrer||'';
+    if(/facebook\.com/.test(r)) o='facebook';
+    else if(/instagram\.com/.test(r)) o='instagram';
+    else if(/google\./.test(r)) o='google';
+    else if(/bing\.com|duckduckgo\.com|qwant\.com|ecosia\.org/.test(r)) o='moteur';
+    else if(/chatgpt\.com|openai\.com|perplexity\.ai|claude\.ai|gemini\.google|copilot\.microsoft/.test(r)) o='ia';
+    else if(/youtube\.com/.test(r)) o='youtube';
+  }
+  if(!o||o==='site') return;
+  var c=(q.get('utm_campaign')||'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,40);
+  document.querySelectorAll('a[href*="utm_source=site"]').forEach(function(a){
+    try{var u=new URL(a.href); u.searchParams.set('utm_medium', c?o+'-'+c:o); a.href=u.toString();}catch(e){}
+  });
+})();
+</script>
 </body></html>
