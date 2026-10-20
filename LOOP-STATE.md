@@ -906,5 +906,5 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   Podia ne la lisent pas forcement (non verifie) ; les visites sans candidature restent invisibles.
 - Format transmis a Pilote Instagram : `?utm_source=facebook&utm_campaign=fb-AAAA-MM-JJ` et
   `?utm_source=instagram&utm_campaign=story-AAAA-MM-JJ`.
-- Run cloud de surveillance 39502615985 : success, 0 erreur, 0 point a corriger.
+- Run cloud de surveillance 39502615985 : success, 0 erreur ; 3 « a optimiser » = les 3 DOI sommeil en 403, deja verifies le 05/10.
 
