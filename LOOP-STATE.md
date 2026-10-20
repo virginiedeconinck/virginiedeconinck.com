@@ -889,3 +889,22 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Livraison par email (demande de Virginie, 20/10)** : les taches du 24/8 et du 1er/15 envoient leur dossier par
   Gmail `send_message` (meme systeme que le pilote Instagram). Filet si le Mac est eteint : workflow cloud
   `rappel-veille-sujets.yml` (Brevo, le 23 et le 7 vers 14h UTC). Essai recu dans sa boite le 20/10 a 21h12 UTC.
+
+## 20/10/2026, 23h40 : relais d'origine PUBLIE (« publie pour tout ce que tu dois publier », Virginie)
+
+- Fusion `ea0a365` (branche `optim-2026-10-20-origine`), Netlify `ready`. 23 pages portent un script
+  sans cookie ni stockage : `utm_medium` des boutons Tally et 27 EUR passe de « organique » a l'origine
+  reelle (etiquette `utm_source` du lien d'arrivee, sinon le referrer : facebook, instagram, google,
+  moteur, ia, youtube). `utm_campaign` s'ajoute s'il existe (`facebook-fb-2026-10-21`). `utm_source=site`
+  et `utm_content=<page>` inchanges, donc les 3 champs caches Tally suffisent.
+- **Verifie EN LIGNE** : histamine sans etiquette = 4 « organique » ; `?utm_source=facebook` = 4
+  « facebook » ; sommeil `?utm_source=instagram` = « instagram » ; accueil avec campagne = ok.
+  6 pages en 200 avec le script. Mobile reel 375 px dans le panneau navigateur : largeur de defilement
+  375, aucun debordement. Piege : Chrome headless `--window-size=390` rend une mise en page plus large
+  et coupe le texte a droite, ce n'est PAS le site.
+- **Limites** : l'origine se perd si la lectrice change de page avant de cliquer ; la page 27 EUR et
+  Podia ne la lisent pas forcement (non verifie) ; les visites sans candidature restent invisibles.
+- Format transmis a Pilote Instagram : `?utm_source=facebook&utm_campaign=fb-AAAA-MM-JJ` et
+  `?utm_source=instagram&utm_campaign=story-AAAA-MM-JJ`.
+- Run cloud de surveillance 39502615985 : success, 0 erreur, 0 point a corriger.
+
