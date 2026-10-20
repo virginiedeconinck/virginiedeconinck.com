@@ -842,3 +842,10 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   categorie « Centre de coaching », 4,8 (22 avis), lien vers le site. La fiche plumebulle « Virginie Coaching &
   Fitness » est une copie perimee de l'ancienne version. Virginie refuse horaires et photo de vitrine (pas de
   lieu d'accueil) : ne plus le proposer. Les avis restent ceux du coaching sportif, rien a y faire.
+- **PUBLIE le 20/10 vers 23h sur « publie » de Virginie** : fusion `27807f4`, Netlify `ready`. Teste en ligne :
+  `/home/` et `/home` en 301 vers l'accueil, accueil et /histamine en 200, page inconnue en 404.
+  Run cloud 39495112402 : 0 erreur. **Ancien site entierement solde** (2 adresses sur 2 de l'export 404).
+- **Pages a portee (90 j, pos 4-20)** : estrobolome (titre change le 19/10) et SHBG (titre change le 14/09)
+  viennent d'etre retravaillees. Soupape : on attend leur effet, on ne les retouche pas.
+- **Recommandation faite a Virginie** : passer a 2 articles par mois sur des mecanismes precis, choisis sur
+  une demande mesuree. Seul levier qui a marche (estrobolome : 0 a 480 impr. en 2 mois). En attente de sa decision.
