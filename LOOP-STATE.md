@@ -909,3 +909,13 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   `?utm_source=instagram&utm_campaign=story-AAAA-MM-JJ`.
 - Run cloud de surveillance 39502615985 : success, 0 erreur ; 3 « a optimiser » = les 3 DOI sommeil en 403, deja verifies le 05/10.
 
+## 22/10/2026 : premier relevé du circuit réseaux vers site
+
+- Post Facebook du 21/10 (article histamine, lien `?utm_source=facebook&utm_campaign=fb-2026-10-21`), chiffres
+  lus par le contrôle Pilote Instagram dans l'API Graph à J+20 h : 797 personnes touchées, 1 225 vues,
+  12 réactions, 0 commentaire, 0 partage, 29 clics dont **2 clics sur le lien**. Metricool ne renvoie
+  aucune ligne pour octobre (resynchronisation après reconnexion Facebook, non vérifié).
+- Tally (API, lu le 22/10) : 2 candidatures depuis le 19/10, aucune depuis la mise en ligne du relais.
+  Celle du 20/10 porte `utm_source=ig, utm_medium=social, utm_content=link_in_bio` : les champs cachés
+  fonctionnent. Aucune candidature `utm_medium=facebook` à ce jour.
+
