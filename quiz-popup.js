@@ -47,7 +47,11 @@
   function close(){ box.classList.remove('on'); hold(7); setTimeout(function(){ box.remove(); },500); document.removeEventListener('keydown',esc); }
   function esc(e){ if(e.key==='Escape') close(); }
   function show(){
-    if(shown) return; shown=true;
+    if(shown) return;
+    /* pas de doublon : si le bandeau ou l'encart du test est déjà à l'écran, on attend qu'il soit passé */
+    var vis=[].some.call(document.querySelectorAll('.quiz-band,.quiz-encart'),function(el){ var r=el.getBoundingClientRect(); return r.bottom>0 && r.top<innerHeight; });
+    if(vis){ setTimeout(show,4000); return; }
+    shown=true;
     window.removeEventListener('scroll',onScroll);
     box.querySelector('.vqp-b').href=href();
     document.body.appendChild(box);
