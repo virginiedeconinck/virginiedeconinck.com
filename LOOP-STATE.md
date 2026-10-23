@@ -919,3 +919,11 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
   Celle du 20/10 porte `utm_source=ig, utm_medium=social, utm_content=link_in_bio` : les champs cachés
   fonctionnent. Aucune candidature `utm_medium=facebook` à ce jour.
 
+
+## 23/10/2026, publication 8638be9 (sur « agis » de Virginie après la version test vue)
+- Test gratuit rendu visible : pop-up `quiz-popup.js` sur 22 pages (pas sur les-4-leviers ni la confidentialité), carte terracotta #b4583c qui glisse sur le texte sans bloquer la page (règle Google sur les fenêtres intrusives, page ouverte le 23/10), photo `popup-virginie.jpg` (cour ensoleillée, carrousel anniversaire). Après 12 s ou 25 % de lecture ; fermé = 7 jours, cliqué = 60 jours. Lien étiqueté `utm_content=<page>-popup`.
+- Bandeau d'accueil et 18 encarts passés en terracotta (le noir et le beige étaient « fades » pour Virginie).
+- Frontière gratuit/payant allégée (audit `~/Downloads/RCF-visibilite/AUDIT-FRONTIERE-GRATUIT-PAYANT-2026-10-23.md`). Virginie a gardé « progestérone au coucher » et le geste du poignet.
+- Redirections .html et anciennes adresses WordPress en ligne.
+- Vérifié en ligne : pages 200, redirections 301 en un saut, pop-up mobile 202 px sur 812 et desktop, origine instagram transmise au lien, surveillance-site-public run 39960413236 succès sans alerte.
+- À lire le 30/10 : nombre d'arrivées sur le quiz par `utm_content` (popup, encart, bandeau).
