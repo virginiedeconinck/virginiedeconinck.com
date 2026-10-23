@@ -927,3 +927,4 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Redirections .html et anciennes adresses WordPress en ligne.
 - Vérifié en ligne : pages 200, redirections 301 en un saut, pop-up mobile 202 px sur 812 et desktop, origine instagram transmise au lien, surveillance-site-public run 39960413236 succès sans alerte.
 - À lire le 30/10 : nombre d'arrivées sur le quiz par `utm_content` (popup, encart, bandeau).
+- 23/10, publication aadf3b0 (sur « publie ») : sommaire « Explorer les sujets » déplacé de juste après le test à juste avant la FAQ, en grille de cases (2 colonnes mobile, 4 desktop), les 15 liens gardés. Communauté « 25K+ » (26 070 abonnés lus par l'API Instagram le 23/10). « Mis à jour en octobre 2026 » sur 16 pages, dateModified 2026-10-23 (27 balises), sitemap lastmod 22 URL. Vérifié en ligne mobile 390 et desktop 1280, surveillance run 39963717927 succès sans alerte.
