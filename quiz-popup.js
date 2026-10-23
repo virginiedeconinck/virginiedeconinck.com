@@ -1,9 +1,9 @@
 /* Pop-up du test gratuit, sur toutes les pages sauf la page d'arrivée des pubs (les-4-leviers).
-   Voulu par Virginie le 23/10/2026 : une vraie fenêtre posée sur le texte, qu'on ne peut pas manquer.
-   Limite connue : Google déconseille les fenêtres qui masquent le contenu
-   (developers.google.com/search/docs/appearance/avoid-intrusive-interstitials, ouvert le 23/10/2026).
-   Pour la réduire : jamais à l'arrivée sur la page, seulement après 12 secondes ou 25 % de lecture,
-   et une seule fois par lectrice (fermée : 7 jours de repos ; test cliqué : 60 jours). */
+   Carte qui glisse depuis la droite et se pose SUR le texte, sans assombrir ni bloquer la page :
+   Google déconseille les fenêtres qui masquent le contenu et recommande des encarts qui n'occupent
+   qu'une partie de l'écran (developers.google.com/search/docs/appearance/avoid-intrusive-interstitials,
+   ouvert le 23/10/2026). Choix validé par Virginie le 23/10/2026 : couleur terracotta, photo différente du site.
+   Apparition après 12 secondes ou 25 % de lecture. Fermée : 7 jours de repos. Test cliqué : 60 jours. */
 (function(){
   var K='vdck-quiz-popup', now=Date.now();
   try{ var until=+localStorage.getItem(K)||0; if(until>now) return; }catch(e){}
@@ -18,62 +18,61 @@
   }
   function hold(days){ try{ localStorage.setItem(K, String(now+days*864e5)); }catch(e){} }
 
+  var T='#b4583c';
   var css=document.createElement('style');
   css.textContent=
-    '.vqp-bg{position:fixed;inset:0;z-index:9998;background:rgba(14,14,14,.6);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}'+
-    '.vqp-bg.on{opacity:1}'+
-    '.vqp{position:relative;width:440px;max-width:100%;max-height:calc(100vh - 32px);overflow:auto;background:#fff;color:#0e0e0e;box-shadow:0 30px 80px rgba(0,0,0,.4);'+
-    'transform:translate(60px,-40px) scale(.94);opacity:0;transition:transform .55s cubic-bezier(.2,.9,.3,1.15),opacity .45s ease;font-family:inherit}'+
-    '.vqp-bg.on .vqp{transform:none;opacity:1}'+
-    '.vqp-img{display:block;width:100%;height:230px;object-fit:cover;object-position:center 22%}'+
-    '.vqp-in{padding:26px 30px 24px;text-align:center}'+
-    '.vqp-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);border:0;color:#0e0e0e;font-size:24px;line-height:40px;cursor:pointer;padding:0}'+
-    '.vqp-k{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:#a88c63;padding:6px 12px;margin:0 0 16px}'+
-    '.vqp-t{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:30px;line-height:1.2;margin:0 0 12px}'+
-    '.vqp-t em{color:#a88c63}'+
-    '.vqp-p{font-size:15px;line-height:1.6;color:#333;margin:0 0 22px}'+
-    '.vqp-b{display:block;background:#0e0e0e;color:#fff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:18px 20px}'+
-    '.vqp-l{display:block;width:100%;margin-top:10px;background:none;border:0;color:#777;font-size:13px;text-decoration:underline;cursor:pointer;padding:6px}'+
-    '@media (max-width:600px){.vqp-img{height:190px}.vqp-in{padding:22px 20px 18px}.vqp-t{font-size:26px}}';
+    '.vqp{position:fixed;z-index:9999;right:24px;bottom:24px;width:380px;box-sizing:border-box;background:#fff;color:#0e0e0e;'+
+    'box-shadow:0 24px 60px rgba(0,0,0,.30);border-top:4px solid '+T+';text-align:center;'+
+    'transform:translateX(calc(100% + 40px));transition:transform .6s cubic-bezier(.2,.9,.3,1.1);font-family:inherit}'+
+    '.vqp.on{transform:none}'+
+    '.vqp-img{display:block;width:100%;height:200px;object-fit:cover;object-position:center 30%}'+
+    '.vqp-in{padding:20px 24px 18px}'+
+    '.vqp-x{position:absolute;top:8px;right:8px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);border:0;color:#0e0e0e;font-size:22px;line-height:36px;padding:0;cursor:pointer;z-index:2}'+
+    '.vqp-k{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:'+T+';padding:6px 10px;margin:0 0 12px}'+
+    '.vqp-t{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:25px;line-height:1.2;margin:0 0 8px}'+
+    '.vqp-t em{color:'+T+'}'+
+    '.vqp-p{font-size:14px;line-height:1.5;color:#333;margin:0 0 16px}'+
+    '.vqp-b{display:block;background:'+T+';color:#fff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:15px 18px;border-radius:999px}'+
+    '.vqp-l{display:block;width:100%;margin-top:6px;background:none;border:0;color:#888;font-size:12px;text-decoration:underline;cursor:pointer;padding:6px}'+
+    /* mobile : photo à gauche, texte à droite, pour couvrir moins d'un tiers de l'écran */
+    '@media (max-width:600px){.vqp{left:10px;right:10px;bottom:10px;width:auto;display:flex;text-align:left}'+
+      '.vqp-img{width:112px;height:auto;min-height:100%;flex:0 0 112px;object-position:center 25%}'+
+      '.vqp-in{padding:14px 14px 10px 16px}.vqp-k{font-size:9px;margin-bottom:8px;padding:5px 8px}'+
+      '.vqp-t{font-size:19px;padding-right:22px}.vqp-p{display:none}.vqp-b{padding:12px 10px;font-size:11px;text-align:center}'+
+      '.vqp-l{text-align:center;padding:4px}.vqp-x{top:4px;right:4px;width:30px;height:30px;line-height:30px;font-size:20px}}';
   document.head.appendChild(css);
 
-  var bg=document.createElement('div');
-  bg.className='vqp-bg';
-  bg.innerHTML=
-    '<div class="vqp" role="dialog" aria-modal="true" aria-label="Le test gratuit">'+
-      '<button class="vqp-x" type="button" aria-label="Fermer">&times;</button>'+
-      '<img class="vqp-img" src="/.netlify/images?url=%2Fhero.jpg&w=880&fm=webp&q=78" alt="Virginie Deconinck">'+
-      '<div class="vqp-in">'+
-        '<p class="vqp-k">Test gratuit · 2 minutes</p>'+
-        '<p class="vqp-t">Votre corps se répare-t-il encore <em>plus vite qu\'il ne s\'use&nbsp;?</em></p>'+
-        '<p class="vqp-p">9 questions pour savoir où en est votre corps aujourd\'hui.</p>'+
-        '<a class="vqp-b" href="#">Faire le test</a>'+
-        '<button class="vqp-l" type="button">Plus tard</button>'+
-      '</div>'+
+  var box=document.createElement('div');
+  box.className='vqp'; box.setAttribute('role','dialog'); box.setAttribute('aria-label','Le test gratuit');
+  box.innerHTML=
+    '<button class="vqp-x" type="button" aria-label="Fermer">&times;</button>'+
+    '<img class="vqp-img" src="/popup-virginie.jpg" alt="Virginie Deconinck" width="380" height="200" loading="lazy">'+
+    '<div class="vqp-in">'+
+      '<p class="vqp-k">Test gratuit · 2 minutes</p>'+
+      '<p class="vqp-t">Votre corps se répare-t-il encore <em>plus vite qu\'il ne s\'use&nbsp;?</em></p>'+
+      '<p class="vqp-p">9 questions pour savoir où en est votre corps aujourd\'hui.</p>'+
+      '<a class="vqp-b" href="#">Faire le test</a>'+
+      '<button class="vqp-l" type="button">Plus tard</button>'+
     '</div>';
 
-  var shown=false, overflow='';
-  function close(){
-    bg.classList.remove('on'); hold(7);
-    document.documentElement.style.overflow=overflow;
-    document.removeEventListener('keydown',esc);
-    setTimeout(function(){ bg.remove(); },500);
-  }
+  var shown=false;
+  function close(){ box.classList.remove('on'); hold(7); document.removeEventListener('keydown',esc); setTimeout(function(){ box.remove(); },650); }
   function esc(e){ if(e.key==='Escape') close(); }
   function show(){
-    if(shown) return; shown=true;
+    if(shown) return;
+    /* pas de doublon : si le bandeau ou l'encart du test est déjà à l'écran, on attend qu'il soit passé */
+    var vis=[].some.call(document.querySelectorAll('.quiz-band,.quiz-encart'),function(el){ var r=el.getBoundingClientRect(); return r.bottom>0 && r.top<innerHeight; });
+    if(vis){ setTimeout(show,4000); return; }
+    shown=true;
     window.removeEventListener('scroll',onScroll);
-    bg.querySelector('.vqp-b').href=href();
-    document.body.appendChild(bg);
-    overflow=document.documentElement.style.overflow;
-    document.documentElement.style.overflow='hidden';
-    void bg.offsetWidth; setTimeout(function(){ bg.classList.add('on'); },30);
+    box.querySelector('.vqp-b').href=href();
+    document.body.appendChild(box);
+    void box.offsetWidth; setTimeout(function(){ box.classList.add('on'); },30);
     document.addEventListener('keydown',esc);
   }
-  bg.querySelector('.vqp-x').onclick=close;
-  bg.querySelector('.vqp-l').onclick=close;
-  bg.onclick=function(e){ if(e.target===bg) close(); };
-  bg.querySelector('.vqp-b').onclick=function(){ hold(60); document.documentElement.style.overflow=overflow; };
+  box.querySelector('.vqp-x').onclick=close;
+  box.querySelector('.vqp-l').onclick=close;
+  box.querySelector('.vqp-b').onclick=function(){ hold(60); };
 
   function onScroll(){
     var h=document.documentElement.scrollHeight-innerHeight;
