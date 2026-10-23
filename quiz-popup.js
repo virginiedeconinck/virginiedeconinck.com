@@ -46,7 +46,7 @@
   box.className='vqp'; box.setAttribute('role','dialog'); box.setAttribute('aria-label','Le test gratuit');
   box.innerHTML=
     '<button class="vqp-x" type="button" aria-label="Fermer">&times;</button>'+
-    '<img class="vqp-img" src="/popup-virginie.jpg" alt="Virginie Deconinck" width="380" height="200" loading="lazy">'+
+    '<img class="vqp-img" src="/popup-virginie.jpg" alt="Virginie Deconinck" width="380" height="200">'+
     '<div class="vqp-in">'+
       '<p class="vqp-k">Test gratuit · 2 minutes</p>'+
       '<p class="vqp-t">Votre corps se répare-t-il encore <em>plus vite qu\'il ne s\'use&nbsp;?</em></p>'+
@@ -60,6 +60,8 @@
   function esc(e){ if(e.key==='Escape') close(); }
   function show(){
     if(shown) return;
+    /* onglet en arrière-plan : on attend qu'elle revienne, pour qu'elle voie l'entrée */
+    if(document.hidden){ document.addEventListener('visibilitychange',function v(){ if(!document.hidden){ document.removeEventListener('visibilitychange',v); show(); } }); return; }
     /* pas de doublon : si le bandeau ou l'encart du test est déjà à l'écran, on attend qu'il soit passé */
     var vis=[].some.call(document.querySelectorAll('.quiz-band,.quiz-encart'),function(el){ var r=el.getBoundingClientRect(); return r.bottom>0 && r.top<innerHeight; });
     if(vis){ setTimeout(show,4000); return; }
