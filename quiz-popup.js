@@ -55,7 +55,7 @@
     window.removeEventListener('scroll',onScroll);
     box.querySelector('.vqp-b').href=href();
     document.body.appendChild(box);
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){ box.classList.add('on'); }); });
+    void box.offsetWidth; setTimeout(function(){ box.classList.add('on'); },30);
     document.addEventListener('keydown',esc);
   }
   box.querySelector('.vqp-x').onclick=close;
