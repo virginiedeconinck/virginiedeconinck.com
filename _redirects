@@ -13,6 +13,45 @@
 https://virginiedck.netlify.app/*  https://virginiedeconinck.com/:splat  301!
 http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 
+# Plan de redirection du 23/10/2026 (pilote site) :
+# 1) les adresses en .html redirigent vers l'adresse propre, pour qu'une page n'existe qu'une fois.
+/index.html / 301!
+/a-propos.html /a-propos 301!
+/histamine-perimenopause.html /histamine-perimenopause 301!
+/peptides-longevite-feminine.html /peptides-longevite-feminine 301!
+/nad-vieillissement-feminin.html /nad-vieillissement-feminin 301!
+/cellules-senescentes-vieillissement.html /cellules-senescentes-vieillissement 301!
+/graisse-abdominale-apres-40-ans.html /graisse-abdominale-apres-40-ans 301!
+/inflammaging.html /inflammaging 301!
+/glp1-femmes-perimenopause.html /glp1-femmes-perimenopause 301!
+/age-biologique-age-chronologique.html /age-biologique-age-chronologique 301!
+/perimenopause.html /perimenopause 301!
+/resistance-insuline.html /resistance-insuline 301!
+/collagene-peau.html /collagene-peau 301!
+/biohacking-feminin.html /biohacking-feminin 301!
+/muscle-longevite-feminine.html /muscle-longevite-feminine 301!
+/blog/estrobolome-microbiote-femme.html /blog/estrobolome-microbiote-femme 301!
+/blog/glycemie-nocturne-peau.html /blog/glycemie-nocturne-peau 301!
+/blog/les-4-leviers-biologiques.html /blog/les-4-leviers-biologiques 301!
+/blog/melasma-traitement-hormonal-menopause.html /blog/melasma-traitement-hormonal-menopause 301!
+/blog/sommeil-menopause-reveils-nocturnes.html /blog/sommeil-menopause-reveils-nocturnes 301!
+/blog/index.html /blog/ 301!
+# 2) anciennes pages WordPress retrouvées dans les archives d'Internet (Wayback Machine, 23/10/2026).
+/conditions-generales-de-vente / 301
+/conditions-generales-de-vente/* / 301
+/index.php/* / 301
+/mon-compte / 301
+/mon-compte/* / 301
+/commander/* / 301
+/bonjour-tout-le-monde /blog/ 301
+/bonjour-tout-le-monde/* /blog/ 301
+/category/* /blog/ 301
+/author/* /a-propos 301
+/landing-page/* / 301
+/bio/* /a-propos 301
+/contact/* /a-propos 301
+/boutique/* / 301
+
 /a-propos /a-propos.html 200
 /histamine-perimenopause /histamine-perimenopause.html 200
 /peptides-longevite-feminine /peptides-longevite-feminine.html 200
