@@ -944,9 +944,17 @@
       </p>
     </div>
     <div class="hero-right" aria-hidden="true">
-      <img src="/.netlify/images?url=%2Fhero.jpg&amp;w=1400&amp;fm=webp&amp;q=80" alt="Virginie Deconinck, experte en longévité féminine" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" loading="eager">
+      <img src="/.netlify/images?url=%2Fhero.jpg&amp;w=1400&amp;fm=webp&amp;q=80" alt="Virginie Deconinck, experte en longévité féminine" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" loading="eager" fetchpriority="high">
     </div>
   </section>
+
+  <section class="quiz-band" style="padding:60px 20px;background:#b4583c;text-align:center;">
+    <p style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#fff;font-weight:600;margin:0 0 14px;">Le test gratuit · 2 minutes</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.25;color:#fff;margin:0 auto 14px;max-width:720px;">Votre corps se répare-t-il encore<br><em style="color:#fbe3d6;">plus vite qu'il ne s'use&nbsp;?</em></h2>
+    <p style="font-size:16px;line-height:1.7;color:#fff;margin:0 auto 26px;max-width:560px;">9 questions, moins de 2 minutes, pour savoir où en est votre corps aujourd'hui.</p>
+    <a href="https://quizzvdck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil-bandeau" style="display:inline-block;background:#fff;color:#b4583c;border-radius:999px;font-weight:600;text-decoration:none;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;padding:16px 34px;">Faire le test</a>
+  </section>
+
 
 
   <!-- EXPLORER LES SUJETS -->
@@ -1011,7 +1019,7 @@
       <article class="pillar reveal visible">
         <div class="pillar-num">01</div>
         <h3 class="pillar-tag">Muscle &amp; Biomécanique</h3>
-        <p class="pillar-body">Le muscle n'est pas un tissu de silhouette, c'est un organe endocrinien de longévité. Il capte le glucose, module l'inflammation et envoie à l'organisme le signal de se reconstruire plutôt que de se dégrader. C'est la fondation&nbsp;: sans elle, les autres leviers ne tiennent pas.</p>
+        <p class="pillar-body">Le muscle n'est pas un tissu de silhouette, c'est un organe endocrinien de longévité. Il capte le glucose, module l'inflammation et envoie à l'organisme le signal de se reconstruire plutôt que de se dégrader. C'est une des grandes priorités, souvent sous-estimée&nbsp;: elle conditionne l'efficacité des autres leviers.</p>
       </article>
 
       <article class="pillar reveal visible">
@@ -1207,7 +1215,7 @@
     <h2 class="cta-headline reveal">Prête à agir sur<br><em>les bons leviers&nbsp;?</em></h2>
     <p class="cta-sub reveal">Un accompagnement sur mesure construit sur votre biologie réelle. Théorie, protocoles personnalisés, guidance privée. Sur candidature uniquement.</p>
     <a href="https://tally.so/r/XxeEzV?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" class="cta-btn reveal">Déposer ma candidature</a>
-    <p style="font-size:12px;color:var(--ink-light);margin-top:24px;">Pas encore prête pour un accompagnement&nbsp;? <a href="https://le-systeme-dck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" style="color:var(--accent);text-decoration:none;">Découvrir le système à 27€ →</a></p>
+    <p style="font-size:12px;color:var(--ink-light);margin-top:24px;">Pas encore prête pour un accompagnement&nbsp;? <a href="https://le-systeme-dck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" style="color:var(--accent);text-decoration:none;">Découvrir le système à 27€ →</a><br><a href="https://quizzvdck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" style="color:var(--accent);text-decoration:none;">Ou commencez gratuitement : le test en 2 minutes →</a></p>
   </section>
 
   <!-- FOOTER -->
@@ -1253,4 +1261,5 @@
   });
 })();
 </script>
+<script src="/quiz-popup.js" defer></script>
 </body></html>
