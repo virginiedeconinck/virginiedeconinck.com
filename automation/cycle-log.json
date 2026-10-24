@@ -137,37 +137,20 @@
     "modifieLe": "2026-10-20"
   },
   "sujetArticleValide": {
-    "mois": "2026-10",
-    "sujet": "Reveillee a 3 h du matin, pas forcement a cause d'une bouffee de chaleur",
-    "angle": "Les reveils nocturnes qui s'installent MEME SANS bouffee de chaleur : trajectoires SWAN (1 femme sur 6 s'aggrave, beaucoup etaient deja fragiles avant), cercle bouffees/sommeil, apnee qui augmente apres la menopause, role calmant de la progesterone. Ne PAS refaire la section de /perimenopause « Pourquoi les bouffees de chaleur vous reveillent la nuit ».",
-    "demandeReelle": "Suggestion Google « pourquoi la menopause empeche de dormir » (rapport SEO/GEO cloud du 23/09/2026). Aucune requete Search Console mesuree sur ce sujet.",
+    "edition": "2026-11-01",
+    "mois": "2026-11",
+    "sujet": "Ventre gonflé à la ménopause : gonflement ou graisse ?",
+    "angle": "Le ventre qui gonfle dans la journée et le ventre qui s'épaissit sont deux mécanismes différents ; aucune page de la première page Google ne fait la différence. Rester centrée sur le gonflement et renvoyer vers /graisse-abdominale-apres-40-ans pour la graisse (éviter la cannibalisation). Ne PAS écrire que « la progestérone ballonne » (surtout des données animales).",
+    "demandeReelle": "Proposition du 24/10 (email « Article du 1er novembre ») : seul des 5 symptômes comparés dans Google Trends avec requêtes associées ; 10 suggestions Google pour « ventre gonflé ménopause » et 10 pour « ballonnement ménopause » ; « pourquoi ballonnements ménopause » dans le rapport SEO cloud.",
     "sourcesRetenues": [
-      "Maki PM et coll., Menopause 2026;33(6):673-682, DOI 10.1097/GME.0000000000002725, PMID 41529146 : SWAN, 2 066 femmes, bouffees et troubles du sommeil doublent chacun le risque de l'autre. FINANCE PAR BAYER, a dire. Verifie sur PubMed le 24/09/2026.",
-      "Kravitz HM et coll., Curr Sleep Med Rep 2017;3(3):235-250, DOI 10.1007/s40675-017-0084-1, PMID 28944165 : SWAN, 1 285 femmes, 4 trajectoires de reveils (37,9 % faible, 28,4 % moderee, 15,3 % en hausse, 18,4 % elevee), globalement stables. Verifie sur PubMed le 24/09/2026.",
-      "Pinkerton JV et coll., JAMA 2024;332(16):1343-54, DOI 10.1001/jama.2024.14618, PMID 39172446 : OASIS 1 et 2, 796 femmes, elinzanetant, sommeil = critere SECONDAIRE, finance par Bayer. Verifie sur PubMed le 24/09/2026.",
-      "A VERIFIER A LA SOURCE avant usage (proposees par l'agent, pas encore ouvertes par moi) : apnee NHANES 2025 PMID 39863851 ; progesterone Prior 2023 PMID 37277418 ; meta-analyse THS/sommeil Pan 2022 PMID 35102100 ; TCC-I Moon 2025 PMID 41531400."
+      "Kamp 2026, 291 femmes : le gonflement culmine pendant la transition puis baisse, la tension nerveuse l'aggrave (à revérifier sur PubMed avant rédaction)",
+      "Ambikairajah 2019, méta-analyse : +27 cm² de graisse viscérale après la ménopause (à revérifier)"
     ],
-    "pageSoutenue": "/perimenopause",
-    "cta": "DECIDE par Virginie le 25/09/2026 : UNIQUEMENT la page 247 EUR dans l'encart de fin. Pas de candidature, pas de 27 EUR (exception a l'etape 5 du cycle, voulue par elle).",
-    "photo": "FOURNIE par Virginie le 25/09/2026. Fichier pret : ~/Downloads/article-sommeil-octobre/sommeil-hero.jpg (1085x1302, JPEG qualite 70, 265 Ko, controle visuel au zoom sans defaut). Original conserve : photo-couverture-sommeil.jpg (404 Ko).",
-    "valideLe": "2026-09-24",
-    "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
-    "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
-    "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)",
-    "statut": "PUBLIE",
-    "goPublication": {
-      "donnePar": "Virginie, en conversation le 25/09/2026 vers 18h15, apres avoir vu l'apercu reel mobile et desktop",
-      "sesMots": "Le premier octobre, au matin. Et tu me le notifies.",
-      "quand": "2026-10-01 au matin",
-      "branche": "cycle-2026-10",
-      "commitVu": "bc40a969425d6bacc445cfb2190b3ffdb8bbd173",
-      "fichier": "blog/sommeil-menopause-reveils-nocturnes.html",
-      "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
-    },
-    "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko.",
-    "publication01_10": "01/10 : fusion 742e374 non deployee car le push avait en tete f26d7d7 « [skip netlify] » (autre session), puis ma relance f989be4 citait elle-meme « [skip netlify] » dans son message. Webhook GitHub sain (verifie le 02/10 en croisant pushes et deploiements). Deploye le 02/10 par build API sur « deploie » de Virginie, en double avec une autre session (05h04 et 05h09 UTC).",
-    "publieLe": "2026-10-02T07:04+02:00 (deploiement Netlify 6abf3b5918ac7c4f9f353f1f, commit 989bb78, declenche par API sur « deploie » de Virginie le 02/10)",
-    "controleEnLigne": "02/10/2026 : article 200, titre attendu, index follow, HTML servi identique a bc40a96 ; photo webp 121 Ko ; vignette 99 Ko ; sitemap, carte /blog/, llms.txt et lien /perimenopause presents ; captures 390 et 1280 px sans debordement (~/Downloads/article-sommeil-octobre/captures-en-ligne/)."
+    "pageSoutenue": "/graisse-abdominale-apres-40-ans",
+    "cta": "Ventre Plat 30 (37 €), PREMIER lien du site vers cette offre, plus le test gratuit. Relance email Ventre Plat le 02/11.",
+    "photo": "~/Downloads/A-MONTER/C6D6119B-86F8-46D3-83A5-5363D1F59335.PNG (galerie, polo noir, jupe cuir, taille fine ; catalogue ligne 7, non marquée IA)",
+    "valideLe": "2026-10-24",
+    "decidePar": "Virginie le 24/10/2026 : « les deux me conviennent », puis « choisis, tu as une banque de photos à disposition » (sujets, lien VP30 et photos délégués à la Pilote site)."
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
@@ -179,5 +162,57 @@
     "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."
   },
   "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite.",
-  "lastEdition": "2026-10-01"
+  "lastEdition": "2026-10-01",
+  "historiqueSujets": [
+    {
+      "mois": "2026-10",
+      "sujet": "Reveillee a 3 h du matin, pas forcement a cause d'une bouffee de chaleur",
+      "angle": "Les reveils nocturnes qui s'installent MEME SANS bouffee de chaleur : trajectoires SWAN (1 femme sur 6 s'aggrave, beaucoup etaient deja fragiles avant), cercle bouffees/sommeil, apnee qui augmente apres la menopause, role calmant de la progesterone. Ne PAS refaire la section de /perimenopause « Pourquoi les bouffees de chaleur vous reveillent la nuit ».",
+      "demandeReelle": "Suggestion Google « pourquoi la menopause empeche de dormir » (rapport SEO/GEO cloud du 23/09/2026). Aucune requete Search Console mesuree sur ce sujet.",
+      "sourcesRetenues": [
+        "Maki PM et coll., Menopause 2026;33(6):673-682, DOI 10.1097/GME.0000000000002725, PMID 41529146 : SWAN, 2 066 femmes, bouffees et troubles du sommeil doublent chacun le risque de l'autre. FINANCE PAR BAYER, a dire. Verifie sur PubMed le 24/09/2026.",
+        "Kravitz HM et coll., Curr Sleep Med Rep 2017;3(3):235-250, DOI 10.1007/s40675-017-0084-1, PMID 28944165 : SWAN, 1 285 femmes, 4 trajectoires de reveils (37,9 % faible, 28,4 % moderee, 15,3 % en hausse, 18,4 % elevee), globalement stables. Verifie sur PubMed le 24/09/2026.",
+        "Pinkerton JV et coll., JAMA 2024;332(16):1343-54, DOI 10.1001/jama.2024.14618, PMID 39172446 : OASIS 1 et 2, 796 femmes, elinzanetant, sommeil = critere SECONDAIRE, finance par Bayer. Verifie sur PubMed le 24/09/2026.",
+        "A VERIFIER A LA SOURCE avant usage (proposees par l'agent, pas encore ouvertes par moi) : apnee NHANES 2025 PMID 39863851 ; progesterone Prior 2023 PMID 37277418 ; meta-analyse THS/sommeil Pan 2022 PMID 35102100 ; TCC-I Moon 2025 PMID 41531400."
+      ],
+      "pageSoutenue": "/perimenopause",
+      "cta": "DECIDE par Virginie le 25/09/2026 : UNIQUEMENT la page 247 EUR dans l'encart de fin. Pas de candidature, pas de 27 EUR (exception a l'etape 5 du cycle, voulue par elle).",
+      "photo": "FOURNIE par Virginie le 25/09/2026. Fichier pret : ~/Downloads/article-sommeil-octobre/sommeil-hero.jpg (1085x1302, JPEG qualite 70, 265 Ko, controle visuel au zoom sans defaut). Original conserve : photo-couverture-sommeil.jpg (404 Ko).",
+      "valideLe": "2026-09-24",
+      "decidePar": "Virginie, en conversation le 24/09/2026 : « OUI SOMMEIL »",
+      "brouillon": "~/Downloads/article-sommeil-octobre/brouillon-article-sommeil.md : TEXTE VALIDE par Virginie le 25/09/2026, titre et souvenir d'ouverture compris.",
+      "titreValide": "Réveillée à 3 h du matin, pas forcément à cause d'une bouffée de chaleur (valide par Virginie le 25/09/2026, sans « et »)",
+      "statut": "PUBLIE",
+      "goPublication": {
+        "donnePar": "Virginie, en conversation le 25/09/2026 vers 18h15, apres avoir vu l'apercu reel mobile et desktop",
+        "sesMots": "Le premier octobre, au matin. Et tu me le notifies.",
+        "quand": "2026-10-01 au matin",
+        "branche": "cycle-2026-10",
+        "commitVu": "bc40a969425d6bacc445cfb2190b3ffdb8bbd173",
+        "fichier": "blog/sommeil-menopause-reveils-nocturnes.html",
+        "regle": "Publier CETTE version exacte, sans aucune modification de contenu. Si quoi que ce soit a change sur la branche depuis ce commit, ou si la fusion dans main touche un fichier du site en conflit, NE PAS publier et prevenir Virginie."
+      },
+      "controles": "25/09/2026 : public-site-quality-controller 87/100 sans bloquant (5 remarques appliquees) ; free-paid-boundary-auditor sans fuite ; JSON-LD valide ; FAQ visible = FAQPage ; captures reelles 390 px et 1280 px ; photo servie ~117 Ko en webp ; vignette 97 Ko.",
+      "publication01_10": "01/10 : fusion 742e374 non deployee car le push avait en tete f26d7d7 « [skip netlify] » (autre session), puis ma relance f989be4 citait elle-meme « [skip netlify] » dans son message. Webhook GitHub sain (verifie le 02/10 en croisant pushes et deploiements). Deploye le 02/10 par build API sur « deploie » de Virginie, en double avec une autre session (05h04 et 05h09 UTC).",
+      "publieLe": "2026-10-02T07:04+02:00 (deploiement Netlify 6abf3b5918ac7c4f9f353f1f, commit 989bb78, declenche par API sur « deploie » de Virginie le 02/10)",
+      "controleEnLigne": "02/10/2026 : article 200, titre attendu, index follow, HTML servi identique a bc40a96 ; photo webp 121 Ko ; vignette 99 Ko ; sitemap, carte /blog/, llms.txt et lien /perimenopause presents ; captures 390 et 1280 px sans debordement (~/Downloads/article-sommeil-octobre/captures-en-ligne/)."
+    }
+  ],
+  "sujetEditionSuivanteDecide": {
+    "edition": "2026-11-15",
+    "mois": "2026-11",
+    "sujet": "« À la ménopause, j'ai mal partout » : les douleurs articulaires",
+    "angle": "Pourquoi les douleurs articulaires montent pendant la transition ; ce que le traitement hormonal fait et ne fait pas ; le muscle comme soutien. Mécanismes seulement, pas de protocole.",
+    "demandeReelle": "10 suggestions Google ; question « Pourquoi à la ménopause on a mal partout ? » ; aucune page du site ne couvre le sujet.",
+    "sourcesRetenues": [
+      "Méta-analyse 2026, 93 021 femmes : 40 % de douleurs avant la transition, 57 % pendant (à revérifier)",
+      "WHI : œstrogènes, réduction modeste des douleurs (à revérifier)",
+      "Méta-analyse 2026 : pas d'effet global du traitement hormonal (à revérifier)"
+    ],
+    "pageSoutenue": "/muscle-longevite-feminine",
+    "cta": "candidature, plus le test gratuit",
+    "photo": "~/Downloads/A-MONTER/71F67DF5-7F2A-45AA-8B4D-067D06D27156.PNG (forêt d'automne, manteau camel, en marche ; catalogue ligne 3)",
+    "valideLe": "2026-10-24",
+    "consigne": "La tâche du 08/11 NE repropose PAS de sujets : elle recopie ce bloc dans sujetArticleValide après la parution du 01/11 (lastEdition = 2026-11-01), revérifie les sources, et prévient Virginie en une ligne."
+  }
 }
