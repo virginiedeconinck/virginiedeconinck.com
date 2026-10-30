@@ -715,6 +715,76 @@ def controle_pages_inatteignables(pages):
     INFO(f"{len(fichiers)} fichiers du depot confrontes aux pages reellement citees")
 
 
+# ------------------------------------------- 7. TOUT LE TUNNEL DE VENTE (30/10/2026)
+# Le site public n'est qu'une porte : la vente se joue sur le quiz, page197, la page
+# 27 € et Ventre Plat. Avant cet ajout, aucun controle ne les regardait (voir
+# automation/tunnel.json, rubrique _pourquoi). On charge chaque page du tunnel et
+# les pages qu'elle lie sur son propre site, puis on y cherche les faits perimes,
+# les fichiers techniques servis par erreur et les liens de paiement morts.
+def controle_tunnel(pages_site):
+    import os
+    chemin = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tunnel.json")
+    try:
+        cfg = json.load(open(chemin, encoding="utf-8"))
+    except Exception as e:
+        ERREUR("tunnel", f"automation/tunnel.json illisible ({type(e).__name__}) : le tunnel n'est pas controle")
+        return
+
+    corpus = {u: p["html"] for u, p in pages_site.items() if p.get("html")}
+    for depart in cfg["pages_tunnel"]:
+        code, corps, _, final = http(depart)
+        if code != 200 or not corps.strip():
+            ERREUR("tunnel", f"{depart} renvoie HTTP {code} : une page de vente est hors ligne")
+            continue
+        corpus[depart] = corps
+        hote = urllib.parse.urlparse(final).netloc
+        for href in set(re.findall(r'href\s*=\s*["\']([^"\'#]+)', corps)):
+            u = urllib.parse.urljoin(final, href)
+            pu = urllib.parse.urlparse(u)
+            if pu.netloc != hote or re.search(r'\.(jpg|jpeg|png|webp|pdf|css|js|ico|svg|mp4)$', pu.path, re.I):
+                continue
+            u = u.split("?")[0]
+            if u in corpus: continue
+            c2, b2, _, _ = http(u)
+            if c2 == 200 and b2.strip(): corpus[u] = b2
+            elif c2 in (404, 410): ERREUR("tunnel", f"{u} (lie depuis {depart}) renvoie HTTP {c2}")
+
+    # Faits perimes : texte visible ET balises lues par Google et les IA.
+    nb_faits = 0
+    for u, corps in corpus.items():
+        brut = html.unescape(corps).replace("\xa0", " ")
+        for f in cfg["faits_interdits"]:
+            for m in re.finditer(f["motif"], brut, re.I):
+                nb_faits += 1
+                extrait = texte(brut[max(0, m.start()-60):m.end()+40])
+                ERREUR("fait-perime", f"{u} : « {extrait} » ({f['pourquoi']})")
+                break
+
+    # Fichiers techniques servis publiquement, sur chaque hote du tunnel et sur le site.
+    hotes = {SITE} | {f"{urllib.parse.urlparse(u).scheme}://{urllib.parse.urlparse(u).netloc}" for u in cfg["pages_tunnel"]}
+    for h in sorted(hotes):
+        for fic in cfg["fichiers_exposes"]:
+            c, b, ent, _ = http(f"{h}/{fic}")
+            typ = (ent.get("Content-Type") or "").lower()
+            # Netlify sert parfois sa page 404 avec un 200 : on exige que ce ne soit pas du HTML.
+            if c == 200 and b.strip() and "text/html" not in typ:
+                ERREUR("fichier-expose", f"{h}/{fic} est servi publiquement (HTTP 200) : a retirer du site")
+
+    # Liens de paiement : chaque lien trouve doit repondre.
+    liens = set()
+    for corps in corpus.values():
+        for href in re.findall(r'href\s*=\s*["\'](https?://[^"\'#\s]+)', corps):
+            if any(d in href for d in cfg["domaines_paiement"]): liens.add(href)
+    for l in sorted(liens):
+        c, _, _, _ = http(l)
+        if c in (0, 404, 410) or c >= 500:
+            ERREUR("paiement", f"lien de paiement mort : {l} (HTTP {c})")
+
+    INFO(f"tunnel de vente : {len(corpus)} pages chargees (site + quiz + page197 + 27 € + Ventre Plat), "
+         f"{len(cfg['faits_interdits'])} faits perimes cherches, {len(hotes)} sites sondes pour "
+         f"{len(cfg['fichiers_exposes'])} fichiers techniques, {len(liens)} liens de paiement testes")
+
+
 # ------------------------------------------------------------------ RAPPORT
 def rapport(markdown=False):
     d = datetime.datetime.now(datetime.timezone.utc)
@@ -760,6 +830,7 @@ def main():
         controle_geo(pages, urls)
         controle_qualite_technique(pages)
         controle_pages_inatteignables(pages)
+    controle_tunnel(pages)
 
     txt = rapport("--markdown" in sys.argv)
     print(txt)

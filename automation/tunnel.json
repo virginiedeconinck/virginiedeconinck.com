@@ -1,0 +1,30 @@
+{
+  "_pourquoi": "Ajouté le 30/10/2026 sur ordre de Virginie (« fais ce qui doit être fait, une fois pour toutes »). La surveillance ne regardait que virginiedeconinck.com : l'âge périmé (« presque 50 ans », « 49 ans ») sur la page 27 € et le quiz, et les scripts .py servis publiquement par le quiz, sont passés sous le radar. Ce fichier étend le contrôle quotidien à TOUT le tunnel de vente. Une anomalie ici part dans le même email unique que le reste.",
+
+  "pages_tunnel": [
+    "https://quizzvdck.netlify.app/",
+    "https://quizvdck.netlify.app/",
+    "https://vdck-methode-chaude.netlify.app/page197/",
+    "https://le-systeme-dck.netlify.app/",
+    "https://pack-glycemie-sangle-dck.netlify.app/"
+  ],
+
+  "_faits": "Phrases qui ne doivent plus exister NULLE PART (site public + tunnel). Chaque entrée dit pourquoi. On ajoute ici chaque fait qui change (âge, prix, offre retirée), au lieu de compter sur une relecture.",
+  "faits_interdits": [
+    {"motif": "presque 50 ans|bient[oô]t 50 ans|presque la cinquantaine", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026"},
+    {"motif": "l['’]aube de (ses|mes) 50 ans|proche de la cinquantaine", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026"},
+    {"motif": "(Virginie|DCK|j['’]ai)[^.<]{0,25}\\b49 ans", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026"},
+    {"motif": "\\b197\\s?€|197 euros", "pourquoi": "le 197 € n'existe plus depuis le 14/09/2026 (247 € ou 3 × 89 €)"}
+  ],
+
+  "_exposes": "Fichiers techniques qui ne doivent JAMAIS être servis. Un 200 sur l'un d'eux est une ERREUR : le 30/10/2026 le quiz servait drip_engine.py, send_test.py et le code de ses fonctions.",
+  "fichiers_exposes": [
+    ".env", ".git/config", "drip_engine.py", "orchestrateur.py", "send_test.py",
+    "sync_tally_brevo.py", "run_tests_7h.sh", "readme-cablage.md", "README-CABLAGE.md",
+    "netlify/functions/capi-lead.js", "netlify/functions/submission-created.js",
+    "netlify/functions/stripe-webhook.js", "automation/cycle-log.json"
+  ],
+
+  "_paiement": "Tout lien de paiement (Podia, Stripe, Tally) trouvé sur une page du tunnel ou du site doit répondre. 404, 410 ou silence = une cliente qui veut payer tombe dans le vide.",
+  "domaines_paiement": ["podia.com", "buy.stripe.com", "checkout.stripe.com", "tally.so"]
+}
