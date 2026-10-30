@@ -739,6 +739,7 @@ def controle_tunnel(pages_site):
         corpus[depart] = corps
         hote = urllib.parse.urlparse(final).netloc
         for href in set(re.findall(r'href\s*=\s*["\']([^"\'#]+)', corps)):
+            if "${" in href or "{{" in href: continue   # gabarit JavaScript, pas un vrai lien
             u = urllib.parse.urljoin(final, href)
             pu = urllib.parse.urlparse(u)
             if pu.netloc != hote or re.search(r'\.(jpg|jpeg|png|webp|pdf|css|js|ico|svg|mp4)$', pu.path, re.I):
