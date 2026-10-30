@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suppression de vos données | Virginie Deconinck</title>
+  <meta name="description" content="Comment demander l'effacement de vos données personnelles collectées par Virginie Deconinck, y compris via Instagram et Facebook.">
+  <!-- Page legale : aucun interet en recherche et elle dilue le signal du site.
+       Elle reste parfaitement accessible aux visiteurs, seule son indexation est retiree.
+       Constat du 31/07/2026 : 8 impressions et 0 clic sur 90 jours. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://virginiedeconinck.com/suppression-donnees">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Didact+Gothic&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --ink: #0e0e0e;
+      --ink-mid: #222222;
+      --ink-light: #666;
+      --accent: #c4a882;
+      --accent-light: #e8d9c4;
+      --rule: #e0dbd4;
+      --off-white: #fdfcfb;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Didact Gothic', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 400;
+      letter-spacing: 0.08em; color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 22px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-mid); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 150px 40px 90px;
+    }
+    .doc-kicker {
+      font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 400; line-height: 1.12;
+      color: var(--ink); letter-spacing: -0.01em; margin-bottom: 16px;
+    }
+    .updated { font-size: 13px; color: var(--ink-light); margin-bottom: 8px; }
+    .intro {
+      font-size: 16px; color: var(--ink-mid); line-height: 1.85;
+      margin: 28px 0 12px;
+    }
+    .doc-rule { width: 40px; height: 1px; background: var(--accent); margin: 40px 0; }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 500; color: var(--ink);
+      margin: 44px 0 14px;
+    }
+    h3 {
+      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-mid); margin: 26px 0 10px;
+    }
+    p { font-size: 15px; color: var(--ink-mid); line-height: 1.85; margin-bottom: 14px; }
+    ul { margin: 0 0 16px 0; padding-left: 0; list-style: none; }
+    li {
+      font-size: 15px; color: var(--ink-mid); line-height: 1.8;
+      padding-left: 22px; position: relative; margin-bottom: 10px;
+    }
+    li::before {
+      content: ""; position: absolute; left: 0; top: 13px;
+      width: 6px; height: 1px; background: var(--accent);
+    }
+    a.inline { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+    a.inline:hover { color: var(--accent); }
+    strong { color: var(--ink); font-weight: 400; }
+    table {
+      width: 100%; border-collapse: collapse; margin: 18px 0 24px;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left; padding: 12px 14px;
+      border-bottom: 1px solid var(--rule); vertical-align: top;
+      color: var(--ink-mid); line-height: 1.6;
+    }
+    th {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink); font-weight: 400;
+    }
+    .contact-box {
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      padding: 28px 30px;
+      margin: 32px 0;
+    }
+    .contact-box p { margin-bottom: 6px; }
+
+    footer {
+      padding: 32px 60px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--ink-light);
+      letter-spacing: 0.08em;
+    }
+    footer a { color: var(--ink-light); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      main { padding: 120px 24px 70px; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 22px; }
+      footer { flex-direction: column; gap: 12px; padding: 24px; text-align: center; }
+    }
+  
+    /* Liens contextuels en corps de texte. Ajoute le 02/08/2026 : 73 liens
+       repartis sur 19 pages sortaient en BLEU NAVIGATEUR faute de regle,
+       mesure a l'ecran (couleur calculee rgb(0,0,238)). Le defaut etait
+       anterieur, il ne venait pas des liens ajoutes ce jour-la. */
+    p a[href^="/"]:not([class]){color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-light,rgba(196,168,130,0.5));transition:border-color 0.2s;}
+    p a[href^="/"]:not([class]) strong,p a[href^="/"]:not([class]) em{color:inherit;}
+    p a[href^="/"]:not([class]):hover{border-bottom-color:var(--accent);}
+    nav p a[href^="/"]:not([class]),footer p a[href^="/"]:not([class]),p.breadcrumb a{border-bottom:none;}
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-name">Virginie Deconinck</a>
+    <ul class="nav-links">
+      <li><a href="/a-propos">À propos</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <p class="doc-kicker">Vos données</p>
+    <h1>Suppression de vos données</h1>
+    <p class="updated">Dernière mise à jour : 30 octobre 2026</p>
+
+    <p class="intro">
+      Vous pouvez à tout moment demander que vos données personnelles soient effacées. Cela vaut pour les données
+      transmises sur ce site, dans un test, une candidature ou une inscription à mes e-mails, comme pour celles
+      liées à vos échanges avec moi sur Instagram ou Facebook, y compris par l'intermédiaire de mes applications connectées à Meta.
+    </p>
+
+    <div class="doc-rule"></div>
+
+    <h2>Comment faire votre demande</h2>
+    <p>Envoyez un e-mail à l'adresse ci-dessous, avec pour objet « Suppression de mes données ». Indiquez dans votre message :</p>
+    <ul>
+      <li>l'adresse e-mail que vous avez utilisée, si vous en avez donné une ;</li>
+      <li>votre nom d'utilisateur Instagram ou Facebook, si votre demande concerne ces réseaux.</li>
+    </ul>
+    <div class="contact-box">
+      <p><strong>Demande de suppression</strong></p>
+      <p>Virginie Deconinck</p>
+      <p>E-mail : <a class="inline" href="mailto:virginiedeconinck@gmail.com?subject=Suppression%20de%20mes%20donn%C3%A9es">virginiedeconinck@gmail.com</a></p>
+    </div>
+
+    <h2>Ce qui se passe ensuite</h2>
+    <p>
+      Je vous réponds dans un délai de 30 jours au plus. Vos données sont effacées de mes outils (liste d'e-mails,
+      formulaires, messagerie automatisée) et je vous confirme la suppression par e-mail. Seules les informations
+      que la loi m'oblige à conserver, par exemple les factures d'un achat, sont gardées le temps requis.
+    </p>
+
+    <h2>Ne plus recevoir mes e-mails</h2>
+    <p>
+      Pour simplement ne plus recevoir mes e-mails, inutile de m'écrire : cliquez sur le lien de désinscription
+      présent en bas de chacun d'eux. La désinscription est immédiate.
+    </p>
+
+    <h2>En savoir plus</h2>
+    <p>
+      Le détail des données collectées, de leur usage et de vos droits figure dans la
+      <a class="inline" href="/politique-de-confidentialite">politique de confidentialité</a>.
+    </p>
+  </main>
+
+  <footer>
+    <span>© 2026 Virginie Deconinck</span>
+    <a href="/a-propos">À propos</a>
+  </footer>
+
+</body>
+</html>

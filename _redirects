@@ -67,6 +67,7 @@ http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 /biohacking-feminin /biohacking-feminin.html 200
 /muscle-longevite-feminine /muscle-longevite-feminine.html 200
 /politique-de-confidentialite /politique-de-confidentialite.html 200
+/suppression-donnees /suppression-donnees.html 200
 
 # Anciennes URLs de l'ancien site, toujours servies par Google alors qu'elles
 # renvoient 404 (mesure Search Console du 03/08/2026, 90 jours : 39 impressions,
