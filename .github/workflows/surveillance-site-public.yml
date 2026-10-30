@@ -45,6 +45,12 @@ permissions:
 jobs:
   surveillance:
     runs-on: ubuntu-latest
+    # 30/10/2026, demande de Virginie (« il faut arrêter tout ça ») : une anomalie
+    # lui envoyait TROIS emails (Issue assignée, « Run failed » de GitHub, email
+    # Brevo), répétés à chaque passage. Désormais le contrôle ne fait plus échouer
+    # le job : il publie un résultat, et le job « alerte » envoie UN seul email.
+    outputs:
+      erreur: ${{ steps.controle.outcome == 'failure' || steps.forcage.outcome == 'failure' }}
     steps:
       - uses: actions/checkout@v7
 
@@ -63,6 +69,7 @@ jobs:
       #    llms.txt, et acces reel des crawlers IA teste avec leur User-Agent.
       - name: Controle technique + SEO + GEO
         id: controle
+        continue-on-error: true
         run: python3 automation/monitoring.py --markdown
 
       # 1bis) EXERCICE DE LA CHAINE D'ALERTE. Ajoute le 31/07/2026 : jusqu'ici le
@@ -72,6 +79,8 @@ jobs:
       #    a la main (Actions > Run workflow > cocher test_alerte) et provoque un
       #    vrai echec : vraie Issue, vrai email. Il ne touche ni au site ni au contenu.
       - name: Forcage de test de l'alerte (aucun effet sur le site)
+        id: forcage
+        continue-on-error: true
         if: inputs.test_alerte
         run: |
           echo "::error::TEST VOLONTAIRE de la chaine d'alerte, demande a la main. Le site n'est pas en cause."
@@ -91,7 +100,7 @@ jobs:
       #    Le script verifie lui-meme que la cle est servie en ligne avant d'envoyer,
       #    et ne signale que les pages dont le lastmod a change depuis le dernier envoi.
       - name: Annoncer les pages modifiees (IndexNow -> Bing, Yandex, Seznam, Naver)
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: steps.controle.outcome == 'success' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
         run: python3 automation/indexnow.py
 
       #    L'etat DOIT etre reecrit dans le depot, sinon chaque passage repart d'un
@@ -170,7 +179,7 @@ jobs:
   # Un dispositif d'alerte que personne ne recoit n'est pas une securite.
   alerte:
     needs: surveillance
-    if: failure()
+    if: failure() || needs.surveillance.outputs.erreur == 'true'
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -207,38 +216,8 @@ jobs:
           print('FIN_DU_BLOC')
           PY
 
-      # Canal 1 : Issue NEUVE, assignee -> declenche l'email natif de GitHub.
-      - uses: actions/github-script@v9
-        with:
-          script: |
-            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const jour = new Date().toISOString().slice(0, 10);
-            // toJSON produit un litteral de chaine JS valide : indispensable, le rapport
-            // peut contenir un backtick ou un ${ qui casserait un gabarit de chaine.
-            // Idem pour estTest : sur un passage planifie inputs vaut null, et un
-            // ${{ inputs.test_alerte }} nu rendrait une chaine VIDE, donc du JS invalide.
-            const detail = ${{ toJSON(steps.detail.outputs.corps) }};
-            const estTest = ${{ toJSON(inputs.test_alerte == true) }};
-            const entete = estTest
-              ? `**CECI EST UN TEST, declenche a la main. Le site n'a AUCUN probleme.**\n\n`
-                + `Ce passage sert a verifier que la chaine d'alerte fonctionne vraiment : `
-                + `Issue ouverte, email recu. L'echec est volontaire. Le rapport ci-dessous `
-                + `est le vrai rapport du jour, et il est sain.\n\n`
-              : `La surveillance du ${jour} a trouve au moins une erreur sur `
-                + `virginiedeconinck.com.\n\n`;
-            const corps = entete + `${detail}\n\n`
-              + `Detail complet du run : ${run}\n\n`
-              + `_(Issue automatique, lecture seule : rien n'a ete modifie ni publie. `
-              + `Une Issue neuve est ouverte a chaque incident, jamais un commentaire `
-              + `sur une ancienne : une alerte empilee est une alerte perdue.)_`;
-            const titre = estTest
-              ? `[TEST] Chaine d'alerte exercee, aucune anomalie reelle (${jour})`
-              : `Surveillance site public : anomalie detectee (${jour}, run ${context.runId})`;
-            await github.rest.issues.create({
-              owner: context.repo.owner, repo: context.repo.repo,
-              title: titre,
-              body: corps, labels: ["surveillance"], assignees: ["virginiedeconinck"] });
-
+      # Canal 1 (Issue GitHub assignée) RETIRÉ le 30/10/2026 : il doublait l'email
+      # Brevo ci-dessous. Un seul email par anomalie, demande de Virginie.
       # Canal 2 : email reel dans sa boite. Expediteur alertes@virginiedeconinck.com
       # (deja valide dans Brevo, reutilise tel quel). Si le secret manque, on le crie
       # dans le journal mais on ne masque pas l'alerte principale : l'Issue est partie.
@@ -255,8 +234,8 @@ jobs:
           cle = os.environ.get('BREVO_API_KEY', '').strip()
           if not cle:
               print("::error::Secret BREVO_API_KEY absent du depot : "
-                    "l'email d'alerte n'a PAS pu partir. Seule l'Issue GitHub a ete ouverte.")
-              raise SystemExit(0)
+                    "l'email d'alerte n'a PAS pu partir. Le job echoue pour que GitHub previenne quand meme.")
+              raise SystemExit(1)
           jour = datetime.date.today().strftime('%d/%m/%Y')
           detail = os.environ.get('DETAIL', '(detail indisponible)')
           est_test = os.environ.get('EST_TEST', '') == 'true'
