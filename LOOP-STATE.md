@@ -950,3 +950,10 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - 72 fichiers en ligne chargés sur 6 sites. 16 cas corrigés sur 7 pages : accueil 2, À propos 9, les-4-leviers 1 (commit 4a9141a), page 27 € 1 (deploy 6ae49ac964934adb291795fd), quiz principal 3 (deploy 6ae49a6631f09f2def0fbe60, CLI avec ses 2 fonctions).
 - Recontrôle en ligne : 0 ancienne formulation. Gardé : « entre 44 et 49 ans » (période, À propos).
 - Le quiz principal servait publiquement ses scripts .py et le code de ses fonctions. Aucune clé trouvée dedans. Le code des fonctions n'est plus servi, les .py restent, à trancher avec Virginie.
+
+## 30/10/2026 (soir) : surveillance étendue à tout le tunnel de vente
+- Ordre de Virginie : « fais ce qui doit être fait, une fois pour toutes ». `controle_tunnel()` ajouté à monitoring.py (5987adf), réglages `automation/tunnel.json` (faits interdits, fichiers exposés, liens de paiement). Le SKILL du veilleur dit désormais : une alerte = un brouillon de correction prêt + « publie ? », jamais « j'ai repéré ».
+- Premier passage (test du seul contrôle, 30/10) : CGV page197 « 197 € TTC, 2 × 102 € » ; scripts .py/.sh/.md servis par le quiz ; code des fonctions servi par Ventre Plat ; LOOP-STATE.md, automation/ et scripts/ servis par le site public.
+- Brouillons prêts, en attente du « publie » : site 6ae4a2c685a4492e4dd96e1c (branche optim-2026-10-30, 404 forcés), page197 6ae4a2ed12cf36cc69460752 (CGV 247 € ou 3 × 89 €), quiz 6ae49e93700b3447deca3c39, Ventre Plat 6ae4a422967f1d5201a85c3a.
+- Tant qu'ils ne sont pas publiés, le contrôle quotidien du cloud enverra UN email d'alerte qui les liste : c'est voulu.
+- Écarté après lecture : réécrire les titres SHBG / âge biologique / estrobolome. Déjà retravaillés (14/09 et 19/10), soupape.
