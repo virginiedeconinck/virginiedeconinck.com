@@ -957,3 +957,10 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Brouillons prêts, en attente du « publie » : site 6ae4a2c685a4492e4dd96e1c (branche optim-2026-10-30, 404 forcés), page197 6ae4a2ed12cf36cc69460752 (CGV 247 € ou 3 × 89 €), quiz 6ae49e93700b3447deca3c39, Ventre Plat 6ae4a422967f1d5201a85c3a.
 - Tant qu'ils ne sont pas publiés, le contrôle quotidien du cloud enverra UN email d'alerte qui les liste : c'est voulu.
 - Écarté après lecture : réécrire les titres SHBG / âge biologique / estrobolome. Déjà retravaillés (14/09 et 19/10), soupape.
+
+## Filet quotidien du 31/10/2026 (12h37 UTC, samedi)
+- Run planifié 41194240175 (10h48 UTC) : success, 2 rapports sur 2 (pas de lundi), 0 Issue ouverte. Accueil chargé : title et H1 présents, `index, follow`.
+- Le contrôle remonte 10 erreurs, toutes déjà connues du 30/10, et l'email unique est parti (Brevo 201). Cause : les 4 brouillons du 30/10 ne sont toujours pas publiés (API Netlify : `deploy-preview`, non publiés ; production inchangée depuis leur création, donc les publier ne reverse rien).
+- Rechargé en ligne à 12h40 UTC, production contre brouillon : les 13 fichiers exposés répondent 200 en production et 404 sur leur brouillon ; CGV page197 « 197 € / 2 × 102 € » en production, « 247 € / 3 × 89 € » sur le brouillon ; accueils des 4 brouillons en 200.
+- **Trou du moteur** : `LOOP-STATE.md` et `automation/monitoring.py` répondaient 200 sur virginiedeconinck.com sans être sondés (seul `automation/cycle-log.json` l'était). Ajoutés à `fichiers_exposes` de `tunnel.json`, avec `automation/tunnel.json`. Commit local, push refusé dans la session planifiée : à pousser.
+- Cycle éditorial : `nextPlanned` 2026-11-01, pas de rattrapage.

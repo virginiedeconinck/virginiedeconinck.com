@@ -22,7 +22,8 @@
     ".env", ".git/config", "drip_engine.py", "orchestrateur.py", "send_test.py",
     "sync_tally_brevo.py", "run_tests_7h.sh", "readme-cablage.md", "README-CABLAGE.md",
     "netlify/functions/capi-lead.js", "netlify/functions/submission-created.js",
-    "netlify/functions/stripe-webhook.js", "automation/cycle-log.json"
+    "netlify/functions/stripe-webhook.js", "automation/cycle-log.json",
+    "LOOP-STATE.md", "automation/monitoring.py", "automation/tunnel.json"
   ],
 
   "_paiement": "Tout lien de paiement (Podia, Stripe, Tally) trouvé sur une page du tunnel ou du site doit répondre. 404, 410 ou silence = une cliente qui veut payer tombe dans le vide.",
