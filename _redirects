@@ -13,6 +13,14 @@
 https://virginiedck.netlify.app/*  https://virginiedeconinck.com/:splat  301!
 http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 
+# Fichiers internes du depot, jamais destines au public (30/10/2026) : le site servait
+# LOOP-STATE.md (notes de pilotage), automation/ (scripts et journal du cycle) et
+# scripts/. Un 404 force (!) passe avant tout fichier existant.
+/LOOP-STATE.md   /404.html  404!
+/automation/*    /404.html  404!
+/scripts/*       /404.html  404!
+/rapport-maillage.md  /404.html  404!
+
 # Plan de redirection du 23/10/2026 (pilote site) :
 # 1) les adresses en .html redirigent vers l'adresse propre, pour qu'une page n'existe qu'une fois.
 /index.html / 301!
