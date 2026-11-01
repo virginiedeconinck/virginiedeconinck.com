@@ -968,3 +968,12 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Dernier run 41237190679 (31/10 20h04 UTC, lancé à la main) : success, 0 erreur, 1 « à optimiser » (DOI JAMA sommeil en 403, connu). Run planifié 41194240175 du 31/10 10h48 UTC : success. 0 Issue ouverte. Accueil chargé à 06h17 UTC : title, H1 « Virginie Deconinck », `index, follow`.
 - La ligne « trou du moteur, à pousser » du 31/10 est réglée : 2e40057 est sur `main`.
 - Cycle : aujourd'hui EST `nextPlanned` (2026-11-01), il appartient à `cycle-editorial-mensuel`. Pas de rattrapage. `cycleEnCours` vide à 06h17 UTC.
+
+## Édition du 01/11/2026 : article ventre gonflé PRÊT sur `cycle-2026-11-01`, attend « publie »
+- Article `blog/ventre-gonfle-menopause.html` raccordé (carte du blog, sitemap 23 URL, llms.txt, lien entrant depuis /graisse-abdominale). Premier lien du site vers Ventre Plat en 30 jours.
+- Sources ouvertes le 01/11 sur Europe PMC (PubMed en erreur 500) et NICE NG12 en ligne. Trois contrôleurs passés, corrections appliquées. Aperçu : `~/Downloads/RCF-blog-2026-11-01/apercu-ventre-gonfle-menopause.pdf` (COMPLET).
+- `automation/apercu-article.py` corrigé : références repliées ouvertes dans l'aperçu, photo d'en-tête rognée à l'impression.
+- 3 DOI (Wiley, Sage) répondent 403 aux robots : la surveillance les classera « à optimiser », comme le DOI JAMA.
+- Prochaine édition : 15/11 (douleurs articulaires, sujet déjà décidé).
+
+- 01/11 : à la mise en ligne de blog/ventre-gonfle-menopause (200 vérifié), prévenir DEUX sessions : « Pilote Instagram » et « Pilotage emails Brevo » (email relais au noyau le 15/11, en ligne avant le 14/11).
