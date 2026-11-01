@@ -27,6 +27,8 @@
     "@type": "Person",
     "@id": "https://virginiedeconinck.com/#virginie",
     "name": "Virginie Deconinck",
+    "image": "https://virginiedeconinck.com/virginie-deconinck-portrait.jpg",
+    "image": "https://virginiedeconinck.com/virginie-deconinck-portrait.jpg",
     "alternateName": [
       "virginiedck",
       "Virginie Deconinck"
@@ -104,6 +106,7 @@
     "@type": "Person",
     "@id": "https://virginiedeconinck.com/#virginie",
     "name": "Virginie Deconinck",
+    "image": "https://virginiedeconinck.com/virginie-deconinck-portrait.jpg",
     "alternateName": "virginiedck",
     "jobTitle": "Experte en longévité féminine et rajeunissement cellulaire",
     "description": "À 50 ans, les marqueurs biologiques de Virginie Deconinck surpassent ceux de ses 35 ans. Elle accompagne les femmes de 35 ans et plus à inverser les mécanismes biologiques du vieillissement féminin.",
@@ -157,6 +160,10 @@
     .nav-links a:hover{color:var(--ink);}
     .nav-links a.active{color:var(--accent);}
     .hero{padding:140px 80px 80px;max-width:1100px;margin:0 auto;}
+    .hero-grid{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:end;}
+    .hero-portrait{margin:0;}
+    .hero-portrait img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px;}.hero-portrait{max-width:420px;}}
     .breadcrumb{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-light);margin-bottom:40px;}
     .breadcrumb a{color:var(--accent);text-decoration:none;}
     .hero-eyebrow{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;}
@@ -322,10 +329,17 @@
   </nav>
 
   <section class="hero">
+   <div class="hero-grid">
+   <div>
     <p class="breadcrumb reveal visible"><a href="/">Virginie Deconinck</a> &nbsp;/&nbsp; À propos</p>
     <p class="hero-eyebrow reveal visible">Biologie féminine · Longévité · Rajeunissement Cellulaire</p>
     <h1 class="hero-title reveal visible">Virginie<br><em>Deconinck</em></h1>
     <p class="hero-intro reveal visible">À 50 ans, mes marqueurs biologiques sont meilleurs qu'à 35. Ce n'est pas de la génétique, c'est de la méthode.<br><br>Je défends une vision claire du pro-âge. Vieillir ne pose aucun problème. Ce que je refuse, c'est que l'on présente comme normales la fatigue qui s'installe, la perte de tonicité, le relâchement du corps.</p>
+   </div>
+    <figure class="hero-portrait reveal visible">
+      <img src="/virginie-deconinck-portrait.jpg" width="900" height="1200" alt="Virginie Deconinck, experte en longévité féminine, à 50 ans" fetchpriority="high">
+    </figure>
+   </div>
   </section>
 
   <section class="voice" style="background:var(--ink);padding:48px 80px;">
