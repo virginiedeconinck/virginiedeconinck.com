@@ -50,6 +50,8 @@ CSS_IMPRESSION = """
     .article-hero img { height: 460px !important; object-fit: cover; overflow: clip !important; }
     p, li, h1, h2, h3, blockquote { orphans: 3; widows: 3; }
     .faq-bloc, .pull-quote, .sources li, .cta-block { break-inside: avoid; page-break-inside: avoid; }
+    h2, h3, .faq-q { break-after: avoid; page-break-after: avoid; }
+    h2 + p, h2 + ul, h2 + ol, h3 + p { break-before: avoid; page-break-before: avoid; }
   }
 </style>
 </head>"""
