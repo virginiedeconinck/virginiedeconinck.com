@@ -954,13 +954,17 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 ## 30/10/2026 (soir) : surveillance étendue à tout le tunnel de vente
 - Ordre de Virginie : « fais ce qui doit être fait, une fois pour toutes ». `controle_tunnel()` ajouté à monitoring.py (5987adf), réglages `automation/tunnel.json` (faits interdits, fichiers exposés, liens de paiement). Le SKILL du veilleur dit désormais : une alerte = un brouillon de correction prêt + « publie ? », jamais « j'ai repéré ».
 - Premier passage (test du seul contrôle, 30/10) : CGV page197 « 197 € TTC, 2 × 102 € » ; scripts .py/.sh/.md servis par le quiz ; code des fonctions servi par Ventre Plat ; LOOP-STATE.md, automation/ et scripts/ servis par le site public.
-- Brouillons prêts, en attente du « publie » : site 6ae4a2c685a4492e4dd96e1c (branche optim-2026-10-30, 404 forcés), page197 6ae4a2ed12cf36cc69460752 (CGV 247 € ou 3 × 89 €), quiz 6ae49e93700b3447deca3c39, Ventre Plat 6ae4a422967f1d5201a85c3a.
-- Tant qu'ils ne sont pas publiés, le contrôle quotidien du cloud enverra UN email d'alerte qui les liste : c'est voulu.
+- **PUBLIÉS le 31/10 au soir** (site : 3af62fb, Netlify `ready` 20h01 UTC). Run cloud 41237190679 (31/10 20h06 UTC) : 0 erreur, tunnel 38 pages, 16 fichiers techniques sur 6 sites, 27 liens de paiement. Revérifié le 01/11 à 06h17 UTC : LOOP-STATE.md, automation/monitoring.py et cycle-log.json en 404 sur le site ; page197 affiche « 247 € ou en 3 fois 89 € ». Quiz et Ventre Plat : vérifiés par le seul run cloud, pas rechargés à la main.
 - Écarté après lecture : réécrire les titres SHBG / âge biologique / estrobolome. Déjà retravaillés (14/09 et 19/10), soupape.
 
 ## Filet quotidien du 31/10/2026 (12h37 UTC, samedi)
 - Run planifié 41194240175 (10h48 UTC) : success, 2 rapports sur 2 (pas de lundi), 0 Issue ouverte. Accueil chargé : title et H1 présents, `index, follow`.
 - Le contrôle remonte 10 erreurs, toutes déjà connues du 30/10, et l'email unique est parti (Brevo 201). Cause : les 4 brouillons du 30/10 ne sont toujours pas publiés (API Netlify : `deploy-preview`, non publiés ; production inchangée depuis leur création, donc les publier ne reverse rien).
 - Rechargé en ligne à 12h40 UTC, production contre brouillon : les 13 fichiers exposés répondent 200 en production et 404 sur leur brouillon ; CGV page197 « 197 € / 2 × 102 € » en production, « 247 € / 3 × 89 € » sur le brouillon ; accueils des 4 brouillons en 200.
-- **Trou du moteur** : `LOOP-STATE.md` et `automation/monitoring.py` répondaient 200 sur virginiedeconinck.com sans être sondés (seul `automation/cycle-log.json` l'était). Ajoutés à `fichiers_exposes` de `tunnel.json`, avec `automation/tunnel.json`. Commit local, push refusé dans la session planifiée : à pousser.
+- **Trou du moteur** : `LOOP-STATE.md` et `automation/monitoring.py` répondaient 200 sur virginiedeconinck.com sans être sondés (seul `automation/cycle-log.json` l'était). Ajoutés à `fichiers_exposes` de `tunnel.json`, avec `automation/tunnel.json`. Poussé sur `main` (2e40057).
 - Cycle éditorial : `nextPlanned` 2026-11-01, pas de rattrapage.
+
+## Filet quotidien du 01/11/2026 (06h16 UTC, dimanche, jour du cycle de novembre)
+- Dernier run 41237190679 (31/10 20h04 UTC, lancé à la main) : success, 0 erreur, 1 « à optimiser » (DOI JAMA sommeil en 403, connu). Run planifié 41194240175 du 31/10 10h48 UTC : success. 0 Issue ouverte. Accueil chargé à 06h17 UTC : title, H1 « Virginie Deconinck », `index, follow`.
+- La ligne « trou du moteur, à pousser » du 31/10 est réglée : 2e40057 est sur `main`.
+- Cycle : aujourd'hui EST `nextPlanned` (2026-11-01), il appartient à `cycle-editorial-mensuel`. Pas de rattrapage. `cycleEnCours` vide à 06h17 UTC.
