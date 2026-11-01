@@ -3,8 +3,8 @@
   "timezone": "Europe/Luxembourg",
   "cadence": "1er et 15 de chaque mois (2 articles par mois depuis le 20/10/2026)",
   "lastCycleMonth": "2026-10",
-  "lastCycleStatus": "Cycle d'octobre PUBLIE le 02/10/2026 (un jour de retard : deux commits de tete portant [skip netlify], dont ma relance).",
-  "nextPlanned": "2026-11-01",
+  "lastCycleStatus": "Édition du 01/11 prête sur cycle-2026-11-01, attend « publie ».",
+  "nextPlanned": "2026-11-15",
   "history": [
     {
       "date": "2026-06-28",
@@ -102,6 +102,15 @@
       "statut": "PUBLIE ET VERIFIE EN PROD le 01/09/2026 a 21h45.",
       "verificationPostPublication": "origin/main = c267012, 0 commit en attente. Article en 200, sitemap 21 URL, llms.txt 21 URL concordantes, carte du blog en premiere position sur 4. Photo servie en 115 Ko webp par le CDN, vignette de partage 98 Ko, source 199 Ko. JSON-LD : 3 blocs valides, 6 FAQ sur 6 concordantes avec leur miroir. 0 tiret cadratin, 0 virgule avant « et ». Incarnation en ligne : les 28 ans, l'absence de grossesse, le complexe, et les chiffres 30 % et 36 % tous presents. Les 3 liens d'offre en ligne (Le Systeme en prose, 27€ et candidature en bas). Lot du cycle verifie en prod : /glp1 ne dit plus « principalement du muscle » et porte la nuance de Neeland et le semaglutide oral de decembre 2025 ; identifiants Person presents sur les pages testees ; 0 virgule avant « et » sur 5 pages controlees ; liens entrants actifs depuis /collagene-peau, /shbg et /blog. Rendu mesure en ligne a 375 px et 1280 px : 0 debordement, 0 element hors ecran, 0 lien en bleu navigateur, image chargee, cadrage 50%/12%. Les 8 crawlers d'IA (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Googlebot, Bingbot, meta-externalagent) recoivent tous l'article complet en 200.",
       "resteAFaire": "1) Deux fichiers lourds signales a Virginie le 01/09, decision lui appartenant. 2) Mesurer dans 4 semaines si l'article prend des impressions, et sur quelles requetes."
+    },
+    {
+      "date": "2026-11-01 07h48",
+      "type": "edition 2026-11-01 preparee sur branche",
+      "contenu": "Article « Ventre gonflé à la ménopause : gonflement ou graisse ? » (blog/ventre-gonfle-menopause.html), raccordé : carte du blog en 1re position, JSON-LD blogPost, sitemap (23 URL), llms.txt, lien entrant depuis /graisse-abdominale-apres-40-ans. Photo C6D6119B recadrée 941x1412 (65 Ko servis en webp q80), vignette 83 Ko. CTA : Ventre Plat en 30 jours (premier lien du site vers l'offre, prose + bloc de fin), test gratuit, candidature.",
+      "sourcesVerifiees": "Résumés ouverts sur Europe PMC le 01/11 (PubMed en erreur 500) : Kamp 2026 PMID 42200334, Barba 2023 PMID 36153798, Villoria 2011 PMID 21540894, consensus ESNM/UEG 2025 PMID 40844856, Ambikairajah 2019 PMID 31034807 ; NICE NG12 1.5.2 à 1.5.5 lue en ligne. Incarnation tirée de ses légendes Instagram publiées (API) le 18/10 et le 22/10.",
+      "controles": "Frontière gratuit/payant : aucune fuite, 2 passages allégés. Science et marque : 74/100 bloqué puis corrigé (signes NICE mal rendus, contradiction abdos/muscle profond, 4,6 cm comparé entre groupes). Qualité site public : 84/100, corrections appliquées. Aperçu PDF COMPLET (53 paragraphes). 375 px : 0 débordement mesuré.",
+      "outilCorrige": "automation/apercu-article.py : ouvre les Références repliées (sinon déclarées manquantes) et rogne la photo d'en-tête (elle s'imprimait sur le début de l'article).",
+      "statut": "PRET, ATTEND « publie » de Virginie. Rien sur main."
     }
   ],
   "constatsSurveillance_2026-07-29": {
@@ -150,7 +159,10 @@
     "cta": "Ventre Plat 30 (37 €), PREMIER lien du site vers cette offre, plus le test gratuit. Relance email Ventre Plat le 02/11.",
     "photo": "~/Downloads/A-MONTER/C6D6119B-86F8-46D3-83A5-5363D1F59335.PNG (galerie, polo noir, jupe cuir, taille fine ; catalogue ligne 7, non marquée IA)",
     "valideLe": "2026-10-24",
-    "decidePar": "Virginie le 24/10/2026 : « les deux me conviennent », puis « choisis, tu as une banque de photos à disposition » (sujets, lien VP30 et photos délégués à la Pilote site)."
+    "decidePar": "Virginie le 24/10/2026 : « les deux me conviennent », puis « choisis, tu as une banque de photos à disposition » (sujets, lien VP30 et photos délégués à la Pilote site).",
+    "statut": "PRET_ATTEND_GO",
+    "branche": "cycle-2026-11-01",
+    "fichier": "blog/ventre-gonfle-menopause.html"
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
@@ -162,7 +174,7 @@
     "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."
   },
   "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite.",
-  "lastEdition": "2026-10-01",
+  "lastEdition": "2026-11-01",
   "historiqueSujets": [
     {
       "mois": "2026-10",

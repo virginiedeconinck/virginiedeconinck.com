@@ -45,7 +45,9 @@ CSS_IMPRESSION = """
     * { overflow: visible !important; }
     nav { position: static !important; }
     .article-hero { height: auto !important; min-height: 0 !important; margin-top: 0 !important; }
-    .article-hero img { height: auto !important; max-height: 460px; }
+    /* « * overflow visible » touche aussi l'image : Chrome peint alors la photo
+       entiere hors de son cadre, sur le debut de l'article (01/11/2026). */
+    .article-hero img { height: 460px !important; object-fit: cover; overflow: clip !important; }
     p, li, h1, h2, h3, blockquote { orphans: 3; widows: 3; }
     .faq-bloc, .pull-quote, .sources li, .cta-block { break-inside: avoid; page-break-inside: avoid; }
   }
@@ -81,6 +83,10 @@ def main():
     # le point de terminaison Netlify Images n'existe qu'en production
     src = re.sub(r"/\.netlify/images\?url=%2F([^&\"]+)[^\"]*", r"/\1", src)
     src = src.replace("</head>", CSS_IMPRESSION)
+    # les references sont repliees (<details>, gabarit du 25/09/2026) : fermees,
+    # elles ne s'impriment pas et le controle les declare manquantes. On les
+    # ouvre dans l'apercu, pour qu'elles soient lues ET verifiees (01/11/2026).
+    src = re.sub(r"<details\b(?![^>]*\bopen\b)", "<details open", src)
 
     tmp = tempfile.mkdtemp(prefix="apercu-")
     try:
