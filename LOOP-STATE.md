@@ -975,3 +975,5 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - `automation/apercu-article.py` corrigé : références repliées ouvertes dans l'aperçu, photo d'en-tête rognée à l'impression.
 - 3 DOI (Wiley, Sage) répondent 403 aux robots : la surveillance les classera « à optimiser », comme le DOI JAMA.
 - Prochaine édition : 15/11 (douleurs articulaires, sujet déjà décidé).
+
+- 01/11 : à la mise en ligne de blog/ventre-gonfle-menopause (200 vérifié), prévenir DEUX sessions : « Pilote Instagram » et « Pilotage emails Brevo » (email relais au noyau le 15/11, en ligne avant le 14/11).
