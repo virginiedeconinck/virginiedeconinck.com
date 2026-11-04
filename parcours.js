@@ -21,7 +21,7 @@
   sh.innerHTML='<div class="psheet-in"><button type="button" class="psheet-x" aria-label="Fermer">×</button>'+
     '<p class="aig-title">Qu\'est-ce qui vous <em>amène ?</em></p><div class="aig-grid">'+
     T.map(function(t){return '<a class="aig-tile" href="'+t[0]+'"><span class="aig-q">'+t[1]+'</span><span class="aig-go">'+t[2]+' →</span></a>';}).join('')+
-    '</div><div class="psheet-links"><a href="/#sujets">Tous les sujets</a><a href="/blog/">Tous les articles</a><a href="/a-propos">Qui suis-je ?</a><a href="/">Accueil</a></div></div>';
+    '</div><a class="psheet-main" href="/travailler-avec-moi">Travailler avec moi</a><div class="psheet-links"><a href="/#sujets">Tous les sujets</a><a href="/blog/">Tous les articles</a><a href="/a-propos">Qui suis-je ?</a><a href="/">Accueil</a></div></div>';
   document.body.appendChild(bar); document.body.appendChild(sh);
   function open(){ sh.classList.add('on'); document.body.style.overflow='hidden'; }
   function close(){ sh.classList.remove('on'); document.body.style.overflow=''; }

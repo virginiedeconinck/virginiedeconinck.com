@@ -25,6 +25,7 @@ http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 # 1) les adresses en .html redirigent vers l'adresse propre, pour qu'une page n'existe qu'une fois.
 /index.html / 301!
 /a-propos.html /a-propos 301!
+/travailler-avec-moi.html /travailler-avec-moi 301!
 /histamine-perimenopause.html /histamine-perimenopause 301!
 /peptides-longevite-feminine.html /peptides-longevite-feminine 301!
 /nad-vieillissement-feminin.html /nad-vieillissement-feminin 301!
@@ -61,6 +62,7 @@ http://virginiedck.netlify.app/*   https://virginiedeconinck.com/:splat  301!
 /boutique/* / 301
 
 /a-propos /a-propos.html 200
+/travailler-avec-moi /travailler-avec-moi.html 200
 /histamine-perimenopause /histamine-perimenopause.html 200
 /peptides-longevite-feminine /peptides-longevite-feminine.html 200
 /nad-vieillissement-feminin /nad-vieillissement-feminin.html 200
