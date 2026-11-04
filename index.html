@@ -93,7 +93,7 @@
     "@type": "PostalAddress",
     "addressCountry": "LU"
   },
-  "dateModified": "2026-10-23"
+  "dateModified": "2026-11-04"
 }
   </script>
 
@@ -842,6 +842,10 @@
     p a[href^="/"]:not([class]) strong,p a[href^="/"]:not([class]) em{color:inherit;}
     p a[href^="/"]:not([class]):hover{border-bottom-color:var(--accent);}
     nav p a[href^="/"]:not([class]),footer p a[href^="/"]:not([class]),p.breadcrumb a{border-bottom:none;}
+
+    .hero-actions{opacity:0;animation:fadeUp 1s ease forwards 1.1s;}
+    @media(min-width:901px){.hero .hero-left{padding:40px 64px 40px 80px;}.hero-tag{margin-bottom:32px;}.hero-name{margin-bottom:32px;}.hero-divider{margin-bottom:28px;}}
+    @media(max-width:900px){.hero{min-height:0;padding-top:10px;}.hero .hero-left{padding:18px 24px 32px;}.hero-tag{margin-bottom:20px;}.hero-name{margin-bottom:18px;}.hero-divider{margin-bottom:18px;}}
 </style>
 
   <script type="application/ld+json">
@@ -904,6 +908,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/parcours.css">
 </head>
 <body>
 
@@ -944,9 +949,29 @@
       <p class="hero-statement" itemprop="description">
         J'accompagne les femmes de plus de 35 ans à inverser les mécanismes biologiques du vieillissement visible, de l'intérieur. Que vous soyez en périménopause, en ménopause précoce ou déjà ménopausée.
       </p>
+      <div class="act-row hero-actions">
+        <a class="act-main" href="https://quizzvdck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil-hero">Faire le test gratuit</a>
+        <a class="act-line" href="#aiguillage">Trouver mon sujet&nbsp;↓</a>
+      </div>
     </div>
     <div class="hero-right" aria-hidden="true">
       <img src="/.netlify/images?url=%2Fhero.jpg&amp;w=1400&amp;fm=webp&amp;q=80" alt="Virginie Deconinck, experte en longévité féminine" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" loading="eager" fetchpriority="high">
+    </div>
+  </section>
+
+  <!-- AIGUILLAGE -->
+  <section class="aig" id="aiguillage">
+    <div class="aig-inner">
+      <p class="aig-eyebrow">Choisissez ce qui vous parle</p>
+      <h2 class="aig-title">Qu'est-ce qui vous <em>amène&nbsp;?</em></h2>
+      <div class="aig-grid">
+        <a class="aig-tile" href="/blog/ventre-gonfle-menopause"><span class="aig-q">Mon ventre a changé</span><span class="aig-go">Gonflement ou graisse&nbsp;?&nbsp;→</span></a>
+        <a class="aig-tile" href="/blog/sommeil-menopause-reveils-nocturnes"><span class="aig-q">Je me réveille la nuit</span><span class="aig-go">Ce que les hormones changent&nbsp;→</span></a>
+        <a class="aig-tile" href="/collagene-peau"><span class="aig-q">Ma peau n'est plus la même</span><span class="aig-go">Ce qui se joue après 40 ans&nbsp;→</span></a>
+        <a class="aig-tile" href="/perimenopause"><span class="aig-q">Je ne me reconnais plus</span><span class="aig-go">Les signes de la périménopause&nbsp;→</span></a>
+        <a class="aig-tile" href="/resistance-insuline"><span class="aig-q">Je grossis sans manger plus</span><span class="aig-go">Le rôle de l'insuline&nbsp;→</span></a>
+        <a class="aig-tile" href="/glp1-femmes-perimenopause"><span class="aig-q">On me parle du GLP-1</span><span class="aig-go">La question du muscle&nbsp;→</span></a>
+      </div>
     </div>
   </section>
 
@@ -1165,7 +1190,7 @@
 
   <!-- FAQ -->
   <!-- EXPLORER LES SUJETS (déplacé avant la FAQ le 23/10/2026 : en haut, la liste repoussait l'histoire et les preuves) -->
-  <section style="padding: 56px 20px; background: #fdfcfb;">
+  <section id="sujets" style="padding: 56px 20px; background: #fdfcfb;">
     <div style="max-width: 760px; margin: 0 auto;">
       <p style="text-align:center; font-size:11px; letter-spacing:3px; color:#C4A882; margin-bottom:8px;">LONGÉVITÉ FÉMININE</p>
       <h2 style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:28px; margin-bottom:28px;">Explorer <em style="color:#C4A882;">les sujets</em></h2>
@@ -1215,11 +1240,12 @@
     <h2 class="cta-headline reveal">Prête à agir sur<br><em>les bons leviers&nbsp;?</em></h2>
     <p class="cta-sub reveal">Un accompagnement sur mesure construit sur votre biologie réelle. Théorie, protocoles personnalisés, guidance privée. Sur candidature uniquement.</p>
     <a href="https://tally.so/r/XxeEzV?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" class="cta-btn reveal">Déposer ma candidature</a>
-    <p style="font-size:12px;color:var(--ink-light);margin-top:24px;">Pas encore prête pour un accompagnement&nbsp;? <a href="https://le-systeme-dck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" style="color:var(--accent);text-decoration:none;">Découvrir le système à 27€ →</a><br><a href="https://quizzvdck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil" style="color:var(--accent);text-decoration:none;">Ou commencez gratuitement : le test en 2 minutes →</a></p>
+    <p class="offers-title">Pas encore prête pour un accompagnement&nbsp;?</p>
+    <div class="offers"><a class="offer" href="https://le-systeme-dck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil"><span class="offer-nom">Découvrir le Système</span><span class="offer-det">Les 25 audios, 27&nbsp;€</span></a><a class="offer" href="https://pack-glycemie-sangle-dck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil"><span class="offer-nom">Ventre Plat en 30 jours</span><span class="offer-det">Le programme, 37&nbsp;€</span></a><a class="offer offer-free" href="https://quizzvdck.netlify.app/?utm_source=site&amp;utm_medium=organique&amp;utm_content=accueil"><span class="offer-nom">Le test gratuit</span><span class="offer-det">En 2 minutes</span></a></div>
   </section>
 
   <!-- FOOTER -->
-  <p style="text-align:center;font-size:11px;color:#999;padding:24px 0 8px;letter-spacing:0.05em;">Mis à jour en octobre 2026</p>
+  <p style="text-align:center;font-size:11px;color:#999;padding:24px 0 8px;letter-spacing:0.05em;">Mis à jour en novembre 2026</p>
 
   <footer>
     <p style="font-size:11px;line-height:1.5;color:#999;max-width:640px;margin:16px auto 0;text-align:center;">Les contenus de ce site sont fournis à titre informatif et éducatif uniquement. Ils ne constituent pas un avis médical et ne remplacent pas une consultation avec un professionnel de santé.</p>
@@ -1262,4 +1288,5 @@
 })();
 </script>
 <script src="/quiz-popup.js" defer></script>
+<script src="/parcours.js" defer></script>
 </body></html>
