@@ -13,6 +13,7 @@
   "faits_interdits": [
     {"motif": "presque 50 ans|bient[oô]t 50 ans|presque la cinquantaine", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026"},
     {"motif": "l['’]aube de (ses|mes) 50 ans|proche de la cinquantaine", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026"},
+    {"motif": "approche les 50|j['’]approche (de la cinquantaine|des 50)", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026 (trouvé sur /a-propos le 02/11/2026)"},
     {"motif": "(Virginie|DCK|j['’]ai)[^.<]{0,25}\\b49 ans", "pourquoi": "Virginie a 50 ans depuis le 11/10/2026"},
     {"motif": "\\b197\\s?€|197 euros", "pourquoi": "le 197 € n'existe plus depuis le 14/09/2026 (247 € ou 3 × 89 €)"}
   ],
