@@ -118,5 +118,5 @@
 
 /* Un seul accent sur tout le site : le terracotta. Le tan #c4a882 disparaît (avis visuel du 04/11/2026). */
 :root{--accent:#b4583c;}
-section.voice,.hero-caption,.proof{--accent:#f8ebe4;}
+section.voice,.hero-caption,.testimonials{--accent:#f8ebe4;}
 .footer-links a{color:rgba(255,255,255,0.6);}
