@@ -86,60 +86,37 @@
   .psheet .aig-title{font-size:28px;margin:6px 44px 18px 4px;text-align:left;}
   .psheet .aig-tile{min-height:104px;}
   .psheet .aig-q{font-size:20px;}
-  .psheet-main{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:14px;border-radius:999px;background:#15243f;color:#fff;font-size:15px;font-weight:600;text-decoration:none;font-family:'Didact Gothic',sans-serif;}
+  .psheet-main{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:14px;border-radius:999px;background:#0e0e0e;color:#fff;font-size:15px;font-weight:600;text-decoration:none;font-family:'Didact Gothic',sans-serif;}
   .psheet-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
   .psheet-links a{flex:1 1 40%;min-height:46px;display:flex;align-items:center;justify-content:center;border:1px solid #b4583c;border-radius:999px;color:#96452d;font-size:14px;text-decoration:none;font-family:'Didact Gothic',sans-serif;}
 }
 
-/* Bleu marine en alternance avec le terracotta (demande de Virginie, 04/11/2026). Jamais de doré à côté du terracotta. */
-section.voice{background:#15243f!important;}
-section.cta{background:#15243f!important;}
-section.cta .cta-eyebrow{color:#f2c7b3;}
-section.cta .cta-title,section.cta .cta-headline{color:#fff;}
-section.cta .cta-title em,section.cta .cta-headline em{color:#f2c7b3;}
-section.cta .cta-sub{color:rgba(255,255,255,0.86);}
-section.cta .cta-btn{background:#fff;color:#15243f;}
-section.cta .cta-btn:hover{background:#f8ebe4;}
-section.cta .cta-secondary{color:rgba(255,255,255,0.8);}
-section.cta .offers-title{color:#fff;}
-footer{background:#0f1b30!important;}
-.aig-grid .aig-tile:nth-child(even){background:#15243f;}
-.aig-grid .aig-tile:nth-child(even) .aig-q{color:#fff;}
-.aig-grid .aig-tile:nth-child(even) .aig-go{color:#f2c7b3;}
-.aig-grid .aig-tile:hover{background:#b4583c!important;}
-.aig-grid .aig-tile:hover .aig-q,.aig-grid .aig-tile:hover .aig-go{color:#fff!important;}
-@media(max-width:900px){
-  .aig-grid .aig-tile:nth-child(even){background:#f8ebe4;}
-  .aig-grid .aig-tile:nth-child(even) .aig-q{color:#0e0e0e;}
-  .aig-grid .aig-tile:nth-child(even) .aig-go{color:#96452d;}
-  .aig-grid .aig-tile:nth-child(4n+2),.aig-grid .aig-tile:nth-child(4n+3){background:#15243f;}
-  .aig-grid .aig-tile:nth-child(4n+2) .aig-q,.aig-grid .aig-tile:nth-child(4n+3) .aig-q{color:#fff;}
-  .aig-grid .aig-tile:nth-child(4n+2) .aig-go,.aig-grid .aig-tile:nth-child(4n+3) .aig-go{color:#f2c7b3;}
-  .pbar button{background:#15243f;color:#fff;}
-}
-
 .offers-all{display:block;margin-top:14px;font-size:14px;color:#96452d;text-align:center;text-decoration:underline;text-underline-offset:3px;}
-section.cta .offers-all{color:#fff;}
-.offer-navy{background:#15243f;border-color:#15243f;}
-.offer-navy:hover{background:#0f1b30;}
-.offer-navy .offer-nom{color:#fff;}
-.offer-navy .offer-det{color:rgba(255,255,255,0.8);}
+.offer-noir{background:#0e0e0e;border-color:#0e0e0e;}
+.offer-noir:hover{background:#000;}
+.offer-noir .offer-nom{color:#fff;}
+.offer-noir .offer-det{color:rgba(255,255,255,0.8);}
 .nav-links a{white-space:nowrap;}
 
 .wk{padding:0 24px 40px;}
 .wk-inner{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px;}
 .wk-card{padding:34px 30px;border-radius:18px;color:#fff;}
-.wk-navy{background:#15243f;}
+.wk-noir{background:#0e0e0e;}
 .wk-terra{background:#b4583c;}
 .wk-tag{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#f8dccd;margin:0 0 12px;}
 .wk-card h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(30px,4vw,40px);line-height:1.1;color:#fff;margin:0 0 16px;}
 .wk-card p{font-size:16px;line-height:1.7;color:#fff;margin:0 0 14px;}
 .wk-card .wk-note{font-size:15px;color:#f8dccd;margin-bottom:22px;}
 .wk-card .wk-tag{font-size:12px;color:#f8dccd;}
-.wk-btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:14px 22px;border-radius:999px;background:#fff;color:#15243f;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;}
+.wk-btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:14px 22px;border-radius:999px;background:#fff;color:#0e0e0e;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;}
 .wk-terra .wk-btn{color:#96452d;}
 .wk-terra .wk-note,.wk-terra .wk-tag{color:#fff!important;}
 .wk-btn:hover{background:#f8ebe4;}
 .wk-sub{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;line-height:1.15;color:#0e0e0e;margin:26px 0 4px;text-align:center;}
 .wk-sub em{font-style:italic;color:#b4583c;}
 .wk-offers{max-width:none;width:100%;}
+
+/* Un seul accent sur tout le site : le terracotta. Le tan #c4a882 disparaît (avis visuel du 04/11/2026). */
+:root{--accent:#b4583c;}
+section.voice,.hero-caption,.proof{--accent:#f8ebe4;}
+.footer-links a{color:rgba(255,255,255,0.6);}
