@@ -993,3 +993,13 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Correctif du 02/11 repris sur la branche LOCALE `optim-2026-11-04`** (créer une branche passe, pousser sur `main` demande une approbation en session planifiée) : /a-propos « j'avais 49 ans au moment du test », /peptides au singulier, motif `approche les 50` dans `tunnel.json`. Défaut toujours EN LIGNE ce matin. Rendu local regardé en 375 et 1280, 0 débordement. Attend « publie ».
 - `optim-2026-10-26` : fusion avec `origin/main` testée sans conflit le 04/11, toujours non publiée, échéance 11/11.
 - **Ce fichier n'est PAS à jour sur `origin/main`** : les commits de journal du 02/11 et du 04/11 sont restés locaux (push refusé, `main` en avance de 3 et en retard de 1 sur le battement de cœur). À pousser dans une session ouverte, après `git pull --rebase`.
+
+## 04/11/2026 (soir) : parcours de lecture et page d'offres PUBLIÉS (« quand tu as tout fait, tu publies », Virginie)
+- Publications `91bd076` et `bdc5fb3`, Netlify `ready`. Surveillance cloud relancée, voir son dernier rapport.
+- Partout : menu téléphone, bouton de test en haut de page, cases « Cela pourrait aussi vous parler », barre téléphone « Explorer le site / Test gratuit » (`parcours.js`, `parcours.css`, feuille unique du site), offres lisibles en fin de page, « novembre 2026 ».
+- Nouvelle page `/travailler-avec-moi` dans le menu : accompagnement (dit payant, sans prix), méthode complète 247 €, Ventre Plat, Système 27 €, test. Le 247 € n'est lié QUE depuis cette page (décision de Virginie, sa règle « email uniquement » assouplie).
+- Palette : blanc, noir, accent unique terracotta, beige retiré. Bleu marine essayé puis écarté. Les 4 leviers gardent marine et doré.
+- `/glp1` corrigée : « aucune étude dédiée » était faux (PMID 38446869, 42664617, congrès TMS octobre 2026). Étude tirzépatide Mayo lue dans le communiqué seulement.
+- Publiés avec : sommeil (lien direct page197 retiré), À propos 49 ans, peptides au singulier, FAQ RCF, llms.txt, 26K+.
+- Tally XxeEzV, question 6 réécrite (payant, investir financièrement), sauvegarde avant modification faite. Option « Pas encore » et identifiants inchangés : les scripts qualifient dessus.
+- **Reste à faire** : quiz (texte « mesurer cette campagne », liens de fin non étiquetés, Ventre Plat absent) ; indexation manuelle de l'article ventre gonflé par Virginie ; témoignages à attribuer pour la page d'offres ; page dédiée `/accompagnement-perimenopause` non créée (titre de la page d'offres à la place) ; SERP Google non ouverte le 04/11.
