@@ -112,6 +112,11 @@
 .wk-terra .wk-btn{color:#96452d;}
 .wk-terra .wk-note,.wk-terra .wk-tag{color:#fff!important;}
 .wk-btn:hover{background:#f8ebe4;}
+.wk-temoins{padding:14px 4px 10px;}
+.wk-tag-clair{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#b4583c;font-weight:600;margin:0 0 14px;text-align:center;}
+.wk-temoins blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.45;color:#0e0e0e;margin:0 0 20px;padding:0 0 18px;border-bottom:1px solid #e0dbd4;}
+.wk-temoins blockquote:last-child{margin-bottom:0;border-bottom:none;}
+.wk-temoins cite{display:block;margin-top:8px;font-family:'Didact Gothic',sans-serif;font-style:normal;font-size:13px;color:#666;}
 .wk-sub{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;line-height:1.15;color:#0e0e0e;margin:26px 0 4px;text-align:center;}
 .wk-sub em{font-style:italic;color:#b4583c;}
 .wk-offers{max-width:none;width:100%;}
