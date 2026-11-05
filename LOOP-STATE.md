@@ -1012,3 +1012,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - /peptides répond 404 : normal, la vraie adresse est /peptides-longevite-feminine (200). Ne pas le remonter.
 - Lignes périmées du 02/11 et du 04/11 corrigées (branches publiées, journal poussé).
 - Commit de ce passage resté LOCAL si `main` est en avance : le push demande une approbation en session planifiée.
+
+- **Test quiz → Brevo, relu à l'API le 05/11 : RÉUSSI.** Soumission du 04/11 21h00 UTC, contact créé en liste 3 à 21h48 UTC par le passage emails-quotidiens 41919457557 (cron retardé), J0 « Ce que ton test ne t'a pas dit » délivré à 21h48. Correction : l'entrée Brevo se fait au prochain passage du moteur, à n'importe quelle heure, pas seulement le matin.
+- **Ne PAS retirer le contact test de la liste 3 sans plus** : `drip_engine.py` le reprendrait comme nouveau (dédoublonnage sur liste 3 + exclusions) et renverrait un J0. Il reste en séquence en attendant la décision de Virginie.
+- Post Facebook estrobolome du 04/11 (`fb-2026-11-04`), Metricool à J+1 : portée 466, 4 clics lien. Quiz : 0 inscription venue de ce post à ce relevé. Tally : dernière candidature 02/11. Aucun compteur de visites sur le site.
