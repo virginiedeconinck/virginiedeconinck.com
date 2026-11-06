@@ -969,7 +969,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - La ligne « trou du moteur, à pousser » du 31/10 est réglée : 2e40057 est sur `main`.
 - Cycle : aujourd'hui EST `nextPlanned` (2026-11-01), il appartient à `cycle-editorial-mensuel`. Pas de rattrapage. `cycleEnCours` vide à 06h17 UTC.
 
-## Édition du 01/11/2026 : article ventre gonflé PRÊT sur `cycle-2026-11-01`, attend « publie »
+## Édition du 01/11/2026 : article ventre gonflé, PUBLIÉ (en ligne, 200 et H1 relus le 06/11)
 - Article `blog/ventre-gonfle-menopause.html` raccordé (carte du blog, sitemap 23 URL, llms.txt, lien entrant depuis /graisse-abdominale). Premier lien du site vers Ventre Plat en 30 jours.
 - Sources ouvertes le 01/11 sur Europe PMC (PubMed en erreur 500) et NICE NG12 en ligne. Trois contrôleurs passés, corrections appliquées. Aperçu : `~/Downloads/RCF-blog-2026-11-01/apercu-ventre-gonfle-menopause.pdf` (COMPLET).
 - `automation/apercu-article.py` corrigé : références repliées ouvertes dans l'aperçu, photo d'en-tête rognée à l'impression.
@@ -1016,3 +1016,10 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Test quiz → Brevo, relu à l'API le 05/11 : RÉUSSI.** Soumission du 04/11 21h00 UTC, contact créé en liste 3 à 21h48 UTC par le passage emails-quotidiens 41919457557 (cron retardé), J0 « Ce que ton test ne t'a pas dit » délivré à 21h48. Correction : l'entrée Brevo se fait au prochain passage du moteur, à n'importe quelle heure, pas seulement le matin.
 - **Ne PAS retirer le contact test de la liste 3 sans plus** : `drip_engine.py` le reprendrait comme nouveau (dédoublonnage sur liste 3 + exclusions) et renverrait un J0. Il reste en séquence en attendant la décision de Virginie.
 - Post Facebook estrobolome du 04/11 (`fb-2026-11-04`), Metricool à J+1 : portée 466, 4 clics lien. Quiz : 0 inscription venue de ce post à ce relevé. Tally : dernière candidature 02/11. Aucun compteur de visites sur le site.
+
+## Passage du vendredi 06/11/2026 (07h16)
+- Filet normal : run planifié 42031895078 (05/11 13h00 UTC, `a7b0779`) success, rapport lu : 0 erreur, 7 « à optimiser » = DOI et NICE 403 aux robots, connus. Tunnel 40 pages, 29 liens de paiement. 0 Issue. Accueil chargé à 06h16 UTC (title, H1, `index, follow`). Dernier déploiement `7685cf1` `ready`, verrou vide. Cycle : rien à rattraper, prochaine édition 15/11.
+- Rappel : un run `success` ne dit plus rien seul depuis 95dbd87 (le contrôle ne fait plus échouer le job). Lire le rapport à chaque passage.
+- `lastCycleStatus` de `cycle-log.json` dit encore « attend publie » : périmé, l'article est en ligne. Laissé en l'état, le cycle le réécrit le 15/11.
+- **Prévenir « Pilotage emails Brevo » de la mise en ligne de ventre gonflé (ligne du 01/11, email relais du 15/11) : aucune trace que ce soit fait.** Cette session n'a plus d'activité depuis le 01/11, l'article est sorti le 04/11. Pas envoyé par le veilleur, sa tâche ne couvre pas ce message. Signalé à Virginie le 06/11.
+- Journal resté non poussé si `main` est en retard sur le local : le push demande une approbation en session planifiée.
