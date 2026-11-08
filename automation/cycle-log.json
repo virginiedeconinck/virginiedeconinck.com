@@ -146,23 +146,24 @@
     "modifieLe": "2026-10-20"
   },
   "sujetArticleValide": {
-    "edition": "2026-11-01",
+    "edition": "2026-11-15",
     "mois": "2026-11",
-    "sujet": "Ventre gonflé à la ménopause : gonflement ou graisse ?",
-    "angle": "Le ventre qui gonfle dans la journée et le ventre qui s'épaissit sont deux mécanismes différents ; aucune page de la première page Google ne fait la différence. Rester centrée sur le gonflement et renvoyer vers /graisse-abdominale-apres-40-ans pour la graisse (éviter la cannibalisation). Ne PAS écrire que « la progestérone ballonne » (surtout des données animales).",
-    "demandeReelle": "Proposition du 24/10 (email « Article du 1er novembre ») : seul des 5 symptômes comparés dans Google Trends avec requêtes associées ; 10 suggestions Google pour « ventre gonflé ménopause » et 10 pour « ballonnement ménopause » ; « pourquoi ballonnements ménopause » dans le rapport SEO cloud.",
+    "sujet": "« À la ménopause, j'ai mal partout » : les douleurs articulaires",
+    "angle": "Pourquoi les douleurs articulaires montent pendant la transition ; ce que le traitement hormonal fait et ne fait pas ; le muscle comme soutien. Mécanismes seulement, pas de protocole.",
+    "demandeReelle": "10 suggestions Google ; question « Pourquoi à la ménopause on a mal partout ? » ; aucune page du site ne couvre le sujet. Revérifié le 08/11 : 10 suggestions Google toujours servies pour « douleurs articulaires ménopause » (que faire, collagène, phytothérapie, complément alimentaire, forum, traitement naturel) et « douleurs articulations perimenopause ». Aucune page du site ne couvre le sujet (dossier blog relu le 08/11).",
     "sourcesRetenues": [
-      "Kamp 2026, 291 femmes : le gonflement culmine pendant la transition puis baisse, la tension nerveuse l'aggrave (à revérifier sur PubMed avant rédaction)",
-      "Ambikairajah 2019, méta-analyse : +27 cm² de graisse viscérale après la ménopause (à revérifier)"
+      "Kruse C et al., « Musculoskeletal Manifestations of Perimenopause: A Systematic Review and Meta-Analysis of 93,021 Women », JB JS Open Access, 13/01/2026, DOI 10.2106/jbjs.oa.25.00254, PMID 41523660. Résumé ouvert le 08/11 : 37 études OBSERVATIONNELLES, 22 pays ; douleurs musculaires ou articulaires 40 % avant la transition, 57 % en périménopause, 59 % après (RR 1,35 et 1,40). Limites : hétérogénéité très forte (I² 88,6 et 95 %), niveau de preuve IV selon les auteurs, causes précises sous-documentées. Écrire « associé », jamais « causé ».",
+      "Chlebowski RT et al., « Estrogen alone and joint symptoms in the Women's Health Initiative randomized trial », Menopause 2013, DOI 10.1097/gme.0b013e31828392c4, PMID 23511705 (réédité en 2018, PMID 30358728 : citer 2013). Résumé ouvert le 08/11 : essai randomisé, 10 739 femmes ménopausées HYSTÉRECTOMISÉES, œstrogènes équins oraux 0,625 mg contre placebo ; à 1 an douleur articulaire 76,3 % contre 79,2 % (baisse modeste, maintenue à 3 ans) MAIS gonflement articulaire plus fréquent (42,1 % contre 39,7 %). Analyse post hoc. Ne pas extrapoler aux traitements actuels (estradiol transdermique).",
+      "Overton R et al., « The effect of hormone replacement therapy on musculoskeletal pain in menopausal women: A systematic review and meta-analysis », Post Reproductive Health, 20/03/2026, DOI 10.1177/20533691251403087, PMID 41344380. Résumé ouvert le 08/11 : 57 études, 3 958 702 participantes ; aucun effet global du traitement hormonal sur la douleur musculosquelettique généralisée (RR 1,00, IC 0,96 à 1,04) ; arthrose et polyarthrite trop hétérogènes pour être poolées. Limite : comparaison « déjà utilisé contre jamais », surtout observationnelle."
     ],
-    "pageSoutenue": "/graisse-abdominale-apres-40-ans",
-    "cta": "Ventre Plat 30 (37 €), PREMIER lien du site vers cette offre, plus le test gratuit. Relance email Ventre Plat le 02/11.",
-    "photo": "~/Downloads/A-MONTER/C6D6119B-86F8-46D3-83A5-5363D1F59335.PNG (galerie, polo noir, jupe cuir, taille fine ; catalogue ligne 7, non marquée IA)",
+    "pageSoutenue": "/muscle-longevite-feminine",
+    "cta": "candidature, plus le test gratuit",
+    "photo": "~/Downloads/A-MONTER/71F67DF5-7F2A-45AA-8B4D-067D06D27156.PNG (forêt d'automne, manteau camel, robe bordeaux, profil en marche ; catalogue ligne 97 « n°3 » ; photo ouverte le 08/11 : portrait 1024x1536, lumière dorée, jamais utilisée sur le site ; le mouvement colle au sujet et à la saison)",
     "valideLe": "2026-10-24",
-    "decidePar": "Virginie le 24/10/2026 : « les deux me conviennent », puis « choisis, tu as une banque de photos à disposition » (sujets, lien VP30 et photos délégués à la Pilote site).",
-    "statut": "PRET_ATTEND_GO",
-    "branche": "cycle-2026-11-01",
-    "fichier": "blog/ventre-gonfle-menopause.html"
+    "decidePar": "Virginie le 24/10/2026 (deux sujets validés d'un coup). Recopié de sujetEditionSuivanteDecide par la tâche choix-sujet du 08/11 après vérification de la parution du 01/11.",
+    "statut": "SUJET_VALIDE_A_REDIGER",
+    "branche": "cycle-2026-11-15",
+    "fichier": "blog/douleurs-articulaires-menopause.html (nom proposé, à confirmer par le cycle)"
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
@@ -208,23 +209,27 @@
       "publication01_10": "01/10 : fusion 742e374 non deployee car le push avait en tete f26d7d7 « [skip netlify] » (autre session), puis ma relance f989be4 citait elle-meme « [skip netlify] » dans son message. Webhook GitHub sain (verifie le 02/10 en croisant pushes et deploiements). Deploye le 02/10 par build API sur « deploie » de Virginie, en double avec une autre session (05h04 et 05h09 UTC).",
       "publieLe": "2026-10-02T07:04+02:00 (deploiement Netlify 6abf3b5918ac7c4f9f353f1f, commit 989bb78, declenche par API sur « deploie » de Virginie le 02/10)",
       "controleEnLigne": "02/10/2026 : article 200, titre attendu, index follow, HTML servi identique a bc40a96 ; photo webp 121 Ko ; vignette 99 Ko ; sitemap, carte /blog/, llms.txt et lien /perimenopause presents ; captures 390 et 1280 px sans debordement (~/Downloads/article-sommeil-octobre/captures-en-ligne/)."
+    },
+    {
+      "edition": "2026-11-01",
+      "mois": "2026-11",
+      "sujet": "Ventre gonflé à la ménopause : gonflement ou graisse ?",
+      "angle": "Le ventre qui gonfle dans la journée et le ventre qui s'épaissit sont deux mécanismes différents ; aucune page de la première page Google ne fait la différence. Rester centrée sur le gonflement et renvoyer vers /graisse-abdominale-apres-40-ans pour la graisse (éviter la cannibalisation). Ne PAS écrire que « la progestérone ballonne » (surtout des données animales).",
+      "demandeReelle": "Proposition du 24/10 (email « Article du 1er novembre ») : seul des 5 symptômes comparés dans Google Trends avec requêtes associées ; 10 suggestions Google pour « ventre gonflé ménopause » et 10 pour « ballonnement ménopause » ; « pourquoi ballonnements ménopause » dans le rapport SEO cloud.",
+      "sourcesRetenues": [
+        "Kamp 2026, 291 femmes : le gonflement culmine pendant la transition puis baisse, la tension nerveuse l'aggrave (à revérifier sur PubMed avant rédaction)",
+        "Ambikairajah 2019, méta-analyse : +27 cm² de graisse viscérale après la ménopause (à revérifier)"
+      ],
+      "pageSoutenue": "/graisse-abdominale-apres-40-ans",
+      "cta": "Ventre Plat 30 (37 €), PREMIER lien du site vers cette offre, plus le test gratuit. Relance email Ventre Plat le 02/11.",
+      "photo": "~/Downloads/A-MONTER/C6D6119B-86F8-46D3-83A5-5363D1F59335.PNG (galerie, polo noir, jupe cuir, taille fine ; catalogue ligne 7, non marquée IA)",
+      "valideLe": "2026-10-24",
+      "decidePar": "Virginie le 24/10/2026 : « les deux me conviennent », puis « choisis, tu as une banque de photos à disposition » (sujets, lien VP30 et photos délégués à la Pilote site).",
+      "statut": "PUBLIE",
+      "branche": "cycle-2026-11-01",
+      "fichier": "blog/ventre-gonfle-menopause.html",
+      "controleEnLigne": "08/11/2026 : https://virginiedeconinck.com/blog/ventre-gonfle-menopause en 200, title attendu, datePublished 2026-11-01, present dans le sitemap (relu par la tache choix-sujet du 08/11)."
     }
   ],
-  "sujetEditionSuivanteDecide": {
-    "edition": "2026-11-15",
-    "mois": "2026-11",
-    "sujet": "« À la ménopause, j'ai mal partout » : les douleurs articulaires",
-    "angle": "Pourquoi les douleurs articulaires montent pendant la transition ; ce que le traitement hormonal fait et ne fait pas ; le muscle comme soutien. Mécanismes seulement, pas de protocole.",
-    "demandeReelle": "10 suggestions Google ; question « Pourquoi à la ménopause on a mal partout ? » ; aucune page du site ne couvre le sujet.",
-    "sourcesRetenues": [
-      "Méta-analyse 2026, 93 021 femmes : 40 % de douleurs avant la transition, 57 % pendant (à revérifier)",
-      "WHI : œstrogènes, réduction modeste des douleurs (à revérifier)",
-      "Méta-analyse 2026 : pas d'effet global du traitement hormonal (à revérifier)"
-    ],
-    "pageSoutenue": "/muscle-longevite-feminine",
-    "cta": "candidature, plus le test gratuit",
-    "photo": "~/Downloads/A-MONTER/71F67DF5-7F2A-45AA-8B4D-067D06D27156.PNG (forêt d'automne, manteau camel, en marche ; catalogue ligne 3)",
-    "valideLe": "2026-10-24",
-    "consigne": "La tâche du 08/11 NE repropose PAS de sujets : elle recopie ce bloc dans sujetArticleValide après la parution du 01/11 (lastEdition = 2026-11-01), revérifie les sources, et prévient Virginie en une ligne."
-  }
+  "sujetEditionSuivanteDecide": null
 }
