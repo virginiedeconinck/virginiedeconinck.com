@@ -1024,3 +1024,9 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **« Pilotage emails Brevo » prévenue le 06/11 à 17h35 de la mise en ligne de ventre gonflé** (sur le oui de Virginie, message délivré). Pilote Instagram : pas prévenue par ce message.
 - ⚠️ Piège : `lastActivityAt` renvoyé par `search_session_transcripts` date de l'index, pas de la session (il donnait 01/11, `get_session` donnait 06/11 15h43). Lire l'activité d'une session avec `get_session`.
 - Journal resté non poussé si `main` est en retard sur le local : le push demande une approbation en session planifiée.
+
+## Passage du dimanche 08/11/2026 (07h16)
+- Filet normal : run planifié 42368908649 (07/11 11h36 UTC) success, rapport lu dans le log du run : 0 erreur, 5 « à optimiser » = DOI et NICE 403 aux robots (1 sommeil, 3 ventre gonflé, NICE NG12), connus. Tunnel 40 pages, 29 liens de paiement. 0 Issue. Accueil chargé à 06h16 UTC (200, title, H1, `index, follow`). Dernier déploiement `7685cf1` `ready`, verrou vide. Cycle : rien à rattraper, prochaine édition 15/11.
+- **À surveiller : certificat TLS à 32 jours (expire le 10/12/2026).** Netlify le renouvelle seul en principe (non vérifié ce matin). Si l'audit du lundi 16/11 lit encore une expiration au 10/12, c'est une alerte.
+- `gh run download` refusé sans personne en session planifiée : le rapport se lit avec `gh run view <id> --log`.
+- `main` local en avance de 2 commits de journal (06/11) sur `origin/main`, plus celui-ci : push non fait (approbation requise).
