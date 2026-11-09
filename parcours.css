@@ -125,3 +125,10 @@
 :root{--accent:#b4583c;}
 section.voice,.hero-caption,.testimonials{--accent:#f8ebe4;}
 .footer-links a{color:rgba(255,255,255,0.6);}
+
+/* Bandeau des articles : il grandit quand le titre et le bouton ne tiennent pas dans 70vh (mesuré le 09/11/2026 : haut du bandeau coupé en 1366x768 sur 3 articles) */
+.article-hero{height:auto;min-height:max(70vh,480px);display:flex;flex-direction:column;justify-content:flex-end;}
+.article-hero > img{position:absolute;inset:0;}
+.article-hero .hero-caption{position:relative;padding-top:56px;}
+@media (max-width:768px){.article-hero{min-height:max(60vh,360px);}}
+.nobr{white-space:nowrap;}
