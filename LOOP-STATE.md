@@ -1041,3 +1041,5 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Certificat** : 30 jours (10/12), Netlify `issued` le 11/09. Toujours à relire le 16/11.
 - Instagram dans Search Console : aucun export neuf (dernier 30/08), redemandé.
 - Commits de journal locaux du 05 au 09/11 non poussés (`main` en avance sur `origin/main`) : le push demande une approbation en session planifiée.
+
+- 09/11 : Virginie demande que l article du 15/11 (douleurs articulaires) soit pousse sur Instagram ET sur le post Facebook du mercredi. Demande transmise a Pilote Instagram : FB du 18/11 = cet article, graisse abdominale decalee au 25/11 sauf si deja validee ou programmee. **A la mise en ligne du 15/11 (200 verifie) : envoyer l URL exacte a Pilote Instagram.** Briefing cloud corrige le 09/11 (plus de Slack, agenda saute en silence) : relire son passage du 10/11.
