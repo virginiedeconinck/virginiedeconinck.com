@@ -1043,3 +1043,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Commits de journal locaux du 05 au 09/11 non poussés (`main` en avance sur `origin/main`) : le push demande une approbation en session planifiée.
 
 - 09/11 : Virginie demande que l article du 15/11 (douleurs articulaires) soit pousse sur Instagram ET sur le post Facebook du mercredi. Demande transmise a Pilote Instagram : FB du 18/11 = cet article, graisse abdominale decalee au 25/11 sauf si deja validee ou programmee. **A la mise en ligne du 15/11 (200 verifie) : envoyer l URL exacte a Pilote Instagram, avec 2 ou 3 phrases recopiees de la page publiee et leur source (sa demande du 09/11). Elle a deja cale : FB 18/11 12h + story lien 18/11, graisse abdominale au 25/11.** Briefing cloud corrige le 09/11 (plus de Slack, agenda saute en silence) : relire son passage du 10/11.
+
+## Passage du mercredi 11/11/2026 (07h16)
+- Filet normal : run planifié 42823824642 (10/11 13h21 UTC) success, rapport lu dans le log : 0 erreur, 7 « à optimiser » = DOI et NICE 403 aux robots (3 sommeil, 3 ventre gonflé, NICE NG12), connus. Tunnel 40 pages, 29 liens de paiement. 0 Issue. Accueil chargé à 06h16 UTC (200, title, H1, `index, follow`). Cycle : rien à rattraper, `cycleEnCours` vide, prochaine édition 15/11.
+- **Certificat TLS RENOUVELÉ** : le rapport du 10/11 lit 89 jours (expire le 08/02/2027). Le point « à relire le 16/11 » est clos.
