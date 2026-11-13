@@ -1047,3 +1047,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 ## Passage du mercredi 11/11/2026 (07h16)
 - Filet normal : run planifié 42823824642 (10/11 13h21 UTC) success, rapport lu dans le log : 0 erreur, 7 « à optimiser » = DOI et NICE 403 aux robots (3 sommeil, 3 ventre gonflé, NICE NG12), connus. Tunnel 40 pages, 29 liens de paiement. 0 Issue. Accueil chargé à 06h16 UTC (200, title, H1, `index, follow`). Cycle : rien à rattraper, `cycleEnCours` vide, prochaine édition 15/11.
 - **Certificat TLS RENOUVELÉ** : le rapport du 10/11 lit 89 jours (expire le 08/02/2027). Le point « à relire le 16/11 » est clos.
+
+## 12/11 : article sommeil, ce qu'ont produit le post Facebook et la story du 11/11
+- Facebook 11/11 12h (Metricool, controle Instagram du 12/11 8h) : portee 4 623, 187 clics tous types, lien en 1er commentaire non mesure par Metricool.
+- Cote site (Netlify Forms quiz-vdck, lu le 12/11) : 6 inscriptions au test venues de fb-2026-11-11 (6 adresses distinctes, boutons hero 4, barre 2) et 5 de story-2026-11-11. Aucun compteur de visites sur le site : on mesure les inscriptions, pas les visites.
