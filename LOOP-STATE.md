@@ -1051,3 +1051,5 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 ## 12/11 : article sommeil, ce qu'ont produit le post Facebook et la story du 11/11
 - Facebook 11/11 12h (Metricool, controle Instagram du 12/11 8h) : portee 4 623, 187 clics tous types, lien en 1er commentaire non mesure par Metricool.
 - Cote site (Netlify Forms quiz-vdck, lu le 12/11) : 6 inscriptions au test venues de fb-2026-11-11 (6 adresses distinctes, boutons hero 4, barre 2) et 5 de story-2026-11-11. Aucun compteur de visites sur le site : on mesure les inscriptions, pas les visites.
+
+- 13/11 : le message du 15/11 (URL verifiee, angle, 2-3 phrases de la page) part AUSSI a la session « Chaque samedi : planning Instagram de la semaine suivante », qui l attend pour la story et le post FB du 18/11.
