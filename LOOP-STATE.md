@@ -1053,3 +1053,9 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Cote site (Netlify Forms quiz-vdck, lu le 12/11) : 6 inscriptions au test venues de fb-2026-11-11 (6 adresses distinctes, boutons hero 4, barre 2) et 5 de story-2026-11-11. Aucun compteur de visites sur le site : on mesure les inscriptions, pas les visites.
 
 - 13/11 : le message du 15/11 (URL verifiee, angle, 2-3 phrases de la page) part AUSSI a la session « Chaque samedi : planning Instagram de la semaine suivante », qui l attend pour la story et le post FB du 18/11.
+
+## Cycle du dimanche 15/11/2026 (07h34 à 07h55) : édition du 15/11 prête, attend « publie »
+- Article « Douleurs articulaires à la ménopause : pourquoi on a mal partout », branche `cycle-2026-11-15`, rien sur `main`. Raccordé : carte du blog, sitemap, llms.txt, lien entrant depuis /muscle-longevite-feminine.
+- 12 sources relues sur Europe PMC ; 3 contrôles passés et corrigés ; aperçu PDF COMPLET ; captures 390/1280 sans débordement (`~/Downloads/article-douleurs-articulaires-novembre/`).
+- **Le post Facebook et la story du 18/11 attendent l'URL en ligne** : Pilote Instagram ne peut rien écrire avant la publication. À la mise en ligne (200 vérifié), lui envoyer l'URL et 2 ou 3 phrases recopiées de la page publiée.
+- Manque : une phrase de vécu de Virginie sur ses articulations (incarnation), et sa confirmation de la description du pilier 1.
