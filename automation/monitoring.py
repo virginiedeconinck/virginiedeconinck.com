@@ -441,7 +441,10 @@ def controle_liens(pages):
             c_cr, _, _, _ = http("https://api.crossref.org/works/" + doi.group(1))
             if c_cr == 200:
                 continue
-            if c_cr == 404:
+            # doi.org ET Crossref l'ignorent : la reference est introuvable.
+            # Un DOI DataCite (Zenodo...) est absent de Crossref mais doi.org le
+            # resout : il garde alors l'alerte ordinaire, jamais une erreur.
+            if c_cr == 404 and code == 404:
                 ERREUR("liens", f"DOI inconnu de Crossref : {cible} — cite sur "
                                 f"{', '.join(sorted(sources)[:4])}")
                 continue
