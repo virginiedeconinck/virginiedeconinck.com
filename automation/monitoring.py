@@ -429,6 +429,22 @@ def controle_liens(pages):
         # qu'on vient de corriger.
         if not interne and code in (429, 999):
             continue
+        # Les editeurs scientifiques (JAMA, Wiley, SAGE...) renvoient 403 a un
+        # runner GitHub et 200 a une lectrice : le 403 ne dit rien de la
+        # reference. Ce qui le dit, c'est Crossref, le registre des DOI. On ne
+        # signale donc un DOI que si Crossref ne le connait pas (404), et ce
+        # n'est plus un simple point a optimiser : c'est une reference qui
+        # n'existe peut-etre pas. Corrige le 15/11/2026 apres 4 DOI signales
+        # chaque jour depuis le 01/11, tous presents sur Crossref.
+        doi = re.match(r'https?://(?:dx\.)?doi\.org/(10\.\S+)', cible)
+        if doi and code in (0, 403, 404):
+            c_cr, _, _, _ = http("https://api.crossref.org/works/" + doi.group(1))
+            if c_cr == 200:
+                continue
+            if c_cr == 404:
+                ERREUR("liens", f"DOI inconnu de Crossref : {cible} — cite sur "
+                                f"{', '.join(sorted(sources)[:4])}")
+                continue
         ou = ", ".join(sorted(sources)[:4])
         if interne:
             ERREUR("liens", f"lien interne casse (HTTP {code}) : {cible.replace(SITE,'')} "
