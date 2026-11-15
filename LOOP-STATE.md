@@ -1053,3 +1053,9 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - Cote site (Netlify Forms quiz-vdck, lu le 12/11) : 6 inscriptions au test venues de fb-2026-11-11 (6 adresses distinctes, boutons hero 4, barre 2) et 5 de story-2026-11-11. Aucun compteur de visites sur le site : on mesure les inscriptions, pas les visites.
 
 - 13/11 : le message du 15/11 (URL verifiee, angle, 2-3 phrases de la page) part AUSSI a la session « Chaque samedi : planning Instagram de la semaine suivante », qui l attend pour la story et le post FB du 18/11.
+
+## 15/11/2026 : filet normal, puis « corrige ce qui doit être corrigé » (Virginie)
+- Filet 06h16 UTC : run 43592591930 (14/11) success, 0 erreur, 5 « à optimiser » (4 DOI 403 + NICE 403), 0 Issue, accueil 200 avec title, H1 et `index, follow`. Pas de rattrapage (15/11 = jour J du cycle).
+- **Les 4 DOI en 403 existent tous** : Crossref les sert en 200 le 15/11 (jama.2024.14618, ueg2.70098, nmo.14466, 15409996261455326). Ce n'était pas le site mais le moteur qu'il fallait corriger : branche `optim-2026-11-15` (fca17c5), un DOI en 403/404 est vérifié sur Crossref ; présent = ignoré ; introuvable sur doi.org ET Crossref = ERREUR. Testé sur les 4 réels et un DOI inventé. NICE NG12 reste signalé (seul bruit restant). ATTEND « publie » pour aller sur `main`.
+- La ligne périmée `lastCycleStatus` (« 01/11 attend publie ») est déjà remplacée sur `cycle-2026-11-15` par la session du cycle ; elle arrivera sur `main` avec l'article du 15/11. Rien à faire de plus, sinon conflit sur `cycle-log.json`.
+- Le correctif du 09/11 (bandeau, GLP-1, FAQ, 4 leviers) est en ligne depuis `d27b2c2` : la mention « ATTEND publie » de la section du 09/11 est périmée.
