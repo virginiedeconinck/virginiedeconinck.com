@@ -3,7 +3,7 @@
   "timezone": "Europe/Luxembourg",
   "cadence": "1er et 15 de chaque mois (2 articles par mois depuis le 20/10/2026)",
   "lastCycleMonth": "2026-10",
-  "lastCycleStatus": "Édition du 15/11 prête sur cycle-2026-11-15, attend « publie ».",
+  "lastCycleStatus": "Édition du 15/11 : version 9173fbb validée par Virginie le 15/11, à publier le 16/11 par la tâche unique publication-article-16-novembre.",
   "nextPlanned": "2026-12-01",
   "history": [
     {
@@ -170,9 +170,15 @@
     "photo": "~/Downloads/A-MONTER/71F67DF5-7F2A-45AA-8B4D-067D06D27156.PNG (forêt d'automne, manteau camel, robe bordeaux, profil en marche ; catalogue ligne 97 « n°3 » ; photo ouverte le 08/11 : portrait 1024x1536, lumière dorée, jamais utilisée sur le site ; le mouvement colle au sujet et à la saison)",
     "valideLe": "2026-10-24",
     "decidePar": "Virginie le 24/10/2026 (deux sujets validés d'un coup). Recopié de sujetEditionSuivanteDecide par la tâche choix-sujet du 08/11 après vérification de la parution du 01/11.",
-    "statut": "PRET_ATTEND_GO",
+    "statut": "PRET_GO_PUBLICATION",
     "branche": "cycle-2026-11-15",
-    "fichier": "blog/douleurs-articulaires-menopause.html"
+    "fichier": "blog/douleurs-articulaires-menopause.html",
+    "goPublication": {
+      "date": "2026-11-15",
+      "mots": "ok je valide pour la publication demain",
+      "versionValidee": "9173fbb (fichier blog/douleurs-articulaires-menopause.html, branche cycle-2026-11-15)",
+      "publierLe": "2026-11-16"
+    }
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
