@@ -1065,3 +1065,7 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - 12 sources relues sur Europe PMC ; 3 contrôles passés et corrigés ; aperçu PDF COMPLET ; captures 390/1280 sans débordement (`~/Downloads/article-douleurs-articulaires-novembre/`).
 - **Le post Facebook et la story du 18/11 attendent l'URL en ligne** : Pilote Instagram ne peut rien écrire avant la publication. À la mise en ligne (200 vérifié), lui envoyer l'URL et 2 ou 3 phrases recopiées de la page publiée.
 - Manque : une phrase de vécu de Virginie sur ses articulations (incarnation), et sa confirmation de la description du pilier 1.
+
+## 16/11/2026 : article douleurs articulaires EN LIGNE (10h35)
+- La tâche de 8 h s'est arrêtée à la fusion : conflit dans LOOP-STATE.md seulement (sections du 15/11 écrites par deux sessions). Résolu en gardant les deux. Article identique à 9173fbb hors dates.
+- Commit fcb91ea, déploiement Netlify ready. En ligne : 200, `index, follow`, photo CDN 200 (webp), og 200, sitemap, /blog/, /llms.txt. « de façon modeste » absent. Captures 500 et 1280 px regardées, photo visible.
