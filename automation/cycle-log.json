@@ -3,8 +3,8 @@
   "timezone": "Europe/Luxembourg",
   "cadence": "1er et 15 de chaque mois (2 articles par mois depuis le 20/10/2026)",
   "lastCycleMonth": "2026-10",
-  "lastCycleStatus": "Édition du 01/11 prête sur cycle-2026-11-01, attend « publie ».",
-  "nextPlanned": "2026-11-15",
+  "lastCycleStatus": "Édition du 15/11 : version 9173fbb validée par Virginie le 15/11, à publier le 16/11 par la tâche unique publication-article-16-novembre.",
+  "nextPlanned": "2026-12-01",
   "history": [
     {
       "date": "2026-06-28",
@@ -111,6 +111,15 @@
       "controles": "Frontière gratuit/payant : aucune fuite, 2 passages allégés. Science et marque : 74/100 bloqué puis corrigé (signes NICE mal rendus, contradiction abdos/muscle profond, 4,6 cm comparé entre groupes). Qualité site public : 84/100, corrections appliquées. Aperçu PDF COMPLET (53 paragraphes). 375 px : 0 débordement mesuré.",
       "outilCorrige": "automation/apercu-article.py : ouvre les Références repliées (sinon déclarées manquantes) et rogne la photo d'en-tête (elle s'imprimait sur le début de l'article).",
       "statut": "PRET, ATTEND « publie » de Virginie. Rien sur main."
+    },
+    {
+      "date": "2026-11-15 07h55",
+      "type": "edition 2026-11-15 preparee sur branche",
+      "contenu": "Article « Douleurs articulaires à la ménopause : pourquoi on a mal partout » (blog/douleurs-articulaires-menopause.html), raccordé : carte du blog en 1re position, JSON-LD blogPost, sitemap, llms.txt, lien entrant depuis /muscle-longevite-feminine. Photo 71F67DF5 recadrée 840x1260 (webp q80 mesuré 142 Ko), vignette og 88 Ko.",
+      "sourcesVerifiees": "12 résumés relus sur Europe PMC le 15/11 (PubMed : mur de cookies) : Kruse 2026, Ushiyama 1999, Pfeilschifter 2002, Beckwée 2017, Prieto-Alhambra 2014, Smith 2007, Kravitz 2015, Chlebowski 2013, Overton 2026, OARSI 2019, Cochrane 2024, Irwin 2015.",
+      "controles": "Frontière gratuit/payant : aucune fuite. Qualité site public : 84/100, 1 bloquant (fil d'Ariane recopié) corrigé. Science et marque : 78/100 bloqué (hypothèse hormonale présentée comme acquise, encadré sorti de contexte), corrigé. Aperçu PDF COMPLET (47 paragraphes). Captures 390 et 1280 px sans débordement.",
+      "aDemander": "Une phrase de vécu de Virginie sur ses articulations (aucune trace dans les notes) ; confirmer la description du pilier 1.",
+      "statut": "PRET, ATTEND « publie » de Virginie. Rien sur main."
     }
   ],
   "constatsSurveillance_2026-07-29": {
@@ -161,9 +170,15 @@
     "photo": "~/Downloads/A-MONTER/71F67DF5-7F2A-45AA-8B4D-067D06D27156.PNG (forêt d'automne, manteau camel, robe bordeaux, profil en marche ; catalogue ligne 97 « n°3 » ; photo ouverte le 08/11 : portrait 1024x1536, lumière dorée, jamais utilisée sur le site ; le mouvement colle au sujet et à la saison)",
     "valideLe": "2026-10-24",
     "decidePar": "Virginie le 24/10/2026 (deux sujets validés d'un coup). Recopié de sujetEditionSuivanteDecide par la tâche choix-sujet du 08/11 après vérification de la parution du 01/11.",
-    "statut": "SUJET_VALIDE_A_REDIGER",
+    "statut": "PRET_GO_PUBLICATION",
     "branche": "cycle-2026-11-15",
-    "fichier": "blog/douleurs-articulaires-menopause.html (nom proposé, à confirmer par le cycle)"
+    "fichier": "blog/douleurs-articulaires-menopause.html",
+    "goPublication": {
+      "date": "2026-11-15",
+      "mots": "ok je valide pour la publication demain",
+      "versionValidee": "9173fbb (fichier blog/douleurs-articulaires-menopause.html, branche cycle-2026-11-15)",
+      "publierLe": "2026-11-16"
+    }
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",
@@ -175,7 +190,7 @@
     "commandeDeRestauration": "git show fe62e32:blog/peau-os-collagene-menopause.html > blog/peau-os-collagene-menopause.html   (verifie le 01/09 a 20h35 : l'extraction rend bien les 37330 octets, titre « Peau et os : le collagene que vous perdez des deux cotes »). Ne PAS utiliser git revert, il entrerait en conflit avec le lot melasma, meme piege qu'avec l'estrobolome le 01/08."
   },
   "domaine": "RENOUVELLEMENT CONFIRME PAR VIRGINIE le 01/09/2026, valide avec OVH. NE PLUS JAMAIS le signaler comme un point ouvert, y compris si le moteur de surveillance le fait remonter en « a optimiser » : c'est traite.",
-  "lastEdition": "2026-11-01",
+  "lastEdition": "2026-11-15",
   "historiqueSujets": [
     {
       "mois": "2026-10",

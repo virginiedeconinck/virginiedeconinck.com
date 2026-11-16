@@ -1059,3 +1059,9 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Les 4 DOI en 403 existent tous** : Crossref les sert en 200 le 15/11 (jama.2024.14618, ueg2.70098, nmo.14466, 15409996261455326). Ce n'était pas le site mais le moteur qu'il fallait corriger : branche `optim-2026-11-15` (fca17c5), un DOI en 403/404 est vérifié sur Crossref ; présent = ignoré ; introuvable sur doi.org ET Crossref = ERREUR. Testé sur les 4 réels et un DOI inventé. NICE NG12 reste signalé (seul bruit restant). ATTEND « publie » pour aller sur `main`.
 - La ligne périmée `lastCycleStatus` (« 01/11 attend publie ») est déjà remplacée sur `cycle-2026-11-15` par la session du cycle ; elle arrivera sur `main` avec l'article du 15/11. Rien à faire de plus, sinon conflit sur `cycle-log.json`.
 - Section du 09/11 corrigée sur place : son correctif est publié depuis `d27b2c2`.
+
+## Cycle du dimanche 15/11/2026 (07h34 à 07h55) : édition du 15/11 prête, attend « publie »
+- Article « Douleurs articulaires à la ménopause : pourquoi on a mal partout », branche `cycle-2026-11-15`, rien sur `main`. Raccordé : carte du blog, sitemap, llms.txt, lien entrant depuis /muscle-longevite-feminine.
+- 12 sources relues sur Europe PMC ; 3 contrôles passés et corrigés ; aperçu PDF COMPLET ; captures 390/1280 sans débordement (`~/Downloads/article-douleurs-articulaires-novembre/`).
+- **Le post Facebook et la story du 18/11 attendent l'URL en ligne** : Pilote Instagram ne peut rien écrire avant la publication. À la mise en ligne (200 vérifié), lui envoyer l'URL et 2 ou 3 phrases recopiées de la page publiée.
+- Manque : une phrase de vécu de Virginie sur ses articulations (incarnation), et sa confirmation de la description du pilier 1.
