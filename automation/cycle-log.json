@@ -1,7 +1,7 @@
 {
   "system": "Public Site Monitoring + Blog — cycle editorial scientifique mensuel",
   "timezone": "Europe/Luxembourg",
-  "cadence": "1er et 15 de chaque mois (2 articles par mois depuis le 20/10/2026)",
+  "cadence": "1er de chaque mois (1 article par mois depuis le 27/11/2026 ; 2 par mois du 20/10 au 27/11/2026)",
   "lastCycleMonth": "2026-10",
   "lastCycleStatus": "Edition du 15/11 PUBLIEE le 16/11 a 10h35 (commit fcb91ea, deploiement Netlify ready). La tache de 8h s'etait arretee sur un conflit de journal (LOOP-STATE.md) ; resolu en gardant les deux sections.",
   "nextPlanned": "2026-12-01",
@@ -149,38 +149,28 @@
     "nonPousse": "PERIME, corrige le 03/08/2026 apres mesure : ces fichiers SONT pousses. Verifie a la source ce jour-la (git ls-files, git status, comparaison main/origin) : automation/maillage.py, audit-hebdo.py, seo-geo.py et og-image.py sont suivis et presents sur main = origin/main = 41af613, arbre de travail propre. La note decrivait un etat du 02/08 08h30 qui a ete depasse le jour meme."
   },
   "cadenceArticles": {
-    "regle": "2 articles par mois, PUBLIES le 1er et le 15 (decision de Virginie le 20/10/2026). Avant : 1 article par mois, PUBLIE le 1er. Jamais suspendue. Correction de Virginie du 01/09/2026, ses mots : « Je n'ai jamais dit qu'on suspendait la creation d'articles. C'est un article par mois, tous les premiers du mois. Donc forcement, il faut revenir vers moi, au moins une semaine avant, pour qu'on puisse decider et elaborer l'article qui sera publie le premier du mois. Sans ca, si tu me dis le premier du mois qu'il faut publier un article, on ne va pas y arriver. »",
-    "process": "Edition du 1er : sujet decide le 24 du mois precedent. Edition du 15 : sujet decide le 8. Tache 'choix-sujet-article-mensuel' (cron 24 et 8) : 3 sujets argumentes + photo, decision dans sujetArticleValide (champ 'edition'). 'cycle-editorial-mensuel' (cron 1 et 15) LIT cette decision. Garde-fou : lastEdition != nextPlanned.",
+    "regle": "1 article par mois, PUBLIE le 1er (decision de Virginie le 27/11/2026, ses mots : « je pense pas que je vais faire plus qu'un article par mois maintenant parce que je vais reduire mon activite »). Du 20/10 au 27/11/2026 : 2 par mois (1er et 15). Jamais suspendue par Claude (correction de Virginie du 01/09/2026).",
+    "process": "Sujet decide le 24 du mois precedent par la tache 'choix-sujet-article-mensuel' (cron le 24) : 3 sujets argumentes + photo, decision dans sujetArticleValide (champ 'edition' = AAAA-MM-01). 'cycle-editorial-mensuel' (cron le 1er) LIT cette decision. Garde-fou : lastEdition != nextPlanned.",
     "poseLe": "2026-09-01",
     "modifieLe": "2026-10-20"
   },
   "sujetArticleValide": {
-    "edition": "2026-11-15",
-    "mois": "2026-11",
-    "sujet": "« À la ménopause, j'ai mal partout » : les douleurs articulaires",
-    "angle": "Pourquoi les douleurs articulaires montent pendant la transition ; ce que le traitement hormonal fait et ne fait pas ; le muscle comme soutien. Mécanismes seulement, pas de protocole.",
-    "demandeReelle": "10 suggestions Google ; question « Pourquoi à la ménopause on a mal partout ? » ; aucune page du site ne couvre le sujet. Revérifié le 08/11 : 10 suggestions Google toujours servies pour « douleurs articulaires ménopause » (que faire, collagène, phytothérapie, complément alimentaire, forum, traitement naturel) et « douleurs articulations perimenopause ». Aucune page du site ne couvre le sujet (dossier blog relu le 08/11).",
+    "edition": "2026-12-01",
+    "mois": "2026-12",
+    "sujet": "Cheveux qui s'affinent à la ménopause alors que les hormones sont « normales »",
+    "angle": "Le dosage hormonal n'explique souvent rien ; la piste métabolique (surpoids, résistance à l'insuline) est peu traitée. Associations seulement, jamais de causalité affirmée.",
     "sourcesRetenues": [
-      "Kruse C et al., « Musculoskeletal Manifestations of Perimenopause: A Systematic Review and Meta-Analysis of 93,021 Women », JB JS Open Access, 13/01/2026, DOI 10.2106/jbjs.oa.25.00254, PMID 41523660. Résumé ouvert le 08/11 : 37 études OBSERVATIONNELLES, 22 pays ; douleurs musculaires ou articulaires 40 % avant la transition, 57 % en périménopause, 59 % après (RR 1,35 et 1,40). Limites : hétérogénéité très forte (I² 88,6 et 95 %), niveau de preuve IV selon les auteurs, causes précises sous-documentées. Écrire « associé », jamais « causé ».",
-      "Chlebowski RT et al., « Estrogen alone and joint symptoms in the Women's Health Initiative randomized trial », Menopause 2013, DOI 10.1097/gme.0b013e31828392c4, PMID 23511705 (réédité en 2018, PMID 30358728 : citer 2013). Résumé ouvert le 08/11 : essai randomisé, 10 739 femmes ménopausées HYSTÉRECTOMISÉES, œstrogènes équins oraux 0,625 mg contre placebo ; à 1 an douleur articulaire 76,3 % contre 79,2 % (baisse modeste, maintenue à 3 ans) MAIS gonflement articulaire plus fréquent (42,1 % contre 39,7 %). Analyse post hoc. Ne pas extrapoler aux traitements actuels (estradiol transdermique).",
-      "Overton R et al., « The effect of hormone replacement therapy on musculoskeletal pain in menopausal women: A systematic review and meta-analysis », Post Reproductive Health, 20/03/2026, DOI 10.1177/20533691251403087, PMID 41344380. Résumé ouvert le 08/11 : 57 études, 3 958 702 participantes ; aucun effet global du traitement hormonal sur la douleur musculosquelettique généralisée (RR 1,00, IC 0,96 à 1,04) ; arthrose et polyarthrite trop hétérogènes pour être poolées. Limite : comparaison « déjà utilisé contre jamais », surtout observationnelle."
+      "Chaikittisilpa, Menopause 2022, PMID 35357365 (178 postménopausées, alopécie 52,2 %, seul IMC >= 25 associé après ajustement) [résumé]",
+      "Méta-analyse 2026 résistance à l'insuline et alopécie, hommes et femmes mélangés (référence exacte dans la transcription du 24/11, à relire)",
+      "Essai blocage DHT sans effet, 137 femmes ménopausées (référence à relire)",
+      "Revue systématique œstrogènes et cheveux, JAAD 2026, PMID 42036029 : notice seule, À LIRE EN ENTIER AVANT RÉDACTION, sinon le sujet tombe (condition posée le 24/11)"
     ],
-    "pageSoutenue": "/muscle-longevite-feminine",
+    "pageSoutenue": "/resistance-insuline",
     "cta": "candidature, plus le test gratuit",
-    "photo": "~/Downloads/A-MONTER/71F67DF5-7F2A-45AA-8B4D-067D06D27156.PNG (forêt d'automne, manteau camel, robe bordeaux, profil en marche ; catalogue ligne 97 « n°3 » ; photo ouverte le 08/11 : portrait 1024x1536, lumière dorée, jamais utilisée sur le site ; le mouvement colle au sujet et à la saison)",
-    "valideLe": "2026-10-24",
-    "decidePar": "Virginie le 24/10/2026 (deux sujets validés d'un coup). Recopié de sujetEditionSuivanteDecide par la tâche choix-sujet du 08/11 après vérification de la parution du 01/11.",
-    "statut": "PUBLIE",
-    "branche": "cycle-2026-11-15",
-    "fichier": "blog/douleurs-articulaires-menopause.html",
-    "goPublication": {
-      "date": "2026-11-15",
-      "mots": "ok je valide pour la publication demain",
-      "versionValidee": "9173fbb (fichier blog/douleurs-articulaires-menopause.html, branche cycle-2026-11-15)",
-      "publierLe": "2026-11-16"
-    },
-    "publieLe": "2026-11-16T10:35+01:00",
-    "commitPublication": "fcb91ea"
+    "photo": "NON FOURNIE (proposée : 096D53A3, à confirmer par Virginie, et si ce sont bien ses cheveux)",
+    "vecu": "NON FOURNI (question posée le 27/11 : ses cheveux ont-ils changé, ou ceux de ses clientes, et qu'a-t-elle vu bouger en premier ?)",
+    "valideLe": "2026-11-27",
+    "valideMots": "Faisons l'article sur les cheveux, oui."
   },
   "sujetReservePourOctobre": {
     "mois": "2026-10",

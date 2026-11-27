@@ -1095,3 +1095,8 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Acquisition** : 0 candidature Tally depuis le 11/11. Test gratuit S47 : 13 venues du site (muscle 5 instagram, accueil 4 ig, douleurs 2 story 18/11, ventre 1, résistance 1) contre 30 en S46. **0 inscription `facebook-fb-2026-11-18`** : post FB du 18/11 absent, non étiqueté ou sans effet, à vérifier avec Pilote Instagram. Les utm du test se lisent dans le champ `referrer` des soumissions Netlify, pas dans des champs utm.
 - GSC 28 j : 46 clics (−6 %), 1 347 impr. (−21 %), pos 9,0. Monte : « coach sportif luxembourg » 5,2 ; « age biologique vs chronologique » 5,4.
 - Dossier : `~/Downloads/RCF-site-correctifs/audit-2026-11-23.md`.
+
+## 27/11/2026 : un article par mois, sujet du 01/12 = cheveux (Pilote site)
+- **Cadence ramenée à 1 article par mois, le 1er** (Virginie, 27/11 : « je pense pas que je vais faire plus qu'un article par mois maintenant parce que je vais réduire mon activité »). Tâches réglées : `cycle-editorial-mensuel` le 1er seulement, `choix-sujet-article-mensuel` le 24 seulement ; leurs consignes, `cycle-log.json` (cadence, cadenceArticles) réécrits. Plus d'édition du 15.
+- **Sujet du 01/12 validé : cheveux** (« Faisons l'article sur les cheveux, oui »), écrit dans `sujetArticleValide`. Photo et vécu NON FOURNIS au 27/11, demandés. Condition du 24/11 maintenue : lire en entier la revue JAAD 2026 (PMID 42036029) avant rédaction, sinon le sujet tombe.
+- Post Facebook graisse abdominale publié le 27/11 à 7 h 50 par Pilote Instagram (ordre de Virginie), lien fb-2026-11-27. Post du 02/12 = article mélasma (texte et image validés par Virginie le 27/11), programmé dans Metricool (vérifié).
