@@ -167,7 +167,7 @@
     ],
     "pageSoutenue": "/resistance-insuline",
     "cta": "candidature, plus le test gratuit",
-    "photo": "NON FOURNIE (proposée : 096D53A3, à confirmer par Virginie, et si ce sont bien ses cheveux)",
+    "photo": "096D53A3 VALIDÉE par Virginie le 27/11/2026 : « Une belle photo, utilise-la. »",
     "vecu": "Ses mots du 27/11/2026, 1) l'avant : « mes cheveux étaient pas beaux, je me sentais pas bien, je les coupais, bien au-dessus des épaules parce que, je les trouvais, fins, abîmés, clairsemés, heu, je les perdais par poignées et cetera. » 2) le tournant : « Les cheveux, je m'y suis intéressée après ma peau, en fait. J'ai d'abord, réglé mon corps, ma peau et cetera et puis les cheveux, c'est assez récent. Ça fait 2 ans seulement que je me suis, préoccupée d'eux. Après tout ce que j'avais déjà mis en place, à l'intérieur a amélioré la qualité de mes cheveux, puisque j'ai pu les laisser pousser et que ils ont poussé beaucoup. Donc c'est que mon corps fonctionnait mieux. [...] maintenant je peaufine [...] j'ai laissé pousser les cheveux à partir de [...] il y a 5 ans. Donc à partir de l'âge de 45 ans, j'ai commencé à les laisser pousser parce que j'ai commencé justement à prendre soin de moi et j'ai vu que ça marchait mieux. » Faits utilisables : vers 45 ans (il y a 5 ans) elle commence à prendre soin d'elle, corps et peau d'abord ; elle laisse alors pousser ses cheveux, qui poussent beaucoup ; elle ne s'occupe des cheveux en tant que tels que depuis 2 ans. Rien d'autre : aucun produit, complément, traitement ni geste précis à inventer.",
     "valideLe": "2026-11-27",
     "valideMots": "Faisons l'article sur les cheveux, oui.",
@@ -177,14 +177,12 @@
       "date": "2026-11-27",
       "branche": "cycle-2026-12-01",
       "fichier": "blog/cheveux-fins-menopause.html",
-      "photo": "cheveux-hero.jpg = 096D53A3 PROVISOIRE, Virginie n'a pas confirmé que c'est une vraie photo d'elle",
+      "photo": "cheveux-hero.jpg = 096D53A3, validée par Virginie le 27/11",
       "revueJAAD": "PMID 42036029 lue en texte intégral le 27/11 sur jaad.org (lettre de 3 pages, accès libre) ; tableaux supplémentaires Mendeley non ouverts",
       "controles": "qualité scientifique 80/100 et site public 81/100 À CORRIGER, corrections appliquées ; frontière gratuit/payant OK ; marketing appliqué ; aperçu PDF COMPLET",
       "rienSurMain": true,
       "aValiderParVirginie": [
-        "photo",
-        "phrases du vécu",
-        "CTA sans carte 27 €"
+        "son « publie » sur la version exacte (aperçu PDF envoyé le 27/11)"
       ]
     }
   },
