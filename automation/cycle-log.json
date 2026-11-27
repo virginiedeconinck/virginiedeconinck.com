@@ -172,7 +172,7 @@
     "valideLe": "2026-11-27",
     "valideMots": "Faisons l'article sur les cheveux, oui.",
     "consigne": "Virginie, 27/11 : « tu fais tout le truc à propos de ça » : rédaction lancée le 27/11 par Pilote site, aperçu à lui montrer avant le 01/12.",
-    "statut": "PREPARE_EN_ATTENTE_VALIDATION",
+    "statut": "PRET_GO_PUBLICATION",
     "preparation": {
       "date": "2026-11-27",
       "branche": "cycle-2026-12-01",
@@ -181,9 +181,16 @@
       "revueJAAD": "PMID 42036029 lue en texte intégral le 27/11 sur jaad.org (lettre de 3 pages, accès libre) ; tableaux supplémentaires Mendeley non ouverts",
       "controles": "qualité scientifique 80/100 et site public 81/100 À CORRIGER, corrections appliquées ; frontière gratuit/payant OK ; marketing appliqué ; aperçu PDF COMPLET",
       "rienSurMain": true,
-      "aValiderParVirginie": [
-        "son « publie » sur la version exacte (aperçu PDF envoyé le 27/11)"
-      ]
+      "aValiderParVirginie": []
+    },
+    "goPublication": {
+      "date": "2026-11-27",
+      "mots": "publue (sa réponse à : « Il ne manque plus que ton publie sur l'aperçu PDF »)",
+      "branche": "cycle-2026-12-01",
+      "commitVu": "1a552cf295f50c9a737881b9c5ecfeae05908f41",
+      "fichier": "blog/cheveux-fins-menopause.html",
+      "datePublication": "2026-12-01",
+      "versionVue": "aperçu PDF apercu-cheveux-fins-menopause.pdf envoyé le 27/11 + photo 096D53A3 vue et validée"
     }
   },
   "sujetReservePourOctobre": {
