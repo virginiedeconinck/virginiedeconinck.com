@@ -1100,3 +1100,11 @@ appartient a `cycle-editorial-mensuel` (article Sommeil, branche `cycle-2026-10`
 - **Cadence ramenée à 1 article par mois, le 1er** (Virginie, 27/11 : « je pense pas que je vais faire plus qu'un article par mois maintenant parce que je vais réduire mon activité »). Tâches réglées : `cycle-editorial-mensuel` le 1er seulement, `choix-sujet-article-mensuel` le 24 seulement ; leurs consignes, `cycle-log.json` (cadence, cadenceArticles) réécrits. Plus d'édition du 15.
 - **Sujet du 01/12 validé : cheveux** (« Faisons l'article sur les cheveux, oui »), écrit dans `sujetArticleValide`. Photo et vécu NON FOURNIS au 27/11, demandés. Condition du 24/11 maintenue : lire en entier la revue JAAD 2026 (PMID 42036029) avant rédaction, sinon le sujet tombe.
 - Post Facebook graisse abdominale publié le 27/11 à 7 h 50 par Pilote Instagram (ordre de Virginie), lien fb-2026-11-27. Post du 02/12 = article mélasma (texte et image validés par Virginie le 27/11), programmé dans Metricool (vérifié).
+
+## 27/11/2026 : article du 01/12 préparé en avance (cheveux), NON publié
+
+Branche `cycle-2026-12-01`, fichier `blog/cheveux-fins-menopause.html`, raccordé (carte du blog, JSON-LD du blog, sitemap, llms.txt). Rien sur `main`, aucun build.
+- Revue JAAD 2026 (PMID 42036029) lue en texte intégral sur jaad.org : condition du 24/11 remplie.
+- Photo `cheveux-hero.jpg` (096D53A3) PROVISOIRE : Virginie n'a pas confirmé que c'est une vraie photo d'elle.
+- En attente de Virginie : la photo, les phrases de son vécu, puis son « publie ».
+- Vu sans y toucher : `/resistance-insuline` (ligne 341) affirme que l'hyperinsulinémie fait chuter la SHBG et aggrave la chute de cheveux, sans source ; la page n'a aucune référence.
